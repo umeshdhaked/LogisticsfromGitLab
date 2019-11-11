@@ -1,0 +1,48 @@
+version: '3'
+services:
+ mongodb:
+   image: mongo
+   ports:
+     - "27017:27017"
+   container_name: mongo-container
+   network_mode: host
+ muzix:
+   image: wysser
+   build: wysser/
+   restart: always
+   container_name: wysserapp-container
+   network_mode: host
+   ports:
+     - "8092:8092"
+   expose:
+    - 8092
+ zuul:
+   image: zuul
+   restart: always
+   build: zuul/
+   container_name: zuul-container
+   network_mode: host
+   ports:
+     - 8089:8089
+   expose:
+     - 8089
+ eureka:
+   image: eureka
+   restart: always
+   build: eurekaserver/
+   container_name: eureka-container
+   network_mode: host
+   ports:
+     - 8761:8761
+   expose:
+     - 8761
+ configserver:
+   image: configserver
+   restart: always
+   build: configserver/
+   container_name: configserver-container
+   network_mode: host
+   ports:
+     - 8888:8888
+   expose:
+     - 8888
