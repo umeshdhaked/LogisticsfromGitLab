@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d2cd15a-7792-47ae-ad85-31f6d623e457" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/boilerplate.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend-mongodb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend-mongodb/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend-mongodb/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend-mongodb/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend-mongodb/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend-mongodb/src/main/java/com/stackroute/MuzixApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-mongodb/src/main/java/com/stackroute/WysserApplication.java" afterDir="false" />
