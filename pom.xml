@@ -52,8 +52,8 @@
     </build>
     <modules>
         <module>zuul-service</module>
-        <module>eureka-service</module>
         <module>config-service</module>
         <module>backend-service</module>
+        <module>eureka-service</module>
     </modules>
 </project>
