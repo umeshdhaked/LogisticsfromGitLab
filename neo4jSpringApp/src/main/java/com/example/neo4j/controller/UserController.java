@@ -1,5 +1,7 @@
 package com.example.neo4j.controller;
 
+import com.example.neo4j.model.Movie;
+import com.example.neo4j.model.RATED;
 import com.example.neo4j.model.User;
 import com.example.neo4j.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,7 @@ public class UserController {
     UserService userService;
 
     @GetMapping
-    public Collection<User> getAll() {
+    public Collection<RATED> getAll() {
         return userService.getAll();
     }
 

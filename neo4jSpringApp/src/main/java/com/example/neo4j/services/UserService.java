@@ -1,5 +1,7 @@
 package com.example.neo4j.services;
 
+import com.example.neo4j.model.Movie;
+import com.example.neo4j.model.RATED;
 import com.example.neo4j.model.User;
 import com.example.neo4j.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,7 @@ public class UserService {
     @Autowired
     UserRepo userRepo;
 
-    public Collection<User> getAll() {
+    public Collection<RATED> getAll() {
         return userRepo.getAllUsers();
     }
 }
