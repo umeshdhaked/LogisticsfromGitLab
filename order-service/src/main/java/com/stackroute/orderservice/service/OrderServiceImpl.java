@@ -8,11 +8,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 @Service
 public class OrderServiceImpl implements OrderService {
+
+    @Autowired
     private OrderRepository orderRepository;
     //Properties dependent on Message Bus
     private String slotsResponse =
@@ -33,11 +36,11 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order saveOrder(Order order) {
-        System.out.println(order.toString());
+//        System.out.println(order.toString());
 
-        orderRepository.save(order);
+        Order order1 = orderRepository.saveOrders(order);
 
-        return order;
+        return order1;
     }
 
     @Override
