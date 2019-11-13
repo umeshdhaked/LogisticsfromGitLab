@@ -1,24 +1,32 @@
-//package com.example.neo4j.model;
-//
-//import org.neo4j.ogm.annotation.*;
-//
-//@NodeEntity
-//public class RATED {
-//
-//    @Id
-//    private Long ids;
-//    private Long rating;
-//
-//
-//    public RATED() {
-//    }
-//
-//    public Long getIds() {
-//        return ids;
-//    }
-//    public Long getRating() {
-//        System.out.println("rating = "+this.rating);
-//        return rating;
-//    }
-//
-//}
+package com.example.neo4j.model;
+
+import org.neo4j.ogm.annotation.*;
+
+
+@RelationshipEntity(type = "RATED")
+public class RATED {
+
+
+    @Id @GeneratedValue
+    private Long id;
+    @StartNode private Movie movie;
+    @EndNode private User user;
+    private Long rating;
+
+    public RATED(){}
+
+    //getters
+    public Long getId() {
+        return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public Long getRating() { return rating; }
+}
