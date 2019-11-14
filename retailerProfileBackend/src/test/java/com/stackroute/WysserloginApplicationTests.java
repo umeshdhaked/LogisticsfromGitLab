@@ -1,13 +1,13 @@
-package com.example.neo4j;
+package com.stackroute;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Neo4jApplicationTests {
+class WysserloginApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
