@@ -55,5 +55,9 @@
         <module>config-service</module>
         <module>backend-service</module>
         <module>eureka-service</module>
+        <module>Wysser</module>
+        <module>Wysser-loginbackend</module>
+        <module>order-service</module>
+        
     </modules>
 </project>
