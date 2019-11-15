@@ -17,12 +17,12 @@ services:
    ports:
      - "3306:3306"
    restart: always
-#   environment:
-#      MYSQL_DATABASE: test
-#      MYSQL_USER: root
-#      MYSQL_PASSWORD: 123456
-#   volumes:
-#     - db-data:/var/lib/mysql
+   environment:
+     MYSQL_DATABASE: test
+     MYSQL_USER: root
+     MYSQL_ROOT_PASSWORD: 123456
+   volumes:
+   - /db-data:/var/lib/mysql
  zuul:
    image: zuul
    restart: always
@@ -56,16 +56,16 @@ services:
 
  Wysser-loginbackend:
    image: spring
-   build: Wysser-loginbackend/
+   build: Wysser-login-signup-backend/
    restart: always
    network_mode: host
    container_name: springs-app
    depends_on:
      - mysql
    ports:
-     - "8080:8080"
+     - "8085:8085"
    expose:
-     - 8080
+     - 8085
  order-service:
    image: order-service
    build: order-service/
