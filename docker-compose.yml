@@ -17,11 +17,10 @@ services:
    ports:
      - "3306:3306"
    restart: always
-   environment:
-     MYSQL_DATABASE: polls
-     MYSQL_USER: callicoder
-     MYSQL_PASSWORD: callicoder
-     MYSQL_ROOT_PASSWORD: root
+#   environment:
+#      MYSQL_DATABASE: test
+#      MYSQL_USER: root
+#      MYSQL_PASSWORD: 123456
 #   volumes:
 #     - db-data:/var/lib/mysql
  zuul:
