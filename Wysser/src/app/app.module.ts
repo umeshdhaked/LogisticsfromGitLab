@@ -78,6 +78,7 @@ import {MatTreeModule} from '@angular/material/tree';
 
 
 
+import { AddOrderComponent } from './add-order/add-order.component';
 
 
 @NgModule({
@@ -86,6 +87,7 @@ import {MatTreeModule} from '@angular/material/tree';
     HomeComponent,
     SignupComponent,
     VerifyComponent,
+    AddOrderComponent,
     EditProfileComponent
   ],
   imports: [
@@ -146,10 +148,6 @@ import {MatTreeModule} from '@angular/material/tree';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
-
-
-
-
 
 
 

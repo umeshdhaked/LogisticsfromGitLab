@@ -4,13 +4,15 @@ import { SignupComponent } from './signup/signup.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { AddOrderComponent } from './add-order/add-order.component';
 
 
 const routes: Routes = [
 { path : '', component: HomeComponent},
 {path: 'signup', component: SignupComponent},
 {path: 'verify', component: VerifyComponent},
-{path: 'editProfile', component: EditProfileComponent}
+{path: 'editProfile', component: EditProfileComponent},
+{path: 'addOrder', component: AddOrderComponent}
 ];
 
 @NgModule({

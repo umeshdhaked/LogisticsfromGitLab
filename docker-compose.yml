@@ -6,20 +6,28 @@ services:
      - "27017:27017"
    container_name: mongo-container
    network_mode: host
- wysser:
-   image: wysser
-   build: wysser/
-   restart: always
-   container_name: wysserapp-container
-   network_mode: host
+ neo4j:
+   image: bitnami/neo4j:latest
+   container_name: neo4j
    ports:
-     - "8092:8092"
-   expose:
-    - 8092
+     - '7474:7474'
+     - '7687:7687'
+ mysql:
+   image: mysql:5.7
+   ports:
+     - "3306:3306"
+   restart: always
+   environment:
+     MYSQL_DATABASE: polls
+     MYSQL_USER: callicoder
+     MYSQL_PASSWORD: callicoder
+     MYSQL_ROOT_PASSWORD: root
+#   volumes:
+#     - db-data:/var/lib/mysql
  zuul:
    image: zuul
    restart: always
-   build: zuul/
+   build: zuul-service/
    container_name: zuul-container
    network_mode: host
    ports:
@@ -29,20 +37,65 @@ services:
  eureka:
    image: eureka
    restart: always
-   build: eurekaserver/
+   build: eureka-service/
    container_name: eureka-container
    network_mode: host
    ports:
-     - 8761:8761
+     - "8761:8761"
    expose:
      - 8761
  configserver:
    image: configserver
    restart: always
-   build: configserver/
+   build: config-service/
    container_name: configserver-container
    network_mode: host
    ports:
-     - 8888:8888
+     - "8888:8888"
    expose:
      - 8888
+
+ Wysser-loginbackend:
+   image: spring
+   build: Wysser-loginbackend/
+   restart: always
+   network_mode: host
+   container_name: springs-app
+   depends_on:
+     - mysql
+   ports:
+     - "8080:8080"
+   expose:
+     - 8080
+ order-service:
+   image: order-service
+   build: order-service/
+   restart: always
+   network_mode: host
+   container_name: order-serv
+   depends_on:
+    - neo4j
+   ports:
+     - "7687:7687"
+     - "8080:8080"
+   expose:
+       - 7687
+       - 8080
+ Wysser:
+     image: wysser
+     build: Wysser/
+     hostname: localhost
+     container_name: angular-container
+     network_mode: 'host'
+#     build: .
+     ports:
+       - 80:80
+#   image: wysser
+#   build: Wysser/
+#   restart: always
+#   container_name: wysserapp-container
+#   network_mode: host
+#   ports:
+#     - "8092:8092"
+#   expose:
+#     - 8092
