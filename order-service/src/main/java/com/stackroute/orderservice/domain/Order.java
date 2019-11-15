@@ -15,7 +15,7 @@ import java.util.Date;
 //@Builder
 @NodeEntity
 public class Order {
-    private int _id;
+    //private int _id;
     private String customerName;
     private String customerAddress;
     private String customerPhoneNumber;
@@ -28,13 +28,13 @@ public class Order {
     }
 
 
-    public int get_id() {
-        return _id;
-    }
-
-    public void set_id(int _id) {
-        this._id = _id;
-    }
+//    public int get_id() {
+//        return _id;
+//    }
+//
+//    public void set_id(int _id) {
+//        this._id = _id;
+//    }
 
     public String getCustomerName() {
         return customerName;

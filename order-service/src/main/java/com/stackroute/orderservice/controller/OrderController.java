@@ -16,6 +16,8 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
     ResponseEntity responseEntity;
+
+    @CrossOrigin
     @GetMapping("/slots")
     public ResponseEntity<?> getAvailableSlots(@RequestParam("date") String date, @RequestParam("volume") Double volume){
         try {
@@ -25,13 +27,13 @@ public class OrderController {
         }
         return responseEntity;
     }
-
+    @CrossOrigin
     @PostMapping("/save")
     public ResponseEntity<?> saveTrack(@RequestBody Order order){
 
         try{
-            orderService.saveOrder(order);
-            responseEntity = new ResponseEntity("Successfully created", HttpStatus.CREATED);
+            //orderService.saveOrder(order);
+            responseEntity = new ResponseEntity(orderService.saveOrder(order), HttpStatus.CREATED);
         }catch (Exception e){
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
         }
