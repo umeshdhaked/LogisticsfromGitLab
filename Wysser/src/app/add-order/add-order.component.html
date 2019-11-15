@@ -1,30 +1,37 @@
 <div class="text-center container">
-    <form action="" class="container" method="POST">
+    <div *ngIf = "success">
+        <div class="alert alert-success" role="alert">
+        Order was successfully added!
+        </div>
+        <br />
+        <button class="btn btn-primary" (click)="addNewOrder()">Add Another Order</button>
+    </div>
+    <form *ngIf = "newOrder" class="container" onsubmit="return false" method="POST">
         <h1 id="sign">Add Order</h1>
 
         <label for="customerName"><b>Customer Name</b></label>
         <input #customerName type="text" placeholder="Enter Customer Name" name="customerName" required>
 
         <label for="customerNumber"><b>Mobile Number</b></label>
-        <input #customerNumber type="text" placeholder="Enter Mobile Number" name="customerNumber" required>
+        <input #customerNumber type="text" pattern="[789][0-9]{9}" placeholder="Enter Mobile Number" name="customerNumber" required>
 
         <label for="customerAddress"><b>Delivery Address</b></label>
         <input #customerAddress type="text" placeholder="Enter Address" name="customerAddress" required>
 
         <label for="orderVolume"><b>Order Volume</b></label>
-        <input #orderVolume type="text" placeholder="Order Volume (in litres)" name="orderVolume" required>
+        <input #orderVolume type="text" pattern="\d+" (focusout)="checkSlotsOnDate(deliveryDate.value, orderVolume.value)" placeholder="Order Volume (in litres)" name="orderVolume" required>
 
         <label for="deliveryDate"><b>Delivery Date</b></label>
-        <input #deliveryDate (focusout)="checkSlots(deliveryDate.value, orderVolume.value)" type="date" [min]="today" name="deliveryDate" required>
+        <input #deliveryDate (focusout)="checkSlotsOnDate(deliveryDate.value, orderVolume.value)" type="date" [min]="today" name="deliveryDate" required>
 
         <label for="slotNumber"><b>Delivery Slot</b></label><br/>
         <select #slotNumber name="slotNumber" required>
-            <option *ngFor="let slot of slots" [value]="slotNumber">{{slot}}</option>
+            <option *ngFor="let slot of slots" [value]="slot">{{slot}}</option>
         </select>
 
         <hr/>
 
-        <button type="submit" routerLink='/dashboard' routerLinkActive="active" class="btn" (click)='submit(customerName.value, customerNumber.value, customerAddress.value, orderVolume.value, deliveryDate.value, slotNumber.value)'>Add Order</button>
+        <button type="submit" class="btn" (click)='submitOrder(customerName.value, customerNumber.value, customerAddress.value, orderVolume.value, deliveryDate.value, slotNumber.value)'>Add Order</button>
     
     </form>
 </div>
