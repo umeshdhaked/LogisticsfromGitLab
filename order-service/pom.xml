@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.stackroute</groupId>
 	<artifactId>order-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>Order-service</name>
 	<description>microservice to handle all order related data and methods</description>
 
