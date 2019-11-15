@@ -12,6 +12,10 @@
 	<artifactId>config-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>config-service</name>
+	<groupId>com.example</groupId>
+	<artifactId>neo4j</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>neo4j</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

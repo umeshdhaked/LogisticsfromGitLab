@@ -1,9 +1,5 @@
 import { GetlistService } from './../getlist.service';
 import { Component, OnInit } from '@angular/core';
-// const bcrypt = require('bcrypt');
-
-
-
 
 @Component({
   selector: 'app-signup',
@@ -20,12 +16,15 @@ export class SignupComponent implements OnInit {
 
   submit(email,mobile,pass)
   {
-    
+
   console.log(pass);
   
   //var hash = bcrypt.hashSync(pass, 10);
     this.serv.postLists(email,mobile,pass).subscribe();
 
+ // var hash = bcrypt.hashSync(pass, 10);
+    this.serv.postLists(email,mobile,pass).subscribe();
+    //console.log(hash);
   }
 
 }
