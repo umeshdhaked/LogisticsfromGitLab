@@ -40,9 +40,9 @@ services:
    container_name: eureka-container
    network_mode: host
    ports:
-     - "8761:8761"
+     - "8762:8762"
    expose:
-     - 8761
+     - 8762
  configserver:
    image: configserver
    restart: always
