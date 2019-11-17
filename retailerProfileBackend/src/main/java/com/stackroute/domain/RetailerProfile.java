@@ -6,26 +6,41 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class UserProfile
+public class RetailerProfile
 {
-
-//    private String email;
-//    private String mobileNum;
-//    private String password;
 
     @Id
     private int id;
+    private String emailId;
     private String firstName;
-    private String age;
     private String lastName;
+    private String age;
     private String emergencyContact;
     private String dateOfBirth;
     private String placeOfBirth;
     private String gstIn;
     private String permanentAddress;
     private String shopAddress;
+    private String mobileNo;
 
-    public UserProfile() {
+    public RetailerProfile() {
+    }
+
+
+    public String getMobileNo() {
+        return mobileNo;
+    }
+
+    public void setMobileNo(String mobileNo) {
+        this.mobileNo = mobileNo;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
 
     public String getFirstName() {
