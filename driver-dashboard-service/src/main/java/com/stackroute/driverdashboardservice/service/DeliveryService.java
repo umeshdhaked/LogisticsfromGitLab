@@ -1,8 +1,13 @@
 package com.stackroute.driverdashboardservice.service;
 
+import com.stackroute.driverdashboardservice.domain.DeliveryRoute;
+import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
-@Service
 public interface DeliveryService {
-    
+    DeliveryRoute getNextDeliveryRoute(String date, String vehicleId, String timeslot) throws ParseException;
+
+    void cancelDelivery(String vehicleId, int orderId);
+
+    void acceptDelivery(String vehicleId);
 }

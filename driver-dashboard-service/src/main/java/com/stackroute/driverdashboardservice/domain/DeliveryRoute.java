@@ -12,8 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class DeliveryRoute {
-    private String timeSlot;
     private String vehicleId;
     private double orderVolume;
-    private List<DeliveryStops> deliveryStops;
+    private List<DeliveryStop> deliveryStops;
 }

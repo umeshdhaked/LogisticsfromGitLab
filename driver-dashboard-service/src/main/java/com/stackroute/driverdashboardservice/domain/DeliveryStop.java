@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DeliveryStops {
+public class DeliveryStop {
     private int stopNumber;
     private double  longitude;
     private double latitude;
