@@ -1,14 +1,23 @@
 package com.stackroute.service;
 
-import com.stackroute.domain.UserProfile;
+import com.stackroute.domain.RetailerProfile;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
-
+@Service
 public interface Services
 {
-    public UserProfile saveUser(UserProfile userProfile);
-    public List<UserProfile> getAllUser();
+
+
+
+    public void updateRetailer(RetailerProfile retailerProfile);
+
+    public List<RetailerProfile> getAllUser();
+
+    public RetailerProfile getRetailerByEmail(String email);
+
+
 
 }

@@ -52,6 +52,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { AddOrderComponent } from './add-order/add-order.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -61,14 +62,14 @@ import { AddOrderComponent } from './add-order/add-order.component';
     SignupComponent,
     VerifyComponent,
     AddOrderComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
 
 
     BrowserModule,

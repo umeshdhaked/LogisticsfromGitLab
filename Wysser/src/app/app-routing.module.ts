@@ -5,14 +5,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { AddOrderComponent } from './add-order/add-order.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
-{ path : '', component: HomeComponent},
+  {path: '', redirectTo:'/home', pathMatch: 'full'},
+{ path : 'home', component: HomeComponent},
 {path: 'signup', component: SignupComponent},
 {path: 'verify', component: VerifyComponent},
 {path: 'editProfile', component: EditProfileComponent},
-{path: 'addOrder', component: AddOrderComponent}
+{path: 'addOrder', component: AddOrderComponent},
+{path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
@@ -20,5 +23,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
-  export const routingModule = [HomeComponent, SignupComponent, VerifyComponent, EditProfileComponent]
+  export const routingModule = [HomeComponent, SignupComponent, VerifyComponent, EditProfileComponent, PageNotFoundComponent]
 
