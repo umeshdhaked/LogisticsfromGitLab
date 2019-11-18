@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 
 import java.util.Date;
@@ -15,7 +17,9 @@ import java.util.Date;
 //@Builder
 @NodeEntity
 public class Order {
-    //private int _id;
+    @Id
+    @GeneratedValue
+    private Long id;
     private String customerName;
     private String customerAddress;
     private String customerPhoneNumber;
@@ -28,9 +32,9 @@ public class Order {
     }
 
 
-//    public int get_id() {
-//        return _id;
-//    }
+   public Long getId() {
+       return id;
+   }
 //
 //    public void set_id(int _id) {
 //        this._id = _id;

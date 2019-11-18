@@ -1,5 +1,5 @@
 FROM openjdk:11
-WORKDIR zuul-service/src
-ADD ./target/zuul-service-1.0.0-SNAPSHOT.jar /zuul-service/src/zuul-service-1.0.0-SNAPSHOT.jar
+WORKDIR /src
+ADD ./target/zuul-service-v1.0.0.jar /zuul-service/src/zuul-service-v1.0.0.jar
 EXPOSE 8089
-ENTRYPOINT ["java","-jar","/zuul-service/src/zuul-service-1.0.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","/zuul-service/src/zuul-service-v1.0.0.jar"]

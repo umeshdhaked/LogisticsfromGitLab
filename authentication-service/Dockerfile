@@ -1,5 +1,5 @@
 FROM openjdk:latest
-WORKDIR Wyssser-loginbackend/src
-ADD ./target/wysserlogin-1.0.0-SNAPSHOT.jar /Wyssser-loginbackend/src/wysserlogin-1.0.0-SNAPSHOT.jar
+WORKDIR /src
+ADD ./target/authentication-service-v1.0.0.jar /authentication-service/src/authentication-service-v1.0.0.jar
 EXPOSE 8085
-ENTRYPOINT ["java","-jar","/Wyssser-loginbackend/src/wysserlogin-1.0.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","/authentication-service/src/authentication-service-v1.0.0.jar"]

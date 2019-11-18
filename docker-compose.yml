@@ -7,13 +7,14 @@ services:
    container_name: mongo-container
    network_mode: host
  neo4j:
-   image: bitnami/neo4j:latest
+   image: neo4j:latest
    container_name: neo4j
    ports:
      - '7474:7474'
      - '7687:7687'
    environment:
-     - NEO4J_AUTH=neo4j/12345
+     - NEO4J_AUTH=neo4j/12345 
+   network_mode: host  
  mysql:
    image: mysql:5.7
    ports:
@@ -56,12 +57,12 @@ services:
    expose:
      - 8889
 
- Wysser-loginbackend:
-   image: spring
-   build: Wysser-login-signup-backend/
+ authentication-service:
+   image: authentication
+   build: authentication-service/
    restart: always
    network_mode: host
-   container_name: springs-app
+   container_name: authentication
    depends_on:
      - mysql
    ports:
@@ -82,9 +83,9 @@ services:
    expose:
        - 7687
        - 8080
- Wysser:
-     image: wysser
-     build: Wysser/
+ angular-frontend:
+     image: angular-frontend
+     build: angular-frontend/
      hostname: localhost
      container_name: angular-container
      network_mode: 'host'

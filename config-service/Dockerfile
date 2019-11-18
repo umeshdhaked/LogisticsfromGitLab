@@ -1,5 +1,5 @@
 FROM openjdk:11
-WORKDIR config-service/src
-ADD ./target/config-service-1.0.0-SNAPSHOT.jar /config-service/src/config-service-1.0.0-SNAPSHOT.jar
+WORKDIR /src
+ADD ./target/config-service-v1.0.0.jar /config-service/src/config-service-v1.0.0.jar
 EXPOSE 8889
-ENTRYPOINT ["java","-jar","/config-service/src/config-service-1.0.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","/config-service/src/config-service-v1.0.0.jar"]
