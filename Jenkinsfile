@@ -9,6 +9,7 @@ pipeline {
         stage('Build') { 
           steps {
                 sh 'ls -la'
+                sh 'cd root;ls -la'
                 sh 'mvn -B -DskipTests clean compile package' 
             }
         }
