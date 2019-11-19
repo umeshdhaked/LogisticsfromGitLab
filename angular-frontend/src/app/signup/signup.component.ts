@@ -1,5 +1,8 @@
 import { GetlistService } from './../getlist.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+var bcrypt = require('bcryptjs');
 
 @Component({
   selector: 'app-signup',
@@ -8,23 +11,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
+  private notmatch;
   private value;
-  constructor(private serv : GetlistService) { }
+  constructor(private serv : GetlistService, private router:Router) {
+   }
 
   ngOnInit() {
   }
 
-  submit(email,mobile,pass)
+  submit(email,mobile,pass,confPass)
   {
 
-  console.log(pass);
+
+    if(pass === confPass){
+
+      var salt = bcrypt.genSaltSync(10);
+      var hashed = bcrypt.hashSync(pass, salt);
+
+      console.log('pass = '+hashed);
+
+
+    }
+    else{
+      this.router.navigate(['/signup']);
+      alert('password is not matching')
+    }
+
+
   
-  //var hash = bcrypt.hashSync(pass, 10);
+
     this.serv.postLists(email,mobile,pass).subscribe();
 
- // var hash = bcrypt.hashSync(pass, 10);
+
     this.serv.postLists(email,mobile,pass).subscribe();
-    //console.log(hash);
+   
   }
 
 }

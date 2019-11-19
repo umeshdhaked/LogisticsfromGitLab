@@ -14,9 +14,12 @@
       <input #pass type="password" placeholder="Enter Password" name="psw" required>
 
       <label for="psw"><b>Confirm Password</b></label>
-      <input type="password" placeholder="Confirm Password" name="psw" required>
+      <input #ConfPass type="password" placeholder="Confirm Password" name="psw" required>
   
-      <button type="submit" routerLink='/verify' routerLinkActive="active" class="btn" (click)='submit(email.value,mobile.value,pass.value)'>Register</button>
+      <button type="submit" routerLink='/verify' routerLinkActive="active" class="btn" (click)='submit(email.value,mobile.value,pass.value,ConfPass.value)'>Register</button>
      
+
+      <p style="text-align: center;">{{notmatch}}</p>
+
     </form>
   </div>
