@@ -13,6 +13,8 @@ import java.util.List;
 
 @Service
 public class DeliveryServiceImpl implements DeliveryService {
+    //this variable has to be sent to route optimization service
+    private boolean orderAccepted;
     @Override
     public DeliveryRoute getNextDeliveryRoute(String date, String vehicleId, String timeslot) throws ParseException {
         //Call route optimization service with vehicleId,today's date, and current time slot
@@ -36,7 +38,7 @@ public class DeliveryServiceImpl implements DeliveryService {
         JSONObject jsonObject = (JSONObject)jsonParser.parse(jsonData);
 
         deliveryRoute.setVehicleId((String)jsonObject.get("vehicleId"));
-        deliveryRoute.setOrderVolume((Double)jsonObject.get("orderVolume"));
+        deliveryRoute.setOrderVolume(Double.parseDouble((String)jsonObject.get("orderVolume")));
 
         JSONArray routes = (JSONArray) jsonObject.get("routes");
         List<DeliveryStop> stops = new ArrayList<>();
@@ -44,21 +46,26 @@ public class DeliveryServiceImpl implements DeliveryService {
         for(int i = 0; i < routes.size(); i++){
             JSONObject currentStop = (JSONObject) routes.get(i);
             stops.add(new DeliveryStop(
-                    (Integer) currentStop.get("stopNumber"),
-                    (Double) currentStop.get("longitude"),
-                    (Double) currentStop.get("latitude"),
-                    (Integer) currentStop.get("orderId")));
+                    Integer.parseInt((String) currentStop.get("stopNumber")),
+                    Double.parseDouble((String) currentStop.get("longitude")),
+                    Double.parseDouble((String) currentStop.get("latitude")),
+                    Integer.parseInt((String) currentStop.get("orderId"))));
         }
+        deliveryRoute.setDeliveryStops(stops);
         return deliveryRoute;
     }
 
     @Override
-    public void cancelDelivery(String vehicleId, int orderId) {
-
+    public void cancelDelivery(String vehicleId) {
+        //send a request to routing service
+        //for now just modify truth value of a variable
+        this.orderAccepted = false;
     }
 
     @Override
     public void acceptDelivery(String vehicleId) {
-
+        //same as cancel delivery
+        //should also reroute to order pickup page
+        this.orderAccepted = true;
     }
 }

@@ -68,5 +68,6 @@
         <module>order-service</module>
         <module>authentication-service</module>
         <module>retailer-profile-service</module>
+        <module>driver-dashboard-service</module>
     </modules>
 </project>

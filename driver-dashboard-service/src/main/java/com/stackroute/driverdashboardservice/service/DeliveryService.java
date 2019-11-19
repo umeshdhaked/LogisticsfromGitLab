@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public interface DeliveryService {
     DeliveryRoute getNextDeliveryRoute(String date, String vehicleId, String timeslot) throws ParseException;
 
-    void cancelDelivery(String vehicleId, int orderId);
+    void cancelDelivery(String vehicleId);
 
     void acceptDelivery(String vehicleId);
 }
