@@ -1,0 +1,21 @@
+<br/>
+<div class="container text-center">
+    <div class="card">
+        <div class="card-header">
+            Upcoming Delivery
+        </div>
+        <div class="card-body">
+            <div *ngIf="newDelivery; else noDelivery">
+                <h5 class="card-title">Your next delivery route has been scheduled</h5>
+                <p class="card-text">Delivery Volume = {{deliveryRoute.orderVolume}}</p>
+                <p class="card-text">Number Of Stops = {{deliveryRoute.deliveryStops.length}}</p>
+                <button class="btn btn-success" (click) = "acceptDelivery()">Accept</button>
+                <button class="btn btn-danger" (click)="rejectDelivery()">Reject</button>
+            </div>
+
+            <ng-template #noDelivery>
+                <h5 class="card-title">You have no new deliveries at this moment</h5>
+            </ng-template>
+        </div>
+    </div>
+</div>

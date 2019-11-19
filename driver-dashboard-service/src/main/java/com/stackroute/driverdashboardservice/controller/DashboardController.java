@@ -29,7 +29,7 @@ public class DashboardController {
     public ResponseEntity<?> acceptDelivery(@RequestBody String vehicleId){
         try{
             deliveryService.acceptDelivery(vehicleId);
-            responseEntity = new ResponseEntity<String>("accepted delivery", HttpStatus.ACCEPTED);
+            responseEntity = new ResponseEntity<String>("{\"message\": \"accepted delivery\"}", HttpStatus.ACCEPTED);
         } catch (Exception e) {
             responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -40,7 +40,7 @@ public class DashboardController {
     public ResponseEntity<?> rejectDelivery(@RequestBody String vehicleId){
         try{
             deliveryService.cancelDelivery(vehicleId);
-            responseEntity = new ResponseEntity<String>("rejected delivery", HttpStatus.ACCEPTED);
+            responseEntity = new ResponseEntity<String>("{\"message\": \"rejected delivery\"}", HttpStatus.ACCEPTED);
         } catch (Exception e) {
             responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

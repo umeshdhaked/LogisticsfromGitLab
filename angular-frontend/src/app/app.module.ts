@@ -53,6 +53,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { AddOrderComponent } from './add-order/add-order.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     VerifyComponent,
     AddOrderComponent,
     EditProfileComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DriverDashboardComponent
   ],
   imports: [
     BrowserModule,

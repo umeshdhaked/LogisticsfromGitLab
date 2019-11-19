@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { AddOrderComponent } from './add-order/add-order.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
 {path: 'verify', component: VerifyComponent},
 {path: 'editProfile', component: EditProfileComponent},
 {path: 'addOrder', component: AddOrderComponent},
+{path: 'driver', component: DriverDashboardComponent},
 {path: '**', component: PageNotFoundComponent}
 ];
 

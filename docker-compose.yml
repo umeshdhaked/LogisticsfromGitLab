@@ -92,12 +92,12 @@ services:
 #     build: .
      ports:
        - 80:80
-#   image: wysser
-#   build: Wysser/
-#   restart: always
-#   container_name: wysserapp-container
-#   network_mode: host
-#   ports:
-#     - "8092:8092"
-#   expose:
-#     - 8092
+ driver-dashboard-service:
+     image: driver-dashboard-service
+     build: driver-dashboard-service/
+     restart: always
+     network_mode: host
+     container_name: driver-dashboard
+     ports:
+       - "8086:8086"   
+
