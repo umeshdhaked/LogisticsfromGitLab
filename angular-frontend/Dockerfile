@@ -12,4 +12,4 @@ RUN npm install http-server -g
 
 WORKDIR /app/dist/Wysser/
 
-CMD ["http-server", "-c1", "-p", "9999"]
+CMD ["http-server", "-c1", "-p", "80"]
