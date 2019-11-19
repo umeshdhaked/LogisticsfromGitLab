@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
 import java.util.List;
-import org.springframework.web.servlet.function.ServerRequest;
+//import org.springframework.web.servlet.function.ServerRequest;
 
 @CrossOrigin
 @RestController
@@ -76,32 +76,32 @@ public class RetailerController
         return result;
     }
 
-     @PostMapping("/updateMobileNumber")
-     public void mobileNoUpdateHandler(@RequestBody RetailerProfile retailerProfile)
-     {
+    //  @PostMapping("/updateMobileNumber")
+    //  public void mobileNoUpdateHandler(@RequestBody RetailerProfile retailerProfile)
+    //  {
 
-         RetailerRegistrationDetail [] oldData = getDetailRegistrationAPI(retailerProfile);
-         String url  = "http://172.23.234.99:8080/api/v1/updateMobileNo";
-         RestTemplate restTemplate = new RestTemplate();
-         ServerRequest.Headers headers = (ServerRequest.Headers) new HttpHeaders();
-         ((HttpHeaders) headers).setContentType(MediaType.APPLICATION_JSON);
+    //      RetailerRegistrationDetail [] oldData = getDetailRegistrationAPI(retailerProfile);
+    //      String url  = "http://172.23.234.99:8080/api/v1/updateMobileNo";
+    //      RestTemplate restTemplate = new RestTemplate();
+    //      ServerRequest.Headers headers = (ServerRequest.Headers) new HttpHeaders();
+    //      ((HttpHeaders) headers).setContentType(MediaType.APPLICATION_JSON);
 
-         RetailerRegistrationDetail retailerRegistrationDetail;
-         retailerRegistrationDetail = new RetailerRegistrationDetail();
+    //      RetailerRegistrationDetail retailerRegistrationDetail;
+    //      retailerRegistrationDetail = new RetailerRegistrationDetail();
 
-         retailerRegistrationDetail.setEmail(oldData[0].getEmail());
-         retailerRegistrationDetail.setMobileNum(retailerProfile.getMobileNo());
-         retailerRegistrationDetail.setPassword(oldData[0].getPassword());
+    //      retailerRegistrationDetail.setEmail(oldData[0].getEmail());
+    //      retailerRegistrationDetail.setMobileNum(retailerProfile.getMobileNo());
+    //      retailerRegistrationDetail.setPassword(oldData[0].getPassword());
 
-         RetailerRegistrationDetail[] newData;
+    //      RetailerRegistrationDetail[] newData;
 
-         try {
-             newData = restTemplate.postForObject(url,retailerRegistrationDetail,RetailerRegistrationDetail[].class);
-         }
-         catch (Exception e){
-             System.out.println("Mobile No. Update Exception is : " + e );
-         }
-     }
+    //      try {
+    //          newData = restTemplate.postForObject(url,retailerRegistrationDetail,RetailerRegistrationDetail[].class);
+    //      }
+    //      catch (Exception e){
+    //          System.out.println("Mobile No. Update Exception is : " + e );
+    //      }
+    //  }
 
 }
 
