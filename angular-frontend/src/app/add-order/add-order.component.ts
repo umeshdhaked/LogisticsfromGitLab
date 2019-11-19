@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderServiceService } from '../order-service.service';
+import { OrderServiceService } from '../services/order-service.service';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 

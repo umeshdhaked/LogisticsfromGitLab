@@ -1,4 +1,4 @@
-import { GetlistService } from './../getlist.service';
+import { GetlistService } from '../services/getlist.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
