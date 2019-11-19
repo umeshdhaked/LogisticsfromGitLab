@@ -5,6 +5,7 @@ pipeline {
         stage('Build') { 
           steps {
                 sh 'cd /home && ls -la'
+                sh 'cd /home/deployer && ls -la'
                 sh 'pwd; ls -la; cd; ls -la'
                 sh 'cd && ls -la | grep .m2'
                 sh 'ls -la'
