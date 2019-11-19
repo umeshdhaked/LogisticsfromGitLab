@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') { 
           steps {
-                sh 'whoami; pwd; ls -la; cd; ls -la'
+                sh 'pwd; ls -la; cd; ls -la'
                 sh 'ls -la'
                 sh 'cd root;ls -la'
                 sh 'mvn -B -DskipTests clean compile package' 
