@@ -6,7 +6,7 @@ pipeline {
           steps {
                 sh 'cd /home && ls -la'
                 sh 'cd /home/ubuntu && ls -la'
-                sh 'pwd; ls -la; cd; ls -la'
+                sh 'pwd; ls -la; cd; ls -la; pwd'
                 sh 'cd && ls -la | grep .m2'
                 sh 'ls -la'
                 sh 'cd root;ls -la'
