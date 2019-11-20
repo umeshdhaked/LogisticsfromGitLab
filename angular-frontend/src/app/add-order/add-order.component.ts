@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
 })
 export class AddOrderComponent implements OnInit {
   success: boolean = false;
-  newOrder: boolean = true;
   slots = [];
   slotJson = [];
   date = new Date(Date.now());
@@ -22,7 +21,7 @@ export class AddOrderComponent implements OnInit {
   }
 
   checkSlotsOnDate(deliveryDate,  orderVolume){
-     this.orderService.checkSlots(deliveryDate, orderVolume).subscribe(data => {
+      this.orderService.checkSlots(deliveryDate, orderVolume).subscribe(data => {
       this.slotJson = data
       this.parseSlotsJson(this.slotJson)});
      console.log(this.slotJson);
@@ -51,13 +50,7 @@ export class AddOrderComponent implements OnInit {
         })
       ).subscribe(data => {
         this.success = true;
-        this.newOrder = false
       });
   }
-  }
-
-  addNewOrder(){
-    this.success = false;
-    this.newOrder = true;
   }
 }
