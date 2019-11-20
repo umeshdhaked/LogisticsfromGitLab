@@ -1,53 +1,19 @@
-/* body {
-    background-image: linear-gradient(to top, #a8edea 100%, #fed6e3 100%);
-  }
-
-  .theme {
-    padding:32px 0 32px 0;
-  }
-
-  .working-area {
-    width: 45%;
-    height: 120%;
-    margin: 0 auto;
-    background-color: rgba(142,36,170,0.3);
-    padding: 16px;
-    border-radius: 8px;
-  }
-
-  .profile-image{
-    border-radius:50%;
-    width:250px;
-    height: auto;
-    margin: auto 50%;
-  }
-
-  .submitButton{
-    background-color: #a8edea !important;
-  }
-   */
-
 .Body {
-  background-image: linear-gradient(to top, #a8edd2 100%, #fed6e3 100%);
-
-
+  background-image: white
 }
-#profile-image{
-  border-radius:50%;
-  width:250px;
-  margin-left: 100px;
-  margin-right: auto;
-  height: auto;
 
+#profile-image{
+  margin-left: 42%;
 }
 
 .Text-container {
   width: 40%;
   height: 80%;
   margin: 0 auto;
-  background-color: rgba(191, 10, 236, 0.3);
+  background-color: white;
   padding: 16px;
   border-radius: 8px;
+  text-align: center;
 }
 
 .Text-container {
@@ -58,13 +24,23 @@
 .Text-container > * {
   width: 100%;
 }
+
+.Text-container .deleteButton{
+  /* margin-left: 210px;
+  width: 70px; */
+  width: 25%;
+  margin: 0 auto;
+
+}
+
+
 .btn.btn-primary{
   width: 20%;
-  height: 30px;
-  color:white;
+  height: 40px; 
   margin-left: 40%;
-  background-color: cyan;
-  margin-top: 20px;
+  background-color: #45A94C;
+  color: #000;
+  margin-top: 15px;
 
 }
 
