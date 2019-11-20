@@ -6,6 +6,7 @@
         <artifactId>wysser</artifactId>
         <version>v1.0.0</version>
     </parent>
+
     <artifactId>retailer-service</artifactId>
     <name>retailer-service</name>
 

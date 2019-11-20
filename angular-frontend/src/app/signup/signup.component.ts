@@ -1,4 +1,4 @@
-import { GetlistService } from './../getlist.service';
+import { GetlistService } from '../services/getlist.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -26,24 +26,17 @@ export class SignupComponent implements OnInit {
     if(pass === confPass){
 
       var salt = bcrypt.genSaltSync(10);
-      var hashed = bcrypt.hashSync(pass, salt);
+      var hashedPass = bcrypt.hashSync(pass, salt);
 
-      console.log('pass = '+hashed);
+      this.serv.postLists(email,mobile,hashedPass).subscribe();
 
 
     }
     else{
       this.router.navigate(['/signup']);
-      alert('password is not matching')
+      alert('Passwords are not matching')
     }
 
-
-  
-
-    this.serv.postLists(email,mobile,pass).subscribe();
-
-
-    this.serv.postLists(email,mobile,pass).subscribe();
    
   }
 
