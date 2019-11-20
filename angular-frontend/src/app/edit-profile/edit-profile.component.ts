@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from  '@angular/common/http';
+import { Router } from '@angular/router';
+import { EditProfileService } from '../services/edit-profile.service';
 
 
 @Component({
@@ -10,7 +12,7 @@ import { HttpClient } from  '@angular/common/http';
 export class EditProfileComponent implements OnInit {
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router:Router, private editProfileService:EditProfileService) { }
   ngOnInit( ) {}
 
   // Methods Stats from here................................
@@ -94,8 +96,40 @@ export class EditProfileComponent implements OnInit {
 
   public save(fullName,email,phone,address,gstIn,docName,check){
    
+    if(!check){
+      alert('Please check terms and condition');
+      this.router.navigate(['/editProfile']);
+    }
+
+    if(fullName==="" || email === "" || phone ==="" || address===""||gstIn===""){
+      alert('fill all the fields');
+      this.router.navigate(['/editProfile']);      
+    }
+
+    if(docName==="none"){
+      alert('Select a document');
+      this.router.navigate(['/editProfile']);
+    }
+
+
+
+    var retailerData = {
+      "fullName":fullName,
+      "email":email,
+      "phoneNo":phone,
+      "address":address,
+      "gstIn":gstIn,
+      "docName":docName,
+      "profilePic":this.url,
+      "docPic":this.docurl,
+    }
+    
+    this.editProfileService.saveRetailerData(retailerData);
+
   
-    console.log(fullName +'-'+ email+'-'+phone+'-'+address+'-'+gstIn+'-'+docName+'-'+'-'+check+'-'+this.url+' - '+this.docurl);
+    // console.log(fullName +'-'+ email+'-'+phone+'-'+address+'-'+gstIn+'-'+docName+'-'+'-'+check+'-'+this.url+' - '+this.docurl);
+
+
 
 
   }

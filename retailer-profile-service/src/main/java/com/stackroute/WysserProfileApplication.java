@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WysserloginApplication {
+public class WysserProfileApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(WysserloginApplication.class, args);
+        SpringApplication.run(WysserProfileApplication.class, args);
     }
 
 }
