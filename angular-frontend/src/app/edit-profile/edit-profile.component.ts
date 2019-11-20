@@ -51,8 +51,6 @@ export class EditProfileComponent implements OnInit {
   // for set url of Profile image
   url = '';
   onSelectPicture(event) {
-
-    console.log('helloFile')
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
 
@@ -99,20 +97,14 @@ export class EditProfileComponent implements OnInit {
     if(!check){
       alert('Please check terms and condition');
       this.router.navigate(['/editProfile']);
-    }
-
-    if(fullName==="" || email === "" || phone ==="" || address===""||gstIn===""){
+    }else if(fullName==="" || email === "" || phone ==="" || address===""||gstIn===""){
       alert('fill all the fields');
       this.router.navigate(['/editProfile']);      
-    }
-
-    if(docName==="none"){
+    }else if(docName==="none"){
       alert('Select a document');
       this.router.navigate(['/editProfile']);
     }
-
-
-
+    else{
     var retailerData = {
       "fullName":fullName,
       "email":email,
@@ -123,9 +115,9 @@ export class EditProfileComponent implements OnInit {
       "profilePic":this.url,
       "docPic":this.docurl,
     }
-    
+  
     this.editProfileService.saveRetailerData(retailerData);
-
+  }
   
     // console.log(fullName +'-'+ email+'-'+phone+'-'+address+'-'+gstIn+'-'+docName+'-'+'-'+check+'-'+this.url+' - '+this.docurl);
 

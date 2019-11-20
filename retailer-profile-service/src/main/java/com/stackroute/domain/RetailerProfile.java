@@ -3,6 +3,7 @@ package com.stackroute.domain;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
@@ -10,6 +11,7 @@ public class RetailerProfile
 {
 
     @Id
+    @GeneratedValue
     private int id;
     private String emailId;
     private String firstName;
