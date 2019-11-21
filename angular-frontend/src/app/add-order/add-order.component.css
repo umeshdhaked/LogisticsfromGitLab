@@ -1,6 +1,6 @@
 /* Add styles to the form container */
 .container {
-    padding: 36px;
+    /* padding: 36px; */
     background-color: white;
   }
   
@@ -60,4 +60,8 @@
     font-size: 15px;
   }
 
+  .containerTop {
+    width: 80%;
+    margin-top: 40px;
+  }
   
