@@ -61,4 +61,15 @@ public class OrderController {
         }
         return responseEntity;
     }
+
+    @GetMapping("/findOrdersByStatus")
+    public ResponseEntity<?> findOrdersByStatus(@RequestParam("orderStatus") String orderStatus){
+
+        try{
+            responseEntity = new ResponseEntity(orderService.findOrderByStatus(orderStatus), HttpStatus.OK);
+        }catch (Exception e){
+            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
 }

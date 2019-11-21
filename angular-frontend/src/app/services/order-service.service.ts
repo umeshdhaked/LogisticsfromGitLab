@@ -17,9 +17,26 @@ export class OrderServiceService {
     return this.http.get<Slots[]>(url);
   }
 
-  saveOrder(customerName, customerNumber, customerAddress, orderVolume, deliveryDate, slotNumber): Observable<Order[]>{
+  saveOrder(customerName, customerNumber, customerAddress, orderVolume, deliveryDate, slotNumber, orderStatus): Observable<Order[]>{
     let url = environment.apiUrl + ":8084/orders/save";
-    let data = {"customerName": customerName, "customerAddress": customerAddress, "customerNumber": customerNumber, "orderVolume": orderVolume, "deliveryDate": deliveryDate, "slotNumber": slotNumber};
+    console.log(orderStatus);
+    console.log(customerNumber);
+    let data = {"customerName": customerName, "customerAddress": customerAddress, "customerPhoneNumber": customerNumber, "orderVolume": orderVolume, "deliveryDate": deliveryDate, "slotNumber": slotNumber, "orderStatus": orderStatus};
     return this.http.post<Order[]>(url, JSON.stringify(data),{headers:{'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*'}});
+  }
+
+  getAllOrderData(){
+    let url = 'assets/static/orders.json';
+    return this.http.get<Order[]>(url);
+  }
+
+  getCompletedOrders(){
+    let url = 'assets/static/delivered.json';
+    return this.http.get<Order[]>(url);
+  }
+
+  getPendingOrders(){
+    let url = 'assets/static/pending.json';
+    return this.http.get<Order[]>(url);
   }
 }
