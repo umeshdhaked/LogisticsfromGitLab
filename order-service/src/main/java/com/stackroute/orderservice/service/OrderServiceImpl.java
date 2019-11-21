@@ -19,14 +19,14 @@ public class OrderServiceImpl implements OrderService {
     private OrderRepository orderRepository;
     //Properties dependent on Message Bus
     private String slotsResponse =
-            "{\"TimeSlots\":[{\"Date\": \"2019-12-21\", \"Slot1\": \"40\", \"Slot2\": \"30\", \"Slot3\":\"90\"}, " +
+            "{\"TimeSlots\":[{\"Date\": \"2019-12-21\", \"Slot1\": \"40\", \"Slot2\": \"30\", \"Slot3\":\"10\"}, " +
                     "{\"Date\": \"2019-12-20\", \"Slot1\": \"41\", \"Slot2\": \"90\", \"Slot3\":\"20\"}]}"; //Message fetched from Driver company
     private String activeOrder; //Message of new order sent to Driver company
 
 
     @Override
-    public Order searchOrder(int _id) {
-        return null;
+    public Order searchOrder(Long id) {
+        return orderRepository.findById(id);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public TimeSlot checkSlotAvailability(String deliveryDate, double orderVolume) throws ParseException {
+    public TimeSlot checkSlotAvailability(String deliveryDate) throws ParseException {
         //Use dummy message and parse it
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject = (JSONObject)jsonParser.parse(slotsResponse);
@@ -61,23 +61,30 @@ public class OrderServiceImpl implements OrderService {
                 break;
             }
         }
-        System.out.println(jsonSlot.get("Slot1").toString());
         //Check which slots have enough volume and add
         if(jsonSlot != null) {
             TimeSlot timeSlot = new TimeSlot();
             timeSlot.setDate(deliveryDate);
-            if (Double.parseDouble(jsonSlot.get("Slot1").toString()) >= orderVolume){
-                timeSlot.setSlot1(true);
-            }
-            if (Double.parseDouble(jsonSlot.get("Slot2").toString()) >= orderVolume){
-                timeSlot.setSlot2(true);
-            }
-            if (Double.parseDouble(jsonSlot.get("Slot3").toString()) >= orderVolume){
-                timeSlot.setSlot3(true);
-            }
+//            if (Double.parseDouble(jsonSlot.get("Slot1").toString()) >= orderVolume){
+//                timeSlot.setSlot1(true);
+//            }
+//            if (Double.parseDouble(jsonSlot.get("Slot2").toString()) >= orderVolume){
+//                timeSlot.setSlot2(true);
+//            }
+//            if (Double.parseDouble(jsonSlot.get("Slot3").toString()) >= orderVolume){
+//                timeSlot.setSlot3(true);
+//            }
+            timeSlot.setSlot1(Double.parseDouble(jsonSlot.get("Slot1").toString()));
+            timeSlot.setSlot2(Double.parseDouble(jsonSlot.get("Slot2").toString()));
+            timeSlot.setSlot3(Double.parseDouble(jsonSlot.get("Slot3").toString()));
             return timeSlot;
         }
         return null;
 
+    }
+
+    @Override
+    public List<Order> findOrdersByDateAndTimeSlot(String date, String timeslot) {
+        return orderRepository.findByDeliveryDateAndSlotNumber(date, timeslot);
     }
 }

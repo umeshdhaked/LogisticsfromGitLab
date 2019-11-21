@@ -25,10 +25,33 @@
     padding: 16px 20px;
     border: none;
     cursor: pointer;
-    width: 100%;
+    /* width: 100%; */
     opacity: 0.9;
   }
   
   .btn:hover {
     opacity: 1;
+  }
+
+  .btn-slot {
+    font-size: 10px;
+    margin-bottom: 20px ;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+
+  .selected {
+    font-size: 10px;
+    background-color: yellowgreen;
+    margin-bottom: 20px ;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
   }

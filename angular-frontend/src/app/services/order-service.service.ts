@@ -12,8 +12,8 @@ export class OrderServiceService {
 
   constructor(private http:HttpClient) { }
 
-  checkSlots(deliveryDate, orderVolume): Observable<Slots[]>{
-    let url = environment.apiUrl + ':8084/orders/slots?date=' + deliveryDate + '&volume=' + orderVolume;
+  checkSlots(deliveryDate): Observable<Slots[]>{
+    let url = environment.apiUrl + ':8084/orders/slots?date=' + deliveryDate;
     return this.http.get<Slots[]>(url);
   }
 

@@ -12,7 +12,7 @@ import java.util.Date;
 @Builder
 public class TimeSlot {
     private String date;
-    private boolean slot1;
-    private boolean slot2;
-    private boolean slot3;
+    private double slot1;
+    private double slot2;
+    private double slot3;
 }

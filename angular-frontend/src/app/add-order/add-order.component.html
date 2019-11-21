@@ -1,15 +1,23 @@
 <div class="text-center container">
     <div *ngIf = "success">
-        <div class="alert alert-success" role="alert">
-        Order was successfully added!
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Order was successfully added!</h4>
+                    <p>Your order with OrderId: {{savedOrder.id}} has been registered and will be picked
+                        up for delivery on {{savedOrder.deliveryDate}}</p>
+                    <hr>
+                    <p class="mb-0">You can continue adding more orders below.</p>
+                </div>
+            </div>
+            <br />
         </div>
-        <br />
-        <button class="btn btn-primary" (click)="addNewOrder()">Add Another Order</button>
     </div>
-    
-        <form class="container" onsubmit="return false" method="POST">
+    <hr/>
+        <form id="orderForm" class="container" onsubmit="return false" method="POST">
             
             <h1 id="sign">Add Order</h1>
+            <br/>
             <div class="row">
             <div class="col-md-4 offset-md-2 col-12">
                 <!-- <label for="customerName"><b>Customer Name</b></label> -->
@@ -23,20 +31,37 @@
                 <!-- <label for="customerAddress"><b>Delivery Address</b></label> -->
                 <input #customerAddress type="text" placeholder="Enter Address" name="customerAddress" required>
             </div>
-            <label for="orderVolume"><b>Order Volume</b></label>
-            <input #orderVolume type="text" pattern="\d+" (focusout)="checkSlotsOnDate(deliveryDate.value, orderVolume.value)" placeholder="Order Volume (in litres)" name="orderVolume" required>
-
-            <label for="deliveryDate"><b>Delivery Date</b></label>
-            <input #deliveryDate (focusout)="checkSlotsOnDate(deliveryDate.value, orderVolume.value)" type="date" [min]="today" name="deliveryDate" required>
-
-            <label for="slotNumber"><b>Delivery Slot</b></label><br/>
-            <select #slotNumber name="slotNumber" required>
-                <option *ngFor="let slot of slots" [value]="slot">{{slot}}</option>
-            </select>
-
+            <div class="col-md-4 col-12"> 
+                <div class="row justify-content-center">
+                    <label for="orderVolume">Order Volume</label>
+                </div>        
+                <input type = "radio" name="orderVolume" value="5" (click) = "changeSlotValue(5); orderVolume = 5" required checked>5L
+                <input type = "radio" name="orderVolume" (click) = "changeSlotValue(10); orderVolume = 10" value="10">10L
+                <input type = "radio" name="orderVolume" (click) = "changeSlotValue(20); orderVolume = 20" value="20">20L
+            </div>
+            <div class="col-md-8 offset-md-2 col-12">    
+                <!-- <label for="deliveryDate"><b>Delivery Date</b></label> -->
+                <input #deliveryDate (focusout)="checkSlotsOnDate(deliveryDate.value)" type="date" [min]="today" name="deliveryDate" required>
+            </div>
+            <div class="col-10 offset-1">     
+                <!-- <label for="slotNumber"><b>Delivery Slot</b></label><br/> -->
+                <div class="row">
+                    <div class="col-md-3 offset-md-1">
+                        <button type="button" [disabled]="!slotValid['slot1']" (click)="setSlot('slot1'); slot1 = true; slot2 = false; slot3 = false" class="btn-slot" [class.btn]="slotValid['slot1']" [class.btn-danger] = "!slotValid['slot1']" [class.selected]="slot1">11:00AM to 01:00PM <br/> {{slotJson["slot1"] | remainingVolume}}</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" [disabled]="!slotValid['slot1']" (click)="setSlot('slot2'); slot1 = false; slot2 = true; slot3 = false" class="btn-slot" [class.btn]="slotValid['slot2']" [class.btn-danger] = "!slotValid['slot2']" [class.selected]="slot2">02:00PM to 04:00PM <br/> {{slotJson["slot2"] | remainingVolume}}</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" [disabled]="!slotValid['slot3']" (click)="setSlot('slot3'); slot1 = false; slot2 = false; slot3 = true" class="btn-slot" [class.btn]="slotValid['slot3']" [class.btn-danger] = "!slotValid['slot3']" [class.selected]="slot3">05:00PM to 07:00PM <br/> {{slotJson["slot3"] | remainingVolume}}</button>
+                    </div>    
+                </div>
+            </div>
+            <br>
             <hr/>
-
-            <button type="submit" class="btn" (click)='submitOrder(customerName.value, customerNumber.value, customerAddress.value, orderVolume.value, deliveryDate.value, slotNumber.value)'>Add Order</button>
+                <div class="col-4 offset-4"> 
+                    <button type="submit" class="btn" (click)='submitOrder(customerName.value, customerNumber.value, customerAddress.value, deliveryDate.value)'>Add Order</button>
+                </div>
             </div>
         </form>
     

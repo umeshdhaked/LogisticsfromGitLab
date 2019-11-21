@@ -9,14 +9,16 @@ import java.util.Date;
 import java.util.List;
 
 public interface OrderService {
-    public Order searchOrder(int _id);
+    Order searchOrder(Long id);
 
-    public List<Order> getAllOrders();
+    List<Order> getAllOrders();
 
     //Should produce to active_orders topic
-    public Order saveOrder(Order order);
+    Order saveOrder(Order order);
 
     //Should consume from time_slots topic
-    public TimeSlot checkSlotAvailability(String deliveryDate, double orderVolume) throws ParseException;
+    TimeSlot checkSlotAvailability(String deliveryDate) throws ParseException;
+
+    List<Order> findOrdersByDateAndTimeSlot(String date, String timeslot);
 
 }

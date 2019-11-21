@@ -12,28 +12,50 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/orders")
+@CrossOrigin
 public class OrderController {
     @Autowired
     private OrderService orderService;
     ResponseEntity responseEntity;
 
-    @CrossOrigin
     @GetMapping("/slots")
-    public ResponseEntity<?> getAvailableSlots(@RequestParam("date") String date, @RequestParam("volume") Double volume){
+    public ResponseEntity<?> getAvailableSlots(@RequestParam("date") String date){
         try {
-            responseEntity = new ResponseEntity<TimeSlot>(orderService.checkSlotAvailability(date, volume), HttpStatus.OK);
+            responseEntity = new ResponseEntity<TimeSlot>(orderService.checkSlotAvailability(date), HttpStatus.OK);
         }catch (Exception e){
             responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;
     }
-    @CrossOrigin
+
     @PostMapping("/save")
-    public ResponseEntity<?> saveTrack(@RequestBody Order order){
+    public ResponseEntity<?> saveOrder(@RequestBody Order order){
 
         try{
             //orderService.saveOrder(order);
             responseEntity = new ResponseEntity(orderService.saveOrder(order), HttpStatus.CREATED);
+        }catch (Exception e){
+            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+
+    @GetMapping("/findById")
+    public ResponseEntity<?> findOrderById(@RequestParam("id") Long id){
+
+        try{
+            responseEntity = new ResponseEntity(orderService.searchOrder(id), HttpStatus.OK);
+        }catch (Exception e){
+            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+
+    @GetMapping("/findByDateAndTimeSlot")
+    public ResponseEntity<?> findOrderByDateAndTimeSlot(@RequestParam("date") String date, @RequestParam("timeslot") String timeslot){
+
+        try{
+            responseEntity = new ResponseEntity(orderService.findOrdersByDateAndTimeSlot(date, timeslot), HttpStatus.OK);
         }catch (Exception e){
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
         }

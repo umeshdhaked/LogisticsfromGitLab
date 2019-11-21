@@ -54,6 +54,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import { AddOrderComponent } from './add-order/add-order.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.component';
+import { RemainingVolumePipe } from './remaining-volume.pipe';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.co
     AddOrderComponent,
     EditProfileComponent,
     PageNotFoundComponent,
-    DriverDashboardComponent
+    DriverDashboardComponent,
+    RemainingVolumePipe
   ],
   imports: [
     BrowserModule,
