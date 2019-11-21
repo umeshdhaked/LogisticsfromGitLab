@@ -55,6 +55,7 @@ import { AddOrderComponent } from './add-order/add-order.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.component';
 import { RemainingVolumePipe } from './remaining-volume.pipe';
+import { RetailerDashboardComponent } from './retailer-dashboard/retailer-dashboard.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { RemainingVolumePipe } from './remaining-volume.pipe';
     EditProfileComponent,
     PageNotFoundComponent,
     DriverDashboardComponent,
-    RemainingVolumePipe
+    RemainingVolumePipe,
+    RetailerDashboardComponent
   ],
   imports: [
     BrowserModule,

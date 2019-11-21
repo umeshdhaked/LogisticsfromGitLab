@@ -87,4 +87,9 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> findOrdersByDateAndTimeSlot(String date, String timeslot) {
         return orderRepository.findByDeliveryDateAndSlotNumber(date, timeslot);
     }
+
+    @Override
+    public List<Order> findOrderByStatus(String orderStatus) {
+        return orderRepository.findByOrderStatus(orderStatus);
+    }
 }

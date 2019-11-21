@@ -21,4 +21,6 @@ public interface OrderService {
 
     List<Order> findOrdersByDateAndTimeSlot(String date, String timeslot);
 
+    List<Order> findOrderByStatus(String orderStatus);
+
 }

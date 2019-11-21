@@ -74,7 +74,7 @@ export class AddOrderComponent implements OnInit {
     console.log(this.selectedSlot);
     if(customerName!=""&&customerNumber!=""&&customerAddress!=""&&this.orderVolume!=null&&deliveryDate!=""&&this.selectedSlot !=""){
       console.log(this.orderVolume);
-      this.orderService.saveOrder(customerName, customerNumber, customerAddress, this.orderVolume, deliveryDate, this.selectedSlot)
+      this.orderService.saveOrder(customerName, customerNumber, customerAddress, this.orderVolume, deliveryDate, this.selectedSlot, "pending")
       .pipe(
         tap((newOrder) => {console.log(newOrder); this.savedOrder = newOrder}),
         catchError(error =>{
@@ -84,6 +84,10 @@ export class AddOrderComponent implements OnInit {
         this.success = true;
         let form = <HTMLFormElement>document.getElementById("orderForm");
         form.reset();
+        this.slot1 = false;
+        this.slot2 = false;
+        this.slot3 = false;
+        this.slotJson = [];
       });
   }
   }

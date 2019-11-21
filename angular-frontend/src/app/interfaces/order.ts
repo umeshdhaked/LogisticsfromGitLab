@@ -4,5 +4,6 @@ export interface Order {
     customerAddress: string;
     orderVolume: number;
     deliveryDate: string;
-    slotNumber: string
+    slotNumber: string;
+    orderStatus: string;
 }

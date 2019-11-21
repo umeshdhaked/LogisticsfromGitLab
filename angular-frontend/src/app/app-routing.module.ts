@@ -7,6 +7,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { AddOrderComponent } from './add-order/add-order.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.component';
+import { RetailerDashboardComponent } from './retailer-dashboard/retailer-dashboard.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
 {path: 'editProfile', component: EditProfileComponent},
 {path: 'addOrder', component: AddOrderComponent},
 {path: 'driver', component: DriverDashboardComponent},
+{path: 'retailer', component: RetailerDashboardComponent},
 {path: '**', component: PageNotFoundComponent}
 ];
 

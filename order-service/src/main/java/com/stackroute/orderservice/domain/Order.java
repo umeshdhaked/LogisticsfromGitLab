@@ -26,7 +26,7 @@ public class Order {
     private String deliveryDate;
     private String slotNumber;
     private Double orderVolume;
-
+    private String orderStatus;
 
     public Order() {
     }
@@ -35,10 +35,6 @@ public class Order {
    public Long getId() {
        return id;
    }
-//
-//    public void set_id(int _id) {
-//        this._id = _id;
-//    }
 
     public String getCustomerName() {
         return customerName;
@@ -86,5 +82,13 @@ public class Order {
 
     public void setOrderVolume(Double orderVolume) {
         this.orderVolume = orderVolume;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }
