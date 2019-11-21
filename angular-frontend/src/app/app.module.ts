@@ -56,7 +56,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.component';
 import { RemainingVolumePipe } from './remaining-volume.pipe';
 import { RetailerDashboardComponent } from './retailer-dashboard/retailer-dashboard.component';
-
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -129,7 +129,7 @@ import { RetailerDashboardComponent } from './retailer-dashboard/retailer-dashbo
     PortalModule,
     ScrollingModule,
 
-
+    ChartsModule
 
   ],
   providers: [GetlistService],
