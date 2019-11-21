@@ -3,12 +3,15 @@ package com.stackroute.domain;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class User
 {
     @Id
+    @GeneratedValue
+    private int id;
     private String email;
     private String mobileNum;
     private String password;
@@ -20,6 +23,14 @@ public class User
     }
 
     public User() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {

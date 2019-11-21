@@ -23,7 +23,7 @@ services:
      - "3306:3306"
    restart: always
    environment:
-#     MYSQL_DATABASE: register_db
+#     MYSQL_DATABASE: testDB
      MYSQL_USER: root
      MYSQL_ROOT_PASSWORD: Root@123
    entrypoint:
@@ -39,6 +39,9 @@ services:
    build: zuul-service/
    container_name: zuul-container
    network_mode: host
+   depends_on:
+     - configserver
+     - eureka
    ports:
      - 8089:8089
    expose:
@@ -49,6 +52,8 @@ services:
    build: eureka-service/
    container_name: eureka-container
    network_mode: host
+   depends_on:
+     - configserver
    ports:
      - "8762:8762"
    expose:
