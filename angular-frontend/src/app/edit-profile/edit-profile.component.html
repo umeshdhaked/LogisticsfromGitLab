@@ -1,162 +1,116 @@
-<!-- <div ng-app="BlankApp">
-
-
-  <div layout="row" class="theme" layout-align="center center">User Profile</div>
-
-
-  <div class="working-area">
-
-    <mat-form-field><img class="profile-image" src="image/image1.jpg"></mat-form-field>
-
-    <mat-form-field class="md-block">
-      <label>FullNAME</label>
-      <input ng-model="user.nickname" required>
-    </mat-form-field>
-
-    <mat-form-field class="md-block">
-      <label>EMAIL</label>
-      <input ng-model="user.email" type="email" required>
-    </mat-form-field>
-
-    <mat-form-field class="md-block">
-        <label>PHONE</label>
-        <input ng-model="user.email" type="email" required>
-      </mat-form-field>
-
-
-
-    <form>
-      <label id="favoriteStateLabel">LOCATION</label>
-      <mat-autocomplete
-        mat-items="item in search(searchText)"
-        mat-item-text="item.display"
-        mat-min-length="0"
-        placeholder="Eg.5th Block Koramangla">
-       <mat-item-template>
-          <span mat-highlight-text="searchText">{{item.display}}</span>
-      </mat-item-template>
-      <mat-not-found>
-          No states matching were found.
-      </mat-not-found>
-      </mat-autocomplete>
-    </form>
-    <br>
-    <mat-form-field class="md-block">
-        <label>DOCUMENTATION</label>
-        <input ng-model="user.email" type="email" required>
-      </mat-form-field>
-
-      <mat-form-field class="md-block">
-        <label>GST IN</label>
-        <input ng-model="user.email" type="email" required>
-      </mat-form-field>
-
-    <mat-checkbox>I agree with terms and services</mat-checkbox>
-
-    <div layout="row" layout-align="center center">
-      <mat-button type="submit" class="submitButton">Save</mat-button>
-    </div>
-
-  </div>
-
-
-   Angular Material requires Angular.js Libraries -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script> -->
-
-<!-- Angular Material Library -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
- -->
-<!-- Your application bootstrap  -->
-<!-- <script type="text/javascript">     -->
-<!-- /**
- * You must include the dependency on 'ngMaterial'
- */
-angular.module('BlankApp', ['ngMaterial', 'ngMessages']); -->
-<!-- </script>
-</div> -->
-
 <div class="Body">
 
-  <div class="Text-container">
+  <!-- upload image div -->
+  <div id="profile-image">
 
-    <!-- <div class="person-icon">
-        <img id="profile-image" src="../../assets/image1.jpg">
-
-      </div> -->
+    <br>
 
     <label class="hoverable" for="fileInput">
       <img [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'">
       <div class="hover-text">Choose file</div>
       <div class="background"></div>
     </label>
-    <br/>
-    <input id="fileInput" type='file' (change)="onSelectFile($event)">
-    <button *ngIf="url" (click)="delete()" >delete</button>
+    <br>
+
+
+    <!-- for getting profile image input -->
+    <input id="fileInput" type='file' (change)="onSelectPicture($event)">
+
+  </div>
 
 
 
+  <div class="Text-container">
+
+
+    <button class="deleteButton" *ngIf="url" (click)="delete()">Change</button>
+
+
+
+    <!-- Prfile Form div -->
 
     <mat-form-field>
-      <input matInput required>
-      <mat-placeholder class="placeholder">FullName</mat-placeholder>
+      <input #fullName matInput placeholder="Full Name" required>
+      <!-- <mat-placeholder class="placeholder">FullName</mat-placeholder> -->
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Email"required>
+      <input #email matInput placeholder="Email" required>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Phone"required>
+      <input #phone matInput placeholder="Phone" required>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Location"required>
+      <input #address matInput placeholder="Address" required>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="GST IN"required>
+      <input #gstIn matInput placeholder="GST IN" required>
     </mat-form-field>
 
+    <!--Dropdown for document-->
+
     <mat-form-field>
-      <mat-select placeholder="Documentation"required>
-        <mat-option value="option">AdharCard</mat-option>
-        <mat-option value="option">DrivingLicence</mat-option>
-        <mat-option value="option">PassPort</mat-option>
+      <mat-select #docName value="none" placeholder="Documentation" required>
+        <mat-option value="AdharCard">AdharCard</mat-option>
+        <mat-option value="DrivingLicence">DrivingLicence</mat-option>
+        <mat-option value="PassPort">PassPort</mat-option>
       </mat-select>
     </mat-form-field>
+
+
+
+    <!-- upload and preview docs -->
 
     <div class="container">
       <div class="row">
         <div class="col-md-6 offset-md-3">
-          <p>Choose File</p>
+
+
+          <!-- for getting Document image input -->
           <div class="form-group">
-            <input type="file" name="image" (change)="fileProgress($event)" />
-          </div>
-          <div *ngIf="fileUploadProgress">
-            Upload progress: {{ fileUploadProgress }}
-          </div>
-          <div class="image-preview mb-3" *ngIf="previewUrl">
-            <img [src]="previewUrl" height="300" />
+            <input type="file" name="image" (change)="onSelectDoc($event)" />
           </div>
 
-          <div class="mb-3" *ngIf="uploadedFilePath">
-            {{uploadedFilePath}}
-          </div>
 
-          <!-- <div class="form-group">
-              <button class="btn mat-button ml-auto mr-auto mt-4" style="background-color: cyan;" (click)="onSubmit()"><h5>Submit</h5></button>
+
+          <!-- <div *ngIf="fileUploadProgress">
+            Upload progress: {{ fileUploadProgress }} 
           </div> -->
+
+
+
+          <!-- Uncomment Below div to show preview of uploaded docs -->
+
+          <!-- <div class="image-preview mb-3" *ngIf="previewUrl">
+            <img [src]="previewUrl" height="300" />
+          </div> -->
+
+
+
+
+
+          <!-- <div class="mb-3" *ngIf="uploadedFilePath">
+            {{uploadedFilePath}}
+          </div> -->
+
         </div>
       </div>
     </div>
 
+    <!-- Save Button-->
+
     <div id="terms">
-      <mat-checkbox>I Agree with terms and conditions</mat-checkbox> </div>
-    <button class="btn btn-primary "><b> Save </b> </button>
+      <mat-checkbox #c  >I Agree with terms and conditions</mat-checkbox>
+    </div>
+
+    <button class="btn btn-primary"
+      (click)="save(fullName.value,email.value,phone.value,address.value,gstIn.value,docName.value,c.checked)"><b> Save </b>
+    </button>
   </div>
 
-</div>
 
+
+</div>
