@@ -110,7 +110,7 @@ services:
      - mysql
    ports:
      - "8082:8082"     
-retailer-registration-service:
+ retailer-registration-service:
    image: retailer-registration-service
    build: registration-varification-service/
    restart: always
