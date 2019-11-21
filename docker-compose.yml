@@ -33,6 +33,8 @@ services:
      "
    volumes:
    - /db-data:/var/lib/mysql
+
+ # services.....
  zuul:
    image: zuul
    restart: always
@@ -55,7 +57,7 @@ services:
    depends_on:
      - configserver
    ports:
-     - "8762:8762"
+     - 8762:8762
    expose:
      - 8762
  configserver:
@@ -65,7 +67,7 @@ services:
    container_name: configserver-container
    network_mode: host
    ports:
-     - "8889:8889"
+     - 8889:8889
    expose:
      - 8889
 
@@ -78,7 +80,7 @@ services:
    depends_on:
      - mysql1
    ports:
-     - "8085:8085"
+     - 8085
    expose:
      - 8085
  order-service:
@@ -90,11 +92,11 @@ services:
    depends_on:
     - neo4j
    ports:
-     - "7687:7687"
-     - "8080:8080"
+     - 8084
+     - 7687
    expose:
        - 7687
-       - 8080
+       - 8084
  angular-frontend:
      image: angular-frontend
      build: angular-frontend/
