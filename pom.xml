@@ -69,5 +69,6 @@
         <module>authentication-service</module>
         <module>retailer-profile-service</module>
         <module>driver-dashboard-service</module>
+        <module>registration-varification-service</module>
     </modules>
 </project>

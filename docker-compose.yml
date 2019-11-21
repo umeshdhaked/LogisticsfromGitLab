@@ -99,5 +99,24 @@ services:
      network_mode: host
      container_name: driver-dashboard
      ports:
-       - "8086:8086"   
-
+       - "8086:8086"
+ retailer-profile-service:
+   image: retailer-profile-service
+   build: retailer-profile-service/
+   restart: always
+   network_mode: host
+   container_name: retailer-profile
+   depends_on:
+     - mysql
+   ports:
+     - "8082:8082"     
+retailer-registration-service:
+   image: retailer-registration-service
+   build: registration-varification-service/
+   restart: always
+   network_mode: host
+   container_name: retailer-registration
+   depends_on:
+     - mysql
+   ports:
+     - "8084:8084"
