@@ -13,7 +13,7 @@ export class EditProfileService {
 
     setTimeout(() => {
       
-        this.http.post('http://localhost:8080/retailerProfile/saveDetailOfRetailer', data ).subscribe();
+        this.http.post('http://localhost:8082/retailerProfile/saveDetailOfRetailer', data ).subscribe();
         alert('Profile Saved');
 
     }, 350);
