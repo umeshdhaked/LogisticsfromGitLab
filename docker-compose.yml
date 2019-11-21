@@ -131,4 +131,4 @@ services:
      - mysql1
    container_name: retailer-registration
    ports:
-     - "8084:8084"
+     - "8088:8088"
