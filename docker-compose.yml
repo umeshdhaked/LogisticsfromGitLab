@@ -15,15 +15,22 @@ services:
    environment:
      - NEO4J_AUTH=neo4j/12345 
    network_mode: host  
- mysql:
+ mysql1:
    image: mysql:5.7
+   container_name: mysql-container
+   network_mode: host
    ports:
      - "3306:3306"
    restart: always
    environment:
-     MYSQL_DATABASE: Retailers
+#     MYSQL_DATABASE: register_db
      MYSQL_USER: root
-     MYSQL_ROOT_PASSWORD: 123456
+     MYSQL_ROOT_PASSWORD: Root@123
+   entrypoint:
+     sh -c "
+     echo 'CREATE DATABASE IF NOT EXISTS register_db; CREATE DATABASE IF NOT EXISTS Retailers;' > /docker-entrypoint-initdb.d/init.sql;
+     /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+     "
    volumes:
    - /db-data:/var/lib/mysql
  zuul:
@@ -64,7 +71,7 @@ services:
    network_mode: host
    container_name: authentication
    depends_on:
-     - mysql
+     - mysql1
    ports:
      - "8085:8085"
    expose:
@@ -107,16 +114,16 @@ services:
    network_mode: host
    container_name: retailer-profile
    depends_on:
-     - mysql
+     - mysql1
    ports:
      - "8082:8082"     
- retailer-registration-service:
-   image: retailer-registration-service
+ registration-varification-service:
+   image: registration-varification-service
    build: registration-varification-service/
    restart: always
    network_mode: host
-   container_name: retailer-registration
    depends_on:
-     - mysql
+     - mysql1
+   container_name: retailer-registration
    ports:
      - "8084:8084"
