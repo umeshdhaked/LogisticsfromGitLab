@@ -54,8 +54,6 @@ services:
    build: eureka-service/
    container_name: eureka-container
    network_mode: host
-   depends_on:
-     - configserver
    ports:
      - 8762:8762
    expose:
