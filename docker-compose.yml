@@ -28,7 +28,7 @@ services:
      MYSQL_ROOT_PASSWORD: Root@123
    entrypoint:
      sh -c "
-     echo 'CREATE DATABASE IF NOT EXISTS register_db; CREATE DATABASE IF NOT EXISTS Retailers;' > /docker-entrypoint-initdb.d/init.sql;
+     echo 'CREATE DATABASE IF NOT EXISTS register_db; CREATE DATABASE IF NOT EXISTS Retailers;  CREATE DATABASE IF NOT EXISTS test;' > /docker-entrypoint-initdb.d/init.sql;
      /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
      "
    volumes:
