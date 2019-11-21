@@ -12,49 +12,52 @@
             </div>
             <br />
         </div>
+        <hr/>
     </div>
-    <hr/>
-        <form id="orderForm" class="container" onsubmit="return false" method="POST">
+
+        <form id="orderForm" class="container-fluid" onsubmit="return false" method="POST">
             
             <h1 id="sign">Add Order</h1>
             <br/>
             <div class="row">
-            <div class="col-md-4 offset-md-2 col-12">
+            <div class="col-md-3 offset-md-3 col-12">
                 <!-- <label for="customerName"><b>Customer Name</b></label> -->
-                <input #customerName type="text" placeholder="Enter Customer Name" name="customerName" required>
+                <input #customerName type="text" placeholder="Customer Name" name="customerName" required>
             </div> 
-            <div class="col-md-4 col-12">   
+            <div class="col-md-3 col-12">   
                 <!-- <label for="customerNumber"><b>Mobile Number</b></label> -->
-                <input #customerNumber type="text" pattern="[789][0-9]{9}" placeholder="Enter Mobile Number" name="customerNumber" required>
+                <input #customerNumber type="text" pattern="[789][0-9]{9}" placeholder="Customer Mobile Number" name="customerNumber" required>
             </div>
-            <div class="col-md-4 offset-md-2 col-12">
+            <div class="col-md-3 offset-md-3 col-12">
                 <!-- <label for="customerAddress"><b>Delivery Address</b></label> -->
-                <input #customerAddress type="text" placeholder="Enter Address" name="customerAddress" required>
+                <input #customerAddress type="text" placeholder="Delivery Address" name="customerAddress" required>
             </div>
-            <div class="col-md-4 col-12"> 
-                <div class="row justify-content-center">
+            <div class="col-md-3 col-12"> 
+                <!-- <div class="row justify-content-center" id="volume">
                     <label for="orderVolume">Order Volume</label>
-                </div>        
+                </div>         -->
                 <input type = "radio" name="orderVolume" value="5" (click) = "changeSlotValue(5); orderVolume = 5" required checked>5L
                 <input type = "radio" name="orderVolume" (click) = "changeSlotValue(10); orderVolume = 10" value="10">10L
                 <input type = "radio" name="orderVolume" (click) = "changeSlotValue(20); orderVolume = 20" value="20">20L
             </div>
-            <div class="col-md-8 offset-md-2 col-12">    
+            <div class="col-md-6 offset-md-3 col-12">    
                 <!-- <label for="deliveryDate"><b>Delivery Date</b></label> -->
                 <input #deliveryDate (focusout)="checkSlotsOnDate(deliveryDate.value)" type="date" [min]="today" name="deliveryDate" required>
             </div>
             <div class="col-10 offset-1">     
                 <!-- <label for="slotNumber"><b>Delivery Slot</b></label><br/> -->
                 <div class="row">
-                    <div class="col-md-3 offset-md-1">
+                    <div class="col"></div>
+                    <div class="col-sm col-12">
                         <button type="button" [disabled]="!slotValid['slot1']" (click)="setSlot('slot1'); slot1 = true; slot2 = false; slot3 = false" class="btn-slot" [class.btn]="slotValid['slot1']" [class.btn-danger] = "!slotValid['slot1']" [class.selected]="slot1">11:00AM to 01:00PM <br/> {{slotJson["slot1"] | remainingVolume}}</button>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-sm col-12">
                         <button type="button" [disabled]="!slotValid['slot1']" (click)="setSlot('slot2'); slot1 = false; slot2 = true; slot3 = false" class="btn-slot" [class.btn]="slotValid['slot2']" [class.btn-danger] = "!slotValid['slot2']" [class.selected]="slot2">02:00PM to 04:00PM <br/> {{slotJson["slot2"] | remainingVolume}}</button>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm col-12">
                         <button type="button" [disabled]="!slotValid['slot3']" (click)="setSlot('slot3'); slot1 = false; slot2 = false; slot3 = true" class="btn-slot" [class.btn]="slotValid['slot3']" [class.btn-danger] = "!slotValid['slot3']" [class.selected]="slot3">05:00PM to 07:00PM <br/> {{slotJson["slot3"] | remainingVolume}}</button>
-                    </div>    
+                    </div>  
+                    <div class="col"></div>  
                 </div>
             </div>
             <br>
