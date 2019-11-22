@@ -1,5 +1,5 @@
 FROM openjdk:latest
 WORKDIR /src
-ADD ./target/vehicledemand-v1.0.0.jar /order-service/src/vehicledemand-v1.0.0.jar
+ADD ./target/vehicle-demand-service-v1.0.0.jar /vehicle-demand-service/src/vehicle-demand-service-v1.0.0.jar
 EXPOSE 9090
-ENTRYPOINT ["java","-jar","/vehicledemand/src/vehicledemand-v1.0.0.jar"]
+ENTRYPOINT ["java","-jar","/vehicle-demand-service/src/vehicle-demand-service-v1.0.0.jar"]
