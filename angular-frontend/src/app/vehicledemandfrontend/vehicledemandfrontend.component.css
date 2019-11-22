@@ -94,7 +94,7 @@
 }
 .alltable{
   display: flex;
-  border: 2px solid grey;
+  /*border: 2px solid grey;*/
   margin-top: 60px;
   margin-bottom: 100px;
   margin-right: 300px;
