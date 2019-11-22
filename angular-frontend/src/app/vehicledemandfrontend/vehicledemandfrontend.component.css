@@ -1,3 +1,4 @@
+
 .zui-table {
   border: solid 1px #DDEEEE;
   border-collapse: collapse;
@@ -51,12 +52,11 @@
   padding-top: 30px;
   padding-bottom: 30px;
   text-align: center;
-  border: 2px solid grey;
+
   border-radius: 8px;
-  margin-top: 60px;
-  margin-bottom: 100px;
-  margin-right: 300px;
-  margin-left: 300px;
+  font-size: 20px !important;
+
+  width: 70%;
 
 
 }
@@ -75,4 +75,28 @@
 .container {
   width: 80%;
   margin-top:40px;
+}
+.fl{
+  background-color: aquamarine;
+}
+.tablerate{
+  position: relative;
+  float: right;
+  width: 10%;
+  height: 15%;
+  padding-right: 5px;
+  padding-top: 60px;
+
+}
+.tablerate h2{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+.alltable{
+  display: flex;
+  border: 2px solid grey;
+  margin-top: 60px;
+  margin-bottom: 100px;
+  margin-right: 300px;
+  margin-left: 300px;
 }

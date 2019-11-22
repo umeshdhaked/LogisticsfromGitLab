@@ -12,7 +12,7 @@ import { VehicledemandfrontendComponent } from './vehicledemandfrontend/vehicled
 
 
 const routes: Routes = [
-  {path: '', redirectTo:'/home', pathMatch: 'full'},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
 { path : 'home', component: HomeComponent},
 {path: 'signup', component: SignupComponent},
 {path: 'verify', component: VerifyComponent},

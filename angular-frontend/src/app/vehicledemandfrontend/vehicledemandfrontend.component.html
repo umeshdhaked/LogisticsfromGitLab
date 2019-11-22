@@ -1,3 +1,21 @@
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+</style>
+
 <div class="container containerTop">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
@@ -18,8 +36,9 @@
   <h2> Retailer Vehicle Demand</h2>
 </div>
 
-<div class="demandform">
 
+  <div class="alltable">
+<div class="demandform">
   <mat-form-field>
     <mat-label>Volume of Vehicle</mat-label>
     <mat-select [(value)]="volume">
@@ -29,16 +48,17 @@
       <mat-option value="100">100</mat-option>
     </mat-select>
   </mat-form-field>
-  <div class="twoelements">
-    <p style="color: #336B6B">Don't Know the rates?</p>
-    <button  id="ratebutton" mat-stroked-button (click)="openDialog()">Rate Cart</button>
-  </div>
+
+<!--  <div class="twoelements">-->
+<!--    <p style="color: #336B6B">Don't Know the rates?</p>-->
+<!--    <button  id="ratebutton" mat-stroked-button (click)="openDialog()">Rate Cart</button>-->
+<!--  </div>-->
   <p>You selected: {{volume}}</p>
 
 
 
   <mat-form-field>
-    <mat-label>TIME SLOT</mat-label>
+    <mat-label>Time Slot</mat-label>
     <mat-select [(value)]="slot">
       <mat-option value="11:00 - 13:00">11:00 - 13:00</mat-option>
       <mat-option value="14:00 - 16:00">14:00 - 16:00</mat-option>
@@ -57,3 +77,41 @@
 
   <button mat-stroked-button (click)="sendRequest()" >Request Vehicle</button>
 </div>
+    <div class="tablerate">
+      <h4>Ratecard</h4>
+
+      <table>
+        <tr>
+          <th>Volume(in L)</th>
+          <th>Rate(per slot)</th>
+        </tr>
+        <tr>
+          <td>500</td>
+          <td>700</td>
+
+        </tr>
+        <tr>
+          <td>400</td>
+          <td>500</td>
+
+        </tr>
+        <tr>
+          <td>300</td>
+          <td>400</td>
+
+        </tr>
+        <tr>
+          <td>100</td>
+          <td>200</td>
+
+        </tr>
+        <tr>
+          <td>50</td>
+          <td>100</td>
+
+        </tr>
+
+      </table>
+
+    </div>
+  </div>

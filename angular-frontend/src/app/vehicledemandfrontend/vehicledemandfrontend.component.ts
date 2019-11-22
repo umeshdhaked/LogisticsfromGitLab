@@ -13,6 +13,7 @@ export class VehicledemandfrontendComponent implements OnInit {
   volume: string;
   slot: string;
   date: Date;
+
   constructor(
     private dialog: MatDialog,
     private vehicleService: VehicledemandfrontendService
