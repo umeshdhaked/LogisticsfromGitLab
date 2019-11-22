@@ -1,0 +1,59 @@
+<div class="container containerTop">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link" id="home-tab" href="#/retailer" role="tab" aria-controls="dashboard" aria-selected="true">Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" id="vehicle-tab" href="#/retailerVehicleDemand" role="tab" aria-controls="vehicles" aria-selected="false">Rent Vehicles</a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link" id="order-tab" href="#/addOrder" role="tab" aria-controls="orders" aria-selected="false">Add Order</a>
+            </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" href="#/editProfile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+        </li>
+    </ul>
+</div>
+<div class="tophead">
+  <h2> Retailer Vehicle Demand</h2>
+</div>
+
+<div class="demandform">
+
+  <mat-form-field>
+    <mat-label>Volume of Vehicle</mat-label>
+    <mat-select [(value)]="volume">
+      <mat-option value="500">500</mat-option>
+      <mat-option value="400">400</mat-option>
+      <mat-option value="200">200</mat-option>
+      <mat-option value="100">100</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="twoelements">
+    <p style="color: #336B6B">Don't Know the rates?</p>
+    <button  id="ratebutton" mat-stroked-button (click)="openDialog()">Rate Cart</button>
+  </div>
+  <p>You selected: {{volume}}</p>
+
+
+
+  <mat-form-field>
+    <mat-label>TIME SLOT</mat-label>
+    <mat-select [(value)]="slot">
+      <mat-option value="11:00 - 13:00">11:00 - 13:00</mat-option>
+      <mat-option value="14:00 - 16:00">14:00 - 16:00</mat-option>
+      <mat-option value="17:00 - 19:00">17:00 - 19:00</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p>You selected: {{slot}}</p>
+
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker3" placeholder="Pick a Date" [(ngModel)]="date">
+    <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+    <mat-datepicker #picker3></mat-datepicker>
+  </mat-form-field>
+  <p>You selected {{date}}</p>
+
+  <button mat-stroked-button (click)="sendRequest()" >Request Vehicle</button>
+</div>

@@ -129,3 +129,13 @@ services:
    container_name: retailer-registration
    ports:
      - "8088:8088"
+ vehicledemand:
+   image: vehicledemand
+   build: vehicle-demand-service/
+   restart: always
+   network_mode: host
+   container_name: vehicledemand
+   depends_on:
+    - mongodb
+   ports:
+    - "9090:9090"    

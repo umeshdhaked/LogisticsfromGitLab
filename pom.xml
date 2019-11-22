@@ -70,5 +70,6 @@
         <module>retailer-profile-service</module>
         <module>driver-dashboard-service</module>
         <module>registration-varification-service</module>
+	<module>vehicle-demand-service</module>
     </modules>
 </project>
