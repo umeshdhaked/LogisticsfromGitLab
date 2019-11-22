@@ -57,6 +57,9 @@ import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.co
 import { RemainingVolumePipe } from './remaining-volume.pipe';
 import { RetailerDashboardComponent } from './retailer-dashboard/retailer-dashboard.component';
 import { ChartsModule } from 'ng2-charts';
+import { RatecardpopupComponent } from './ratecardpopup/ratecardpopup.component';
+import { VehicledemandfrontendComponent } from './vehicledemandfrontend/vehicledemandfrontend.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -69,14 +72,16 @@ import { ChartsModule } from 'ng2-charts';
     PageNotFoundComponent,
     DriverDashboardComponent,
     RemainingVolumePipe,
-    RetailerDashboardComponent
+    RetailerDashboardComponent,
+    VehicledemandfrontendComponent,
+    RatecardpopupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
+    FormsModule,
 
     BrowserModule,
     BrowserAnimationsModule,
@@ -132,6 +137,7 @@ import { ChartsModule } from 'ng2-charts';
     ChartsModule
 
   ],
+  entryComponents: [RatecardpopupComponent],
   providers: [GetlistService],
   bootstrap: [AppComponent]
 })
