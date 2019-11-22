@@ -46,14 +46,14 @@ public class RegisterController {
     }
 
     //Process form Input Data POST method
-
-    @PostMapping(value = "/register")
     @CrossOrigin
+    @PostMapping(value = "/register")
     public ModelAndView processRegistrationForm(ModelAndView modelAndView, @Valid User user, BindingResult bindingResult, HttpServletRequest request){
 
         //lookup user by e-mail
         User userExists = userService.findByEmail(user.getEmail());
         System.out.println(userExists);
+        System.out.println("Email : = "+user.getEmail());
 
         if(userExists!=null){
             modelAndView.addObject("alreadyRegisteredMessage","Sorry,There is already a user registered with the email provided");
@@ -96,8 +96,8 @@ public class RegisterController {
     }
 
     //Process to  Confirm link
-    @GetMapping(value = "/confirm")
     @CrossOrigin
+    @GetMapping(value = "/confirm")
     public ModelAndView showConfirmationPage(ModelAndView modelAndView,@RequestParam("token") String token){
         User user=userService.findByConfirmationToken(token);
         //checking if  token found in db
@@ -111,8 +111,8 @@ public class RegisterController {
         return modelAndView;
     }
     //Post process confirmation link
-    @PostMapping(value = "/confirm")
     @CrossOrigin
+    @PostMapping(value = "/confirm")
     public ModelAndView processConfirmationForm(ModelAndView modelAndView, BindingResult bindingResult, @RequestParam Map requestParam, RedirectAttributes redir){
         modelAndView.setViewName("confirm");
         //using Zxcvbn
