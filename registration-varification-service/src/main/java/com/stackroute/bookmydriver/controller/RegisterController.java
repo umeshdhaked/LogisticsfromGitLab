@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @RestController
-//@CrossOrigin
+@CrossOrigin
 public class RegisterController {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -70,7 +70,7 @@ public class RegisterController {
 
             userService.saveUser(user);
 
-            String appUrl=request.getScheme() +"://"+request.getServerName()+":8080";
+            String appUrl=request.getScheme() +"://"+request.getServerName()+":"+request.getServerPort();
 
 
             SimpleMailMessage registrationEmail = new SimpleMailMessage();
