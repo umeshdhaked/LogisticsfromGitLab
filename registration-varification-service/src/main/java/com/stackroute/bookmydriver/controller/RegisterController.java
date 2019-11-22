@@ -22,7 +22,6 @@ import java.util.Map;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin
 public class RegisterController {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -37,8 +36,10 @@ public class RegisterController {
     }
 
     //Return Registration form Template
+    @CrossOrigin
     @GetMapping(value = "/register")
     public ModelAndView showRegistrationPage(ModelAndView modelAndView, User user){
+        System.out.println("inside register getmap");
         modelAndView.addObject("user",user);
         modelAndView.setViewName("register");
         return modelAndView;
@@ -47,6 +48,7 @@ public class RegisterController {
     //Process form Input Data POST method
 
     @PostMapping(value = "/register")
+    @CrossOrigin
     public ModelAndView processRegistrationForm(ModelAndView modelAndView, @Valid User user, BindingResult bindingResult, HttpServletRequest request){
 
         //lookup user by e-mail
@@ -95,6 +97,7 @@ public class RegisterController {
 
     //Process to  Confirm link
     @GetMapping(value = "/confirm")
+    @CrossOrigin
     public ModelAndView showConfirmationPage(ModelAndView modelAndView,@RequestParam("token") String token){
         User user=userService.findByConfirmationToken(token);
         //checking if  token found in db
@@ -109,6 +112,7 @@ public class RegisterController {
     }
     //Post process confirmation link
     @PostMapping(value = "/confirm")
+    @CrossOrigin
     public ModelAndView processConfirmationForm(ModelAndView modelAndView, BindingResult bindingResult, @RequestParam Map requestParam, RedirectAttributes redir){
         modelAndView.setViewName("confirm");
         //using Zxcvbn
