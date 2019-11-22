@@ -44,6 +44,9 @@ public class User {
     @Column(name = "confirmation_token")
     private String confirmationToken;
 
+
+    //getter and setters
+
     public int getId() {
         return id;
     }
