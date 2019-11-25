@@ -10,6 +10,8 @@ import { Order } from '../interfaces/order';
   styleUrls: ['./add-order.component.css']
 })
 export class AddOrderComponent implements OnInit {
+  //retailerId will depend on saved cookie
+  retailerId: number = 189;
   success: boolean = false;
   //property which indicates whether a given slot can be picked
   slotValid = {"slot1": true, "slot2": true, "slot3" : true};
@@ -74,7 +76,7 @@ export class AddOrderComponent implements OnInit {
     console.log(this.selectedSlot);
     if(customerName!=""&&customerNumber!=""&&customerAddress!=""&&this.orderVolume!=null&&deliveryDate!=""&&this.selectedSlot !=""){
       console.log(this.orderVolume);
-      this.orderService.saveOrder(customerName, customerNumber, customerAddress, this.orderVolume, deliveryDate, this.selectedSlot, "pending")
+      this.orderService.saveOrder(customerName, customerNumber, customerAddress, this.orderVolume, deliveryDate, this.selectedSlot, "pending", this.retailerId)
       .pipe(
         tap((newOrder) => {console.log(newOrder); this.savedOrder = newOrder}),
         catchError(error =>{
