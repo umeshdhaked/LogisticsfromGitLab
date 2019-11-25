@@ -69,7 +69,7 @@
 #twoelements{
   display: flex;
   text-align: center;
-  align: center;
+  /* align: center; */
 }
 
 .container {
