@@ -32,6 +32,13 @@ public class Order {
     public Order() {
     }
 
+    public int getRetailerId(){
+        return retailerId;
+    }
+
+    public void setRetailerId(int retailerId){
+        this.retailerId = retailerId;
+    }
 
    public Long getId() {
        return id;
