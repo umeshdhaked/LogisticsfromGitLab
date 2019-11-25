@@ -15,6 +15,7 @@
         background-image: linear-gradient(to bottom, transparent, mistyrose),url("../../assets/images/main.jpg");
         background-size: cover;
         min-height: 360px;
+        /* margin-top: -30px; */
       }
       .over-image-text {
         text-align: center;
@@ -23,6 +24,7 @@
       }
       .deliveryboy-icon{
         display: none;
+        visibility: hidden;
       }
   }
   /* for screen width larger than 1024px */
@@ -34,11 +36,13 @@
     height: auto;
     width: 100%;
     min-height: 760px;
+    margin-top: -58px;
     /* 100vh  for full view */
     background-repeat: no-repeat  ;
     /* Center and scale the image nicely */
     background-size: contain;
   }
+  
   .over-image-text {
     position: absolute;
     right: 10px;

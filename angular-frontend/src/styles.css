@@ -1,11 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
 #logo{
-    width:100px;
+    width:80px;
     /* height: 150px; */
 }
 h6{
     visibility: hidden;
 }
+.navbar{
+    transition:500ms ease;
+    background: transparent;
+    
+}
+.navbar.scrolled{
+    background: rgba(54, 59, 68,0.9);
+
+    
+}
+.nav-link{
+    color:whitesmoke;
+    padding: 15px 0;
+}
+.nav-link:hover{
+
+}
+.navbar.scrolled.btn-outline-danger{
+    border-color: white;
+}
+
+
+
+@media  (max-width: 1023px){
+    .navbar{
+        background: rgb(54, 59, 68);
+    }
+    
+}
+
 /* footer */
 #logo2{
     width:150px;
