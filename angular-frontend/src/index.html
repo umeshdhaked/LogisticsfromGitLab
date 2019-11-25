@@ -29,14 +29,17 @@
       var elementTop = $(this).offset().top;
       var leftPosition = windowTop - elementTop;
       console.log(leftPosition);
-      if(leftPosition < 864){
+      if(leftPosition < 589){
         $(this)
           .find(".deliveryboy-icon")
           .css({ left: leftPosition });
       }
     });
     });
-    
+    // navbar change on scroll
+    $(window).scroll(function(){
+	$('nav').toggleClass('scrolled', $(this).scrollTop() > 50);
+});
   
 </script>
 
@@ -46,7 +49,7 @@
   <!-- navigation bar -->
   <section>
     <h6>new section</h6>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg   fixed-top">
       <section class="container">
         <!-- <h6>container</h6> -->
         <a class="navbar-brand" href="/" id="company">
@@ -58,27 +61,27 @@
           <span class="navbar-toggler-icon "></span>
         </button>
 
-        <section class="collapse navbar-collapse" id="navbarResponsive">
+        <section class="collapse navbar-collapse text-center" id="navbarResponsive">
           <h6>collapsable navbar</h6>
-          <ul class="navbar-nav">
+          <ul class="navbar-nav text-center">
             <li class="nav-item active">
               <a class="nav-link" href="#">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item text-center">
               <a class="nav-link" href="#subscription">Plans</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" data-toggle="modal" href="#askmodal">Help</a>
+              <a class="nav-link text-center" data-toggle="modal" href="#askmodal">Help</a>
             </li>
 
           </ul>
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <button class="btn btn-outline-danger my-2 my-sm-0">Sign Up</button>
-            </li>
+            </li> -->
 
             <li class="nav-item">
               <button class="btn btn-outline-danger my-2 my-sm-0">LogIn</button>
@@ -164,7 +167,7 @@
 
 
   <!--footer-->
-  <div class="mt-5 pt-5 pb-5 footer bg-dark">
+  <div class="mt-5 pt-5 pb-2 footer bg-dark">
     <div class="container">
       <div class="row">
         <div class="col-lg-5 col-xs-12 about-company">
@@ -181,18 +184,18 @@
             <a href="#"><i class="fa fa-rss"></i></a>
           </p>
         </div>
-        <div class="col-lg-3 col-xs-12 links">
+        <!-- <div class="col-lg-3 col-xs-12 links">
           <h4 class="mt-lg-0 mt-sm-3">Social Feeds</h4>
           <ul class="m-0 p-0">
 
           </ul>
-        </div>
+        </div> -->
         <div class="col-lg-4 col-xs-12 location">
           <h4 class="mt-lg-0 mt-sm-4">Location</h4>
           <p><i class="fa fa-map-marker mr-3"></i>38, 4th B Cross Rd, Koramangala 5th Block, Koramangala Industrial
             Layout, Near JNC College Rd, Bengaluru, Karnataka 560095</p>
           <p class="mb-0"><i class="fa fa-phone mr-3"></i>(+91) 123-4567</p>
-          <p><i class="fa fa-envelope-o mr-3"></i>info@wysser.com</p>
+          <p><i class="fa fa-envelope-o mr-3"></i>wysserrouting@gmail.com</p>
         </div>
       </div>
       <div class="row mt-5">
