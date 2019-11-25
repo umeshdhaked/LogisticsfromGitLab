@@ -94,4 +94,24 @@
             </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-header">Booked Vehicles</div>
+                    <table class="table">
+                        <tr><th>Vehicle Id</th><th>Volume</th><th>Date</th><th>Timeslot</th></tr>
+                        <tr *ngFor="let vehicle of rentedVehicles">
+                            <td>{{vehicle.vehicleId}}</td>
+                            <td>{{vehicle.volume}}</td>
+                            <td>{{vehicle.date}}</td>
+                            <td>{{vehicle.timeslot}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>

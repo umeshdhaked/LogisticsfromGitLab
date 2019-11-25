@@ -10,6 +10,8 @@ import { Order } from '../interfaces/order';
   styleUrls: ['./add-order.component.css']
 })
 export class AddOrderComponent implements OnInit {
+  //retailerId will depend on saved cookie
+  retailerId: number = 189;
   success: boolean = false;
   //property which indicates whether a given slot can be picked
   slotValid = {"slot1": true, "slot2": true, "slot3" : true};
@@ -43,6 +45,7 @@ export class AddOrderComponent implements OnInit {
   }
 
   changeSlotValue(orderVolume){
+    console.log(orderVolume);
     if(orderVolume > this.slotJson["slot1"]){
       this.slotValid["slot1"] = false;
     }else{
@@ -69,12 +72,12 @@ export class AddOrderComponent implements OnInit {
     console.log(this.selectedSlot);
   }
 
-  submitOrder(customerName, customerNumber, customerAddress, deliveryDate): void{
+  submitOrder(customerName, customerNumber, customerAddress, deliveryDate, orderVolume): void{
     console.log(this.orderVolume);
     console.log(this.selectedSlot);
-    if(customerName!=""&&customerNumber!=""&&customerAddress!=""&&this.orderVolume!=null&&deliveryDate!=""&&this.selectedSlot !=""){
+    if(customerName!=""&&customerNumber!=""&&customerAddress!=""&&orderVolume!=null&&deliveryDate!=""&&this.selectedSlot !=""){
       console.log(this.orderVolume);
-      this.orderService.saveOrder(customerName, customerNumber, customerAddress, this.orderVolume, deliveryDate, this.selectedSlot, "pending")
+      this.orderService.saveOrder(customerName, customerNumber, customerAddress, orderVolume, deliveryDate, this.selectedSlot, "pending", this.retailerId)
       .pipe(
         tap((newOrder) => {console.log(newOrder); this.savedOrder = newOrder}),
         catchError(error =>{
@@ -88,6 +91,7 @@ export class AddOrderComponent implements OnInit {
         this.slot2 = false;
         this.slot3 = false;
         this.slotJson = [];
+        this.slotValid = {"slot1": true, "slot2": true, "slot3" : true};
       });
   }
   }

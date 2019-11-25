@@ -61,6 +61,8 @@ import { RatecardpopupComponent } from './ratecardpopup/ratecardpopup.component'
 import { VehicledemandfrontendComponent } from './vehicledemandfrontend/vehicledemandfrontend.component';
 import { FormsModule } from '@angular/forms';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { TimeSlotPipe } from './time-slot.pipe';
+import { VerifyUserComponent } from './verify-user/verify-user.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,9 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
     RetailerDashboardComponent,
     VehicledemandfrontendComponent,
     RatecardpopupComponent,
-    ViewProfileComponent
+    ViewProfileComponent,
+    TimeSlotPipe,
+    VerifyUserComponent
   ],
   imports: [
     BrowserModule,
