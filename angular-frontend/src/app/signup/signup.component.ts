@@ -13,6 +13,8 @@ export class SignupComponent implements OnInit {
 
   private notmatch;
   private value;
+  alreadyExists: boolean = false;
+  userNotSaved: boolean = true;
   constructor(private serv : GetlistService, private router:Router) {
    }
 
