@@ -27,7 +27,8 @@ public class Order {
     private String slotNumber;
     private Double orderVolume;
     private String orderStatus;
-
+    private int retailerId;
+    
     public Order() {
     }
 

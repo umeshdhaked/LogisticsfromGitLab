@@ -34,37 +34,37 @@ services:
    volumes:
    - /db-data:/var/lib/mysql
 
- # services.....
- zuul:
-   image: zuul
-   restart: always
-   build: zuul-service/
-   container_name: zuul-container
-   network_mode: host
-   ports:
-     - 8089:8089
-   expose:
-     - 8089
- eureka:
-     image: eureka
-     restart: always
-     build: eureka-service/
-     container_name: eureka-container
-     network_mode: host
-     ports:
-       - "8762:8762"
-     expose:
-       - 8762
- configserver:
-     image: configserver
-     restart: always
-     build: config-service/
-     container_name: configserver-container
-     network_mode: host
-     ports:
-       - "8889:8889"
-     expose:
-       - 8889
+#  services.....
+#  zuul:
+#    image: zuul
+#    restart: always
+#    build: zuul-service/
+#    container_name: zuul-container
+#    network_mode: host
+#    ports:
+#      - 8089:8089
+#    expose:
+#      - 8089
+#  eureka:
+#      image: eureka
+#      restart: always
+#      build: eureka-service/
+#      container_name: eureka-container
+#      network_mode: host
+#      ports:
+#        - "8762:8762"
+#      expose:
+#        - 8762
+#  configserver:
+#      image: configserver
+#      restart: always
+#      build: config-service/
+#      container_name: configserver-container
+#      network_mode: host
+#      ports:
+#        - "8889:8889"
+#      expose:
+#        - 8889
 
  authentication-service:
    image: authentication
