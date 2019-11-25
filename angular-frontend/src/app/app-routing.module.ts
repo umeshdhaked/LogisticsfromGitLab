@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.component';
 import { RetailerDashboardComponent } from './retailer-dashboard/retailer-dashboard.component';
 import { VehicledemandfrontendComponent } from './vehicledemandfrontend/vehicledemandfrontend.component';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
 {path: 'driver', component: DriverDashboardComponent},
 {path: 'retailer', component: RetailerDashboardComponent},
 {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent},
+{path:'viewProfile',component:ViewProfileComponent},
 {path: '**', component: PageNotFoundComponent}
 ];
 
@@ -29,5 +31,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
-  export const routingModule = [HomeComponent, SignupComponent, VerifyComponent, EditProfileComponent, PageNotFoundComponent]
+  export const routingModule = [HomeComponent, SignupComponent, VerifyComponent, EditProfileComponent, PageNotFoundComponent, ViewProfileComponent]
 
