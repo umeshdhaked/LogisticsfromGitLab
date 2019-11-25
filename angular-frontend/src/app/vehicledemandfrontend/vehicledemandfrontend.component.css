@@ -100,3 +100,13 @@
   margin-right: 300px;
   margin-left: 300px;
 }
+
+.nav-link {
+  color:rgb(43, 40, 40);
+  /* padding: 12px 0; */
+  border-bottom: transparent ; 
+}
+
+.nav-link:hover {
+  color:rgb(43,40,40);
+}

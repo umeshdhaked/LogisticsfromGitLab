@@ -74,3 +74,12 @@
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   }
   
+  .nav-link {
+    color:rgb(43, 40, 40);
+    /* padding: 12px 0; */
+    border-bottom: transparent ; 
+  }
+
+  .nav-link:hover {
+    color:rgb(43,40,40);
+  }

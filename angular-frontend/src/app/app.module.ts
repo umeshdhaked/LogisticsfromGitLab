@@ -60,6 +60,7 @@ import { ChartsModule } from 'ng2-charts';
 import { RatecardpopupComponent } from './ratecardpopup/ratecardpopup.component';
 import { VehicledemandfrontendComponent } from './vehicledemandfrontend/vehicledemandfrontend.component';
 import { FormsModule } from '@angular/forms';
+import { TimeSlotPipe } from './time-slot.pipe';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { FormsModule } from '@angular/forms';
     RemainingVolumePipe,
     RetailerDashboardComponent,
     VehicledemandfrontendComponent,
-    RatecardpopupComponent
+    RatecardpopupComponent,
+    TimeSlotPipe
   ],
   imports: [
     BrowserModule,
