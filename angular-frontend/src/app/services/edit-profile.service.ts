@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -12,8 +13,9 @@ export class EditProfileService {
    public saveRetailerData(data){
 
     setTimeout(() => {
-      
-        this.http.post('http://localhost:8082/retailerProfile/saveDetailOfRetailer', data ).subscribe();
+
+      let url = environment.apiUrl + ":8082/retailerProfile/saveDetailOfRetailer"
+        this.http.post(url, data ).subscribe();
         alert('Profile Saved');
 
     }, 350);
