@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegistrationService } from '../services/registration.service';
+import { Message } from '../interfaces/message';
 
 var bcrypt = require('bcryptjs');
 
@@ -27,7 +28,7 @@ export class SignupComponent implements OnInit {
     if(firstName!=""&&lastName!=""&&email!=""){
       this.regService.registerNewUser(firstName,lastName,email).subscribe((data)=>{
         this.zone.run(()=>{
-          if(data == "Successfully Created"){
+          if(data.message == "OK"){
             this.userNotSaved = false;
           }else{
             this.alreadyExists = true;

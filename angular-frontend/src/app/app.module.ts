@@ -61,6 +61,7 @@ import { RatecardpopupComponent } from './ratecardpopup/ratecardpopup.component'
 import { VehicledemandfrontendComponent } from './vehicledemandfrontend/vehicledemandfrontend.component';
 import { FormsModule } from '@angular/forms';
 import { TimeSlotPipe } from './time-slot.pipe';
+import { VerifyUserComponent } from './verify-user/verify-user.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { TimeSlotPipe } from './time-slot.pipe';
     RetailerDashboardComponent,
     VehicledemandfrontendComponent,
     RatecardpopupComponent,
-    TimeSlotPipe
+    TimeSlotPipe,
+    VerifyUserComponent
   ],
   imports: [
     BrowserModule,

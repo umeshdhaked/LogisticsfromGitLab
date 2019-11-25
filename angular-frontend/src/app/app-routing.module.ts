@@ -9,10 +9,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.component';
 import { RetailerDashboardComponent } from './retailer-dashboard/retailer-dashboard.component';
 import { VehicledemandfrontendComponent } from './vehicledemandfrontend/vehicledemandfrontend.component';
+import { VerifyUserComponent } from './verify-user/verify-user.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
 { path : 'home', component: HomeComponent},
 {path: 'signup', component: SignupComponent},
 {path: 'verify', component: VerifyComponent},
@@ -21,6 +21,8 @@ const routes: Routes = [
 {path: 'driver', component: DriverDashboardComponent},
 {path: 'retailer', component: RetailerDashboardComponent},
 {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent},
+{path: 'confirm/:token', component: VerifyUserComponent},
+{path: '', redirectTo: '/home', pathMatch: 'full'},
 {path: '**', component: PageNotFoundComponent}
 ];
 
