@@ -88,6 +88,7 @@ export class AddOrderComponent implements OnInit {
         this.slot2 = false;
         this.slot3 = false;
         this.slotJson = [];
+        this.slotValid = {"slot1": true, "slot2": true, "slot3" : true};
       });
   }
   }

@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { OrderServiceService } from '../services/order-service.service';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label, MultiDataSet } from 'ng2-charts';
+import { VehicleRentService } from '../services/vehicle-rent.service';
 
 @Component({
   selector: 'app-retailer-dashboard',
@@ -14,8 +15,9 @@ export class RetailerDashboardComponent implements OnInit {
   pendingOrders: number = 0;
   deliveredOrders: number = 0;
 
-  totalOrdersPerDay = []
-  orderDates = []
+  totalOrdersPerDay = [];
+  orderDates = [];
+  rentedVehicles = [];
 
   //line chart data
   lineChartData: ChartDataSets[] = [];
@@ -51,7 +53,10 @@ export class RetailerDashboardComponent implements OnInit {
   doughnutChartData: MultiDataSet = [];
   doughnutChartType: ChartType = 'doughnut';
 
-  constructor(private orderService: OrderServiceService, private zone:NgZone) { }
+  //vehicles tables 
+  tableColumns  :  string[] = ['vehicleId', 'date', 'volume', 'timeSlot'];
+
+  constructor(private orderService: OrderServiceService, private zone:NgZone, private rentedVehicleService: VehicleRentService ) { }
 
   ngOnInit() {
     this.orderService.getAllOrderData().subscribe(data =>
@@ -69,12 +74,19 @@ export class RetailerDashboardComponent implements OnInit {
         this.deliveredOrders = data.length;
       }));
     
-      this.orderService.getPendingOrders().subscribe(data =>
-        this.zone.run(() => 
-        {
-          console.log(data);
-          this.pendingOrders = data.length;
-        }));  
+    this.orderService.getPendingOrders().subscribe(data =>
+      this.zone.run(() => 
+      {
+        console.log(data);
+        this.pendingOrders = data.length;
+      }));  
+
+    this.rentedVehicleService.getBookedVehicles().subscribe(data => {
+      this.zone.run(()=>{
+        console.log(data);
+        this.rentedVehicles = data;
+      })
+    })  
   }
 
   populateLineChartData(orderData){

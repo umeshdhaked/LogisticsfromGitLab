@@ -14,7 +14,7 @@
         </li>
     </ul>
 </div>
-
+<br/>
 <div class="text-center container">
     <div *ngIf = "success">
         <div class="row">
@@ -56,6 +56,7 @@
                 <input type = "radio" name="orderVolume" value="5" (click) = "changeSlotValue(5); orderVolume = 5" required checked>5L
                 <input type = "radio" name="orderVolume" (click) = "changeSlotValue(10); orderVolume = 10" value="10">10L
                 <input type = "radio" name="orderVolume" (click) = "changeSlotValue(20); orderVolume = 20" value="20">20L
+                <input type = "radio" name="orderVolume" (click) = "changeSlotValue(50); orderVolume = 50" value="50">50L
             </div>
             <div class="col-md-6 offset-md-3 col-12">    
                 <!-- <label for="deliveryDate"><b>Delivery Date</b></label> -->
@@ -84,5 +85,4 @@
                 </div>
             </div>
         </form>
-    
 </div>
