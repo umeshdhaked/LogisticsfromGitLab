@@ -40,7 +40,28 @@
     $(window).scroll(function(){
 	$('nav').toggleClass('scrolled', $(this).scrollTop() > 50);
 });
-  
+  //smooth scrolling 
+  $(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+      // Store hash
+      var hash = this.hash;
+      // Using jQuerys animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
 </script>
 
 </head>
@@ -72,6 +93,12 @@
             <li class="nav-item text-center">
               <a class="nav-link" href="#subscription">Plans</a>
             </li>
+            <li class="nav-item text-center">
+              <a class="nav-link" href="#goal">Why Wysser</a>
+            </li>
+            <li class="nav-item text-center">
+              <a class="nav-link" href="#members">Community</a>
+            </li>
 
             <li class="nav-item">
               <a class="nav-link text-center" data-toggle="modal" href="#askmodal">Help</a>
@@ -79,9 +106,6 @@
 
           </ul>
           <ul class="navbar-nav ml-auto">
-            <!-- <li class="nav-item">
-              <button class="btn btn-outline-danger my-2 my-sm-0">Sign Up</button>
-            </li> -->
 
             <li class="nav-item">
               <button class="btn btn-outline-danger my-2 my-sm-0">LogIn</button>
