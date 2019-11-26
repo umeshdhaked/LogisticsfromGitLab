@@ -1,7 +1,8 @@
+import { DriverDashboardService } from './../services/driver-dashboard.service';
 import { Component, OnInit, NgZone } from '@angular/core';
-import { DriverDashboardService } from '../services/driver-dashboard.service';
 import { Deliveryroute } from '../interfaces/deliveryroute';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-driver-dashboard',
