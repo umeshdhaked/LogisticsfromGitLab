@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-#logo{
-    width:80px;
+
+#logo {
+    width: 80px;
     /* height: 150px; */
 }
-h6{
+
+h6 {
     visibility: hidden;
 }
 
@@ -12,52 +14,60 @@ h6{
     border-color: white;
 } */
 
-.nav-link{
-    color:whitesmoke;
+.nav-link {
+    color: whitesmoke;
     /* padding: 12px 0; */
-    border-bottom: 3px solid transparent ;   
+    border-bottom: 3px solid transparent;
 }
 
-a:hover{
-    color:whitesmoke;
+a:hover {
+    color: whitesmoke;
 }
-.nav-link:hover{
+
+.nav-link:hover {
     text-decoration: none;
     color: white;
-    transition:500ms ease;
-    border-bottom: 3px solid white ;
-}
-.navbar-toggler{
-    color:white;
-} 
-@media (min-width:1024px){
-    .navbar{
-        transition:500ms ease;
-        background: transparent;
-        
-    }
-    
-    .navbar.scrolled{
-        background: rgba(54, 59, 68,0.9);}
+    transition: 500ms ease;
+    border-bottom: 3px solid white;
 }
 
-@media  (max-width: 1023px){
-    .navbar{
+.navbar-toggler {
+    color: white;
+}
+
+@media (min-width:1024px) {
+    .navbar {
+        transition: 500ms ease;
+        background: transparent;
+    }
+    .navbar.scrolled {
+        background: rgba(54, 59, 68, 0.9);
+    }
+}
+
+@media (max-width: 1023px) {
+    .navbar {
         background: rgb(54, 59, 68);
     }
-    
 }
 
+
 /* footer */
-#logo2{
-    width:150px;
+
+#logo2 {
+    width: 150px;
     /* height: 150px; */
 }
-.footer{
-     bottom:0;
-     color:white;
-  }
+
+.footer {
+    bottom: 0;
+    color: white;
+}
+
+
 /* footer end */
+
+
 /* .askme {
     background-color :transparent;
     color: goldenrod;
@@ -68,5 +78,13 @@ a:hover{
     bottom: 180px;
     right: 10px;
   } */
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

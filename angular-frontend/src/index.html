@@ -2,234 +2,207 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Wysser</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <!--linking cdn bootsrap 4.3.1-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-  <!--font awesome for icons-->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <!--linking google fonts-->
-  <link href="https://fonts.googleapis.com/css?family=Lexend+Zetta|Orbitron&display=swap" rel="stylesheet">
-<!-- scroll animation script -->
-<script>
- 
-      $(window).on("load resize scroll", function() {
-    $(".bg-img").each(function() {
-      var windowTop = $(window).scrollTop();
-      var elementTop = $(this).offset().top;
-      var leftPosition = windowTop - elementTop;
-      console.log(leftPosition);
-      if(leftPosition < 589){
-        $(this)
-          .find(".deliveryboy-icon")
-          .css({ left: leftPosition });
-      }
-    });
-    });
-    // navbar change on scroll
-    $(window).scroll(function(){
-	$('nav').toggleClass('scrolled', $(this).scrollTop() > 50);
-});
-  //smooth scrolling 
-  $(document).ready(function(){
-  // Add smooth scrolling to all links
-  $("a").on('click', function(event) {
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-      // Prevent default anchor click behavior
-      event.preventDefault();
-      // Store hash
-      var hash = this.hash;
-      // Using jQuerys animate() method to add smooth page scroll
-      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 800, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } // End if
-  });
-});
-</script>
-
+    <meta charset="utf-8">
+    <title>Wysser</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!--linking cdn bootsrap 4.3.1-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--font awesome for icons-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--linking google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lexend+Zetta|Orbitron&display=swap" rel="stylesheet">
+    <!-- scroll animation script -->
+    <script>
+        $(window).on("load resize scroll", function() {
+            $(".bg-img").each(function() {
+                var windowTop = $(window).scrollTop();
+                var elementTop = $(this).offset().top;
+                var leftPosition = windowTop - elementTop;
+                console.log(leftPosition);
+                if (leftPosition < 589) {
+                    $(this)
+                        .find(".deliveryboy-icon")
+                        .css({
+                            left: leftPosition
+                        });
+                }
+            });
+        });
+        // navbar change on scroll
+        $(window).scroll(function() {
+            $('nav').toggleClass('scrolled', $(this).scrollTop() > 50);
+        });
+        //smooth scrolling
+        $(document).ready(function() {
+            // Add smooth scrolling to all links
+            $("a").on('click', function(event) {
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+                    // Store hash
+                    var hash = this.hash;
+                    // Using jQuerys animate() method to add smooth page scroll
+                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function() {
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+        });
+    </script>
 </head>
 
 <body>
-  <!-- navigation bar -->
-  <section>
-    <h6>new section</h6>
-    <nav class="navbar navbar-expand-lg  navbar-dark fixed-top">
-      <section class="container">
-        <!-- <h6>container</h6> -->
-        <a class="navbar-brand" href="/" id="company">
-          <img id="logo" src="assets/logo1.png" alt="myLogo">
-        </a>
-        <!--toggle button after shrink-->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-          aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- navigation bar -->
+    <section>
+        <h6>new section</h6>
+        <nav class="navbar navbar-expand-lg  navbar-dark fixed-top">
+            <section class="container">
+                <!-- <h6>container</h6> -->
+                <a class="navbar-brand" href="/" id="company">
+                    <img id="logo" src="assets/logo1.png" alt="myLogo">
+                </a>
+                <!--toggle button after shrink-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon "></span>
         </button>
-
-        <section class="collapse navbar-collapse text-center mx-center" id="navbarResponsive">
-          <h6>collapsable navbar</h6>
-          <ul class="navbar-nav ml-auto text-center">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home
+                <section class="collapse navbar-collapse text-center mx-center" id="navbarResponsive">
+                    <h6>collapsable navbar</h6>
+                    <ul class="navbar-nav ml-auto text-center">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home
                 <span class="sr-only">(current)</span>
               </a>
-            </li>
-            <li class="nav-item text-center">
-              <a class="nav-link" href="#subscription">Plans</a>
-            </li>
-            <li class="nav-item text-center">
-              <a class="nav-link" href="#goal">Why Wysser</a>
-            </li>
-            <li class="nav-item text-center">
-              <a class="nav-link" href="#members">Community</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link text-center" data-toggle="modal" href="#askmodal">Help</a>
-            </li>
-
-          </ul>
-          <ul class="navbar-nav ml-auto">
-
-            <li class="nav-item">
-              <button class="btn btn-outline-danger my-2 my-sm-0">LogIn</button>
-            </li>
-          </ul>
-
-        </section>
-      </section>
-    </nav>
-  </section>
-  <!--end of navigation bar-->
-  <!--ask me-->
-  <section class="container">
-    <h6>ask query button</h6>
-    <!-- <button type="button" class="askme" data-toggle="modal" data-target="#askmodal">Query?</button> -->
-    <!-- The Modal -->
-    <section class="modal fade" id="askmodal">
-      <h6>section header</h6>
-      <section class="modal-dialog modal-dialog-centered">
-        <h6>section header</h6>
-        <section class="modal-content">
-          <h6>section header</h6>
-
-          <!-- Modal Header -->
-          <section class="modal-header">
-            <h6>section header</h6>
-            <img id="logo" src="assets/logo1.png" alt="myLogo">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </section>
-
-          <!-- Modal body -->
-          <section class="modal-body">
-            <h6>section header</h6>
-            <!--modal form-->
-            <form>
-              <section class="form-group">
-                <label for="InputEmail">Email address</label>
-                <input type="email" class="form-control" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                  else.</small>
-              </section>
-              <section class="form-group">
-                <label for="InputContactnumber">Contact Number</label>
-                <input type="text" name="country_code" pattern="[1-9]{1}[0-9]{9}" placeholder="Contact Number">
-              </section>
-              <section class="form-check">
-                <input type="checkbox" class="form-check-input">
-                <label class="form-check-label" for="exampleCheck1">All the above informations are correct</label>
-              </section>
-              <section>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                  placeholder="Any Additional Messages"></textarea>
-              </section>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            <!--end of form-->
-          </section>
-
-          <!-- Modal footer -->
-          <section class="modal-footer">
-            <h6>section header</h6>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </section>
-
-        </section>
-      </section>
+                        </li>
+                        <li class="nav-item text-center">
+                            <a class="nav-link" href="#subscription">Plans</a>
+                        </li>
+                        <li class="nav-item text-center">
+                            <a class="nav-link" href="#goal">Why Wysser</a>
+                        </li>
+                        <li class="nav-item text-center">
+                            <a class="nav-link" href="#members">Community</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-center" data-toggle="modal" href="#askmodal">Help</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <button class="btn btn-outline-danger my-2 my-sm-0">LogIn</button>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+        </nav>
     </section>
-    <!--end of modal-->
-
-  </section>
-  <!--ends-->
-  <!--modal-->
-
-
-
-  <!-- -------------------------------------------------------------------------- -->
-  <app-root></app-root>
-
-  <!-- ------------------------------------------------------------------------  -->
-
-
-
-
-
-  <!--footer-->
-  <div class="mt-5 pt-5 pb-2 footer bg-dark">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5 col-xs-12 about-company">
-          <img id="logo2" src="assets/logo1.png" alt="myLogo">
-          <h2>Wysser Inc.</h2>
-          <p class="pr-5 text-white-50">You Order, We Deliver </p>
-          <h5>Show Some [ <i class="fas fa-heart" style="color:red;"></i> ]</h5>
-          <p>
-            <a href="#"><i class="fa fa-facebook mr-2"></i></a>
-            <a href="#"><i class="fa fa-linkedin mr-2"></i></a>
-            <a href="#"><i class="fa fa-instagram mr-2"></i></a>
-            <a href="#"><i class="fa fa-pinterest mr-2"></i></a>
-            <a href="#"><i class="fa fa-twitter mr-2"></i></a>
-            <a href="#"><i class="fa fa-rss"></i></a>
-          </p>
-        </div>
-        <!-- <div class="col-lg-3 col-xs-12 links">
+    <!--end of navigation bar-->
+    <!--ask me-->
+    <section class="container">
+        <h6>ask query button</h6>
+        <!-- <button type="button" class="askme" data-toggle="modal" data-target="#askmodal">Query?</button> -->
+        <!-- The Modal -->
+        <section class="modal fade" id="askmodal">
+            <h6>section header</h6>
+            <section class="modal-dialog modal-dialog-centered">
+                <h6>section header</h6>
+                <section class="modal-content">
+                    <h6>section header</h6>
+                    <!-- Modal Header -->
+                    <section class="modal-header">
+                        <h6>section header</h6>
+                        <img id="logo" src="assets/logo1.png" alt="myLogo">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </section>
+                    <!-- Modal body -->
+                    <section class="modal-body">
+                        <h6>section header</h6>
+                        <!--modal form-->
+                        <form>
+                            <section class="form-group">
+                                <label for="InputEmail">Email address</label>
+                                <input type="email" class="form-control" placeholder="Enter email">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                  else.</small>
+                            </section>
+                            <section class="form-group">
+                                <label for="InputContactnumber">Contact Number</label>
+                                <input type="text" name="country_code" pattern="[1-9]{1}[0-9]{9}" placeholder="Contact Number">
+                            </section>
+                            <section class="form-check">
+                                <input type="checkbox" class="form-check-input">
+                                <label class="form-check-label" for="exampleCheck1">All the above informations are correct</label>
+                            </section>
+                            <section>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Any Additional Messages"></textarea>
+                            </section>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                        <!--end of form-->
+                    </section>
+                    <!-- Modal footer -->
+                    <section class="modal-footer">
+                        <h6>section header</h6>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <!--end of modal-->
+    </section>
+    <!--ends-->
+    <!--modal-->
+    <!-- -------------------------------------------------------------------------- -->
+    <app-root></app-root>
+    <!-- ------------------------------------------------------------------------  -->
+    <!--footer-->
+    <div class="mt-5 pt-5 pb-2 footer bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-xs-12 about-company">
+                    <img id="logo2" src="assets/logo1.png" alt="myLogo">
+                    <h2>Wysser Inc.</h2>
+                    <p class="pr-5 text-white-50">You Order, We Deliver </p>
+                    <h5>Show Some [ <i class="fas fa-heart" style="color:red;"></i> ]</h5>
+                    <p>
+                        <a href="#"><i class="fa fa-facebook mr-2"></i></a>
+                        <a href="#"><i class="fa fa-linkedin mr-2"></i></a>
+                        <a href="#"><i class="fa fa-instagram mr-2"></i></a>
+                        <a href="#"><i class="fa fa-pinterest mr-2"></i></a>
+                        <a href="#"><i class="fa fa-twitter mr-2"></i></a>
+                        <a href="#"><i class="fa fa-rss"></i></a>
+                    </p>
+                </div>
+                <!-- <div class="col-lg-3 col-xs-12 links">
           <h4 class="mt-lg-0 mt-sm-3">Social Feeds</h4>
           <ul class="m-0 p-0">
-
           </ul>
         </div> -->
-        <div class="col-lg-4 col-xs-12 location">
-          <h4 class="mt-lg-0 mt-sm-4">Location</h4>
-          <p><i class="fa fa-map-marker mr-3"></i>38, 4th B Cross Rd, Koramangala 5th Block, Koramangala Industrial
-            Layout, Near JNC College Rd, Bengaluru, Karnataka 560095</p>
-          <p class="mb-0"><i class="fa fa-phone mr-3"></i>(+91) 123-4567</p>
-          <p><i class="fa fa-envelope-o mr-3"></i>wysserrouting@gmail.com</p>
+                <div class="col-lg-4 col-xs-12 location">
+                    <h4 class="mt-lg-0 mt-sm-4">Location</h4>
+                    <p><i class="fa fa-map-marker mr-3"></i>38, 4th B Cross Rd, Koramangala 5th Block, Koramangala Industrial Layout, Near JNC College Rd, Bengaluru, Karnataka 560095</p>
+                    <p class="mb-0"><i class="fa fa-phone mr-3"></i>(+91) 123-4567</p>
+                    <p><i class="fa fa-envelope-o mr-3"></i>wysserrouting@gmail.com</p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col copyright">
+                    <p class=""><small class="text-white-50">© 2019. All Rights Reserved.</small></p>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="row mt-5">
-        <div class="col copyright">
-          <p class=""><small class="text-white-50">© 2019. All Rights Reserved.</small></p>
-        </div>
-      </div>
     </div>
-  </div>
-  <!--end of footer-->
+    <!--end of footer-->
 </body>
 
 </html>

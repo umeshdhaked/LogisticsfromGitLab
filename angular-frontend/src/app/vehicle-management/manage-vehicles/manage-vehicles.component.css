@@ -1,0 +1,9 @@
+.container {
+    margin-top: 40px;
+}
+
+.AddVehicle {
+    margin-left: 200px;
+    padding: 0;
+    place-content: center;
+}

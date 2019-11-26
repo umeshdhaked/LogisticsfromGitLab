@@ -13,14 +13,12 @@ export class EditProfileService {
 
    public saveRetailerData(data){
 
+    let url = environment.apiUrl + ':8082/retailerProfile/saveDetailOfRetailer';
+    // console.log(url);
+    // console.log(data);
+
     setTimeout(() => {
-
-      // let url = environment.apiUrl + ":8082/retailerProfile/saveDetailOfRetailer"
-
-
-      console.log(data);
-
-        this.http.post('http://localhost:8082/retailerProfile/saveDetailOfRetailer', data ).subscribe();
+        this.http.post(url, data ).subscribe();
         alert('Profile Saved');
     }, 350);
 
