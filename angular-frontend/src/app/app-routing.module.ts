@@ -16,11 +16,13 @@ import { RequestsComponent } from './vehicle-management/requests/requests.compon
 import { ManageVehiclesComponent } from './vehicle-management/manage-vehicles/manage-vehicles.component';
 
 
+import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { VerifyUserComponent } from './verify-user/verify-user.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-{ path : 'home', component: HomeComponent},
+{path: '', redirectTo: '/home', pathMatch: 'full'},
+{path: 'home', component: HomeComponent},
 {path: 'signup', component: SignupComponent},
 {path: 'verify', component: VerifyComponent},
 {path: 'editProfile', component: EditProfileComponent},
@@ -31,9 +33,9 @@ const routes: Routes = [
   {path: 'requests',component: RequestsComponent}
 ]},
 {path: 'manage-vehicle',component:ManageVehiclesComponent},
-
-
 {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent},
+{path:'viewProfile',component:ViewProfileComponent},
+{path: 'confirm/:token', component: VerifyUserComponent},
 {path: '**', component: PageNotFoundComponent}
 ];
 
@@ -42,5 +44,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
-  export const routingModule = [HomeComponent, SignupComponent, VerifyComponent, EditProfileComponent, PageNotFoundComponent,VehicleManagementComponent,RequestsComponent,ManageVehiclesComponent]
+  export const routingModule = [HomeComponent, SignupComponent, VerifyComponent, EditProfileComponent, PageNotFoundComponent,VehicleManagementComponent,RequestsComponent,ManageVehiclesComponent, ViewProfileComponent]
 

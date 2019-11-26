@@ -6,4 +6,5 @@ export interface Order {
     deliveryDate: string;
     slotNumber: string;
     orderStatus: string;
+    retailerId: number;
 }

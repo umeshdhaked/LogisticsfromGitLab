@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Vehicle } from '../interfaces/vehicle';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { VehicleManagement } from '../interfaces/vehicle-management';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VehicleService {
-  private upersons: Vehicle[] = [
+  private upersons: VehicleManagement[] = [
     // {
     //     id: 1,
     //     vehicleNumber:'A302',
@@ -30,12 +30,12 @@ export class VehicleService {
   ]
   constructor(public http: HttpClient) { }
 
-  getVehiclesFromData(): Vehicle[] {
+  getVehiclesFromData(): VehicleManagement[] {
     return this.upersons;
   }
 
 
-  addVehicle(vehicle: Vehicle) {
+  addVehicle(vehicle: VehicleManagement) {
     vehicle.id = this.upersons.length + 1;
     this.upersons.push(vehicle);
     
@@ -43,11 +43,11 @@ export class VehicleService {
     this.http.post('http://localhost:8080/api/v1/vehicle', vehicle).subscribe();
 
   }
-  updateVehicle(vehicle: Vehicle) {
+  updateVehicle(vehicle: VehicleManagement) {
     let index = this.upersons.findIndex(u => vehicle.id === u.id);
     this.upersons[index] = vehicle;
   }
-  deleteVehicle(vehicle: Vehicle) {
+  deleteVehicle(vehicle: VehicleManagement) {
     this.upersons.splice(this.upersons.indexOf(vehicle), 1);
 
     console.log(vehicle.id);

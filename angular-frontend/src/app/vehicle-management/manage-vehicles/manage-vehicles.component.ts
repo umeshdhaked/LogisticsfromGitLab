@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Vehicle } from '../../interfaces/vehicle';
 import { VehicleService } from '../../services/vehicle.service';
 import { Router } from '@angular/router';
+import { VehicleManagement } from 'src/app/interfaces/vehicle-management';
 
 @Component({
   selector: 'app-manage-vehicles',
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ManageVehiclesComponent implements OnInit {
 
-  vehicles: Vehicle[];
+  vehicles: VehicleManagement[];
   vehicleForm: boolean = false;
   isNewVehicle: boolean;
   newVehicle: any = {};
@@ -25,12 +25,12 @@ export class ManageVehiclesComponent implements OnInit {
     });  
   }
 
-  getVehicles(): Vehicle[] {
+  getVehicles(): VehicleManagement[] {
     return this.vehicleService.getVehiclesFromData();
   }
 
 
-  showEditVehicleForm(vehicle: Vehicle) {
+  showEditVehicleForm(vehicle: VehicleManagement) {
     if (!vehicle) {
       this.vehicleForm = false;
       return;
@@ -49,7 +49,7 @@ export class ManageVehiclesComponent implements OnInit {
 
   }
 
-  saveVehicle(vehicle: Vehicle) {
+  saveVehicle(vehicle: VehicleManagement) {
     if (this.isNewVehicle) {
       //add a new vehicle
       this.vehicleService.addVehicle(vehicle);
@@ -64,7 +64,7 @@ export class ManageVehiclesComponent implements OnInit {
     this.editedVehicle = {};
   }
 
-  removeVehicle(vehicle: Vehicle) {
+  removeVehicle(vehicle: VehicleManagement) {
     this.vehicleService.deleteVehicle(vehicle);
     location.reload();
   }

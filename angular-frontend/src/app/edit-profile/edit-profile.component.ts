@@ -12,7 +12,7 @@ import { EditProfileService } from '../services/edit-profile.service';
 export class EditProfileComponent implements OnInit {
 
 
-  constructor(private http: HttpClient, private router:Router, private editProfileService:EditProfileService) { }
+  constructor(private httpClient: HttpClient, private router:Router, private editProfileService:EditProfileService) { }
   ngOnInit( ) {}
 
   // Methods Stats from here................................
@@ -49,8 +49,10 @@ export class EditProfileComponent implements OnInit {
 
 
   // for set url of Profile image
-  url = '';
+  public picFile;
+  picUrl = '';
   onSelectPicture(event) {
+    this.picFile = event.target.files[0];
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
 
@@ -58,15 +60,23 @@ export class EditProfileComponent implements OnInit {
 
       reader.onload = (event) => {               // called once readAsDataURL is completed
         let target: any = event.target;
-        this.url = target.result;
+        this.picUrl = target.result;
       }
     }
   
   }
 
+
+
+
+
 // for set url of document image
+  public docFile;
   docurl = '';
   onSelectDoc(event) {
+
+    this.docFile = event.target.files[0];
+
 
      if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
@@ -84,12 +94,13 @@ export class EditProfileComponent implements OnInit {
 
 
 
-
   public delete(){
-
     this.docurl = null;
-    this.url = null;
+    this.picUrl = null;
+    
   }
+
+
 
 
   public save(fullName,email,phone,address,gstIn,docName,check){
@@ -112,24 +123,24 @@ export class EditProfileComponent implements OnInit {
       "address":address,
       "gstIn":gstIn,
       "docName":docName,
-      "profilePic":this.url,
-      "docPic":this.docurl,
+      // "profilePic":this.url,
+      // "docPic":this.docurl,
     }
+
+    var retailerDataString = JSON.stringify(retailerData);  //converting json to string
+
+    let formData = new FormData();
+    formData.append('profilePic',this.picFile,this.picFile.name);
+    formData.append('docPic',this.docFile,this.docFile.name);
+    formData.append('retailer',retailerDataString);
   
-    this.editProfileService.saveRetailerData(retailerData);
+
+    this.editProfileService.saveRetailerData(formData);
+ 
+ }
+
+ this.delete();
+
+
   }
-  
-    // console.log(fullName +'-'+ email+'-'+phone+'-'+address+'-'+gstIn+'-'+docName+'-'+'-'+check+'-'+this.url+' - '+this.docurl);
-
-
-
-
-  }
-
-
-
-
-
 }
-
-

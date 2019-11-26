@@ -1,25 +1,34 @@
+<br/>
+<div class="container-fluid">
+  <div *ngIf="alreadyExists" class="alert alert-danger" role="alert">
+    The given email id is already in use!
+  </div>
+</div>
+<div class="text-center" *ngIf="userNotSaved">
+<form id="registrationForm" class="container-fluid" onsubmit="return false" method="POST">
+    <h5>Join Wysser</h5>    
+    <h2 id="sign">Create your Account</h2>
+    <br/>
+    <div class="row">
+    <div class="col-md-4 offset-md-4 col-12">
+        <input #firstName type="text" placeholder="First Name" name="firstName" required>
+    </div> 
+    <div class="col-md-4 offset-md-4 col-12">   
+        <input #lastName type="text" placeholder="Last Name" name="lastName" required>
+    </div>
+    <div class="col-md-4 offset-md-4 col-12">   
+        <input #email type="email" placeholder="Email Id" name="email" required>
+    </div>
+        <div class="col-md-4 offset-md-4 col-12"> 
+            <button type="submit" class="btn" (click)='registerNewUser(firstName.value, lastName.value, email.value)'>Create Account</button>
+        </div>
+    </div>
+  </form>
+  </div>
 
-
-<div class="bg-img">
-    <form action="" class="container">
-      <h1 id="sign">SignUp</h1>
-  
-      <label for="email"><b>Email</b></label>
-      <input #email type="text" placeholder="Enter Email" name="email" required>
-
-      <label for="email"><b>Mobile Number</b></label>
-      <input #mobile type="text" placeholder="Enter Mobile Number" name="email" required>
-  
-      <label for="psw"><b>Password</b></label>
-      <input #pass type="password" placeholder="Enter Password" name="psw" required>
-
-      <label for="psw"><b>Confirm Password</b></label>
-      <input #ConfPass type="password" placeholder="Confirm Password" name="psw" required>
-  
-      <button type="submit" routerLink='/verify' routerLinkActive="active" class="btn" (click)='submit(email.value,mobile.value,pass.value,ConfPass.value)'>Register</button>
-     
-
-      <p style="text-align: center;">{{notmatch}}</p>
-
-    </form>
+  <div *ngIf="!userNotSaved" class="text-center">
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Account Created</h4>
+        <p>Please check your email for the verification link.</p>
+    </div>
   </div>

@@ -27,10 +27,18 @@ public class Order {
     private String slotNumber;
     private Double orderVolume;
     private String orderStatus;
-
+    private int retailerId;
+    
     public Order() {
     }
 
+    public int getRetailerId(){
+        return retailerId;
+    }
+
+    public void setRetailerId(int retailerId){
+        this.retailerId = retailerId;
+    }
 
    public Long getId() {
        return id;

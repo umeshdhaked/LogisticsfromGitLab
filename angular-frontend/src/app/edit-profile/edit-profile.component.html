@@ -9,9 +9,12 @@
         <li class="nav-item">
                 <a class="nav-link" id="order-tab" href="#/addOrder" role="tab" aria-controls="orders" aria-selected="false">Add Order</a>
             </li>
-        <li class="nav-item">
-            <a class="nav-link active" id="profile-tab" href="#/editProfile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-        </li>
+            <li class="nav-item">
+              <a class="nav-link active" id="profile-tab" href="#/editProfile" role="tab" aria-controls="profile" aria-selected="false">Edit Profile</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" id="viewProfile-tab" href="#/viewProfile" role="tab" aria-controls="details" aria-selected="false">My Details</a>
+          </li>
     </ul>
 </div>
 <div class="Body">
@@ -22,7 +25,7 @@
     <br>
 
     <label class="hoverable" for="fileInput">
-      <img [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'">
+      <img [src]="picUrl ? picUrl : 'https://www.w3schools.com/howto/img_avatar.png'">
       <div class="hover-text">Choose file</div>
       <div class="background"></div>
     </label>
