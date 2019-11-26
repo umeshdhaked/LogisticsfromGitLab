@@ -40,10 +40,8 @@ public class ServiceImpl implements Services
 
     @Override
     public RetailerProfile getRetailerByEmail(String email) {
-        return retailerProfileRepository.findRetailerProfileByEmailId(email);
+        return retailerProfileRepository.findRetailerProfileByEmail(email);
     }
-
-
 
 
 }

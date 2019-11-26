@@ -60,6 +60,7 @@ import { ChartsModule } from 'ng2-charts';
 import { RatecardpopupComponent } from './ratecardpopup/ratecardpopup.component';
 import { VehicledemandfrontendComponent } from './vehicledemandfrontend/vehicledemandfrontend.component';
 import { FormsModule } from '@angular/forms';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { TimeSlotPipe } from './time-slot.pipe';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
 
@@ -77,6 +78,7 @@ import { VerifyUserComponent } from './verify-user/verify-user.component';
     RetailerDashboardComponent,
     VehicledemandfrontendComponent,
     RatecardpopupComponent,
+    ViewProfileComponent,
     TimeSlotPipe,
     VerifyUserComponent
   ],

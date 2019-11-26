@@ -19,5 +19,4 @@ public interface Services
     public RetailerProfile getRetailerByEmail(String email);
 
 
-
 }

@@ -9,11 +9,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.component';
 import { RetailerDashboardComponent } from './retailer-dashboard/retailer-dashboard.component';
 import { VehicledemandfrontendComponent } from './vehicledemandfrontend/vehicledemandfrontend.component';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
 
 
 const routes: Routes = [
-{ path : 'home', component: HomeComponent},
+{path: '', redirectTo: '/home', pathMatch: 'full'},
+{path: 'home', component: HomeComponent},
 {path: 'signup', component: SignupComponent},
 {path: 'verify', component: VerifyComponent},
 {path: 'editProfile', component: EditProfileComponent},
@@ -21,8 +23,8 @@ const routes: Routes = [
 {path: 'driver', component: DriverDashboardComponent},
 {path: 'retailer', component: RetailerDashboardComponent},
 {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent},
+{path:'viewProfile',component:ViewProfileComponent},
 {path: 'confirm/:token', component: VerifyUserComponent},
-{path: '', redirectTo: '/home', pathMatch: 'full'},
 {path: '**', component: PageNotFoundComponent}
 ];
 
@@ -31,5 +33,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
-  export const routingModule = [HomeComponent, SignupComponent, VerifyComponent, EditProfileComponent, PageNotFoundComponent]
+  export const routingModule = [HomeComponent, SignupComponent, VerifyComponent, EditProfileComponent, PageNotFoundComponent, ViewProfileComponent]
 
