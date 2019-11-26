@@ -12,9 +12,7 @@
             <li class="nav-item">
               <a class="nav-link active" id="profile-tab" href="#/editProfile" role="tab" aria-controls="profile" aria-selected="false">Edit Profile</a>
           </li>
-          <li class="nav-item">
-              <a class="nav-link" id="viewProfile-tab" href="#/viewProfile" role="tab" aria-controls="details" aria-selected="false">My Details</a>
-          </li>
+         
     </ul>
 </div>
 <div class="Body">
@@ -126,8 +124,12 @@
     </div>
 
     <button class="btn btn-primary"
-      (click)="save(fullName.value,email.value,phone.value,address.value,gstIn.value,docName.value,c.checked)"><b> Save </b>
+      (click)="save(fullName.value,email.value,phone.value,address.value,gstIn.value,docName.value,c.checked)" routerLink="/viewProfile"><b> Save </b>
     </button>
+    <button class="btn btn-primary"
+    routerLink="/viewProfile"><b> Back </b>
+  </button>
+
   </div>
 
 
