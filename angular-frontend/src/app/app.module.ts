@@ -83,6 +83,8 @@ import { ManageVehiclesComponent } from './vehicle-management/manage-vehicles/ma
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { TimeSlotPipe } from './time-slot.pipe';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +107,9 @@ import { VerifyUserComponent } from './verify-user/verify-user.component';
     ManageVehiclesComponent,
     ViewProfileComponent,
     TimeSlotPipe,
-    VerifyUserComponent
+    VerifyUserComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
