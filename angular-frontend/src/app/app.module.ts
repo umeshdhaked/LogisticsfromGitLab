@@ -60,6 +60,26 @@ import { ChartsModule } from 'ng2-charts';
 import { RatecardpopupComponent } from './ratecardpopup/ratecardpopup.component';
 import { VehicledemandfrontendComponent } from './vehicledemandfrontend/vehicledemandfrontend.component';
 import { FormsModule } from '@angular/forms';
+import { VehicleManagementComponent } from './vehicle-management/vehicle-management.component';
+import { RequestsComponent } from './vehicle-management/requests/requests.component';
+
+
+import { NgAlertModule } from '@theo4u/ng-alert';
+
+
+
+
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { ManageVehiclesComponent } from './vehicle-management/manage-vehicles/manage-vehicles.component';
+
+
+
+
+
+  
+
+
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { TimeSlotPipe } from './time-slot.pipe';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
@@ -78,6 +98,11 @@ import { VerifyUserComponent } from './verify-user/verify-user.component';
     RetailerDashboardComponent,
     VehicledemandfrontendComponent,
     RatecardpopupComponent,
+    VehicleManagementComponent,
+  
+    RequestsComponent,
+  
+    ManageVehiclesComponent,
     ViewProfileComponent,
     TimeSlotPipe,
     VerifyUserComponent
@@ -95,6 +120,7 @@ import { VerifyUserComponent } from './verify-user/verify-user.component';
     MatAutocompleteModule,
     MatCheckboxModule,
     HttpClientModule,
+    ReactiveFormsModule,
 
 
     A11yModule,
@@ -140,7 +166,8 @@ import { VerifyUserComponent } from './verify-user/verify-user.component';
     PortalModule,
     ScrollingModule,
 
-    ChartsModule
+    ChartsModule,
+    NgAlertModule
 
   ],
   entryComponents: [RatecardpopupComponent],
