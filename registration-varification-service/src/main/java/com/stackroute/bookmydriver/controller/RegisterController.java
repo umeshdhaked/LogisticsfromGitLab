@@ -108,7 +108,7 @@ public class RegisterController {
         System.out.println("Email : = "+user.getEmail());
 
         if (userExists!=null){
-            responseEntity = new ResponseEntity<String>("{\"message\":\"User Already Exists\"}", HttpStatus.CONFLICT);
+            responseEntity = new ResponseEntity<String>("{\"message\":\"User Already Exists\"}", HttpStatus.OK);
         }else{
             try{
                 //--------------------------email-verification for new user -------------
