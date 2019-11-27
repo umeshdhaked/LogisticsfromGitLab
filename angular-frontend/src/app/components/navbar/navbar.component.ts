@@ -7,9 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  checkLogin;
+
+  constructor() { 
+    this.checkLogin = localStorage.getItem('token');
+  }
 
   ngOnInit() {
   }
+
+
+  // for clearing local storage as logout button pressed
+  validateLogout(){
+    console.log("loging out");
+    
+    localStorage.removeItem('token');
+
+    this.checkLogin = null;
+
+  }
+  
+
 
 }

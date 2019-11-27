@@ -7,8 +7,8 @@
         <version>v1.0.0</version>
     </parent>
 
-    <artifactId>user-service</artifactId>
-    <name>user-service</name>
+    <artifactId>retailer-service</artifactId>
+    <name>retailer-service</name>
 
     <properties>
         <java.version>11</java.version>

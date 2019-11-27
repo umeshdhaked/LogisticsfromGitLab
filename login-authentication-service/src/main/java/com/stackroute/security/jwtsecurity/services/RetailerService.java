@@ -26,7 +26,7 @@ public class RetailerService {
         User user1 = retailerRepository.findUserByEmail(user.getEmail());
 
         System.out.println("user input = " + user.toString());
-        System.out.println("user from register_db = "+user1.toString());
+       // System.out.println("user from register_db = "+user1.toString());
 
         if(user1 ==null){
             System.out.println("in user1 null");

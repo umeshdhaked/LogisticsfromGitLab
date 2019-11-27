@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginAuthService } from 'src/app/services/login-auth.service';
 import * as jwt_decode from 'jwt-decode';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -16,11 +17,16 @@ export class LoginPageComponent implements OnInit {
   token;
 
 
-  constructor(private loginAuthService: LoginAuthService) {
+  constructor(private loginAuthService: LoginAuthService, private router:Router) {
    }
 
   ngOnInit() {
   }
+
+
+
+
+  loginMessage='';
 
   validateLogin(email, password) {
 
@@ -51,6 +57,11 @@ export class LoginPageComponent implements OnInit {
        decodedDetail = jwt_decode(this.token);   // decoding token into json objects
        console.log(decodedDetail);
        console.log(decodedDetail.sub);
+       this.router.navigate(['/viewProfile']);
+
+      }
+      else{
+        this.loginMessage = 'UserName or Password is incorrect';
       }
 
     });
@@ -60,13 +71,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   
-// for clearing local storage as logout button pressed
-  validateLogout(){
-    console.log("loging out");
-    
-    localStorage.removeItem('token');
 
-  }
 
 
 }

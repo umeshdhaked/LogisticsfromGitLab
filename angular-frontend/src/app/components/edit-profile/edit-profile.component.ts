@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from  '@angular/common/http';
 import { Router } from '@angular/router';
 import { EditProfileService } from '../../services/edit-profile.service';
-
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-edit-profile',
@@ -12,8 +12,31 @@ import { EditProfileService } from '../../services/edit-profile.service';
 export class EditProfileComponent implements OnInit {
 
 
+  email = '';
+
   constructor(private httpClient: HttpClient, private router:Router, private editProfileService:EditProfileService) { }
-  ngOnInit( ) {}
+  ngOnInit( ) {
+
+
+   // getting email from token
+   var decoded = {
+    "sub":""
+  }
+ let token = localStorage.getItem('token');
+ 
+
+ if(token != null){
+  decoded = jwt_decode(token);
+    this.email = decoded.sub;
+ }
+
+
+  }
+
+
+  
+
+
 
   // Methods Stats from here................................
 
@@ -103,12 +126,18 @@ export class EditProfileComponent implements OnInit {
 
 
 
-  public save(fullName,email,phone,address,gstIn,docName,check){
+
+
+
+
+
+
+  public save(fullName,phone,address,gstIn,docName,check){
    
     if(!check){
       alert('Please check terms and condition');
       this.router.navigate(['/editProfile']);
-    }else if(fullName==="" || email === "" || phone ==="" || address===""||gstIn===""){
+    }else if(fullName==="" || this.email === "" || phone ==="" || address===""||gstIn===""){
       alert('fill all the fields');
       this.router.navigate(['/editProfile']);      
     }else if(docName==="none"){
@@ -118,7 +147,7 @@ export class EditProfileComponent implements OnInit {
     else{
     var retailerData = {
       "fullName":fullName,
-      "email":email,
+      "email":this.email,
       "phoneNo":phone,
       "address":address,
       "gstIn":gstIn,

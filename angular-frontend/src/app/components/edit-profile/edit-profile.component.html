@@ -50,10 +50,10 @@
       <input #fullName matInput placeholder="Full Name" required>
       <!-- <mat-placeholder class="placeholder">FullName</mat-placeholder> -->
     </mat-form-field>
-
+<!-- 
     <mat-form-field>
       <input #email matInput placeholder="Email" required>
-    </mat-form-field>
+    </mat-form-field> -->
 
     <mat-form-field>
       <input #phone matInput placeholder="Phone" required>
@@ -124,7 +124,7 @@
     </div>
 
     <button class="btn btn-primary"
-      (click)="save(fullName.value,email.value,phone.value,address.value,gstIn.value,docName.value,c.checked)" routerLink="/viewProfile"><b> Save </b>
+      (click)="save(fullName.value,phone.value,address.value,gstIn.value,docName.value,c.checked)" routerLink="/viewProfile"><b> Save </b>
     </button>
     <button class="btn btn-primary"
     routerLink="/viewProfile"><b> Back </b>
