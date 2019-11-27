@@ -1,7 +1,7 @@
-package com.techprimers.security.jwtsecurity.services;
+package com.stackroute.security.jwtsecurity.services;
 
-import com.techprimers.security.jwtsecurity.model.Retailer;
-import com.techprimers.security.jwtsecurity.repository.RetailerRepository;
+import com.stackroute.security.jwtsecurity.model.Retailer;
+import com.stackroute.security.jwtsecurity.repository.RetailerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +24,10 @@ public class RetailerService {
     public boolean checkValidateDb(Retailer retailer){
 
         Retailer retailer1 = retailerRepository.findRetailerByEmail(retailer.getEmail());
+
+        if(retailer1==null){
+            return false;
+        }
 
 
         if(retailer.getEmail().equals(retailer1.getEmail()) && retailer.getPass().equals(retailer1.getPass())){

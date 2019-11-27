@@ -1,4 +1,4 @@
-package com.techprimers.security.jwtsecurity.model;
+package com.stackroute.security.jwtsecurity.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

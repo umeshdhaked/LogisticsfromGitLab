@@ -85,6 +85,7 @@ import { TimeSlotPipe } from './time-slot.pipe';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -109,7 +110,8 @@ import { FooterComponent } from './components/footer/footer.component';
     TimeSlotPipe,
     VerifyUserComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

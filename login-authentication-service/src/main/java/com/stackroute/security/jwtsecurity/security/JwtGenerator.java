@@ -1,6 +1,6 @@
-package com.techprimers.security.jwtsecurity.security;
+package com.stackroute.security.jwtsecurity.security;
 
-import com.techprimers.security.jwtsecurity.model.Retailer;
+import com.stackroute.security.jwtsecurity.model.Retailer;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

@@ -1,9 +1,9 @@
-package com.techprimers.security.jwtsecurity.controller;
+package com.stackroute.security.jwtsecurity.controller;
 
-import com.techprimers.security.jwtsecurity.model.Retailer;
-import com.techprimers.security.jwtsecurity.security.JwtGenerator;
-import com.techprimers.security.jwtsecurity.security.JwtValidator;
-import com.techprimers.security.jwtsecurity.services.RetailerService;
+import com.stackroute.security.jwtsecurity.model.Retailer;
+import com.stackroute.security.jwtsecurity.security.JwtGenerator;
+import com.stackroute.security.jwtsecurity.security.JwtValidator;
+import com.stackroute.security.jwtsecurity.services.RetailerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +25,7 @@ public class TokenController {
         this.jwtValidator = jwtValidator;
     }
 
+    @CrossOrigin
     @PostMapping("/generate")
     public String generate(@RequestBody final Retailer retailer) {
 
@@ -32,17 +33,25 @@ public class TokenController {
         boolean check = retailerService.checkValidateDb(retailer);
 
         if(check) {
-            System.out.println("retailer Exist");
+           // System.out.println("retailer Exist");
             generatedToken = jwtGenerator.generate(retailer);
 
-            return generatedToken;
+           String tokenStr = "{\"token\":"+"\""+generatedToken+"\"}";
+
+          //  System.out.println(tokenStr);
+
+            return tokenStr;
         }
         else {
-            return "Retailer DO NOT EXIST!";
+           // return "{\"token\":\"null\"}";
+            return null;
         }
+
+
 
     }
 
+    @CrossOrigin
     @PostMapping("/validate")
     public String validate(@RequestParam("token") String token, @RequestParam("email") String email){
 

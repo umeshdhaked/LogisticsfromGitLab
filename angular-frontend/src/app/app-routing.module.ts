@@ -18,6 +18,7 @@ import { ManageVehiclesComponent } from './components/vehicle-management/manage-
 
 import { ViewProfileComponent } from './components/view-profile/view-profile.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,7 @@ const routes: Routes = [
 {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent},
 {path:'viewProfile',component:ViewProfileComponent},
 {path: 'confirm/:token', component: VerifyUserComponent},
+{path: 'login', component: LoginPageComponent},
 {path: '**', component: PageNotFoundComponent}
 ];
 

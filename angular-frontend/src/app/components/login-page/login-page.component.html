@@ -1,0 +1,30 @@
+<div class="Text-container">
+
+    <mat-form-field>
+      <input #email matInput placeholder="Email" required>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input #password matInput placeholder="Password" required>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input #role matInput placeholder="Role" required>
+    </mat-form-field>
+  
+  
+  
+  <button class="btn btn-primary"
+  (click)="validateLogin(email.value,password.value,role.value)" routerLink="/login"><b> Login </b>
+  </button>
+  
+  
+  
+  <button class="btn btn-primary"
+  (click)="validateLogout()" routerLink="/login"><b> Logout </b>
+  </button>
+  
+  
+  </div>
+  
+  

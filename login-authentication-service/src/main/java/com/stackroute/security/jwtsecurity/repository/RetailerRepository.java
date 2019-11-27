@@ -1,6 +1,6 @@
-package com.techprimers.security.jwtsecurity.repository;
+package com.stackroute.security.jwtsecurity.repository;
 
-import com.techprimers.security.jwtsecurity.model.Retailer;
+import com.stackroute.security.jwtsecurity.model.Retailer;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
