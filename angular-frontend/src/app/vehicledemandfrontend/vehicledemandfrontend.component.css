@@ -54,7 +54,7 @@
   text-align: center;
 
   border-radius: 8px;
-  font-size: 20px !important;
+  font-size: 22px !important;
 
   width: 70%;
 
@@ -101,12 +101,17 @@
   margin-left: 300px;
 }
 
+.requestbutton{
+  font-size: 20px;
+}
+
 .nav-link {
   color:rgb(43, 40, 40);
   /* padding: 12px 0; */
-  border-bottom: transparent ; 
+  border-bottom: transparent ;
 }
 
 .nav-link:hover {
   color:rgb(43,40,40);
+
 }

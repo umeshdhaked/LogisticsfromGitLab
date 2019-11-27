@@ -15,4 +15,8 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
     vehicledemandrepository.save(retailerdemand);
     return retailerdemand;
     }
+    @Override
+    public retailerdemand getvehicledemand(){
+      return   vehicledemandrepository.findAll();
+    }
 }
