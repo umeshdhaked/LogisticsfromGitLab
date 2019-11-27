@@ -1,9 +1,13 @@
 package com.stackroute.vehicledemand.controller;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.stackroute.vehicledemand.domain.DateDemand;
 import com.stackroute.vehicledemand.domain.retailerdemand;
 import com.stackroute.vehicledemand.repository.vehicledemandrepository;
 import com.stackroute.vehicledemand.service.vehicledemandservice;
+import netscape.javascript.JSObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +44,20 @@ public class retailervehicledemandcontroller {
         }
         return responseEntity;
     }
-
+    public JsonArray toJson(DateDemand[] dateDemands){
+        JsonArray array = new JsonArray();
+        for(DateDemand demand: dateDemands){
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("date", demand.getDate());
+            jsonObject.addProperty("Timeslot1slot", demand.getTimeslot1().getSlot());
+            jsonObject.addProperty("Timeslot1volume", demand.getTimeslot1().getVolume());
+            jsonObject.addProperty("Timeslot2slot", demand.getTimeslot2().getSlot());
+            jsonObject.addProperty("Timeslot2volume", demand.getTimeslot2().getSlot());
+            jsonObject.addProperty("Timeslot3slot", demand.getTimeslot3().getSlot());
+            jsonObject.addProperty("Timeslot3volume", demand.getTimeslot3().getSlot());
+            array.add(jsonObject);
+        }
+        return array;
+    }
 
 }
