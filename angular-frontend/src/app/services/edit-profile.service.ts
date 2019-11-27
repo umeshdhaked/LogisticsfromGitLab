@@ -31,9 +31,9 @@ export class EditProfileService {
 
    public getPic(data){
 
-      // let url = environment.apiUrl + ":8082/retailerProfile/saveDetailOfRetailer"
-
-       return this.http.get('http://localhost:8082/retailerProfile/getPic?email='+data);
+    let url = environment.apiUrl + ':8082/retailerProfile/getPic?email='+data;
+     
+       return this.http.get(url);
   
    }
 
