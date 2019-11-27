@@ -1,6 +1,7 @@
 package com.stackroute.orderservice.service;
 
 import com.google.gson.Gson;
+import com.stackroute.orderservice.domain.DateDemand;
 import com.stackroute.orderservice.domain.Order;
 import com.stackroute.orderservice.domain.TimeSlot;
 
@@ -28,6 +29,9 @@ public class OrderServiceImpl implements OrderService {
     private String slotsResponse =
             "{\"TimeSlots\":[{\"Date\": \"2019-12-21\", \"Slot1\": \"40\", \"Slot2\": \"30\", \"Slot3\":\"10\"}, " +
                     "{\"Date\": \"2019-12-20\", \"Slot1\": \"41\", \"Slot2\": \"90\", \"Slot3\":\"20\"}]}"; //Message fetched from Driver company
+    private DateDemand[] dateDemandsDummy = {new DateDemand(
+            "2019-12-01", new TimeSlot("11:00-13:00", 100), new TimeSlot("14:00-16:00", 20), new TimeSlot("17:00-19:00", 50)
+    )};
 
     //Actual Kafka
     @Value("${kafka.bootstrap.servers}")
@@ -37,13 +41,14 @@ public class OrderServiceImpl implements OrderService {
     @Value("${kafka.topic.new_order}")
     private String newOrderTopicName;
 
+    private DateDemand[] dateDemands;
     //listener
     @KafkaListener(topics = "vehicle_slots", groupId = "foo")
     public void listen(String message) {
         System.out.println("Received Message in group foo: " + message);
         Gson gson = new Gson();
-        TimeSlot[] timeSlot = gson.fromJson(message, TimeSlot[].class);
-        System.out.println(timeSlot[0].toString());
+        dateDemands = gson.fromJson(message, DateDemand[].class);
+        System.out.println(dateDemands[0].toString());
     }
 
     //method to send messages
@@ -97,32 +102,38 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public TimeSlot checkSlotAvailability(String deliveryDate) throws ParseException {
+    public DateDemand checkSlotAvailability(String deliveryDate) throws ParseException {
         //Use dummy message and parse it
-        JSONParser jsonParser = new JSONParser();
-        JSONObject jsonObject = (JSONObject)jsonParser.parse(slotsResponse);
-
-        JSONArray dates = (JSONArray) jsonObject.get("TimeSlots");
-
-        JSONObject jsonSlot = null;
-
-        for(int i = 0; i < dates.size(); i++){
-            JSONObject current = (JSONObject)dates.get(i);
-            if(current.get("Date").equals(deliveryDate)){
-                System.out.println(current);
-                jsonSlot = current;
-                break;
+//        JSONParser jsonParser = new JSONParser();
+//        JSONObject jsonObject = (JSONObject)jsonParser.parse(slotsResponse);
+//
+//        JSONArray dates = (JSONArray) jsonObject.get("TimeSlots");
+//
+//        JSONObject jsonSlot = null;
+//
+//        for(int i = 0; i < dates.size(); i++){
+//            JSONObject current = (JSONObject)dates.get(i);
+//            if(current.get("Date").equals(deliveryDate)){
+//                System.out.println(current);
+//                jsonSlot = current;
+//                break;
+//            }
+//        }
+//        //Check which slots have enough volume and add
+//        if(jsonSlot != null) {
+//            TimeSlot timeSlot = new TimeSlot();
+//            timeSlot.setDate(deliveryDate);
+//            timeSlot.setSlot1(Double.parseDouble(jsonSlot.get("Slot1").toString()));
+//            timeSlot.setSlot2(Double.parseDouble(jsonSlot.get("Slot2").toString()));
+//            timeSlot.setSlot3(Double.parseDouble(jsonSlot.get("Slot3").toString()));
+//            return timeSlot;
+//        }
+        for(DateDemand date: dateDemandsDummy){
+            if(date.getDate().equals(deliveryDate)){
+                return date;
             }
         }
-        //Check which slots have enough volume and add
-        if(jsonSlot != null) {
-            TimeSlot timeSlot = new TimeSlot();
-            timeSlot.setDate(deliveryDate);
-            timeSlot.setSlot1(Double.parseDouble(jsonSlot.get("Slot1").toString()));
-            timeSlot.setSlot2(Double.parseDouble(jsonSlot.get("Slot2").toString()));
-            timeSlot.setSlot3(Double.parseDouble(jsonSlot.get("Slot3").toString()));
-            return timeSlot;
-        }
+
         return null;
 
     }

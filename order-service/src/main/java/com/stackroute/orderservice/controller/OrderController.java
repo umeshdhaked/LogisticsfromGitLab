@@ -1,5 +1,6 @@
 package com.stackroute.orderservice.controller;
 
+import com.stackroute.orderservice.domain.DateDemand;
 import com.stackroute.orderservice.domain.Order;
 import com.stackroute.orderservice.domain.TimeSlot;
 import com.stackroute.orderservice.service.OrderService;
@@ -21,7 +22,7 @@ public class OrderController {
     @GetMapping("/slots")
     public ResponseEntity<?> getAvailableSlots(@RequestParam("date") String date){
         try {
-            responseEntity = new ResponseEntity<TimeSlot>(orderService.checkSlotAvailability(date), HttpStatus.OK);
+            responseEntity = new ResponseEntity<DateDemand>(orderService.checkSlotAvailability(date), HttpStatus.OK);
         }catch (Exception e){
             responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
         }

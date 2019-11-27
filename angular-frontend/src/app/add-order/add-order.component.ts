@@ -1,3 +1,4 @@
+import { DateDemand } from './../interfaces/date-demand';
 import { Component, OnInit, NgZone } from '@angular/core';
 import { OrderServiceService } from '../services/order-service.service';
 import { catchError, tap } from 'rxjs/operators';
@@ -15,7 +16,19 @@ export class AddOrderComponent implements OnInit {
   success: boolean = false;
   //property which indicates whether a given slot can be picked
   slotValid = {"slot1": true, "slot2": true, "slot3" : true};
-  slotJson = [];
+  slotJson: DateDemand = {"date": "", 
+                            "timeSlot1":  {
+                              "slot": "11:00-13:00",
+                              "volume": undefined
+                            },
+                            "timeSlot2":  {
+                              "slot": "14:00-16:00",
+                              "volume": undefined
+                            },
+                            "timeSlot3":  {
+                              "slot": "17:00-19:00",
+                              "volume": undefined
+                            }};
 
   slot1:boolean = false;
   slot2:boolean = false;
@@ -38,6 +51,7 @@ export class AddOrderComponent implements OnInit {
       this.orderService.checkSlots(deliveryDate).subscribe(data =>
         this.zone.run(() => 
         {
+          console.log(data);
           this.slotJson = data;
           this.changeSlotValue(this.orderVolume);
         }));
@@ -46,17 +60,17 @@ export class AddOrderComponent implements OnInit {
 
   changeSlotValue(orderVolume){
     console.log(orderVolume);
-    if(orderVolume > this.slotJson["slot1"]){
+    if(orderVolume > this.slotJson["timeSlot1"]["volume"]){
       this.slotValid["slot1"] = false;
     }else{
       this.slotValid["slot1"] = true;
     }
-    if(orderVolume > this.slotJson["slot2"]){
+    if(orderVolume > this.slotJson["timeSlot2"]["volume"]){
       this.slotValid["slot2"] = false;
     }else{
       this.slotValid["slot2"] = true;
     }
-    if(orderVolume > this.slotJson["slot3"]){
+    if(orderVolume > this.slotJson["timeSlot3"]["volume"]){
       this.slotValid["slot3"] = false;
     }else{
       this.slotValid["slot3"] = true;
@@ -90,7 +104,7 @@ export class AddOrderComponent implements OnInit {
         this.slot1 = false;
         this.slot2 = false;
         this.slot3 = false;
-        this.slotJson = [];
+        this.slotJson = null;
         this.slotValid = {"slot1": true, "slot2": true, "slot3" : true};
       });
   }

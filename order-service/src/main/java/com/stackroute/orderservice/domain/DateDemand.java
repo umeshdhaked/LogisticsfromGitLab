@@ -5,12 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class TimeSlot {
-    private String slot;
-    private double volume;
+public class DateDemand {
+    private String date;
+    private TimeSlot timeSlot1;
+    private TimeSlot timeSlot2;
+    private TimeSlot timeSlot3;
 }

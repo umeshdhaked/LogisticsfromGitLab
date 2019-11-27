@@ -73,13 +73,13 @@
                 <div class="row">
                     <div class="col"></div>
                     <div class="col-sm col-12">
-                        <button type="button" [disabled]="!slotValid['slot1']" (click)="setSlot('slot1'); slot1 = true; slot2 = false; slot3 = false" class="btn-slot" [class.btn]="slotValid['slot1']" [class.btn-danger] = "!slotValid['slot1']" [class.selected]="slot1">11:00AM to 01:00PM <br/> {{slotJson["slot1"] | remainingVolume}}</button>
+                        <button type="button" [disabled]="!slotValid['slot1']" (click)="setSlot('slot1'); slot1 = true; slot2 = false; slot3 = false" class="btn-slot" [class.btn]="slotValid['slot1']" [class.btn-danger] = "!slotValid['slot1']" [class.selected]="slot1">11:00AM to 01:00PM <br/> {{slotJson["timeSlot1"]["volume"] | remainingVolume}}</button>
                     </div>
                     <div class="col-sm col-12">
-                        <button type="button" [disabled]="!slotValid['slot1']" (click)="setSlot('slot2'); slot1 = false; slot2 = true; slot3 = false" class="btn-slot" [class.btn]="slotValid['slot2']" [class.btn-danger] = "!slotValid['slot2']" [class.selected]="slot2">02:00PM to 04:00PM <br/> {{slotJson["slot2"] | remainingVolume}}</button>
+                        <button type="button" [disabled]="!slotValid['slot2']" (click)="setSlot('slot2'); slot1 = false; slot2 = true; slot3 = false" class="btn-slot" [class.btn]="slotValid['slot2']" [class.btn-danger] = "!slotValid['slot2']" [class.selected]="slot2">02:00PM to 04:00PM <br/> {{slotJson["timeSlot2"]["volume"] | remainingVolume}}</button>
                     </div>
                     <div class="col-sm col-12">
-                        <button type="button" [disabled]="!slotValid['slot3']" (click)="setSlot('slot3'); slot1 = false; slot2 = false; slot3 = true" class="btn-slot" [class.btn]="slotValid['slot3']" [class.btn-danger] = "!slotValid['slot3']" [class.selected]="slot3">05:00PM to 07:00PM <br/> {{slotJson["slot3"] | remainingVolume}}</button>
+                        <button type="button" [disabled]="!slotValid['slot3']" (click)="setSlot('slot3'); slot1 = false; slot2 = false; slot3 = true" class="btn-slot" [class.btn]="slotValid['slot3']" [class.btn-danger] = "!slotValid['slot3']" [class.selected]="slot3">05:00PM to 07:00PM <br/> {{slotJson["timeSlot3"]["volume"] | remainingVolume}}</button>
                     </div>  
                     <div class="col"></div>  
                 </div>

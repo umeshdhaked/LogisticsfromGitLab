@@ -1,5 +1,6 @@
 package com.stackroute.orderservice.service;
 
+import com.stackroute.orderservice.domain.DateDemand;
 import com.stackroute.orderservice.domain.Order;
 import com.stackroute.orderservice.domain.TimeSlot;
 import org.json.simple.parser.ParseException;
@@ -17,7 +18,7 @@ public interface OrderService {
     Order saveOrder(Order order);
 
     //Should consume from time_slots topic
-    TimeSlot checkSlotAvailability(String deliveryDate) throws ParseException;
+    DateDemand checkSlotAvailability(String deliveryDate) throws ParseException;
 
     List<Order> findOrdersByDateAndTimeSlot(String date, String timeslot);
 
