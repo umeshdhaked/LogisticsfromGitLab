@@ -5,6 +5,8 @@ import com.stackroute.vehicledemand.repository.vehicledemandrepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class vehicledemandserviceImpl implements vehicledemandservice {
     @Autowired
@@ -16,7 +18,7 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
     return retailerdemand;
     }
     @Override
-    public retailerdemand getvehicledemand(){
-      return   vehicledemandrepository.findAll();
+    public List<retailerdemand> getvehicledemand(){
+      return  vehicledemandrepository.findAll();
     }
 }

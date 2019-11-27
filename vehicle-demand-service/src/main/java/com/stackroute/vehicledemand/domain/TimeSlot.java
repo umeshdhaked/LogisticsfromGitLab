@@ -6,6 +6,10 @@ public class TimeSlot {
     private double volume;
 
 
+    public TimeSlot(String slot, double volume) {
+        this.slot = slot;
+        this.volume = volume;
+    }
 
     public String getSlot() {
         return slot;

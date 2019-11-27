@@ -128,7 +128,7 @@ public class OrderServiceImpl implements OrderService {
 //            timeSlot.setSlot3(Double.parseDouble(jsonSlot.get("Slot3").toString()));
 //            return timeSlot;
 //        }
-        for(DateDemand date: dateDemandsDummy){
+        for(DateDemand date: dateDemands){
             if(date.getDate().equals(deliveryDate)){
                 return date;
             }
