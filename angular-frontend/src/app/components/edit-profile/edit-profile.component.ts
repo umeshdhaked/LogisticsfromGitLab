@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from  '@angular/common/http';
 import { Router } from '@angular/router';
-import { EditProfileService } from '../services/edit-profile.service';
+import { EditProfileService } from '../../services/edit-profile.service';
 
 
 @Component({

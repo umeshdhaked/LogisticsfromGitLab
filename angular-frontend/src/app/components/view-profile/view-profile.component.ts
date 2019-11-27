@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EditProfileService } from '../services/edit-profile.service';
+import { EditProfileService } from '../../services/edit-profile.service';
 
 @Component({
   selector: 'app-view-profile',

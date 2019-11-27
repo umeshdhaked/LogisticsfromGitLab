@@ -1,8 +1,8 @@
 import { Component,Inject, OnInit } from '@angular/core';
 import {RatecardpopupComponent} from "../ratecardpopup/ratecardpopup.component";
 import {MatDialog} from "@angular/material/dialog";
-import {VehicledemandfrontendService} from "../vehicledemandfrontend.service";
-import {RetailerDetails} from "../vehicledemanded";
+import {VehicledemandfrontendService} from "../../vehicledemandfrontend.service";
+import {RetailerDetails} from "../../vehicledemanded";
 
 @Component({
   selector: 'app-vehicledemandfrontend',

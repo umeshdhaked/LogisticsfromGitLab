@@ -1,9 +1,9 @@
-import { DateDemand } from './../interfaces/date-demand';
+import { DateDemand } from '../../interfaces/date-demand';
 import { Component, OnInit, NgZone } from '@angular/core';
-import { OrderServiceService } from '../services/order-service.service';
+import { OrderServiceService } from '../../services/order-service.service';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Order } from '../interfaces/order';
+import { Order } from '../../interfaces/order';
 
 @Component({
   selector: 'app-add-order',

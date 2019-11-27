@@ -1,6 +1,6 @@
-import { DriverDashboardService } from './../services/driver-dashboard.service';
+import { DriverDashboardService } from '../../services/driver-dashboard.service';
 import { Component, OnInit, NgZone } from '@angular/core';
-import { Deliveryroute } from '../interfaces/deliveryroute';
+import { Deliveryroute } from '../../interfaces/deliveryroute';
 import { Router } from '@angular/router';
 
 

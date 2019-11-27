@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VehicleService } from '../../services/vehicle.service';
+import { VehicleService } from '../../../services/vehicle.service';
 import { Router } from '@angular/router';
 import { VehicleManagement } from 'src/app/interfaces/vehicle-management';
 

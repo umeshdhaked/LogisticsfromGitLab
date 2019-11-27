@@ -104,31 +104,8 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public DateDemand checkSlotAvailability(String deliveryDate) throws ParseException {
         //Use dummy message and parse it
-//        JSONParser jsonParser = new JSONParser();
-//        JSONObject jsonObject = (JSONObject)jsonParser.parse(slotsResponse);
-//
-//        JSONArray dates = (JSONArray) jsonObject.get("TimeSlots");
-//
-//        JSONObject jsonSlot = null;
-//
-//        for(int i = 0; i < dates.size(); i++){
-//            JSONObject current = (JSONObject)dates.get(i);
-//            if(current.get("Date").equals(deliveryDate)){
-//                System.out.println(current);
-//                jsonSlot = current;
-//                break;
-//            }
-//        }
-//        //Check which slots have enough volume and add
-//        if(jsonSlot != null) {
-//            TimeSlot timeSlot = new TimeSlot();
-//            timeSlot.setDate(deliveryDate);
-//            timeSlot.setSlot1(Double.parseDouble(jsonSlot.get("Slot1").toString()));
-//            timeSlot.setSlot2(Double.parseDouble(jsonSlot.get("Slot2").toString()));
-//            timeSlot.setSlot3(Double.parseDouble(jsonSlot.get("Slot3").toString()));
-//            return timeSlot;
-//        }
-        for(DateDemand date: dateDemands){
+        //Change this once actual rent service works
+        for(DateDemand date: dateDemandsDummy){
             if(date.getDate().equals(deliveryDate)){
                 return date;
             }

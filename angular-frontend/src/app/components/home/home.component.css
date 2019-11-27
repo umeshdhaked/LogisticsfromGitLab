@@ -12,7 +12,7 @@
   /* for screen width below 1024px */
   @media  (max-width: 1023px) {
       .bg-img {
-        background-image: linear-gradient(to bottom, transparent, mistyrose),url("../../assets/images/main.jpg");
+        background-image: linear-gradient(to bottom, transparent, mistyrose),url("../../../assets/images/main.jpg");
         background-size: cover;
         min-height: 360px;
         /* margin-top: -30px; */
@@ -31,7 +31,7 @@
   @media (min-width:1024px){
   .bg-img {
     /* The image used */
-    background-image: url("../../assets/images/main.png");
+    background-image: url("../../../assets/images/main.png");
     filter: contrast(90%);
     height: auto;
     width: 100%;

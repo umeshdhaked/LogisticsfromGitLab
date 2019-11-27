@@ -1,23 +1,23 @@
-import { VerifyComponent } from './verify/verify.component';
-import { HomeComponent } from './home/home.component';
-import { SignupComponent } from './signup/signup.component';
+import { VerifyComponent } from './components/verify/verify.component';
+import { HomeComponent } from './components/home/home.component';
+import { SignupComponent } from './components/signup/signup.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { AddOrderComponent } from './add-order/add-order.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.component';
-import { RetailerDashboardComponent } from './retailer-dashboard/retailer-dashboard.component';
-import { VehicledemandfrontendComponent } from './vehicledemandfrontend/vehicledemandfrontend.component';
-import { VehicleManagementComponent } from './vehicle-management/vehicle-management.component';
-import { RequestsComponent } from './vehicle-management/requests/requests.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { AddOrderComponent } from './components/add-order/add-order.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { DriverDashboardComponent } from './components/driver-dashboard/driver-dashboard.component';
+import { RetailerDashboardComponent } from './components/retailer-dashboard/retailer-dashboard.component';
+import { VehicledemandfrontendComponent } from './components/vehicledemandfrontend/vehicledemandfrontend.component';
+import { VehicleManagementComponent } from './components/vehicle-management/vehicle-management.component';
+import { RequestsComponent } from './components/vehicle-management/requests/requests.component';
 
 
-import { ManageVehiclesComponent } from './vehicle-management/manage-vehicles/manage-vehicles.component';
+import { ManageVehiclesComponent } from './components/vehicle-management/manage-vehicles/manage-vehicles.component';
 
 
-import { ViewProfileComponent } from './view-profile/view-profile.component';
-import { VerifyUserComponent } from './verify-user/verify-user.component';
+import { ViewProfileComponent } from './components/view-profile/view-profile.component';
+import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 
 
 const routes: Routes = [

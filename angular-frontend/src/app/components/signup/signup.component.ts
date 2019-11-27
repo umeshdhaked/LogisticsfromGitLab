@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { RegistrationService } from '../services/registration.service';
-import { Message } from '../interfaces/message';
+import { RegistrationService } from '../../services/registration.service';
+import { Message } from '../../interfaces/message';
 
 var bcrypt = require('bcryptjs');
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RegistrationService } from '../services/registration.service';
+import { RegistrationService } from '../../services/registration.service';
 
 @Component({
   selector: 'app-verify-user',

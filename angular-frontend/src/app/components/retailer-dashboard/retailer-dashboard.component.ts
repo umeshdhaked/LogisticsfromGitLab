@@ -1,8 +1,8 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { OrderServiceService } from '../services/order-service.service';
+import { OrderServiceService } from '../../services/order-service.service';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label, MultiDataSet } from 'ng2-charts';
-import { VehicleRentService } from '../services/vehicle-rent.service';
+import { VehicleRentService } from '../../services/vehicle-rent.service';
 
 @Component({
   selector: 'app-retailer-dashboard',
