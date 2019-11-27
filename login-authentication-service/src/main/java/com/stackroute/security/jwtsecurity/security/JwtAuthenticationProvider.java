@@ -1,7 +1,7 @@
 package com.stackroute.security.jwtsecurity.security;
 
 import com.stackroute.security.jwtsecurity.model.JwtAuthenticationToken;
-import com.stackroute.security.jwtsecurity.model.Retailer;
+import com.stackroute.security.jwtsecurity.model.User;
 import com.stackroute.security.jwtsecurity.model.RetailerDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -31,17 +31,17 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
         JwtAuthenticationToken jwtAuthenticationToken = (JwtAuthenticationToken) usernamePasswordAuthenticationToken;
         String token = jwtAuthenticationToken.getToken();
 
-        Retailer retailer = validator.validate(token);
+        User user = validator.validate(token);
 
-        if (retailer == null) {
+        if (user == null) {
             throw new RuntimeException("JWT Token is incorrect");
         }
 
         List<GrantedAuthority> grantedAuthorities = AuthorityUtils
-                .commaSeparatedStringToAuthorityList(retailer.getRole());
+                .commaSeparatedStringToAuthorityList(user.getRole());
 
 
-        return new RetailerDetails(retailer.getEmail(), retailer.getId(), token, grantedAuthorities);
+        return new RetailerDetails(user.getEmail(), user.getId(), token, grantedAuthorities);
     }
 
     @Override

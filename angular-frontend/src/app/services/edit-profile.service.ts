@@ -15,7 +15,8 @@ export class EditProfileService {
 
     let url = environment.apiUrl + ':8082/retailerProfile/saveDetailOfRetailer';
     // console.log(url);
-    // console.log(data);
+    console.log('profile data = ')
+     console.log(data);
 
     setTimeout(() => {
         this.http.post(url, data ).subscribe();

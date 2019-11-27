@@ -1,6 +1,6 @@
 package com.stackroute.security.jwtsecurity.services;
 
-import com.stackroute.security.jwtsecurity.model.Retailer;
+import com.stackroute.security.jwtsecurity.model.User;
 import com.stackroute.security.jwtsecurity.repository.RetailerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,22 +15,26 @@ public class RetailerService {
         this.retailerRepository = retailerRepository;
     }
 
-    public Retailer getRetailerFromEmail(String email){
+    public User getRetailerFromEmail(String email){
 
-       return retailerRepository.findRetailerByEmail(email);
+       return retailerRepository.findUserByEmail(email);
     }
 
 
-    public boolean checkValidateDb(Retailer retailer){
+    public boolean checkValidateDb(User user){
 
-        Retailer retailer1 = retailerRepository.findRetailerByEmail(retailer.getEmail());
+        User user1 = retailerRepository.findUserByEmail(user.getEmail());
 
-        if(retailer1==null){
+        System.out.println("user input = " + user.toString());
+        System.out.println("user from register_db = "+user1.toString());
+
+        if(user1 ==null){
+            System.out.println("in user1 null");
             return false;
         }
 
 
-        if(retailer.getEmail().equals(retailer1.getEmail()) && retailer.getPass().equals(retailer1.getPass())){
+        if(user.getEmail().equals(user1.getEmail()) && user.getPassword().equals(user1.getPassword())){
             return true;
         }
         else {
@@ -40,14 +44,14 @@ public class RetailerService {
     }
 
 
-    public void saveDummyRetailer(Retailer retailer){
+    public void saveDummyRetailer(User user){
 //        Retailer retailer = new Retailer();
 //        retailer.setEmail("umdk456@gmail.com");
 //        retailer.setPass("12345678");
 //        retailer.setRole("admin");
 //        retailer.setId(25);
 
-        retailerRepository.save(retailer);
+        retailerRepository.save(user);
     }
 
 }

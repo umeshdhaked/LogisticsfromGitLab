@@ -22,18 +22,15 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
   }
 
-  validateLogin(email, password, role) {
+  validateLogin(email, password) {
 
     var loginData = {
-      "id": 25,
       "email": email,
-      "pass": password,
-      "role": role
+      "password": password
     }
 
-    var decoded = {
-      "sub":"",
-      "role":""
+    var decodedDetail = {
+      "sub":""
     }
 
 
@@ -51,9 +48,9 @@ export class LoginPageComponent implements OnInit {
 
       
 
-       decoded = jwt_decode(this.token);   // decoding token into json objects
-       console.log(decoded);
-       console.log(decoded.sub+' '+decoded.role);
+       decodedDetail = jwt_decode(this.token);   // decoding token into json objects
+       console.log(decodedDetail);
+       console.log(decodedDetail.sub);
       }
 
     });

@@ -7,19 +7,13 @@
     <mat-form-field>
       <input #password matInput placeholder="Password" required>
     </mat-form-field>
-  
-    <mat-form-field>
-      <input #role matInput placeholder="Role" required>
-    </mat-form-field>
-  
-  
+   
   
   <button class="btn btn-primary"
-  (click)="validateLogin(email.value,password.value,role.value)" routerLink="/login"><b> Login </b>
+  (click)="validateLogin(email.value,password.value)" routerLink="/login"><b> Login </b>
   </button>
-  
-  
-  
+
+  <p>Just to Clear token for NOW !</p>
   <button class="btn btn-primary"
   (click)="validateLogout()" routerLink="/login"><b> Logout </b>
   </button>

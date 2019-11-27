@@ -4,22 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Retailer {
+public class User {
 
     @Id
     private long id;
     private String email;
-    private String pass;
+    private String password;
     private String role;
 
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getEmail() {
         return email;
@@ -29,12 +22,20 @@ public class Retailer {
         this.email = email;
     }
 
-    public String getPass() {
-        return pass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getRole() {
@@ -45,13 +46,12 @@ public class Retailer {
         this.role = role;
     }
 
-
     @Override
     public String toString() {
-        return "Retailer{" +
+        return "User{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
-                ", pass='" + pass + '\'' +
+                ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
                 '}';
     }

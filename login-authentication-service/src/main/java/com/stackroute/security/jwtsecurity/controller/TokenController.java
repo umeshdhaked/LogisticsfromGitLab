@@ -1,6 +1,6 @@
 package com.stackroute.security.jwtsecurity.controller;
 
-import com.stackroute.security.jwtsecurity.model.Retailer;
+import com.stackroute.security.jwtsecurity.model.User;
 import com.stackroute.security.jwtsecurity.security.JwtGenerator;
 import com.stackroute.security.jwtsecurity.security.JwtValidator;
 import com.stackroute.security.jwtsecurity.services.RetailerService;
@@ -27,14 +27,14 @@ public class TokenController {
 
     @CrossOrigin
     @PostMapping("/generate")
-    public String generate(@RequestBody final Retailer retailer) {
+    public String generate(@RequestBody final User user) {
 
         String generatedToken="";
-        boolean check = retailerService.checkValidateDb(retailer);
+        boolean check = retailerService.checkValidateDb(user);
 
         if(check) {
            // System.out.println("retailer Exist");
-            generatedToken = jwtGenerator.generate(retailer);
+            generatedToken = jwtGenerator.generate(user);
 
            String tokenStr = "{\"token\":"+"\""+generatedToken+"\"}";
 
@@ -59,11 +59,11 @@ public class TokenController {
         System.out.println("email from front = "+email);
 
 
-        Retailer retailer1 = jwtValidator.validate(token);  //It will return the retailer using generated token
+        User user1 = jwtValidator.validate(token);  //It will return the retailer using generated token
 
-        System.out.println("retailer1 = "+retailer1.toString());
+        System.out.println("retailer1 = "+ user1.toString());
 
-        if(email.equals(retailer1.getEmail())){
+        if(email.equals(user1.getEmail())){
             return "validate successfully";
         }
         else {
@@ -78,9 +78,9 @@ public class TokenController {
 
 
     @PostMapping("/saveDummy")
-    public void saveDummyRetailer(@RequestBody Retailer retailer){
+    public void saveDummyRetailer(@RequestBody User user){
         System.out.println("saving dummy");
-        retailerService.saveDummyRetailer(retailer);
+        retailerService.saveDummyRetailer(user);
     }
 
 

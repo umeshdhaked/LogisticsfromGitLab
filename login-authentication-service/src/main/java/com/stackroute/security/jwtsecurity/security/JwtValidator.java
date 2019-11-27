@@ -1,6 +1,6 @@
 package com.stackroute.security.jwtsecurity.security;
 
-import com.stackroute.security.jwtsecurity.model.Retailer;
+import com.stackroute.security.jwtsecurity.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.stereotype.Component;
@@ -11,27 +11,26 @@ public class JwtValidator {
 
     private String secret = "youtube";
 
-    public Retailer validate(String token) {
+    public User validate(String token) {
 
-        Retailer retailer = new Retailer();
-        retailer.setEmail("fuck you");
+        User user = new User();
         try {
             Claims body = Jwts.parser()
                     .setSigningKey(secret)
                     .parseClaimsJws(token)
                     .getBody();
 
-            retailer = new Retailer();
+            user = new User();
 
-            retailer.setEmail(body.getSubject());
-            retailer.setPass((String) body.get("pass"));
-            retailer.setId(Long.parseLong((String) body.get("userId")));
-            retailer.setRole((String) body.get("role"));
+            user.setEmail(body.getSubject());
+//            user.setPass((String) body.get("pass"));
+//            user.setId(Long.parseLong((String) body.get("userId")));
+//            user.setRole((String) body.get("role"));
         }
         catch (Exception e) {
             System.out.println(e);
         }
 
-        return retailer;
+        return user;
     }
 }
