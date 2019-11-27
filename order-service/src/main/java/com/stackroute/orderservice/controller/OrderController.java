@@ -85,5 +85,16 @@ public class OrderController {
         return responseEntity;
     }
 
+    @PutMapping("/updateOrder")
+    public ResponseEntity<?> findOrdersByStatus(@RequestParam("id") Long id, @RequestParam("orderStatus") String orderStatus){
+
+        try{
+            responseEntity = new ResponseEntity(orderService.updateOrderStatus(id, orderStatus), HttpStatus.OK);
+        }catch (Exception e){
+            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+
 
 }

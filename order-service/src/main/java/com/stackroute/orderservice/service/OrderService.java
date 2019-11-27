@@ -24,4 +24,5 @@ public interface OrderService {
 
     List<Order> findOrderByStatus(String orderStatus);
 
+    Order updateOrderStatus(Long id, String orderStatus);
 }

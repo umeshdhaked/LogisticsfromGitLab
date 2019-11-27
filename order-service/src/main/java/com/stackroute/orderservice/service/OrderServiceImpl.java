@@ -125,4 +125,9 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> findOrderByStatus(String orderStatus) {
         return orderRepository.findByOrderStatus(orderStatus);
     }
+
+    @Override
+    public Order updateOrderStatus(Long id, String orderStatus){
+        return orderRepository.updateOrder(id, orderStatus);
+    }
 }
