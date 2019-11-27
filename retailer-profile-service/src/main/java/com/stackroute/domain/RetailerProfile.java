@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 public class RetailerProfile
@@ -13,7 +14,6 @@ public class RetailerProfile
     @Id
     @GeneratedValue
     private int id;
-    private String emailId;
     private String firstName;
     private String lastName;
     private String age;
@@ -31,8 +31,15 @@ public class RetailerProfile
     private String phoneNo;
     private String address;
     private String docName;
-    private String profilePic;
-    private String docPic;
+
+
+    @Lob
+    private byte[] profilePic;
+    private String profilePicType;
+    @Lob
+    private byte[] docPic;
+    private String docPicType;
+
 
 
 
@@ -52,15 +59,21 @@ public class RetailerProfile
     }
 
 
+    public String getProfilePicType() {
+        return profilePicType;
+    }
 
+    public void setProfilePicType(String profilePicType) {
+        this.profilePicType = profilePicType;
+    }
 
+    public String getDocPicType() {
+        return docPicType;
+    }
 
-
-
-
-
-
-
+    public void setDocPicType(String docPicType) {
+        this.docPicType = docPicType;
+    }
 
     public String getFullName() {
         return fullName;
@@ -102,38 +115,21 @@ public class RetailerProfile
         this.docName = docName;
     }
 
-    public String getProfilePic() {
+    public byte[] getProfilePic() {
         return profilePic;
     }
 
-    public void setProfilePic(String profilePic) {
+    public void setProfilePic(byte[] profilePic) {
         this.profilePic = profilePic;
     }
 
-    public String getDocPic() {
+    public byte[] getDocPic() {
         return docPic;
     }
 
-    public void setDocPic(String docPic) {
+    public void setDocPic(byte[] docPic) {
         this.docPic = docPic;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public String getMobileNo() {
         return mobileNo;
@@ -141,14 +137,6 @@ public class RetailerProfile
 
     public void setMobileNo(String mobileNo) {
         this.mobileNo = mobileNo;
-    }
-
-    public String getEmailId() {
-        return emailId;
-    }
-
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
     }
 
     public String getFirstName() {
@@ -236,7 +224,6 @@ public class RetailerProfile
     public String toString() {
         return "RetailerProfile{" +
                 "id=" + id +
-                ", emailId='" + emailId + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age='" + age + '\'' +

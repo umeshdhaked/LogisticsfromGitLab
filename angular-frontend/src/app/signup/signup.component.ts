@@ -1,6 +1,7 @@
-import { GetlistService } from '../services/getlist.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
+import { RegistrationService } from '../services/registration.service';
+import { Message } from '../interfaces/message';
 
 var bcrypt = require('bcryptjs');
 
@@ -13,31 +14,28 @@ export class SignupComponent implements OnInit {
 
   private notmatch;
   private value;
-  constructor(private serv : GetlistService, private router:Router) {
-   }
+
+  alreadyExists: boolean = false;
+  userNotSaved: boolean = true;
+
+  constructor(private regService : RegistrationService, private router:Router, private zone: NgZone) {
+  }
 
   ngOnInit() {
   }
 
-  submit(email,mobile,pass,confPass)
-  {
-
-
-    if(pass === confPass){
-
-      var salt = bcrypt.genSaltSync(10);
-      var hashedPass = bcrypt.hashSync(pass, salt);
-
-      this.serv.postLists(email,mobile,hashedPass).subscribe();
-
-
+  registerNewUser(firstName, lastName, email){
+    if(firstName!=""&&lastName!=""&&email!=""){
+      this.regService.registerNewUser(firstName,lastName,email).subscribe((data)=>{
+        this.zone.run(()=>{
+          if(data.message == "OK"){
+            this.userNotSaved = false;
+          }else{
+            this.alreadyExists = true;
+          }
+        })
+      })
     }
-    else{
-      this.router.navigate(['/signup']);
-      alert('Passwords are not matching')
-    }
-
-   
   }
-
+  
 }

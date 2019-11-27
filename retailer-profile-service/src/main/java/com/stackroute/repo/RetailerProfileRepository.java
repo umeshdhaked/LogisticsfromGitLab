@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 public interface RetailerProfileRepository extends CrudRepository<RetailerProfile,Integer>
 {
 
-    public RetailerProfile findRetailerProfileByEmailId(String email);
+    public RetailerProfile findRetailerProfileByEmail(String email);
 
 
 }

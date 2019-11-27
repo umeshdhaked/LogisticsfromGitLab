@@ -17,8 +17,9 @@ services:
    network_mode: host  
  mysql1:
    image: mysql:5.7
-   container_name: mysql-container
+   container_name: mysql
    network_mode: host
+   hostname: localhost
    ports:
      - "3306:3306"
    restart: always
@@ -34,37 +35,37 @@ services:
    volumes:
    - /db-data:/var/lib/mysql
 
- # services.....
- zuul:
-   image: zuul
-   restart: always
-   build: zuul-service/
-   container_name: zuul-container
-   network_mode: host
-   ports:
-     - 8089:8089
-   expose:
-     - 8089
- eureka:
-     image: eureka
-     restart: always
-     build: eureka-service/
-     container_name: eureka-container
-     network_mode: host
-     ports:
-       - "8762:8762"
-     expose:
-       - 8762
- configserver:
-     image: configserver
-     restart: always
-     build: config-service/
-     container_name: configserver-container
-     network_mode: host
-     ports:
-       - "8889:8889"
-     expose:
-       - 8889
+#  services.....
+#  zuul:
+#    image: zuul
+#    restart: always
+#    build: zuul-service/
+#    container_name: zuul-container
+#    network_mode: host
+#    ports:
+#      - 8089:8089
+#    expose:
+#      - 8089
+#  eureka:
+#      image: eureka
+#      restart: always
+#      build: eureka-service/
+#      container_name: eureka-container
+#      network_mode: host
+#      ports:
+#        - "8762:8762"
+#      expose:
+#        - 8762
+#  configserver:
+#      image: configserver
+#      restart: always
+#      build: config-service/
+#      container_name: configserver-container
+#      network_mode: host
+#      ports:
+#        - "8889:8889"
+#      expose:
+#        - 8889
 
  authentication-service:
    image: authentication
@@ -139,3 +140,23 @@ services:
     - mongodb
    ports:
     - "9090:9090"    
+ zookeeper:
+   image: wurstmeister/zookeeper
+   ports:
+    - "2181:2181"
+   hostname: zookeeper
+ kafka:
+   image: wurstmeister/kafka
+   command: [start-kafka.sh]
+   ports:
+     - "9092:9092"
+   hostname: kafka
+   environment:
+     KAFKA_CREATE_TOPICS: "vehicle_slots:1:1,retailer_order:1:1" # topic:partition:replicas
+     KAFKA_ADVERTISED_HOST_NAME: localhost # docker-machine ip
+     KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+     KAFKA_ADVERTISED_PORT: 9092
+   volumes:
+     - /var/run/docker.sock:/var/run/docker.sock
+   depends_on:
+     - "zookeeper"   

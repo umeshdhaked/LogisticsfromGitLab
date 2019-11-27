@@ -1,58 +1,153 @@
 
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
 * {
     box-sizing: border-box;
+    background: transparent;
+    font-family:'Montserrat', sans-serif;
   }
-  
+  h4{
+    color:goldenrod;
+  }
+  /* for screen width below 1024px */
+  @media  (max-width: 1023px) {
+      .bg-img {
+        background-image: linear-gradient(to bottom, transparent, mistyrose),url("../../assets/images/main.jpg");
+        background-size: cover;
+        min-height: 360px;
+        /* margin-top: -30px; */
+      }
+      .over-image-text {
+        text-align: center;
+        padding: 36px;
+        color:black;
+      }
+      .deliveryboy-icon{
+        display: none;
+        visibility: hidden;
+      }
+  }
+  /* for screen width larger than 1024px */
+  @media (min-width:1024px){
   .bg-img {
     /* The image used */
-    background-image: url("../../assets/images/main.jpg");
+    background-image: url("../../assets/images/main.png");
     filter: contrast(90%);
     height: auto;
     width: 100%;
-    min-height: 520px;
-    
+    min-height: 760px;
+    margin-top: -58px;
+    /* 100vh  for full view */
+    background-repeat: no-repeat  ;
     /* Center and scale the image nicely */
-   
-    /* background-size: cover; */
-    /* position: relative; */
+    background-size: contain;
   }
   
-  /* Add styles to the form container */
-  .container {
+  .over-image-text {
     position: absolute;
-    right: 0;
-    top: 20px;
+    right: 10px;
+    top: 200px;
     margin: 20px;
-    max-width: 500px;
-    padding: 36px;
-    background-color: white;
+    max-width: 450px;
+    padding: 35px;
+    color:black;
+    
   }
-  
-  /* Full-width input fields */
-  input[type=text], input[type=password] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    border: none;
-    background: #f1f1f1;
-  }
-  
-  input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-  }
-  
-  /* Set a style for the submit button */
-  .btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-  }
-  
-  .btn:hover {
-    opacity: 1;
-  }
+}
+
+.stat{
+  text-align: center;
+  padding-top: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+}
+ .goal{
+  text-align: center;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  background: white;
+  /* border: 2px solid grey;
+  border-radius: 5px;   */
+ box-shadow: 10px solid black;
+ }
+ .deliveryboy-icon{
+  position: absolute;
+  left: 0px;
+  top: 450px;
+  margin: 20px;
+  max-width: 450px;
+  padding: 35px;
+ }
+ .client{
+   margin:auto;
+   font-style: strong;
+   height: 200px;
+   width: 200px;
+   border-radius: 100px;
+   vertical-align: middle;
+   padding-top: 10px;
+   background: crimson;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+  color:whitesmoke;
+ }
+.client:hover{
+  /* margin:auto; */
+  font-style: strong;
+  height: 200px;
+  width: 200px;
+  cursor: pointer;
+  border-radius: 100px;
+  vertical-align: middle;
+  padding-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color:white;
+  /* box-shadow: 10px solid black; */
+  -webkit-transition: background-color 1s ease-out;
+  -moz-transition: background-color 1s ease-out;
+  -o-transition: background-color 1s ease-out;
+  transition: background-color 1s ease-out;
+}
+.client strong{
+  display: contents;
+}
+.client:hover strong{
+  display: none;
+  -webkit-transition: background-color 1s ease-out;
+  -moz-transition: background-color 1s ease-out;
+  -o-transition: background-color 1s ease-out;
+  transition: background-color 1s ease-out;
+}
+.client p{
+  display: none;
+}
+.client:hover p{
+  display: contents;
+  -webkit-transition: background-color 1s ease-in;
+  -moz-transition: background-color 1s ease-in;
+  -o-transition: background-color 1s ease-in;
+  transition: background-color 1s ease-in;
+}
+
+/* profile cards */
+.grid3img{
+    
+  height: 150px;
+  width: 150px;
+  border-radius: 75px;
+}
+#grid{
+  text-decoration: none;
+  display: flex;
+  /* box-shadow: 10px solid black; */
+}
+rounded{
+  padding: 0 5px 0 5px;
+}

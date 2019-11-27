@@ -9,18 +9,33 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.component';
 import { RetailerDashboardComponent } from './retailer-dashboard/retailer-dashboard.component';
 import { VehicledemandfrontendComponent } from './vehicledemandfrontend/vehicledemandfrontend.component';
+import { VehicleManagementComponent } from './vehicle-management/vehicle-management.component';
+import { RequestsComponent } from './vehicle-management/requests/requests.component';
+
+
+import { ManageVehiclesComponent } from './vehicle-management/manage-vehicles/manage-vehicles.component';
+
+
+import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { VerifyUserComponent } from './verify-user/verify-user.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-{ path : 'home', component: HomeComponent},
+{path: '', redirectTo: '/home', pathMatch: 'full'},
+{path: 'home', component: HomeComponent},
 {path: 'signup', component: SignupComponent},
 {path: 'verify', component: VerifyComponent},
 {path: 'editProfile', component: EditProfileComponent},
 {path: 'addOrder', component: AddOrderComponent},
 {path: 'driver', component: DriverDashboardComponent},
 {path: 'retailer', component: RetailerDashboardComponent},
+{path: 'vehicle-management',component:VehicleManagementComponent,children:[
+  {path: 'requests',component: RequestsComponent}
+]},
+{path: 'manage-vehicle',component:ManageVehiclesComponent},
 {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent},
+{path:'viewProfile',component:ViewProfileComponent},
+{path: 'confirm/:token', component: VerifyUserComponent},
 {path: '**', component: PageNotFoundComponent}
 ];
 
@@ -29,5 +44,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
-  export const routingModule = [HomeComponent, SignupComponent, VerifyComponent, EditProfileComponent, PageNotFoundComponent]
+  export const routingModule = [HomeComponent, SignupComponent, VerifyComponent, EditProfileComponent, PageNotFoundComponent,VehicleManagementComponent,RequestsComponent,ManageVehiclesComponent, ViewProfileComponent]
 

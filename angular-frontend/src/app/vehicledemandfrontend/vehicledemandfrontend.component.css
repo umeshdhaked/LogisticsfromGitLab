@@ -69,7 +69,7 @@
 #twoelements{
   display: flex;
   text-align: center;
-  align: center;
+  /* align: center; */
 }
 
 .container {
@@ -100,6 +100,18 @@
   margin-right: 300px;
   margin-left: 300px;
 }
+
 .requestbutton{
   font-size: 20px;
+}
+
+.nav-link {
+  color:rgb(43, 40, 40);
+  /* padding: 12px 0; */
+  border-bottom: transparent ;
+}
+
+.nav-link:hover {
+  color:rgb(43,40,40);
+
 }
