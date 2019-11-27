@@ -80,12 +80,13 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order searchOrder(Long id) {
+        System.out.println("inside service");
         return orderRepository.findById(id);
     }
 
     @Override
     public List<Order> getAllOrders() {
-        return null;
+        return orderRepository.findAllOrders();
     }
 
     @Override

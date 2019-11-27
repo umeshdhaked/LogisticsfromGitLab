@@ -73,4 +73,17 @@ public class OrderController {
         }
         return responseEntity;
     }
+
+    @GetMapping("/findAll")
+    public ResponseEntity<?> findOrdersByStatus(){
+
+        try{
+            responseEntity = new ResponseEntity(orderService.getAllOrders(), HttpStatus.OK);
+        }catch (Exception e){
+            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+
+
 }

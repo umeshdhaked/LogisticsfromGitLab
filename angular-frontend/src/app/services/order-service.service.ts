@@ -37,7 +37,8 @@ export class OrderServiceService {
   }
 
   getPendingOrders(){
-    let url = 'assets/static/pending.json';
+    //let url = 'assets/static/pending.json';
+    let url = environment.apiUrl + ":8084/orders/findOrdersByStatus?orderStatus=pending"
     return this.http.get<Order[]>(url);
   }
 }
