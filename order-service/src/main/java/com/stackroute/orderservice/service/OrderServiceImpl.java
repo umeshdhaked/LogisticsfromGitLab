@@ -3,7 +3,7 @@ package com.stackroute.orderservice.service;
 import com.google.gson.Gson;
 import com.stackroute.orderservice.domain.Order;
 import com.stackroute.orderservice.domain.TimeSlot;
-import com.stackroute.orderservice.repository.ConsumerRepository;
+
 import com.stackroute.orderservice.repository.OrderRepository;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -15,6 +15,7 @@ import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -35,8 +36,15 @@ public class OrderServiceImpl implements OrderService {
     private KafkaProducer<String, String> producer;
     @Value("${kafka.topic.new_order}")
     private String newOrderTopicName;
-    @Autowired
-    private ConsumerRepository consumerRepository;
+
+    //listener
+    @KafkaListener(topics = "vehicle_slots", groupId = "foo")
+    public void listen(String message) {
+        System.out.println("Received Message in group foo: " + message);
+        Gson gson = new Gson();
+        TimeSlot[] timeSlot = gson.fromJson(message, TimeSlot[].class);
+        System.out.println(timeSlot[0].toString());
+    }
 
     //method to send messages
     private static void sendKafkaMessage(String payload,
@@ -90,7 +98,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public TimeSlot checkSlotAvailability(String deliveryDate) throws ParseException {
-        System.out.println(this.consumerRepository.findAll());
         //Use dummy message and parse it
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject = (JSONObject)jsonParser.parse(slotsResponse);
