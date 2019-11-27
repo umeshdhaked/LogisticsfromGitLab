@@ -9,7 +9,7 @@ import com.stackroute.vehicledemand.domain.TimeSlot;
 import com.stackroute.vehicledemand.domain.retailerdemand;
 import com.stackroute.vehicledemand.repository.vehicledemandrepository;
 import com.stackroute.vehicledemand.service.vehicledemandservice;
-import netscape.javascript.JSObject;
+//import netscape.javascript.JSObject;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
