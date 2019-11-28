@@ -29,7 +29,7 @@ services:
      MYSQL_ROOT_PASSWORD: Root@123
    entrypoint:
      sh -c "
-     echo 'CREATE DATABASE IF NOT EXISTS register_db; CREATE DATABASE IF NOT EXISTS Retailers;  CREATE DATABASE IF NOT EXISTS test;' > /docker-entrypoint-initdb.d/init.sql;
+     echo 'CREATE DATABASE IF NOT EXISTS register_db; CREATE DATABASE IF NOT EXISTS Retailers;  CREATE DATABASE IF NOT EXISTS test; CREATE DATABASE IF NOT EXISTS profile_db' > /docker-entrypoint-initdb.d/init.sql;
      /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
      "
    volumes:
@@ -120,8 +120,8 @@ services:
      - mysql1
    ports:
      - "8082:8082"     
- registration-varification-service:
-   image: registration-varification-service
+ registration-service:
+   image: registration-service
    build: registration-varification-service/
    restart: always
    network_mode: host
@@ -140,3 +140,23 @@ services:
     - mongodb
    ports:
     - "9090:9090"    
+ zookeeper:
+   image: wurstmeister/zookeeper
+   ports:
+    - "2181:2181"
+   hostname: zookeeper
+ kafka:
+   image: wurstmeister/kafka
+   command: [start-kafka.sh]
+   ports:
+     - "9092:9092"
+   hostname: kafka
+   environment:
+     KAFKA_CREATE_TOPICS: "vehicle_slots:1:1,retailer_order:1:1" # topic:partition:replicas
+     KAFKA_ADVERTISED_HOST_NAME: localhost # docker-machine ip
+     KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+     KAFKA_ADVERTISED_PORT: 9092
+   volumes:
+     - /var/run/docker.sock:/var/run/docker.sock
+   depends_on:
+     - "zookeeper"   

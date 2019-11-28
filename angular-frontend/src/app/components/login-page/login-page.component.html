@@ -1,0 +1,20 @@
+<div class="Text-container">
+
+    <mat-form-field>
+      <input #email matInput placeholder="Email" required>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input #password matInput placeholder="Password" required>
+    </mat-form-field>
+   
+  
+  <button class="btn btn-primary"
+  (click)="validateLogin(email.value,password.value)" routerLink="/login"><b> Login </b>
+  </button>
+
+  <h4>{{loginMessage}}</h4>
+  
+  </div>
+  
+  

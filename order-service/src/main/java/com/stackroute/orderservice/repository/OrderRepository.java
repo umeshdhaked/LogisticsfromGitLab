@@ -14,7 +14,14 @@ public interface OrderRepository extends Neo4jRepository<Order , Integer> {
     @Query("CREATE (o:Order{order}) return o;")
     Order saveOrders(@Param("order") Order order);
 
+    @Query("MATCH(o: Order) WHERE ID(o) = {id} RETURN o")
     Order findById(@Param("id") Long id);
+
+    @Query("MATCH (n:Order) RETURN n")
+    List<Order> findAllOrders();
+
+    @Query("MATCH (n:Order) WHERE ID(n) = {id} SET n.orderStatus = {status} RETURN n")
+    Order updateOrder(@Param("id") Long id, @Param("status") String status);
 
     List<Order> findByDeliveryDateAndSlotNumber(@Param("deliveryDate") String date, @Param("slotNumber") String slotNumber);
 

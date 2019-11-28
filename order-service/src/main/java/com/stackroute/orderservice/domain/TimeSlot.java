@@ -11,8 +11,6 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 public class TimeSlot {
-    private String date;
-    private double slot1;
-    private double slot2;
-    private double slot3;
+    private String slot;
+    private double volume;
 }

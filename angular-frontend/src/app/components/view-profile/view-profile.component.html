@@ -1,0 +1,61 @@
+<div class="container containerTop">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link" id="home-tab" href="#/user" role="tab" aria-controls="dashboard" aria-selected="true">Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="vehicle-tab" href="#/retailerVehicleDemand" role="tab" aria-controls="vehicles" aria-selected="false">Rent Vehicles</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="order-tab" href="#/addOrder" role="tab" aria-controls="orders" aria-selected="false">Add
+        Order</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" id="viewProfile-tab" href="#/viewProfile" role="tab" aria-controls="details" aria-selected="false">Profile</a>
+        </li>
+    </ul>
+</div>
+
+
+<div *ngIf="retailerObj.fullName != '' ">
+
+
+    <div id="profile-image">
+
+        <br>
+
+        <label class="hoverable" for="fileInput">
+    <img [src]="picurl ? picurl : 'https://www.w3schools.com/howto/img_avatar.png'">
+  </label>
+        <br>
+    </div>
+
+
+    <div class="Text-container">
+
+
+        <mat-list-item>Name : {{retailerObj.fullName}}</mat-list-item>
+        <br>
+        <mat-list-item>Email : {{retailerObj.email}}</mat-list-item>
+        <br>
+        <mat-list-item>Contact Detail : {{retailerObj.phoneNo}}</mat-list-item>
+
+
+        <br>
+        <button class="btn btn-primary" routerLink="/editProfile"> Edit </button>
+
+
+    </div>
+
+</div>
+
+
+
+<div *ngIf="retailerObj.fullName == '' ">
+    <div class="Text-container">
+        <mat-list-item>Please Update Your Profile</mat-list-item>
+    </div>
+    <br>
+    <button class="btn btn-primary" routerLink="/editProfile"> Edit </button>
+
+</div>

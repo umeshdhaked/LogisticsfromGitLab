@@ -15,7 +15,8 @@ export class EditProfileService {
 
     let url = environment.apiUrl + ':8082/retailerProfile/saveDetailOfRetailer';
     // console.log(url);
-    // console.log(data);
+    console.log('profile data = ')
+     console.log(data);
 
     setTimeout(() => {
         this.http.post(url, data ).subscribe();
@@ -30,9 +31,9 @@ export class EditProfileService {
 
    public getPic(data){
 
-      // let url = environment.apiUrl + ":8082/retailerProfile/saveDetailOfRetailer"
-
-       return this.http.get('http://localhost:8082/retailerProfile/getPic?email='+data);
+    let url = environment.apiUrl + ':8082/retailerProfile/getPic?email='+data;
+     
+       return this.http.get(url);
   
    }
 

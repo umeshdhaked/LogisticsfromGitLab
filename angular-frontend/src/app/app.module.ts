@@ -4,10 +4,10 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { SignupComponent } from './signup/signup.component';
-import { VerifyComponent } from './verify/verify.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { HomeComponent } from './components//home/home.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { VerifyComponent } from './components/verify/verify.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {A11yModule} from '@angular/cdk/a11y';
@@ -51,19 +51,19 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
-import { AddOrderComponent } from './add-order/add-order.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.component';
+import { AddOrderComponent } from './components/add-order/add-order.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { DriverDashboardComponent } from './components/driver-dashboard/driver-dashboard.component';
 import { RemainingVolumePipe } from './remaining-volume.pipe';
-import { RetailerDashboardComponent } from './retailer-dashboard/retailer-dashboard.component';
+import { RetailerDashboardComponent } from './components/retailer-dashboard/retailer-dashboard.component';
 import { ChartsModule } from 'ng2-charts';
 // import { RatecardpopupComponent } from './ratecardpopup/ratecardpopup.component';
-import { VehicledemandfrontendComponent } from './vehicledemandfrontend/vehicledemandfrontend.component';
-import { FormsModule } from '@angular/forms';
-import { VehicleManagementComponent } from './vehicle-management/vehicle-management.component';
-import { RequestsComponent } from './vehicle-management/requests/requests.component';
-import { ViewVehicleComponent } from './vehicledemandfrontend/view-vehicle/view-vehicle.component';
 
+
+import { VehicledemandfrontendComponent } from './components/vehicledemandfrontend/vehicledemandfrontend.component';
+import { FormsModule } from '@angular/forms';
+import { VehicleManagementComponent } from './components/vehicle-management/vehicle-management.component';
+import { RequestsComponent } from './components/vehicle-management/requests/requests.component';
 
 
 import { NgAlertModule } from '@theo4u/ng-alert';
@@ -73,7 +73,7 @@ import { NgAlertModule } from '@theo4u/ng-alert';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { ManageVehiclesComponent } from './vehicle-management/manage-vehicles/manage-vehicles.component';
+import { ManageVehiclesComponent } from './components/vehicle-management/manage-vehicles/manage-vehicles.component';
 
 
 
@@ -83,12 +83,16 @@ import { ManageVehiclesComponent } from './vehicle-management/manage-vehicles/ma
   
 
 
-import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { ViewProfileComponent } from './components/view-profile/view-profile.component';
 import { TimeSlotPipe } from './time-slot.pipe';
-import { VerifyUserComponent } from './verify-user/verify-user.component';
-import { VehicleHistoryComponent } from './vehicle-management/vehicle-history/vehicle-history.component';
+import { VehicleHistoryComponent } from './components/vehicle-management/vehicle-history/vehicle-history.component';
 import { from } from 'rxjs';
-import { BookedVehiclesComponent } from './vehicledemandfrontend/booked-vehicles/booked-vehicles.component';
+import { BookedVehiclesComponent } from './components/vehicledemandfrontend/booked-vehicles/booked-vehicles.component';
+import { ViewVehicleComponent } from './components/vehicledemandfrontend/view-vehicle/view-vehicle.component'
+import { VerifyUserComponent } from './components/verify-user/verify-user.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -116,6 +120,9 @@ import { BookedVehiclesComponent } from './vehicledemandfrontend/booked-vehicles
     VerifyUserComponent,
     VehicleHistoryComponent,
    
+    NavbarComponent,
+    FooterComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
