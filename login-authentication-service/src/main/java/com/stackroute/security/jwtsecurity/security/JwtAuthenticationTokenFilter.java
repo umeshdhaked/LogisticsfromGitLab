@@ -24,6 +24,7 @@ public class JwtAuthenticationTokenFilter extends AbstractAuthenticationProcessi
 
 
         if (header == null || !header.startsWith("Token ")) {
+            System.out.println(header);
             throw new RuntimeException("JWT Token is missing");
         }
 
