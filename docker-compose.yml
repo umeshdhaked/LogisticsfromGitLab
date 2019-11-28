@@ -69,7 +69,7 @@ services:
 
  authentication-service:
    image: authentication
-   build: authentication-service/
+   build: login-authentication-service/
    restart: always
    network_mode: host
    container_name: authentication
