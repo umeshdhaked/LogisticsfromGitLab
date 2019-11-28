@@ -28,7 +28,7 @@ export class AuthenticationService {
      }
 
      authenticate(data : any) {
-      let url = 'http://localhost:9091/token/generate';
+      let url = environment.apiUrl+':9091/token/generate';
       return this.httpClient.post<any>(url,data).pipe(
        map(
          userData => {
