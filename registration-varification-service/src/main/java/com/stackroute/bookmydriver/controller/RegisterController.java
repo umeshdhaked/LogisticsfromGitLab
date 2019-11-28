@@ -120,7 +120,7 @@ public class RegisterController {
 
             userService.saveUser(user);
 
-            String appUrl=request.getScheme() +"://"+request.getServerName()+":"+request.getServerPort();
+            String appUrl=request.getScheme() +"://"+request.getServerName()+":80";
 
 
             SimpleMailMessage registrationEmail = new SimpleMailMessage();
