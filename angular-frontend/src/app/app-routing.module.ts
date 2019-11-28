@@ -29,7 +29,7 @@ const routes: Routes = [
 {path: 'editProfile', component: EditProfileComponent},
 {path: 'addOrder', component: AddOrderComponent},
 {path: 'driver', component: DriverDashboardComponent},
-{path: 'retailer', component: RetailerDashboardComponent},
+{path: 'user', component: RetailerDashboardComponent},
 {path: 'vehicle-management',component:VehicleManagementComponent,children:[
   {path: 'requests',component: RequestsComponent}
 ]},
