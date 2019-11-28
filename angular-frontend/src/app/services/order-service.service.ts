@@ -26,19 +26,21 @@ export class OrderServiceService {
     return this.http.post<Order[]>(url, JSON.stringify(data),{headers:{'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*'}});
   }
 
-  getAllOrderData(){
-    let url = 'assets/static/orders.json';
+  getAllOrderData(retailerEmail){
+    // let url = 'assets/static/orders.json';
+    let url = environment.apiUrl + ":8084/orders/findAllOrdersOfRetailer?retailerEmail=" + retailerEmail
     return this.http.get<Order[]>(url);
   }
 
-  getCompletedOrders(){
-    let url = 'assets/static/delivered.json';
+  getCompletedOrders(retailerEmail){
+    // let url = 'assets/static/delivered.json';
+    let url = environment.apiUrl + ":8084/orders/findOrdersByStatus?retailerEmail=" + retailerEmail + "&orderStatus=delivered"
     return this.http.get<Order[]>(url);
   }
 
-  getPendingOrders(){
+  getPendingOrders(retailerEmail){
     //let url = 'assets/static/pending.json';
-    let url = environment.apiUrl + ":8084/orders/findOrdersByStatus?orderStatus=pending"
+    let url = environment.apiUrl + ":8084/orders/findOrdersByStatus?retailerEmail=" + retailerEmail + "&orderStatus=pending"
     return this.http.get<Order[]>(url);
   }
 }

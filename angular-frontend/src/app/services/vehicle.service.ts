@@ -40,7 +40,7 @@ export class VehicleService {
     this.upersons.push(vehicle);
     
    
-    this.http.post('http://localhost:8080/api/v1/vehicle', vehicle).subscribe();
+    this.http.post('http://localhost:8095/api/v1/vehicle', vehicle).subscribe();
 
   }
   updateVehicle(vehicle: VehicleManagement) {
@@ -52,13 +52,13 @@ export class VehicleService {
 
     console.log(vehicle.id);
 
-    let url = "http://localhost:8080/api/v1/vehicle/" + vehicle.id;
+    let url = "http://localhost:8095/api/v1/vehicle/" + vehicle.id;
 
     this.http.delete(url).subscribe();
   }
 
   getAllVehicles(): Observable<any> {
-    let url = "http://localhost:8080/api/v1/vehicles";
+    let url = "http://localhost:8095/api/v1/vehicles";
 
     return this.http.get(url);
   }

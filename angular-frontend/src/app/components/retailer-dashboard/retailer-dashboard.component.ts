@@ -3,6 +3,7 @@ import { OrderServiceService } from '../../services/order-service.service';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label, MultiDataSet } from 'ng2-charts';
 import { VehicleRentService } from '../../services/vehicle-rent.service';
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-retailer-dashboard',
@@ -10,7 +11,7 @@ import { VehicleRentService } from '../../services/vehicle-rent.service';
   styleUrls: ['./retailer-dashboard.component.css']
 })
 export class RetailerDashboardComponent implements OnInit {
-
+  retailerEmail: string = "";
   orderData = [];
   pendingOrders: number = 0;
   deliveredOrders: number = 0;
@@ -59,7 +60,16 @@ export class RetailerDashboardComponent implements OnInit {
   constructor(private orderService: OrderServiceService, private zone:NgZone, private rentedVehicleService: VehicleRentService ) { }
 
   ngOnInit() {
-    this.orderService.getAllOrderData().subscribe(data =>
+    var decoded = {
+      "sub":""
+    }
+    let token = localStorage.getItem('token');
+
+    if(token != null){
+      decoded = jwt_decode(token);
+      this.retailerEmail = decoded.sub;
+    }
+    this.orderService.getAllOrderData(this.retailerEmail).subscribe(data =>
       this.zone.run(() => 
       {
         this.orderData = data;
@@ -67,14 +77,14 @@ export class RetailerDashboardComponent implements OnInit {
         this.populateDoughnutChartData(this.orderData);
       }));
 
-    this.orderService.getCompletedOrders().subscribe(data =>
+    this.orderService.getCompletedOrders(this.retailerEmail).subscribe(data =>
       this.zone.run(() => 
       {
         console.log(data);
         this.deliveredOrders = data.length;
       }));
     
-    this.orderService.getPendingOrders().subscribe(data =>
+    this.orderService.getPendingOrders(this.retailerEmail).subscribe(data =>
       this.zone.run(() => 
       {
         console.log(data);

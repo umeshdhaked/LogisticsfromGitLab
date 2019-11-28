@@ -25,5 +25,8 @@ public interface OrderRepository extends Neo4jRepository<Order , Integer> {
 
     List<Order> findByDeliveryDateAndSlotNumber(@Param("deliveryDate") String date, @Param("slotNumber") String slotNumber);
 
-    List<Order> findByOrderStatus(@Param("orderStatus") String status);
+    List<Order> findByOrderStatusAndRetailerEmail(@Param("orderStatus") String status, @Param("retailerEmail") String retailerEmail);
+
+    @Query("MATCH (n:Order) WHERE n.retailerEmail = {retailerEmail} RETURN n")
+    List<Order> findAllOrdersByRetailerEmail(@Param("retailerEmail") String retailerEmail);
 }

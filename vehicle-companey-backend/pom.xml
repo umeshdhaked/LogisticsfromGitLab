@@ -7,10 +7,9 @@
 		<artifactId>wysser</artifactId>
 		<version>v1.0.0</version>
 	</parent>
-	<groupId>com.stackroute</groupId>
-	<artifactId>BackEnd</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>BackEnd</name>
+	
+	<artifactId>vehicle-company-backend</artifactId>
+
 
 	<properties>
 		<java.version>1.8</java.version>
