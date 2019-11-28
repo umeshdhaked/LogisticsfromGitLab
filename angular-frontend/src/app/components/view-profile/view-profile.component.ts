@@ -43,10 +43,10 @@ export class ViewProfileComponent implements OnInit {
    }
 
 
-// finding profile detail from email 
+// finding profile detail from email
 
-    this.editProfileService.getPic(email).subscribe((datas:any)=> {
-      this.retailerObj = datas;   
+    this.editProfileService.getProfileFromEmail(email).subscribe((datas:any)=> {
+      this.retailerObj = datas;
       this.picurl = 'data:'+this.retailerObj.profilePicType+';base64,'+this.retailerObj.profilePic;
       this.docurl = 'data:'+this.retailerObj.docPicType+';base64,'+this.retailerObj.docPic;
       // console.log(this.retailerObj.fullName);

@@ -45,20 +45,25 @@ public class RetailerController
         Gson g = new Gson();
         RetailerProfile profileData = g.fromJson(jstring, RetailerProfile.class);
 
+        RetailerProfile existRetailer = service.getRetailerByEmail(profileData.getEmail()); //checking if user exist
+
+        if(existRetailer != null)
+        {
+            profileData.setId(existRetailer.getId());
+        }
 
         profileData.setDocPic(file1.getBytes());
         profileData.setDocPicType(file1.getContentType());
         profileData.setProfilePic(file2.getBytes());
         profileData.setProfilePicType(file2.getContentType());
-
-
         service.updateRetailer(profileData);
+
     }
 
 
 
     @CrossOrigin
-    @GetMapping("/getPic")
+    @GetMapping("/getRetailerFromEmail")
     public RetailerProfile picHandler(@RequestParam("email") String email){
       //  System.out.println("email = "+email);
 //        System.out.println();

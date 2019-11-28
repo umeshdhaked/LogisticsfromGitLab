@@ -29,12 +29,12 @@ export class EditProfileService {
 
 
 
-   public getPic(data){
+   public getProfileFromEmail(data){
 
-    let url = environment.apiUrl + ':8082/retailerProfile/getPic?email='+data;
-     
+    let url = environment.apiUrl + ':8082/retailerProfile/getRetailerFromEmail?email='+data;
+
        return this.http.get(url);
-  
+
    }
 
 
