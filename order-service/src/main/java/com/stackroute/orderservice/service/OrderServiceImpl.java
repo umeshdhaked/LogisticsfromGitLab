@@ -106,7 +106,7 @@ public class OrderServiceImpl implements OrderService {
     public DateDemand checkSlotAvailability(String deliveryDate) throws ParseException {
         //Use dummy message and parse it
         //Change this once actual rent service works
-        for(DateDemand date: dateDemandsDummy){
+        for(DateDemand date: dateDemands){
             if(date.getDate().equals(deliveryDate)){
                 return date;
             }

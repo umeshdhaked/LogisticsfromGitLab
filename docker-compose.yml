@@ -69,16 +69,16 @@ services:
 
  authentication-service:
    image: authentication
-   build: authentication-service/
+   build: login-authentication-service/
    restart: always
    network_mode: host
    container_name: authentication
    depends_on:
      - mysql1
    ports:
-     - 8085
+     - 9091
    expose:
-     - 8085
+     - 9091
  order-service:
    image: order-service
    build: order-service/

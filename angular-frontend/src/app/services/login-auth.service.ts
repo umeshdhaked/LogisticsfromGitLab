@@ -15,7 +15,7 @@ export class LoginAuthService {
   
   getToken(data) {
 
-    let url = environment.apiUrl+':8084/token/generate';
+    let url = environment.apiUrl+':9091/token/generate';
 
   return this.httpclient.post(url, data)
 
