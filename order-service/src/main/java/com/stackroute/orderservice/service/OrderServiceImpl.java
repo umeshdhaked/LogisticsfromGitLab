@@ -122,12 +122,17 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> findOrderByStatus(String orderStatus) {
-        return orderRepository.findByOrderStatus(orderStatus);
+    public List<Order> findOrderByStatus(String orderStatus, String retailerEmail) {
+        return orderRepository.findByOrderStatusAndRetailerEmail(orderStatus, retailerEmail);
     }
 
     @Override
     public Order updateOrderStatus(Long id, String orderStatus){
         return orderRepository.updateOrder(id, orderStatus);
+    }
+
+    @Override
+    public List<Order> findAllOrdersOfRetailer(String retailerEmail){
+        return orderRepository.findAllOrdersByRetailerEmail(retailerEmail);
     }
 }
