@@ -122,7 +122,7 @@ services:
      - "8082:8082"     
  registration-service:
    image: registration-service
-   build: registration-service/
+   build: registration-varification-service/
    restart: always
    network_mode: host
    depends_on:
