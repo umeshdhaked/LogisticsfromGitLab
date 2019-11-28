@@ -120,9 +120,9 @@ services:
      - mysql1
    ports:
      - "8082:8082"     
- registration-varification-service:
-   image: registration-varification-service
-   build: registration-varification-service/
+ registration-service:
+   image: registration-service
+   build: registration-service/
    restart: always
    network_mode: host
    depends_on:
