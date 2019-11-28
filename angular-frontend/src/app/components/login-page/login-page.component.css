@@ -1,6 +1,6 @@
 
 .Text-container {
-    width: 45%;
+    width: 35%;
     height: 45%;
     margin: 0 auto;
     background-color: white;
@@ -19,8 +19,6 @@
   }
   
   .Text-container .deleteButton{
-    /* margin-left: 210px;
-    width: 70px; */
     width: 25%;
     margin: 0 auto;
   

@@ -30,6 +30,7 @@ public class TokenController {
     @PostMapping("/generate")
     public String generate(@RequestBody final User user) {
 
+        System.out.println(user);
         String generatedToken="";
         boolean check = retailerService.checkValidateDb(user);
 
@@ -62,15 +63,18 @@ public class TokenController {
 
         User user1 = jwtValidator.validate(token);  //It will return the retailer using generated token
 
-        System.out.println("retailer1 = "+ user1.toString());
+       // System.out.println("retailer1 = "+ user1.toString());
 
-        if(email.equals(user1.getEmail())){
-            return "validate successfully";
+        if(user1 != null) {
+            if (email.equals(user1.getEmail())) {
+                return "validate successfully";
+            } else {
+                return "emails not equals";
+            }
         }
         else {
-            return "not validated";
+            return "not validate";
         }
-
 
     }
 

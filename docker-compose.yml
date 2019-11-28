@@ -16,7 +16,7 @@ services:
      - NEO4J_AUTH=neo4j/12345 
    network_mode: host  
    volumes:
-   - /db-data:/var/lib/neo4j
+     - $HOME/neo4j/data:/data
  mysql1:
    image: mysql:5.7
    container_name: mysql
