@@ -57,7 +57,9 @@ import { DriverDashboardComponent } from './components/driver-dashboard/driver-d
 import { RemainingVolumePipe } from './remaining-volume.pipe';
 import { RetailerDashboardComponent } from './components/retailer-dashboard/retailer-dashboard.component';
 import { ChartsModule } from 'ng2-charts';
-import { RatecardpopupComponent } from './components/ratecardpopup/ratecardpopup.component';
+// import { RatecardpopupComponent } from './ratecardpopup/ratecardpopup.component';
+
+
 import { VehicledemandfrontendComponent } from './components/vehicledemandfrontend/vehicledemandfrontend.component';
 import { FormsModule } from '@angular/forms';
 import { VehicleManagementComponent } from './components/vehicle-management/vehicle-management.component';
@@ -77,11 +79,16 @@ import { ManageVehiclesComponent } from './components/vehicle-management/manage-
 
 
 
+
   
 
 
 import { ViewProfileComponent } from './components/view-profile/view-profile.component';
 import { TimeSlotPipe } from './time-slot.pipe';
+import { VehicleHistoryComponent } from './components/vehicle-management/vehicle-history/vehicle-history.component';
+import { from } from 'rxjs';
+import { BookedVehiclesComponent } from './components/vehicledemandfrontend/booked-vehicles/booked-vehicles.component';
+import { ViewVehicleComponent } from './components/vehicledemandfrontend/view-vehicle/view-vehicle.component'
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -100,8 +107,10 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     RemainingVolumePipe,
     RetailerDashboardComponent,
     VehicledemandfrontendComponent,
-    RatecardpopupComponent,
+    // RatecardpopupComponent,
     VehicleManagementComponent,
+    ViewVehicleComponent,
+    BookedVehiclesComponent,
   
     RequestsComponent,
   
@@ -109,6 +118,8 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     ViewProfileComponent,
     TimeSlotPipe,
     VerifyUserComponent,
+    VehicleHistoryComponent,
+   
     NavbarComponent,
     FooterComponent,
     LoginPageComponent
@@ -176,7 +187,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     NgAlertModule
 
   ],
-  entryComponents: [RatecardpopupComponent],
+  entryComponents: [ViewVehicleComponent,BookedVehiclesComponent],
   providers: [GetlistService],
   bootstrap: [AppComponent]
 })

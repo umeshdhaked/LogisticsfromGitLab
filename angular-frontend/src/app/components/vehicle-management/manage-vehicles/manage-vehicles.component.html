@@ -45,7 +45,7 @@
             <h2>Add New Vehicle</h2>
             <div class="form-group">
                 <label class="form-label" for="">Enter Vehicle Number:</label>
-                <input type="text" name="vehicleNumber" id="vehicleNumber" [(ngModel)]="newVehicle.vehicleNumber" class="form-control" />
+                <input type="number" placeholder="integer value" name="vehicleNumber" id="vehicleNumber" [(ngModel)]="newVehicle.vehicleNumber" class="form-control" />
                 <label class="form-label" for="">Enter Driver Name:</label>
                 <input type="text" name="driverName" id="driverName" [(ngModel)]="newVehicle.driverName" class="form-control" />
 
@@ -53,10 +53,10 @@
                 <input type="text" name="vehicleType" id="vehicleType" [(ngModel)]="newVehicle.vehicleType" class="form-control" />
 
                 <label class="form-label" for="">Enter Vehicle Capacity:</label>
-                <input type="text" name="capacity" id="capacity" [(ngModel)]="newVehicle.capacity" class="form-control" />
+                <input type="number" placeholder="integer value" name="capacity" id="capacity" [(ngModel)]="newVehicle.capacity" class="form-control" />
 
                 <label class="form-label" for="">Enter Vehicle Cost Per Slot:</label>
-                <input type="text" name="costPerSlot" id="costPerSlot" [(ngModel)]="newVehicle.costPerSlot" class="form-control" />
+                <input type="number" placeholder="integer value" name="costPerSlot" id="costPerSlot" [(ngModel)]="newVehicle.costPerSlot" class="form-control" />
 
                 <label class="form-label" for="">Enter Vehicle Status:</label>
                 <input type="text" name="vehicleStatus" id="vehicleStatus" [(ngModel)]="newVehicle.vehicleStatus" class="form-control" />
@@ -81,7 +81,7 @@
 
             <div class="form-group">
                 <label class="form-label" for="">Enter Vehicle Number:</label>
-                <input type="text" name="vehicleNumber" id="vehicleNumber" [(ngModel)]="editedVehicle.vehicleNumber" class="form-control" />
+                <input type="number" placeholder="integer value" name="vehicleNumber" id="vehicleNumber" [(ngModel)]="editedVehicle.vehicleNumber" class="form-control" />
                 <label class="form-label" for="">Enter Driver Name:</label>
                 <input type="text" name="driverName" id="driverName" [(ngModel)]="editedVehicle.driverName" class="form-control" />
 
@@ -89,10 +89,10 @@
                 <input type="text" name="vehicleType" id="vehicleType" [(ngModel)]="editedVehicle.vehicleType" class="form-control" />
 
                 <label class="form-label" for="">Enter Vehicle Capacity:</label>
-                <input type="text" name="capacity" id="capacity" [(ngModel)]="editedVehicle.capacity" class="form-control" />
+                <input type="number" placeholder="integer value" name="capacity" id="capacity" [(ngModel)]="editedVehicle.capacity" class="form-control" />
 
                 <label class="form-label" for="">Enter Vehicle Cost Per Slot:</label>
-                <input type="text" name="costPerSlot" id="costPerSlot" [(ngModel)]="editedVehicle.costPerSlot" class="form-control" />
+                <input type="number" placeholder="integer value" name="costPerSlot" id="costPerSlot" [(ngModel)]="editedVehicle.costPerSlot" class="form-control" />
 
                 <label class="form-label" for="">Enter Vehicle Status:</label>
                 <input type="text" name="vehicleStatus" id="vehicleStatus" [(ngModel)]="editedVehicle.vehicleStatus" class="form-control" />
