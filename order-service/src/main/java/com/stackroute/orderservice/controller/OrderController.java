@@ -64,10 +64,10 @@ public class OrderController {
     }
 
     @GetMapping("/findOrdersByStatus")
-    public ResponseEntity<?> findOrdersByStatus(@RequestParam("orderStatus") String orderStatus){
+    public ResponseEntity<?> findOrdersByStatus(@RequestParam("orderStatus") String orderStatus, @RequestParam("retailerEmail") String retailerEmail){
 
         try{
-            responseEntity = new ResponseEntity(orderService.findOrderByStatus(orderStatus), HttpStatus.OK);
+            responseEntity = new ResponseEntity(orderService.findOrderByStatus(orderStatus, retailerEmail), HttpStatus.OK);
         }catch (Exception e){
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
         }
@@ -96,5 +96,14 @@ public class OrderController {
         return responseEntity;
     }
 
+    @GetMapping("/findAllOrdersOfRetailer")
+    public ResponseEntity<?> findAllOrdersOfRetailer(@RequestParam("retailerEmail") String retailerEmail){
 
+        try{
+            responseEntity = new ResponseEntity(orderService.findAllOrdersOfRetailer(retailerEmail), HttpStatus.OK);
+        }catch (Exception e){
+            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
 }
