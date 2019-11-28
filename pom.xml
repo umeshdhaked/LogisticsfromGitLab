@@ -71,6 +71,6 @@
         <module>registration-varification-service</module>
         <module>login-authentication-service</module>
         <module>vehicle-demand-service</module>
-        <module>vehicle-company-backend</module>
+        <module>vehicle-companey-backend</module>
     </modules>
 </project>
