@@ -36,7 +36,7 @@ export class VehicleService {
 
 
   addVehicle(vehicle: VehicleManagement) {
-    vehicle.id = this.upersons.length + 1;
+    // vehicle.id = this.upersons.length + 1;
     this.upersons.push(vehicle);
     
    
