@@ -1,6 +1,59 @@
 <div class="container">
     <div class="col-md-12">
         <h1>Vehicle List</h1>
+
+        <!-- <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="vehicleNumber">
+                <th mat-header-cell *matHeaderCellDef> Vehicle Number </th>
+                <td mat-cell *matCellDef="let element"> {{element.vehicleNumber}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="driverName">
+                <th mat-header-cell *matHeaderCellDef> Driver Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.driverName}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="vehicleType">
+                <th mat-header-cell *matHeaderCellDef> Vehicle Type </th>
+                <td mat-cell *matCellDef="let element"> {{element.vehicleType}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="capacity">
+                <th mat-header-cell *matHeaderCellDef> Capacity(lit) </th>
+                <td mat-cell *matCellDef="let element"> {{element.capacity}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="costPerSlot">
+                <th mat-header-cell *matHeaderCellDef> Cost Per Slot(Rs) </th>
+                <td mat-cell *matCellDef="let element"> {{element.costPerSlot}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="vehicleStatus">
+                <th mat-header-cell *matHeaderCellDef> Vehicle Status </th>
+                <td mat-cell *matCellDef="let element"> {{element.vehicleStatus}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+ -->
+
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search" [(ngModel)]="searchTerm" style="width: 30%;">
+
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
@@ -15,7 +68,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let vehicle of vehicles">
+                <tr *ngFor="let vehicle of filteredData">
                     <td>{{ vehicle.id }}</td>
                     <td>{{ vehicle.vehicleNumber }}</td>
                     <td>{{ vehicle.driverName }}</td>
