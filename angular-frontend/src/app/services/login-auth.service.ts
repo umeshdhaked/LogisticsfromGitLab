@@ -24,7 +24,7 @@ export class LoginAuthService {
 
 
   isUserLoggedIn() {
-    let checkLogin = localStorage.getItem('token')
+    let checkLogin = localStorage.getItem('token')  //we need to verify this token we can't blindly allow any string
     //console.log(!(user === null))
     return !(checkLogin === null)
   }
