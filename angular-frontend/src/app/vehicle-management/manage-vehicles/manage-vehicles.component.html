@@ -11,6 +11,7 @@
                     <th class="text-center">Capacity(lit)</th>
                     <th class="text-center">Cost Per Slot(Rs)</th>
                     <th class="text-center">Vehicle Status</th>
+
                     <th class="text-center">&nbsp;</th>
                 </tr>
             </thead>
@@ -23,6 +24,7 @@
                     <td>{{ vehicle.capacity }}</td>
                     <td>{{ vehicle.costPerSlot }}</td>
                     <td>{{ vehicle.vehicleStatus }}</td>
+
 
                     <td>
                         <button class="btn btn-info mr-2" (click)="showEditVehicleForm(vehicle)">
@@ -43,25 +45,54 @@
 
         <form *ngIf="vehicleForm" style="width: 50%" class="ml-auto mr-auto">
             <h2>Add New Vehicle</h2>
+
+
+            <div class="form-group">
+
+
+
+                <label>First Name</label>
+                <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="">Enter Vehicle ID:</label>
+                <input type="number" placeholder="integer value" name="id" id="id" [(ngModel)]="newVehicle.id" class="form-control" required="true" />
+            </div>
             <div class="form-group">
                 <label class="form-label" for="">Enter Vehicle Number:</label>
-                <input type="text" name="vehicleNumber" id="vehicleNumber" [(ngModel)]="newVehicle.vehicleNumber" class="form-control" />
-                <label class="form-label" for="">Enter Driver Name:</label>
-                <input type="text" name="driverName" id="driverName" [(ngModel)]="newVehicle.driverName" class="form-control" />
-
-                <label class="form-label" for="">Enter Vehicle Type:</label>
-                <input type="text" name="vehicleType" id="vehicleType" [(ngModel)]="newVehicle.vehicleType" class="form-control" />
-
-                <label class="form-label" for="">Enter Vehicle Capacity:</label>
-                <input type="text" name="capacity" id="capacity" [(ngModel)]="newVehicle.capacity" class="form-control" />
-
-                <label class="form-label" for="">Enter Vehicle Cost Per Slot:</label>
-                <input type="text" name="costPerSlot" id="costPerSlot" [(ngModel)]="newVehicle.costPerSlot" class="form-control" />
-
-                <label class="form-label" for="">Enter Vehicle Status:</label>
-                <input type="text" name="vehicleStatus" id="vehicleStatus" [(ngModel)]="newVehicle.vehicleStatus" class="form-control" />
-
+                <input type="text" name="vehicleNumber" id="vehicleNumber" [(ngModel)]="newVehicle.vehicleNumber" class="form-control" required="true" />
             </div>
+            <div class="form-group">
+                <label class="form-label" for="">Enter Driver Name:</label>
+                <input type="text" name="driverName" id="driverName" [(ngModel)]="newVehicle.driverName" class="form-control" required="true" />
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="">Enter Vehicle Type:</label>
+                <input type="text" name="vehicleType" id="vehicleType" [(ngModel)]="newVehicle.vehicleType" class="form-control" required="true" />
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="">Enter Vehicle Capacity:</label>
+                <input type="number" placeholder="integer value" name="capacity" id="capacity" [(ngModel)]="newVehicle.capacity" class="form-control" required="true" />
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="">Enter Vehicle Cost Per Slot:</label>
+                <input type="number" placeholder="integer value" name="costPerSlot" id="costPerSlot" [(ngModel)]="newVehicle.costPerSlot" class="form-control" required="true" />
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="">Enter Vehicle Status:</label>
+                <select id="vehicleStatus" name="vehicleStatus" [(ngModel)]="newVehicle.vehicleStatus" class="form-control" required="true">
+                    <option value="busy">Busy</option>
+                    <option value="free">Free</option>
+                    <option value="broken">Broken</option>
+                </select>
+            </div>
+            <!-- <input type="text" name="vehicleStatus" id="vehicleStatus" [(ngModel)]="newVehicle.vehicleStatus" class="form-control" /> -->
+
+            <!-- </div> -->
 
 
             <!-- <p>Driver Name: <input type="text" name="driverName" [(ngModel)]="newVehicle.driverName" /></p>
@@ -71,15 +102,23 @@
             <p>Vehicle Status: <input type="text" placeholder="Free / Busy" name="vehicleStatus" [(ngModel)]="newVehicle.vehicleStatus" /></p> -->
 
             <p>
-                <button type="button" class="btn btn-primary mr-2" (click)="saveVehicle(newVehicle)">Submit</button>
+                <button type="submit" class="btn btn-primary mr-2" (click)="saveVehicle(newVehicle)">Submit</button>
                 <button type="button" class="btn btn-warning" (click)="cancelNewVehicle()">Cancel</button>
             </p>
         </form>
+
+
 
         <form *ngIf="editVehicleForm" style="width: 50%" class="ml-auto mr-auto">
             <h2>Edit Vehicle Details</h2>
 
             <div class="form-group">
+
+
+
+                <label class="form-label" for="">Enter Vehicle ID:</label>
+                <input type="number" placeholder="integer value" name="id" id="id" [(ngModel)]="editedVehicle.id" class="form-control" />
+
                 <label class="form-label" for="">Enter Vehicle Number:</label>
                 <input type="text" name="vehicleNumber" id="vehicleNumber" [(ngModel)]="editedVehicle.vehicleNumber" class="form-control" />
                 <label class="form-label" for="">Enter Driver Name:</label>
@@ -89,10 +128,10 @@
                 <input type="text" name="vehicleType" id="vehicleType" [(ngModel)]="editedVehicle.vehicleType" class="form-control" />
 
                 <label class="form-label" for="">Enter Vehicle Capacity:</label>
-                <input type="text" name="capacity" id="capacity" [(ngModel)]="editedVehicle.capacity" class="form-control" />
+                <input type="number" placeholder="integer value" placeholder="" name="capacity" id="capacity" [(ngModel)]="editedVehicle.capacity" class="form-control" />
 
                 <label class="form-label" for="">Enter Vehicle Cost Per Slot:</label>
-                <input type="text" name="costPerSlot" id="costPerSlot" [(ngModel)]="editedVehicle.costPerSlot" class="form-control" />
+                <input type="number" placeholder="integer value" name="costPerSlot" id="costPerSlot" [(ngModel)]="editedVehicle.costPerSlot" class="form-control" />
 
                 <label class="form-label" for="">Enter Vehicle Status:</label>
                 <input type="text" name="vehicleStatus" id="vehicleStatus" [(ngModel)]="editedVehicle.vehicleStatus" class="form-control" />
@@ -107,10 +146,12 @@
             <p>Cost Per Slot(Rs): <input type="text" name="costPerSlot" [(ngModel)]="editedVehicle.costPerSlot" /></p>
             <p>Vehicle Status: <input type="text" name="vehicleStatus" [(ngModel)]="editedVehicle.vehicleStatus" /></p>
             -->
-            <p>
-                <button type="button" class="btn btn-primary mr-2" (click)="updateVehicle(editedVehicle)">Submit</button>
-                <button type="button" class="btn btn-warning" (click)="cancelEdits()">Cancel</button>
-            </p>
+            <!-- <p> -->
+            <!-- <button type="button" class="btn btn-primary mr-2" (click)="updateVehicle(editedVehicle)">Submit</button>
+                 -->
+            <input type="submit" class="btn btn-primary mr-2" (click)="updateVehicle(editedVehicle)" value="Submit" />
+            <button type="button" class="btn btn-warning" (click)="cancelEdits()">Cancel</button>
+            <!-- </p> -->
         </form>
     </div>
 

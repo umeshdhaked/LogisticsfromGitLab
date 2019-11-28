@@ -57,11 +57,13 @@ import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.co
 import { RemainingVolumePipe } from './remaining-volume.pipe';
 import { RetailerDashboardComponent } from './retailer-dashboard/retailer-dashboard.component';
 import { ChartsModule } from 'ng2-charts';
-import { RatecardpopupComponent } from './ratecardpopup/ratecardpopup.component';
+// import { RatecardpopupComponent } from './ratecardpopup/ratecardpopup.component';
 import { VehicledemandfrontendComponent } from './vehicledemandfrontend/vehicledemandfrontend.component';
 import { FormsModule } from '@angular/forms';
 import { VehicleManagementComponent } from './vehicle-management/vehicle-management.component';
 import { RequestsComponent } from './vehicle-management/requests/requests.component';
+import { ViewVehicleComponent } from './vehicledemandfrontend/view-vehicle/view-vehicle.component';
+
 
 
 import { NgAlertModule } from '@theo4u/ng-alert';
@@ -77,12 +79,16 @@ import { ManageVehiclesComponent } from './vehicle-management/manage-vehicles/ma
 
 
 
+
   
 
 
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { TimeSlotPipe } from './time-slot.pipe';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
+import { VehicleHistoryComponent } from './vehicle-management/vehicle-history/vehicle-history.component';
+import { from } from 'rxjs';
+import { BookedVehiclesComponent } from './vehicledemandfrontend/booked-vehicles/booked-vehicles.component';
 
 @NgModule({
   declarations: [
@@ -97,15 +103,19 @@ import { VerifyUserComponent } from './verify-user/verify-user.component';
     RemainingVolumePipe,
     RetailerDashboardComponent,
     VehicledemandfrontendComponent,
-    RatecardpopupComponent,
+    // RatecardpopupComponent,
     VehicleManagementComponent,
+    ViewVehicleComponent,
+    BookedVehiclesComponent,
   
     RequestsComponent,
   
     ManageVehiclesComponent,
     ViewProfileComponent,
     TimeSlotPipe,
-    VerifyUserComponent
+    VerifyUserComponent,
+    VehicleHistoryComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -170,7 +180,7 @@ import { VerifyUserComponent } from './verify-user/verify-user.component';
     NgAlertModule
 
   ],
-  entryComponents: [RatecardpopupComponent],
+  entryComponents: [ViewVehicleComponent,BookedVehiclesComponent],
   providers: [GetlistService],
   bootstrap: [AppComponent]
 })

@@ -1,25 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RatecardpopupComponent } from './ratecardpopup.component';
+// import { RatecardpopupComponent } from './ratecardpopup.component';
 
-describe('RatecardpopupComponent', () => {
-  let component: RatecardpopupComponent;
-  let fixture: ComponentFixture<RatecardpopupComponent>;
+// describe('RatecardpopupComponent', () => {
+//   let component: RatecardpopupComponent;
+//   let fixture: ComponentFixture<RatecardpopupComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ RatecardpopupComponent ]
-    })
-    .compileComponents();
-  }));
+//   beforeEach(async(() => {
+//     TestBed.configureTestingModule({
+//       declarations: [ RatecardpopupComponent ]
+//     })
+//     .compileComponents();
+//   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(RatecardpopupComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(RatecardpopupComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });

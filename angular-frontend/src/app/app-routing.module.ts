@@ -11,6 +11,8 @@ import { RetailerDashboardComponent } from './retailer-dashboard/retailer-dashbo
 import { VehicledemandfrontendComponent } from './vehicledemandfrontend/vehicledemandfrontend.component';
 import { VehicleManagementComponent } from './vehicle-management/vehicle-management.component';
 import { RequestsComponent } from './vehicle-management/requests/requests.component';
+import { VehicleHistoryComponent } from './vehicle-management/vehicle-history/vehicle-history.component';
+import { BookedVehiclesComponent } from './vehicledemandfrontend/booked-vehicles/booked-vehicles.component';
 
 
 import { ManageVehiclesComponent } from './vehicle-management/manage-vehicles/manage-vehicles.component';
@@ -18,6 +20,7 @@ import { ManageVehiclesComponent } from './vehicle-management/manage-vehicles/ma
 
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
+import { from } from 'rxjs';
 
 
 const routes: Routes = [
@@ -33,6 +36,7 @@ const routes: Routes = [
   {path: 'requests',component: RequestsComponent}
 ]},
 {path: 'manage-vehicle',component:ManageVehiclesComponent},
+{path: 'vehicle-history', component:VehicleHistoryComponent},
 {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent},
 {path:'viewProfile',component:ViewProfileComponent},
 {path: 'confirm/:token', component: VerifyUserComponent},
@@ -44,5 +48,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
-  export const routingModule = [HomeComponent, SignupComponent, VerifyComponent, EditProfileComponent, PageNotFoundComponent,VehicleManagementComponent,RequestsComponent,ManageVehiclesComponent, ViewProfileComponent]
+  export const routingModule = [HomeComponent, SignupComponent, VerifyComponent, EditProfileComponent, PageNotFoundComponent,VehicleManagementComponent,RequestsComponent,ManageVehiclesComponent, ViewProfileComponent,VehicleHistoryComponent,BookedVehiclesComponent]
 
