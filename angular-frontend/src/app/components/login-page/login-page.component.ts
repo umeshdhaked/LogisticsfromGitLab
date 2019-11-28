@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { LoginAuthService } from 'src/app/services/login-auth.service';
 import * as jwt_decode from 'jwt-decode';
@@ -17,7 +18,7 @@ export class LoginPageComponent implements OnInit {
   token;
 
 
-  constructor(private loginAuthService: LoginAuthService, private router:Router) {
+  constructor(private loginAuthService: AuthenticationService, private router:Router) {
    }
 
   ngOnInit() {
@@ -42,7 +43,7 @@ export class LoginPageComponent implements OnInit {
 
     // getting jwtToken from backend and storing it in localstorage 
 
-    this.loginAuthService.getToken(loginData).subscribe((datas: any) => {
+    this.loginAuthService.authenticate(loginData).subscribe((datas: any) => {
       this.jwtTokenObj = datas;
   
       if(this.jwtTokenObj != null){
