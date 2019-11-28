@@ -4,6 +4,7 @@ import { OrderServiceService } from '../../services/order-service.service';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Order } from '../../interfaces/order';
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-add-order',
@@ -12,7 +13,8 @@ import { Order } from '../../interfaces/order';
 })
 export class AddOrderComponent implements OnInit {
   //retailerId will depend on saved cookie
-  retailerId: number = 189;
+  
+  retailerEmail: string = "";
   success: boolean = false;
   //property which indicates whether a given slot can be picked
   slotValid = {"slot1": true, "slot2": true, "slot3" : true};
@@ -45,6 +47,16 @@ export class AddOrderComponent implements OnInit {
   constructor(private orderService: OrderServiceService, private zone:NgZone) { }
 
   ngOnInit() {
+   // getting email from token
+    var decoded = {
+      "sub":""
+    }
+    let token = localStorage.getItem('token');
+
+    if(token != null){
+      decoded = jwt_decode(token);
+      this.retailerEmail = decoded.sub;
+    }
   }
 
   checkSlotsOnDate(deliveryDate){
@@ -91,7 +103,7 @@ export class AddOrderComponent implements OnInit {
     console.log(this.selectedSlot);
     if(customerName!=""&&customerNumber!=""&&customerAddress!=""&&orderVolume!=null&&deliveryDate!=""&&this.selectedSlot !=""){
       console.log(this.orderVolume);
-      this.orderService.saveOrder(customerName, customerNumber, customerAddress, orderVolume, deliveryDate, this.selectedSlot, "pending", this.retailerId)
+      this.orderService.saveOrder(customerName, customerNumber, customerAddress, orderVolume, deliveryDate, this.selectedSlot, "pending", this.retailerEmail)
       .pipe(
         tap((newOrder) => {console.log(newOrder); this.savedOrder = newOrder}),
         catchError(error =>{

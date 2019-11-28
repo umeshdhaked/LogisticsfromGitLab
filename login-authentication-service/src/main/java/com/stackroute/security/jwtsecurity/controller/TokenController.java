@@ -30,6 +30,7 @@ public class TokenController {
     @PostMapping("/generate")
     public String generate(@RequestBody final User user) {
 
+        System.out.println(user);
         String generatedToken="";
         boolean check = retailerService.checkValidateDb(user);
 

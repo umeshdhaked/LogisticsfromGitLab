@@ -1,3 +1,4 @@
+import { AuthGaurdService } from './services/auth-gaurd.service';
 import { VerifyComponent } from './components/verify/verify.component';
 import { HomeComponent } from './components/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -29,19 +30,22 @@ const routes: Routes = [
 {path: 'home', component: HomeComponent},
 {path: 'signup', component: SignupComponent},
 {path: 'verify', component: VerifyComponent},
-{path: 'editProfile', component: EditProfileComponent},
-{path: 'addOrder', component: AddOrderComponent},
-{path: 'driver', component: DriverDashboardComponent},
-{path: 'user', component: RetailerDashboardComponent},
+{path: 'editProfile', component: EditProfileComponent, canActivate : [AuthGaurdService]},
+{path: 'addOrder', component: AddOrderComponent, canActivate : [AuthGaurdService]},
+{path: 'driver', component: DriverDashboardComponent, canActivate : [AuthGaurdService]},
+{path: 'user', component: RetailerDashboardComponent, canActivate : [AuthGaurdService]},
 {path: 'vehicle-management',component:VehicleManagementComponent,children:[
   {path: 'requests',component: RequestsComponent}
-]},
-{path: 'manage-vehicle',component:ManageVehiclesComponent},
-{path: 'vehicle-history', component:VehicleHistoryComponent},
-{path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent},
-{path:'viewProfile',component:ViewProfileComponent},
+], canActivate : [AuthGaurdService]},
+{path: 'manage-vehicle',component:ManageVehiclesComponent, canActivate : [AuthGaurdService]},
+{path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent, canActivate : [AuthGaurdService]},
+{path:'viewProfile',component:ViewProfileComponent, canActivate : [AuthGaurdService]},
+
+
+{path: 'vehicle-history', component:VehicleHistoryComponent, canActivate : [AuthGaurdService]},
+
 {path: 'confirm/:token', component: VerifyUserComponent},
-{path: 'login', component: LoginPageComponent},
+{path: 'login', component: LoginPageComponent },
 {path: '**', component: PageNotFoundComponent}
 ];
 
