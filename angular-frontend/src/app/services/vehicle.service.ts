@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { VehicleManagement } from '../interfaces/vehicle-management';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -39,8 +40,9 @@ export class VehicleService {
     // vehicle.id = this.upersons.length + 1;
     this.upersons.push(vehicle);
     
+  let uri = environment.apiUrl + ":8095/api/v1/vehicle";
    
-    this.http.post('http://localhost:8095/api/v1/vehicle', vehicle).subscribe();
+    this.http.post(uri, vehicle).subscribe();
 
   }
   updateVehicle(vehicle: VehicleManagement) {
@@ -52,13 +54,13 @@ export class VehicleService {
 
     console.log(vehicle.id);
 
-    let url = "http://localhost:8095/api/v1/vehicle/" + vehicle.id;
+    let url = environment.apiUrl +":8095/api/v1/vehicle/" + vehicle.id;
 
     this.http.delete(url).subscribe();
   }
 
   getAllVehicles(): Observable<any> {
-    let url = "http://localhost:8095/api/v1/vehicles";
+    let url = environment.apiUrl+":8095/api/v1/vehicles";
 
     return this.http.get(url);
   }
