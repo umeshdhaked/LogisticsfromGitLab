@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { BasicAuthHtppInterceptorService } from './basic-auth-htpp-interceptor.service';
+import {BasicAuthHtppInterceptorService} from './basic-auth-htpp-interceptor.service';
 
 describe('BasicAuthHtppInterceptorService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

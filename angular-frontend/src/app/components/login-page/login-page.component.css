@@ -1,36 +1,36 @@
 
 .Text-container {
-    width: 35%;
-    height: 45%;
-    margin: 0 auto;
-    background-color: white;
-    padding: 16px;
-    border-radius: 8px;
-    text-align: center;
-  }
-  
-  .Text-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .Text-container > * {
-    width: 100%;
-  }
-  
-  .Text-container .deleteButton{
-    width: 25%;
-    margin: 0 auto;
-  
-  }
-  
-  
-  .btn.btn-primary{
-    width: 20%;
-    height: 40px; 
-    margin-left: 40%;
-    background-color: #45A94C;
-    color: #000;
-    margin-top: 15px;
-  
-  }
+  width: 35%;
+  height: 45%;
+  margin: 0 auto;
+  background-color: white;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.Text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.Text-container > * {
+  width: 100%;
+}
+
+.Text-container .deleteButton {
+  width: 25%;
+  margin: 0 auto;
+
+}
+
+
+.btn.btn-primary {
+  width: 20%;
+  height: 40px;
+  margin-left: 40%;
+  background-color: #45A94C;
+  color: #000;
+  margin-top: 15px;
+
+}

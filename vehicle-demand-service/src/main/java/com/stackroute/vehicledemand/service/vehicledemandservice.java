@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface vehicledemandservice {
     public retailerdemand savenewvehicledemand(retailerdemand retailerdemand);
+
     public List<retailerdemand> getvehicledemand();
 }

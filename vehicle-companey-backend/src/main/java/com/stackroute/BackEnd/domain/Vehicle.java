@@ -14,14 +14,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @Builder
 public class Vehicle {
-        @Id
-        int id;
-        String vehicleNumber;
-        String driverName;
-        String vehicleType;
-        int capacity;
-        int costPerSlot;
-        String vehicleStatus;
+    @Id
+    int id;
+    String vehicleNumber;
+    String driverName;
+    String vehicleType;
+    int capacity;
+    int costPerSlot;
+    String vehicleStatus;
 
 }
 

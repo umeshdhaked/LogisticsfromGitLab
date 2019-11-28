@@ -8,8 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ServiceImpl implements Services
-{
+public class ServiceImpl implements Services {
 
 
     private RetailerProfileRepository retailerProfileRepository;

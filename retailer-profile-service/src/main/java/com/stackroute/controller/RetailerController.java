@@ -16,29 +16,26 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/retailerProfile")
-public class RetailerController
-{
+public class RetailerController {
 
     private Services service;
 
     @Autowired
-    public RetailerController(Services services)
-    {
+    public RetailerController(Services services) {
         this.service = services;
     }
 
 
     @CrossOrigin
     @GetMapping("/getAllRetailersProfileList")
-    public List<RetailerProfile> getUser()
-    {
+    public List<RetailerProfile> getUser() {
         return service.getAllUser();
     }
 
 
     @CrossOrigin
     @PostMapping("/saveDetailOfRetailer")
-    public void updateRetailer(@RequestParam("docPic")MultipartFile file1,@RequestParam("profilePic")MultipartFile  file2,@RequestParam("retailer")String jstring) throws IOException //we will be getting retailerEmailDetail in this object with other details
+    public void updateRetailer(@RequestParam("docPic") MultipartFile file1, @RequestParam("profilePic") MultipartFile file2, @RequestParam("retailer") String jstring) throws IOException //we will be getting retailerEmailDetail in this object with other details
     {
 
 
@@ -47,8 +44,7 @@ public class RetailerController
 
         RetailerProfile existRetailer = service.getRetailerByEmail(profileData.getEmail()); //checking if user exist
 
-        if(existRetailer != null)
-        {
+        if (existRetailer != null) {
             profileData.setId(existRetailer.getId());
         }
 
@@ -61,20 +57,15 @@ public class RetailerController
     }
 
 
-
     @CrossOrigin
     @GetMapping("/getRetailerFromEmail")
-    public RetailerProfile picHandler(@RequestParam("email") String email){
-      //  System.out.println("email = "+email);
+    public RetailerProfile picHandler(@RequestParam("email") String email) {
+        //  System.out.println("email = "+email);
 //        System.out.println();
 
-     return service.getRetailerByEmail(email);
+        return service.getRetailerByEmail(email);
 
     }
-
-
-
-
 
 
 //

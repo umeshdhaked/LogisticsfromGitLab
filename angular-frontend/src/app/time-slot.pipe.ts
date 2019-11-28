@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
   name: 'timeSlot'
@@ -6,11 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TimeSlotPipe implements PipeTransform {
 
   transform(value: string): string {
-    if (value == "Slot1"){
-      return  "11:00-13:00";
-    }else if (value  == "Slot2"){
+    if (value == "Slot1") {
+      return "11:00-13:00";
+    } else if (value == "Slot2") {
       return "14:00-16:00";
-    }else {
+    } else {
       return "17:00-19:00";
     }
   }

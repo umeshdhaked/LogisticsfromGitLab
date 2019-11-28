@@ -15,6 +15,7 @@ import java.util.List;
 public class DeliveryServiceImpl implements DeliveryService {
     //this variable has to be sent to route optimization service
     private boolean orderAccepted;
+
     @Override
     public DeliveryRoute getNextDeliveryRoute(String date, String vehicleId, String timeslot) throws ParseException {
         //Call route optimization service with vehicleId,today's date, and current time slot
@@ -35,15 +36,15 @@ public class DeliveryServiceImpl implements DeliveryService {
 
         DeliveryRoute deliveryRoute = new DeliveryRoute();
         JSONParser jsonParser = new JSONParser();
-        JSONObject jsonObject = (JSONObject)jsonParser.parse(jsonData);
+        JSONObject jsonObject = (JSONObject) jsonParser.parse(jsonData);
 
-        deliveryRoute.setVehicleId((String)jsonObject.get("vehicleId"));
-        deliveryRoute.setOrderVolume(Double.parseDouble((String)jsonObject.get("orderVolume")));
+        deliveryRoute.setVehicleId((String) jsonObject.get("vehicleId"));
+        deliveryRoute.setOrderVolume(Double.parseDouble((String) jsonObject.get("orderVolume")));
 
         JSONArray routes = (JSONArray) jsonObject.get("routes");
         List<DeliveryStop> stops = new ArrayList<>();
 
-        for(int i = 0; i < routes.size(); i++){
+        for (int i = 0; i < routes.size(); i++) {
             JSONObject currentStop = (JSONObject) routes.get(i);
             stops.add(new DeliveryStop(
                     Integer.parseInt((String) currentStop.get("stopNumber")),

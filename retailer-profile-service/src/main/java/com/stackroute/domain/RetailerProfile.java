@@ -8,8 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 
 @Entity
-public class RetailerProfile
-{
+public class RetailerProfile {
 
     @Id
     @GeneratedValue
@@ -39,8 +38,6 @@ public class RetailerProfile
     @Lob
     private byte[] docPic;
     private String docPicType;
-
-
 
 
 //    var retailerData = {

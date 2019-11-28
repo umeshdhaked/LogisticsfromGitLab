@@ -3,105 +3,111 @@
         <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
 </div>       -->
 <div class="dashboard">
-    <div class="container">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="home-tab" href="#/user" role="tab" aria-controls="dashboard" aria-selected="true">Dashboard</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="vehicle-tab" href="#/retailerVehicleDemand" role="tab" aria-controls="vehicles" aria-selected="false">Rent Vehicles</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="order-tab" href="#/addOrder" role="tab" aria-controls="orders" aria-selected="false">Add Order</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="viewProfile-tab" href="#/viewProfile" role="tab" aria-controls="details" aria-selected="false">Profile</a>
-            </li>
-        </ul>
-        <!-- <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-        </div>    -->
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm col-12">
-                <div class="card border-primary mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">Orders Completed</h5>
-                        <p class="card-text">{{deliveredOrders}}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm col-12">
-                <div class="card border-danger mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title text-danger">Pending Orders</h5>
-                        <p class="card-text">{{pendingOrders}}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm col-12">
-                <div class="card border-success mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title text-success">Total Delivery Cost</h5>
-                        <p class="card-text">Rs 632</p>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" href="#/user" role="tab" aria-controls="dashboard"
+           aria-selected="true">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="vehicle-tab" href="#/retailerVehicleDemand" role="tab" aria-controls="vehicles"
+           aria-selected="false">Rent Vehicles</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="order-tab" href="#/addOrder" role="tab" aria-controls="orders" aria-selected="false">Add
+          Order</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="viewProfile-tab" href="#/viewProfile" role="tab" aria-controls="details"
+           aria-selected="false">Profile</a>
+      </li>
+    </ul>
+    <!-- <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+    </div>    -->
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm col-12">
+        <div class="card border-primary mb-3">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Orders Completed</h5>
+            <p class="card-text">{{deliveredOrders}}</p>
+          </div>
         </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-header">
-                        Order History
-                    </div>
-                    <div class="chart-wrapper">
-                        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
-                            </canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-header">
-                        Slot Statistics
-                    </div>
-                    <div class="chart-wrapper">
-                        <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType">
-                              </canvas>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="col-sm col-12">
+        <div class="card border-danger mb-3">
+          <div class="card-body">
+            <h5 class="card-title text-danger">Pending Orders</h5>
+            <p class="card-text">{{pendingOrders}}</p>
+          </div>
         </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-header">Booked Vehicles</div>
-                    <table class="table">
-                        <tr>
-                            <th>Vehicle Id</th>
-                            <th>Volume</th>
-                            <th>Date</th>
-                            <th>Timeslot</th>
-                        </tr>
-                        <tr *ngFor="let vehicle of rentedVehicles">
-                            <td>{{vehicle.vehicleId}}</td>
-                            <td>{{vehicle.volume}}</td>
-                            <td>{{vehicle.date}}</td>
-                            <td>{{vehicle.timeslot}}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
+      </div>
+      <div class="col-sm col-12">
+        <div class="card border-success mb-3">
+          <div class="card-body">
+            <h5 class="card-title text-success">Total Delivery Cost</h5>
+            <p class="card-text">Rs 632</p>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <div class="card">
+          <div class="card-header">
+            Order History
+          </div>
+          <div class="chart-wrapper">
+            <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+                    [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+                    [plugins]="lineChartPlugins">
+            </canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-12">
+        <div class="card">
+          <div class="card-header">
+            Slot Statistics
+          </div>
+          <div class="chart-wrapper">
+            <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType">
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <div class="card">
+          <div class="card-header">Booked Vehicles</div>
+          <table class="table">
+            <tr>
+              <th>Vehicle Id</th>
+              <th>Volume</th>
+              <th>Date</th>
+              <th>Timeslot</th>
+            </tr>
+            <tr *ngFor="let vehicle of rentedVehicles">
+              <td>{{vehicle.vehicleId}}</td>
+              <td>{{vehicle.volume}}</td>
+              <td>{{vehicle.date}}</td>
+              <td>{{vehicle.timeslot}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>

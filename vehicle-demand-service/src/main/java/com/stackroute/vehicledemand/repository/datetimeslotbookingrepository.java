@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface datetimeslotbookingrepository extends MongoRepository<DateDemand,String> {
+public interface datetimeslotbookingrepository extends MongoRepository<DateDemand, String> {
 }

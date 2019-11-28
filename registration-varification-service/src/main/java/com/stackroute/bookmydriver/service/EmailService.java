@@ -11,12 +11,12 @@ public class EmailService {
     private JavaMailSender mailSender;
 
     @Autowired
-    public EmailService(JavaMailSender sender){
-        this.mailSender=sender;
+    public EmailService(JavaMailSender sender) {
+        this.mailSender = sender;
     }
 
     @Async
-    public void sendEmail(SimpleMailMessage email){
+    public void sendEmail(SimpleMailMessage email) {
         mailSender.send(email);
     }
 }

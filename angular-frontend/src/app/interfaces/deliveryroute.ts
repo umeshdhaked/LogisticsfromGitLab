@@ -1,7 +1,7 @@
-import { Deliverystop } from './deliverystop';
+import {Deliverystop} from './deliverystop';
 
 export interface Deliveryroute {
-    vehicleId: string,
-    orderVolume: number,
-    deliveryStops: Deliverystop[]
+  vehicleId: string,
+  orderVolume: number,
+  deliveryStops: Deliverystop[]
 }

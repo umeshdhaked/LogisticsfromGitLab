@@ -14,11 +14,12 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
 
     @Override
     public retailerdemand savenewvehicledemand(retailerdemand retailerdemand) {
-    vehicledemandrepository.save(retailerdemand);
-    return retailerdemand;
+        vehicledemandrepository.save(retailerdemand);
+        return retailerdemand;
     }
+
     @Override
-    public List<retailerdemand> getvehicledemand(){
-      return  vehicledemandrepository.findAll();
+    public List<retailerdemand> getvehicledemand() {
+        return vehicledemandrepository.findAll();
     }
 }

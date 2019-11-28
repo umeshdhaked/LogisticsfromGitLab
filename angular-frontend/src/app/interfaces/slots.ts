@@ -1,4 +1,4 @@
 export interface Slots {
-    slot: string;
-    volume: number;
+  slot: string;
+  volume: number;
 }

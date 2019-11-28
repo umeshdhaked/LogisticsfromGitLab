@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {environment} from 'src/environments/environment';
 
 
 @Injectable({
@@ -9,18 +9,30 @@ import { environment } from 'src/environments/environment';
 export class LoginAuthService {
 
 
-  constructor(private httpclient: HttpClient) { }
+  constructor(private httpclient: HttpClient) {
+  }
 
 
-  
   getToken(data) {
 
-    let url = environment.apiUrl+':9091/token/generate';
+    let url = environment.apiUrl + ':9091/token/generate';
 
-  return this.httpclient.post(url, data)
+    return this.httpclient.post(url, data)
 
-  
-  
+
   }
+
+
+  isUserLoggedIn() {
+    let checkLogin = localStorage.getItem('token')
+    //console.log(!(user === null))
+    return !(checkLogin === null)
+  }
+
+  logOut() {
+    localStorage.removeItem('token')
+  }
+
+
 
 }

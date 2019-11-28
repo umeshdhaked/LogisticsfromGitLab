@@ -5,30 +5,32 @@
   </div>
 </div>
 <div class="text-center" *ngIf="userNotSaved">
-<form id="registrationForm" class="container-fluid" onsubmit="return false" method="POST">
-    <h5>Join Wysser</h5>    
+  <form id="registrationForm" class="container-fluid" onsubmit="return false" method="POST">
+    <h5>Join Wysser</h5>
     <h2 id="sign">Create your Account</h2>
     <br/>
     <div class="row">
-    <div class="col-md-4 offset-md-4 col-12">
+      <div class="col-md-4 offset-md-4 col-12">
         <input #firstName type="text" placeholder="First Name" name="firstName" required>
-    </div> 
-    <div class="col-md-4 offset-md-4 col-12">   
+      </div>
+      <div class="col-md-4 offset-md-4 col-12">
         <input #lastName type="text" placeholder="Last Name" name="lastName" required>
-    </div>
-    <div class="col-md-4 offset-md-4 col-12">   
+      </div>
+      <div class="col-md-4 offset-md-4 col-12">
         <input #email type="email" placeholder="Email Id" name="email" required>
-    </div>
-        <div class="col-md-4 offset-md-4 col-12"> 
-            <button type="submit" class="btn" (click)='registerNewUser(firstName.value, lastName.value, email.value)'>Create Account</button>
-        </div>
+      </div>
+      <div class="col-md-4 offset-md-4 col-12">
+        <button type="submit" class="btn" (click)='registerNewUser(firstName.value, lastName.value, email.value)'>Create
+          Account
+        </button>
+      </div>
     </div>
   </form>
-  </div>
+</div>
 
-  <div *ngIf="!userNotSaved" class="text-center">
-    <div class="alert alert-success" role="alert">
-        <h4 class="alert-heading">Account Created</h4>
-        <p>Please check your email for the verification link.</p>
-    </div>
+<div *ngIf="!userNotSaved" class="text-center">
+  <div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Account Created</h4>
+    <p>Please check your email for the verification link.</p>
   </div>
+</div>
