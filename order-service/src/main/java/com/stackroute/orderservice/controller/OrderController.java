@@ -100,7 +100,7 @@ public class OrderController {
     public ResponseEntity<?> findAllOrdersOfRetailer(@RequestParam("retailerEmail") String retailerEmail) {
 
         try {
-            responseEntity = new ResponseEntity(orderService.findAllOrdersOfRetailer(retailerEmail), HttpStatus.OK);
+            responseEntity = new ResponseEntity(orderService.findAllOrdersOfRetailer(retailerEmailcd ), HttpStatus.OK);
         } catch (Exception e) {
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
         }
