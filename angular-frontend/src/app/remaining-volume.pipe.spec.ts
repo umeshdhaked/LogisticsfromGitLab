@@ -1,4 +1,4 @@
-import { RemainingVolumePipe } from './remaining-volume.pipe';
+import {RemainingVolumePipe} from './remaining-volume.pipe';
 
 describe('RemainingVolumePipe', () => {
   it('create an instance', () => {

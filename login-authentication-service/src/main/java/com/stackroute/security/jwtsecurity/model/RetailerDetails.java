@@ -18,7 +18,7 @@ public class RetailerDetails implements UserDetails {
 
         this.email = email;
         this.id = id;
-        this.token= token;
+        this.token = token;
         this.authorities = grantedAuthorities;
     }
 

@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { VehicledemandfrontendService } from './vehicledemandfrontend.service';
+import {VehicledemandfrontendService} from './vehicledemandfrontend.service';
 
 describe('VehicledemandfrontendService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

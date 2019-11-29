@@ -1,4 +1,4 @@
-import { Component,Inject, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {VehicledemandfrontendService} from "../../vehicledemandfrontend.service";
 import {RetailerDetails} from "../../vehicledemanded";
@@ -16,10 +16,12 @@ export class VehicledemandfrontendComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private vehicleService: VehicledemandfrontendService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
   }
+
   openDialog() {
     // this.dialog.open(RatecardpopupComponent);
   }

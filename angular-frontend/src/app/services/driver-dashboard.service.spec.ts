@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { DriverDashboardService } from './driver-dashboard.service';
+import {DriverDashboardService} from './driver-dashboard.service';
 
 describe('DriverDashboardService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

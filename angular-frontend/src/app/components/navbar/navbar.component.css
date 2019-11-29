@@ -1,10 +1,10 @@
 #logo {
-    width: 80px;
-    /* height: 150px; */
+  width: 80px;
+  /* height: 150px; */
 }
 
 h6 {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 
@@ -13,38 +13,39 @@ h6 {
 } */
 
 .nav-link {
-    color: whitesmoke;
-    /* padding: 12px 0; */
-    border-bottom: 3px solid transparent;
+  color: whitesmoke;
+  /* padding: 12px 0; */
+  border-bottom: 3px solid transparent;
 }
 
 a:hover {
-    color: whitesmoke;
+  color: whitesmoke;
 }
 
 .nav-link:hover {
-    text-decoration: none;
-    color: white;
-    transition: 500ms ease;
-    border-bottom: 3px solid white;
+  text-decoration: none;
+  color: white;
+  transition: 500ms ease;
+  border-bottom: 3px solid white;
 }
 
 .navbar-toggler {
-    color: white;
+  color: white;
 }
 
-@media (min-width:1024px) {
-    .navbar {
-        transition: 500ms ease;
-        background: transparent;
-    }
-    .navbar.scrolled {
-        background: rgba(54, 59, 68, 0.9);
-    }
+@media (min-width: 1024px) {
+  .navbar {
+    transition: 500ms ease;
+    background: transparent;
+  }
+
+  .navbar.scrolled {
+    background: rgba(54, 59, 68, 0.9);
+  }
 }
 
 @media (max-width: 1023px) {
-    .navbar {
-        background: rgb(54, 59, 68);
-    }
+  .navbar {
+    background: rgb(54, 59, 68);
+  }
 }

@@ -28,21 +28,21 @@ public class Order {
     private Double orderVolume;
     private String orderStatus;
     private String retailerEmail;
-    
+
     public Order() {
     }
 
-    public String getRetailerEmail(){
+    public String getRetailerEmail() {
         return retailerEmail;
     }
 
-    public void setRetailerEmail(String retailerEmail){
+    public void setRetailerEmail(String retailerEmail) {
         this.retailerEmail = retailerEmail;
     }
 
-   public Long getId() {
-       return id;
-   }
+    public Long getId() {
+        return id;
+    }
 
     public String getCustomerName() {
         return customerName;

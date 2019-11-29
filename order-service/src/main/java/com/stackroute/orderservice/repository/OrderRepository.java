@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface OrderRepository extends Neo4jRepository<Order , Integer> {
+public interface OrderRepository extends Neo4jRepository<Order, Integer> {
 
     @Query("CREATE (o:Order{order}) return o;")
     Order saveOrders(@Param("order") Order order);

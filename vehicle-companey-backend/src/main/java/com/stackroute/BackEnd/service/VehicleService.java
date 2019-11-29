@@ -3,6 +3,7 @@ package com.stackroute.BackEnd.service;
 import com.stackroute.BackEnd.domain.Vehicle;
 import com.stackroute.BackEnd.exception.VehicleAlreadyExistsException;
 import com.stackroute.BackEnd.exception.VehicleNotFoundException;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -22,5 +23,6 @@ public interface VehicleService {
 
     public List<Vehicle> getVehicleByVehicleNumber(String vehicleNumber) throws VehicleNotFoundException;
 
+    List<Vehicle> getVehicleForRetailerRequest(String slot, String date, String vehicleType);
 }
 

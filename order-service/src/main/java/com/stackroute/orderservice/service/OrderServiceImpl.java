@@ -20,6 +20,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+
 @Service
 public class OrderServiceImpl implements OrderService {
 
@@ -42,6 +43,7 @@ public class OrderServiceImpl implements OrderService {
     private String newOrderTopicName;
 
     private DateDemand[] dateDemands;
+
     //listener
     @KafkaListener(topics = "vehicle_slots", groupId = "foo")
     public void listen(String message) {
@@ -54,13 +56,12 @@ public class OrderServiceImpl implements OrderService {
     //method to send messages
     private static void sendKafkaMessage(String payload,
                                          KafkaProducer<String, String> producer,
-                                         String topic)
-    {
+                                         String topic) {
         System.out.println("Sending Kafka message: " + payload);
         producer.send(new ProducerRecord<>(topic, payload));
     }
 
-    private void assignProducerProperties(){
+    private void assignProducerProperties() {
         /*
          * Defining producer properties.
          */
@@ -75,7 +76,6 @@ public class OrderServiceImpl implements OrderService {
         producerProperties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         producer = new KafkaProducer<>(producerProperties);
     }
-
 
 
     @Override
@@ -106,8 +106,8 @@ public class OrderServiceImpl implements OrderService {
     public DateDemand checkSlotAvailability(String deliveryDate) throws ParseException {
         //Use dummy message and parse it
         //Change this once actual rent service works
-        for(DateDemand date: dateDemands){
-            if(date.getDate().equals(deliveryDate)){
+        for (DateDemand date : dateDemands) {
+            if (date.getDate().equals(deliveryDate)) {
                 return date;
             }
         }
@@ -127,12 +127,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order updateOrderStatus(Long id, String orderStatus){
+    public Order updateOrderStatus(Long id, String orderStatus) {
         return orderRepository.updateOrder(id, orderStatus);
     }
 
     @Override
-    public List<Order> findAllOrdersOfRetailer(String retailerEmail){
+    public List<Order> findAllOrdersOfRetailer(String retailerEmail) {
         return orderRepository.findAllOrdersByRetailerEmail(retailerEmail);
     }
 }

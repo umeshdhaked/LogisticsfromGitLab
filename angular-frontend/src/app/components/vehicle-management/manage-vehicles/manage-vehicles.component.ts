@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { VehicleService } from '../../../services/vehicle.service';
-import { Router } from '@angular/router';
-import { VehicleManagement } from 'src/app/interfaces/vehicle-management';
+import {Component, OnInit} from '@angular/core';
+import {VehicleService} from '../../../services/vehicle.service';
+import {Router} from '@angular/router';
+import {VehicleManagement} from 'src/app/interfaces/vehicle-management';
 import {MatTableDataSource} from '@angular/material/table';
-import { BehaviorSubject } from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-manage-vehicles',
@@ -19,18 +19,21 @@ export class ManageVehiclesComponent implements OnInit {
   editVehicleForm: boolean = false;
   editedVehicle: any = {};
   filteredData: VehicleManagement[];
-  constructor(private vehicleService: VehicleService, private router:Router) { }
+
+  constructor(private vehicleService: VehicleService, private router: Router) {
+  }
+
   vehicleBehavior: BehaviorSubject<any>;
 
-  set searchTerm(value: string){
-    this.filteredData = this.vehicles.filter((vehicle)=> {
+  set searchTerm(value: string) {
+    this.filteredData = this.vehicles.filter((vehicle) => {
       return (vehicle.id.toString().toLowerCase().indexOf(value.toLowerCase()) != -1) ||
-             (vehicle.vehicleType.toString().toLowerCase().indexOf(value.toLowerCase()) != -1)||
-             (vehicle.driverName.toString().toLowerCase().indexOf(value.toLowerCase()) != -1)||
-             (vehicle.vehicleNumber.toString().toLowerCase().indexOf(value.toLowerCase()) != -1)||
-             (vehicle.capacity.toString().toLowerCase().indexOf(value.toLowerCase()) != -1)||
-             (vehicle.costPerSlot.toString().toLowerCase().indexOf(value.toLowerCase()) != -1)||
-             (vehicle.vehicleStatus.toString().toLowerCase().indexOf(value.toLowerCase()) != -1);
+        (vehicle.vehicleType.toString().toLowerCase().indexOf(value.toLowerCase()) != -1) ||
+        (vehicle.driverName.toString().toLowerCase().indexOf(value.toLowerCase()) != -1) ||
+        (vehicle.vehicleNumber.toString().toLowerCase().indexOf(value.toLowerCase()) != -1) ||
+        (vehicle.capacity.toString().toLowerCase().indexOf(value.toLowerCase()) != -1) ||
+        (vehicle.costPerSlot.toString().toLowerCase().indexOf(value.toLowerCase()) != -1) ||
+        (vehicle.vehicleStatus.toString().toLowerCase().indexOf(value.toLowerCase()) != -1);
     });
   }
 
@@ -44,11 +47,11 @@ export class ManageVehiclesComponent implements OnInit {
 
 
   ngOnInit() {
-    this.vehicleService.getAllVehicles().subscribe(data =>{
+    this.vehicleService.getAllVehicles().subscribe(data => {
       this.vehicles = data
       this.filteredData = data;
-    });  
-    
+    });
+
   }
 
   getVehicles(): VehicleManagement[] {
@@ -107,4 +110,4 @@ export class ManageVehiclesComponent implements OnInit {
 }
 
 
-  
+

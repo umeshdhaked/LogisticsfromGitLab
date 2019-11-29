@@ -8,7 +8,7 @@
       </a>
       <!--toggle button after shrink-->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon "></span>
       </button>
       <section class="collapse navbar-collapse text-center mx-center" id="navbarResponsive">
@@ -49,7 +49,8 @@
           <div *ngIf="checkLogin != null ">
             <li class="nav-item">
               <button class="btn btn-outline-danger my-2 my-sm-0" (click)="validateLogout()"
-                routerLink="/home">Logout</button>
+                      routerLink="/home">Logout
+              </button>
             </li>
           </div>
 
@@ -97,7 +98,7 @@
             </section>
             <section>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                placeholder="Any Additional Messages"></textarea>
+                        placeholder="Any Additional Messages"></textarea>
             </section>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

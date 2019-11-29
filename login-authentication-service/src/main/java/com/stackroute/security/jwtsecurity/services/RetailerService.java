@@ -15,36 +15,35 @@ public class RetailerService {
         this.retailerRepository = retailerRepository;
     }
 
-    public User getRetailerFromEmail(String email){
+    public User getRetailerFromEmail(String email) {
 
-       return retailerRepository.findUserByEmail(email);
+        return retailerRepository.findUserByEmail(email);
     }
 
 
-    public boolean checkValidateDb(User user){
+    public boolean checkValidateDb(User user) {
 
         User user1 = retailerRepository.findUserByEmail(user.getEmail());
 
         System.out.println("user input = " + user.toString());
-       // System.out.println("user from register_db = "+user1.toString());
+        // System.out.println("user from register_db = "+user1.toString());
 
-        if(user1 ==null){
+        if (user1 == null) {
             System.out.println("in user1 null");
             return false;
         }
 
 
-        if(user.getEmail().equals(user1.getEmail()) && user.getPassword().equals(user1.getPassword())){
+        if (user.getEmail().equals(user1.getEmail()) && user.getPassword().equals(user1.getPassword())) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
 
     }
 
 
-    public void saveDummyRetailer(User user){
+    public void saveDummyRetailer(User user) {
 //        Retailer retailer = new Retailer();
 //        retailer.setEmail("umdk456@gmail.com");
 //        retailer.setPass("12345678");

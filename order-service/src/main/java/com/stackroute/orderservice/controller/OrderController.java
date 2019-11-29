@@ -20,88 +20,88 @@ public class OrderController {
     ResponseEntity responseEntity;
 
     @GetMapping("/slots")
-    public ResponseEntity<?> getAvailableSlots(@RequestParam("date") String date){
+    public ResponseEntity<?> getAvailableSlots(@RequestParam("date") String date) {
         try {
             responseEntity = new ResponseEntity<DateDemand>(orderService.checkSlotAvailability(date), HttpStatus.OK);
-        }catch (Exception e){
+        } catch (Exception e) {
             responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;
     }
 
     @PostMapping("/save")
-    public ResponseEntity<?> saveOrder(@RequestBody Order order){
+    public ResponseEntity<?> saveOrder(@RequestBody Order order) {
 
-        try{
+        try {
             //orderService.saveOrder(order);
             responseEntity = new ResponseEntity(orderService.saveOrder(order), HttpStatus.CREATED);
-        }catch (Exception e){
+        } catch (Exception e) {
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;
     }
 
     @GetMapping("/findById")
-    public ResponseEntity<?> findOrderById(@RequestParam("id") Long id){
+    public ResponseEntity<?> findOrderById(@RequestParam("id") Long id) {
 
-        try{
+        try {
             responseEntity = new ResponseEntity(orderService.searchOrder(id), HttpStatus.OK);
-        }catch (Exception e){
+        } catch (Exception e) {
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;
     }
 
     @GetMapping("/findByDateAndTimeSlot")
-    public ResponseEntity<?> findOrderByDateAndTimeSlot(@RequestParam("date") String date, @RequestParam("timeslot") String timeslot){
+    public ResponseEntity<?> findOrderByDateAndTimeSlot(@RequestParam("date") String date, @RequestParam("timeslot") String timeslot) {
 
-        try{
+        try {
             responseEntity = new ResponseEntity(orderService.findOrdersByDateAndTimeSlot(date, timeslot), HttpStatus.OK);
-        }catch (Exception e){
+        } catch (Exception e) {
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;
     }
 
     @GetMapping("/findOrdersByStatus")
-    public ResponseEntity<?> findOrdersByStatus(@RequestParam("orderStatus") String orderStatus, @RequestParam("retailerEmail") String retailerEmail){
+    public ResponseEntity<?> findOrdersByStatus(@RequestParam("orderStatus") String orderStatus, @RequestParam("retailerEmail") String retailerEmail) {
 
-        try{
+        try {
             responseEntity = new ResponseEntity(orderService.findOrderByStatus(orderStatus, retailerEmail), HttpStatus.OK);
-        }catch (Exception e){
+        } catch (Exception e) {
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;
     }
 
     @GetMapping("/findAll")
-    public ResponseEntity<?> findOrdersByStatus(){
+    public ResponseEntity<?> findOrdersByStatus() {
 
-        try{
+        try {
             responseEntity = new ResponseEntity(orderService.getAllOrders(), HttpStatus.OK);
-        }catch (Exception e){
+        } catch (Exception e) {
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;
     }
 
     @PutMapping("/updateOrder")
-    public ResponseEntity<?> findOrdersByStatus(@RequestParam("id") Long id, @RequestParam("orderStatus") String orderStatus){
+    public ResponseEntity<?> findOrdersByStatus(@RequestParam("id") Long id, @RequestParam("orderStatus") String orderStatus) {
 
-        try{
+        try {
             responseEntity = new ResponseEntity(orderService.updateOrderStatus(id, orderStatus), HttpStatus.OK);
-        }catch (Exception e){
+        } catch (Exception e) {
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;
     }
 
     @GetMapping("/findAllOrdersOfRetailer")
-    public ResponseEntity<?> findAllOrdersOfRetailer(@RequestParam("retailerEmail") String retailerEmail){
+    public ResponseEntity<?> findAllOrdersOfRetailer(@RequestParam("retailerEmail") String retailerEmail) {
 
-        try{
+        try {
             responseEntity = new ResponseEntity(orderService.findAllOrdersOfRetailer(retailerEmail), HttpStatus.OK);
-        }catch (Exception e){
+        } catch (Exception e) {
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;

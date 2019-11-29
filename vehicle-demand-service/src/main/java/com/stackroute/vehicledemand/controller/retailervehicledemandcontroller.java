@@ -32,7 +32,7 @@ public class retailervehicledemandcontroller {
     @Value("${kafka.topic.vehicle_slots}")
     private String vehicleSlotsTopicName;
 
-    private void assignProducerProperties(){
+    private void assignProducerProperties() {
         /*
          * Defining producer properties.
          */
@@ -50,8 +50,7 @@ public class retailervehicledemandcontroller {
 
     private static void sendKafkaMessage(String payload,
                                          KafkaProducer<String, String> producer,
-                                         String topic)
-    {
+                                         String topic) {
         System.out.println("Sending Kafka message: " + payload);
         producer.send(new ProducerRecord<>(topic, payload));
     }
@@ -89,7 +88,7 @@ public class retailervehicledemandcontroller {
     }
 
 
-    public void toJson(DateDemand[] dateDemands){
+    public void toJson(DateDemand[] dateDemands) {
         //send to kafka topic
         Gson gson = new Gson();
         String json = gson.toJson(dateDemands);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +9,7 @@ export class NavbarComponent implements OnInit {
 
   checkLogin;
 
-  constructor() { 
+  constructor() {
     this.checkLogin = localStorage.getItem('token');
   }
 
@@ -18,15 +18,14 @@ export class NavbarComponent implements OnInit {
 
 
   // for clearing local storage as logout button pressed
-  validateLogout(){
+  validateLogout() {
     console.log("loging out");
-    
+
     localStorage.removeItem('token');
 
     this.checkLogin = null;
 
   }
-  
 
 
 }
