@@ -172,3 +172,13 @@ services:
       - mongodb
     ports:
       - "8095:8095"
+  signature-backend:
+    image: signature-backend
+    build: signature-backend/
+    restart: always
+    network_mode: host
+    container_name: signaturebackend
+    depends_on:
+      - mongodb
+    ports:
+      - "9095:9095"
