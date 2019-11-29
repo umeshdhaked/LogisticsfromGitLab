@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 
@@ -5,8 +6,8 @@ import {HttpClient, HttpParams} from '@angular/common/http';
   providedIn: 'root'
 })
 export class DataorderService {
-  url = 'http://localhost:8084/orders/findAll';
-  url2 = 'http://localhost:8084/orders/updateOrder';
+  url = environment.apiUrl  + ':8084/orders/findAll';
+  url2 = environment.apiUrl + ':8084/orders/updateOrder';
   constructor(private http: HttpClient) { }
   getdata() {
     return this.http.get(this.url);
