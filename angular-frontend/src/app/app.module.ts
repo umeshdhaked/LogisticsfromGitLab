@@ -78,11 +78,19 @@ import {TimeSlotPipe} from './time-slot.pipe';
 import {VehicleHistoryComponent} from './components/vehicle-management/vehicle-history/vehicle-history.component';
 import {from} from 'rxjs';
 import {BookedVehiclesComponent} from './components/vehicledemandfrontend/booked-vehicles/booked-vehicles.component';
-import {ViewVehicleComponent} from './components/vehicledemandfrontend/view-vehicle/view-vehicle.component'
+import {ViewVehicleComponent} from './components/vehicledemandfrontend/view-vehicle/view-vehicle.component';
 import {VerifyUserComponent} from './components/verify-user/verify-user.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {LoginPageComponent} from './components/login-page/login-page.component';
+import { CanceldialogueComponent } from './components/canceldialogue/canceldialogue.component';
+import { CancelreasonComponent } from './components/cancelreason/cancelreason.component';
+import { MaindriverdashboardComponent } from './components/maindriverdashboard/maindriverdashboard.component';
+import { NavigatelocationComponent } from './components/navigatelocation/navigatelocation.component';
+import { SignatureComponent } from './components/signature/signature.component';
+import {SignaturePadModule} from 'angular2-signaturepad';
+import {SignatureService} from './services/signature.service';
+import {InteractionService} from './services/interaction.service';
 
 @NgModule({
   declarations: [
@@ -112,73 +120,79 @@ import {LoginPageComponent} from './components/login-page/login-page.component';
 
     NavbarComponent,
     FooterComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    CanceldialogueComponent,
+    CancelreasonComponent,
+    MaindriverdashboardComponent,
+    NavigatelocationComponent,
+    SignatureComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    FormsModule,
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        FormsModule,
 
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatAutocompleteModule,
-    MatCheckboxModule,
-    HttpClientModule,
-    ReactiveFormsModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatAutocompleteModule,
+        MatCheckboxModule,
+        HttpClientModule,
+        ReactiveFormsModule,
 
 
-    A11yModule,
-    CdkStepperModule,
-    CdkTableModule,
-    CdkTreeModule,
-    DragDropModule,
-    MatAutocompleteModule,
-    MatBadgeModule,
-    MatBottomSheetModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatStepperModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatDividerModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    MatTreeModule,
-    PortalModule,
-    ScrollingModule,
+        A11yModule,
+        CdkStepperModule,
+        CdkTableModule,
+        CdkTreeModule,
+        DragDropModule,
+        MatAutocompleteModule,
+        MatBadgeModule,
+        MatBottomSheetModule,
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatChipsModule,
+        MatStepperModule,
+        MatDatepickerModule,
+        MatDialogModule,
+        MatDividerModule,
+        MatExpansionModule,
+        MatGridListModule,
+        MatIconModule,
+        MatInputModule,
+        MatListModule,
+        MatMenuModule,
+        MatNativeDateModule,
+        MatPaginatorModule,
+        MatProgressBarModule,
+        MatProgressSpinnerModule,
+        MatRadioModule,
+        MatRippleModule,
+        MatSelectModule,
+        MatSidenavModule,
+        MatSliderModule,
+        MatSlideToggleModule,
+        MatSnackBarModule,
+        MatSortModule,
+        MatTableModule,
+        MatTabsModule,
+        MatToolbarModule,
+        MatTooltipModule,
+        MatTreeModule,
+        PortalModule,
+        ScrollingModule,
 
-    ChartsModule,
-    NgAlertModule
+        ChartsModule,
+        NgAlertModule,
+        SignaturePadModule
 
-  ],
-  entryComponents: [ViewVehicleComponent, BookedVehiclesComponent],
-  providers: [GetlistService],
+    ],
+  entryComponents: [ViewVehicleComponent, BookedVehiclesComponent,CanceldialogueComponent],
+  providers: [GetlistService, SignatureService, InteractionService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

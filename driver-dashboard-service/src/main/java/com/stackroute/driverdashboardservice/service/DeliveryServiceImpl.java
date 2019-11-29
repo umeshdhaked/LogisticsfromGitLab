@@ -1,20 +1,44 @@
 package com.stackroute.driverdashboardservice.service;
 
+import com.google.gson.Gson;
 import com.stackroute.driverdashboardservice.domain.DeliveryRoute;
 import com.stackroute.driverdashboardservice.domain.DeliveryStop;
+import com.stackroute.driverdashboardservice.domain.Vehicle;
+import org.apache.kafka.clients.producer.KafkaProducer;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 @Service
 public class DeliveryServiceImpl implements DeliveryService {
     //this variable has to be sent to route optimization service
     private boolean orderAccepted;
+    private Vehicle[] vehicles;
+
+    //Actual Kafka
+    @Value("${kafka.bootstrap.servers}")
+    private String kafkaBootstrapServers;
+    private Properties producerProperties;
+    private KafkaProducer<String, String> producer;
+    @Value("${kafka.topic.book_driver}")
+    private String bookDriverTopicName;
+
+    //listener
+    @KafkaListener(topics = "book_driver", groupId = "test")
+    public void listen(String message) {
+        System.out.println("Received Message in group foo: " + message);
+        Gson gson = new Gson();
+        vehicles = gson.fromJson(message, Vehicle[].class);
+        System.out.println(vehicles[0].toString());
+    }
 
     @Override
     public DeliveryRoute getNextDeliveryRoute(String date, String vehicleId, String timeslot) throws ParseException {
