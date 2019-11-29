@@ -32,9 +32,10 @@ public class VehicleController<VehicleDao> {
 
         System.out.println("values");
 
+        System.out.println("id = "+vehicle.getId());
         System.out.println(vehicle.toString());
 
-        vehicle.setDate("today");
+//        vehicle.setDate("today");
 
         vehicle.setSlot1Status("Available");
         vehicle.setSlot2Status("Available");

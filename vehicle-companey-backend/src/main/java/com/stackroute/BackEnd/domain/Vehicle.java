@@ -4,13 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 //@Entity
 @Document
 public class Vehicle {
+
     @Id
+    @GeneratedValue
     int id;
     String vehicleNumber;
     String driverName;
@@ -18,10 +23,21 @@ public class Vehicle {
     int capacity;
     int costPerSlot;
     String vehicleStatus;
+    String slot;
+
 
     String date;
     String slot1Status;
     String slot2Status;
+
+    public String getSlot() {
+        return slot;
+    }
+
+    public void setSlot(String slot) {
+        this.slot = slot;
+    }
+
     String slot3Status;
 
     public Vehicle() { }

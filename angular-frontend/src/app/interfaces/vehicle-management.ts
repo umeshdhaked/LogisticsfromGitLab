@@ -1,9 +1,11 @@
 export interface VehicleManagement {
-  id: number,
+   id: number,
   vehicleNumber: string,
   driverName: string,
   vehicleType: string,
   capacity: number,
   costPerSlot: number,
-  vehicleStatus: string
+  vehicleStatus: string,
+  slot: string,
+  date: string
 }
