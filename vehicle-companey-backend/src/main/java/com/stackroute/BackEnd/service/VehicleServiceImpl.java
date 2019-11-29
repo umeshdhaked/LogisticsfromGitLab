@@ -79,5 +79,25 @@ public class VehicleServiceImpl implements VehicleService {
         }
         return list;
     }
+
+    @Override
+    public List<Vehicle> getVehicleForRetailerRequest(String slot, String date, String vehicleType) {
+
+        System.out.printf(slot + " "+date+" "+vehicleType);
+
+        if(slot.equals("slot1")){
+            return vehicleRepository.findBySlot1StatusAndDateAndVehicleType("Available",date,vehicleType);
+        }
+        if(slot.equals("slot2")){
+           return vehicleRepository.findBySlot2StatusAndDateAndVehicleType("Available", date,vehicleType);
+
+        }
+        if(slot.equals("slot3")){
+            return vehicleRepository.findBySlot3StatusAndDateAndVehicleType("Available",date,vehicleType);
+        }
+
+
+        return null;
+    }
 }
 
