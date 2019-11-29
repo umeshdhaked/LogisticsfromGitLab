@@ -73,5 +73,6 @@
         <module>login-authentication-service</module>
         <module>vehicle-demand-service</module>
         <module>vehicle-companey-backend</module>
+	<module>signature-backend</module>
     </modules>
 </project>
