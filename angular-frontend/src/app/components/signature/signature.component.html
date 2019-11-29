@@ -1,0 +1,28 @@
+<!--<ng-signature-pad-->
+<!--  doneButtonText="Show Image"-->
+<!--  format="base64"-->
+<!--  (done)="showImage($event)">-->
+<!--</ng-signature-pad>-->
+
+
+<!--<img [src]="signatureImage" *ngIf="signatureImage" />-->
+<div class="myclass">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-pad-body">
+        <div id="signature-pad" class="m-signature-pad">
+          <div   class="m-signature-pad-body">
+            <signature-pad [options]="signaturePadOptions" id="sp" #sp ></signature-pad>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-left">
+  <button type="button" class="btn btn-primary" (click)="drawComplete()">Save</button>
+  <button type="button" class="btn btn-primary" (click)="sp.clear()">Clear</button>
+
+</div>
+
+
