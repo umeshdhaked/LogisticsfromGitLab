@@ -34,6 +34,12 @@ public class VehicleController<VehicleDao> {
 
         System.out.println(vehicle.toString());
 
+        vehicle.setDate("today");
+
+        vehicle.setSlot1Status("Available");
+        vehicle.setSlot2Status("Available");
+        vehicle.setSlot3Status("Available");
+
 
         ResponseEntity responseEntity;
         //try {
@@ -127,5 +133,28 @@ public class VehicleController<VehicleDao> {
         //}
         return responseEntity;
     }
+
+
+    List<Vehicle> vehiclesForDriverDashboard;
+
+    @GetMapping("/BookVehicle")
+    @CrossOrigin
+    public ResponseEntity<?> bookVehicleHandler(@RequestParam("slot") String slot, @RequestParam("date") String date, @RequestParam("type") String vehicleType ){
+
+        List<Vehicle> vehicleList = vehicleService.getVehicleForRetailerRequest(slot,date,vehicleType);
+
+        System.out.printf("one");
+
+        this.vehiclesForDriverDashboard = vehicleList;
+
+        ResponseEntity responseEntity;
+        responseEntity = new ResponseEntity(vehicleList, HttpStatus.OK);
+
+        return responseEntity;
+    }
+
+
+
+
 }
 
