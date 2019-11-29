@@ -4,12 +4,16 @@ import com.stackroute.BackEnd.domain.Vehicle;
 import com.stackroute.BackEnd.exception.VehicleAlreadyExistsException;
 import com.stackroute.BackEnd.exception.VehicleNotFoundException;
 import com.stackroute.BackEnd.repository.VehicleRepository;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Properties;
 
 @Primary
 @Service
@@ -78,6 +82,26 @@ public class VehicleServiceImpl implements VehicleService {
             throw new VehicleNotFoundException("Vehicle not Found");
         }
         return list;
+    }
+
+    @Override
+    public List<Vehicle> getVehicleForRetailerRequest(String slot, String date, String vehicleType) {
+
+        System.out.printf(slot + " "+date+" "+vehicleType);
+
+        if(slot.equals("slot1")){
+            return vehicleRepository.findBySlot1StatusAndDateAndVehicleType("Available",date,vehicleType);
+        }
+        if(slot.equals("slot2")){
+           return vehicleRepository.findBySlot2StatusAndDateAndVehicleType("Available", date,vehicleType);
+
+        }
+        if(slot.equals("slot3")){
+            return vehicleRepository.findBySlot3StatusAndDateAndVehicleType("Available",date,vehicleType);
+        }
+
+
+        return null;
     }
 }
 

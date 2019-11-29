@@ -27,8 +27,10 @@ export class ManageVehiclesComponent implements OnInit {
 
   set searchTerm(value: string) {
     this.filteredData = this.vehicles.filter((vehicle) => {
-      return (vehicle.id.toString().toLowerCase().indexOf(value.toLowerCase()) != -1) ||
-        (vehicle.vehicleType.toString().toLowerCase().indexOf(value.toLowerCase()) != -1) ||
+      return (vehicle.date.toString().toLowerCase().indexOf(value.toLowerCase()) != -1) ||
+      (vehicle.slot.toString().toLowerCase().indexOf(value.toLowerCase()) != -1) ||
+      (vehicle.id.toString().toLowerCase().indexOf(value.toLowerCase()) != -1) ||
+      (vehicle.vehicleType.toString().toLowerCase().indexOf(value.toLowerCase()) != -1) ||
         (vehicle.driverName.toString().toLowerCase().indexOf(value.toLowerCase()) != -1) ||
         (vehicle.vehicleNumber.toString().toLowerCase().indexOf(value.toLowerCase()) != -1) ||
         (vehicle.capacity.toString().toLowerCase().indexOf(value.toLowerCase()) != -1) ||

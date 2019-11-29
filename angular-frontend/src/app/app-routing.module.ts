@@ -24,6 +24,10 @@ import {ViewProfileComponent} from './components/view-profile/view-profile.compo
 import {VerifyUserComponent} from './components/verify-user/verify-user.component';
 import {LoginPageComponent} from './components/login-page/login-page.component';
 import { TokenFilterCheckComponent } from './components/token-filter-check/token-filter-check.component';
+import {CancelreasonComponent} from "./components/cancelreason/cancelreason.component";
+import {SignatureComponent} from "./components/signature/signature.component";
+import {MaindriverdashboardComponent} from "./components/maindriverdashboard/maindriverdashboard.component";
+import {NavigatelocationComponent} from "./components/navigatelocation/navigatelocation.component";
 
 
 const routes: Routes = [
@@ -31,6 +35,10 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'verify', component: VerifyComponent},
+  { path : 'navigate', component: NavigatelocationComponent},
+  { path : 'driverdashboard', component: MaindriverdashboardComponent},
+  { path : 'signature', component: SignatureComponent},
+  {path: 'reasons' , component: CancelreasonComponent},
   {path: 'editProfile', component: EditProfileComponent, canActivate: [AuthGaurdService]},
   {path: 'addOrder', component: AddOrderComponent, canActivate: [AuthGaurdService]},
   {path: 'driver', component: DriverDashboardComponent, canActivate: [AuthGaurdService]},

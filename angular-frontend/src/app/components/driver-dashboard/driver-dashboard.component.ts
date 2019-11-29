@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 export class DriverDashboardComponent implements OnInit {
 
   deliveryRoute: Deliveryroute;
-  vehicleId = 'ABC123';
+  vehicleId = 'KA123';
   today: String = new Date().toISOString().slice(0, 10);
   timeslot: String = "Slot1";
   newDelivery: boolean = false;

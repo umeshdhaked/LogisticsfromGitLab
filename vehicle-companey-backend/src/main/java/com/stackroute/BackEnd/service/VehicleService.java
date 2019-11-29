@@ -23,5 +23,6 @@ public interface VehicleService {
 
     public List<Vehicle> getVehicleByVehicleNumber(String vehicleNumber) throws VehicleNotFoundException;
 
+    List<Vehicle> getVehicleForRetailerRequest(String slot, String date, String vehicleType);
 }
 
