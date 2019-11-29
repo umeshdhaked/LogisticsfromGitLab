@@ -10,15 +10,15 @@ export class BasicAuthHtppInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
 
-    if (localStorage.getItem('token')) {
-      req = req.clone({
+    // if (localStorage.getItem('token')) {
+      let TokenizedReq = req.clone({
         setHeaders: {
-          Authorization: localStorage.getItem('token')
+          Authorization: 'Token '+localStorage.getItem('token')
         }
       })
-    }
+  //  }
 
-    return next.handle(req);
+    return next.handle(TokenizedReq);
 
   }
 }

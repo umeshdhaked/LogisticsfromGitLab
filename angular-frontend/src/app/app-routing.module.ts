@@ -23,6 +23,7 @@ import {from} from 'rxjs';
 import {ViewProfileComponent} from './components/view-profile/view-profile.component';
 import {VerifyUserComponent} from './components/verify-user/verify-user.component';
 import {LoginPageComponent} from './components/login-page/login-page.component';
+import { TokenFilterCheckComponent } from './components/token-filter-check/token-filter-check.component';
 
 
 const routes: Routes = [
@@ -48,6 +49,7 @@ const routes: Routes = [
 
   {path: 'confirm/:token', component: VerifyUserComponent},
   {path: 'login', component: LoginPageComponent},
+  {path: 'sendToken', component:TokenFilterCheckComponent, canActivate: [AuthGaurdService] },
   {path: '**', component: PageNotFoundComponent}
 ];
 

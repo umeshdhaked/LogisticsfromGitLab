@@ -1,7 +1,7 @@
 import {GetlistService} from './services/getlist.service';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './components//home/home.component';
@@ -83,6 +83,12 @@ import {VerifyUserComponent} from './components/verify-user/verify-user.componen
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {LoginPageComponent} from './components/login-page/login-page.component';
+import {BasicAuthHtppInterceptorService} from './services/basic-auth-htpp-interceptor.service';
+import { LoginAuthService } from './services/login-auth.service';
+import { AuthGaurdService } from './services/auth-gaurd.service';
+import { TokenFilterCheckService } from './services/token-filter-check.service';
+import { EditProfileService } from './services/edit-profile.service';
+import { TokenFilterCheckComponent } from './components/token-filter-check/token-filter-check.component';
 
 @NgModule({
   declarations: [
@@ -112,7 +118,8 @@ import {LoginPageComponent} from './components/login-page/login-page.component';
 
     NavbarComponent,
     FooterComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    TokenFilterCheckComponent
   ],
   imports: [
     BrowserModule,
@@ -178,7 +185,13 @@ import {LoginPageComponent} from './components/login-page/login-page.component';
 
   ],
   entryComponents: [ViewVehicleComponent, BookedVehiclesComponent],
-  providers: [GetlistService],
+  providers: [GetlistService,LoginAuthService,AuthGaurdService, EditProfileService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass: BasicAuthHtppInterceptorService,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

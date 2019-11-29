@@ -4,6 +4,7 @@ import com.stackroute.security.jwtsecurity.model.JwtAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -13,18 +14,20 @@ import java.io.IOException;
 
 public class JwtAuthenticationTokenFilter extends AbstractAuthenticationProcessingFilter {
 
+
     public JwtAuthenticationTokenFilter() {
         super("/rest/**");
     }
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws AuthenticationException, IOException, ServletException {
+    @CrossOrigin
+    public Authentication attemptAuthentication(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)  {
 
-        String header = httpServletRequest.getHeader("Authorisation");
-
+        String header = httpServletRequest.getHeader("Authorization");
+        System.out.println("authHeader is  = " + header);
 
         if (header == null || !header.startsWith("Token ")) {
-            System.out.println(header);
+
             throw new RuntimeException("JWT Token is missing");
         }
 

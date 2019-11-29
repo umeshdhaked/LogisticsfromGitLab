@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {environment} from 'src/environments/environment';
 
 
@@ -29,18 +29,6 @@ export class EditProfileService {
 
 
   public getProfileFromEmail(data) {
-
-// testing for sending header in login service filter
-console.log('testing');
-
-
-  // this.http.get(environment.apiUrl+':9091/rest/hello').subscribe();
-
-
-//end testing
-
-
-
 
     let url = environment.apiUrl + ':8082/retailerProfile/getRetailerFromEmail?email=' + data;
 
