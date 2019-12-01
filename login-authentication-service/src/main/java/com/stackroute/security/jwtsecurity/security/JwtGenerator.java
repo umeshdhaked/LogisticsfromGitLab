@@ -24,6 +24,6 @@ public class JwtGenerator {
 
         claims.setExpiration(new Date(System.currentTimeMillis()+ 3600000));
 
-        return Jwts.builder().setClaims(claims).signWith(SignatureAlgorithm.HS512, "youtube").compact();
+        return Jwts.builder().setClaims(claims).signWith(SignatureAlgorithm.HS512, "stackroute").compact();
     }
 }
