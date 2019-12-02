@@ -28,6 +28,11 @@ import {CancelreasonComponent} from "./components/cancelreason/cancelreason.comp
 import {SignatureComponent} from "./components/signature/signature.component";
 import {MaindriverdashboardComponent} from "./components/maindriverdashboard/maindriverdashboard.component";
 import {NavigatelocationComponent} from "./components/navigatelocation/navigatelocation.component";
+import {Statistic1Component} from "./components/statistic1/statistic1.component";
+import {RetailerdetailsComponent} from "./components/retailerdetails/retailerdetails.component";
+import {VehicledetailsComponent} from "./components/vehicledetails/vehicledetails.component";
+import {AdminfrontendComponent} from "./components/adminfrontend/adminfrontend.component";
+import {AdminloginComponent} from "./components/adminlogin/adminlogin.component";
 
 
 const routes: Routes = [
@@ -58,6 +63,13 @@ const routes: Routes = [
   {path: 'confirm/:token', component: VerifyUserComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'sendToken', component:TokenFilterCheckComponent, canActivate: [AuthGaurdService] },
+
+  { path : 'adminLogin', component: AdminloginComponent},
+  { path : 'adminDashboard', component: AdminfrontendComponent},
+  { path : 'vehicleDetails', component: VehicledetailsComponent},
+  { path : 'retailerDetails', component: RetailerdetailsComponent},
+
+  { path : 'statistics', component: Statistic1Component},
   {path: '**', component: PageNotFoundComponent}
 ];
 
