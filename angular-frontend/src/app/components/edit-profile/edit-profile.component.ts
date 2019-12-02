@@ -12,6 +12,7 @@ import * as jwt_decode from 'jwt-decode';
 export class EditProfileComponent implements OnInit {
 
 
+  id = '';
   email = '';
 
   constructor(private httpClient: HttpClient, private router: Router, private editProfileService: EditProfileService) {
@@ -22,6 +23,7 @@ export class EditProfileComponent implements OnInit {
 
     // getting email from token
     var decoded = {
+      "userId":"",
       "sub": ""
     }
     let token = localStorage.getItem('token');
@@ -29,6 +31,7 @@ export class EditProfileComponent implements OnInit {
 
     if (token != null) {
       decoded = jwt_decode(token);
+      this.id = decoded.userId;
       this.email = decoded.sub;
     }
 
@@ -130,6 +133,7 @@ export class EditProfileComponent implements OnInit {
       this.router.navigate(['/editProfile']);
     } else {
       var retailerData = {
+        "id":this.id,
         "fullName": fullName,
         "email": this.email,
         "phoneNo": phone,

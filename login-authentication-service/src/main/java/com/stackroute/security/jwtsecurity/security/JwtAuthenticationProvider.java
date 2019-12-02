@@ -2,7 +2,7 @@ package com.stackroute.security.jwtsecurity.security;
 
 import com.stackroute.security.jwtsecurity.model.JwtAuthenticationToken;
 import com.stackroute.security.jwtsecurity.model.User;
-import com.stackroute.security.jwtsecurity.model.RetailerDetails;
+import com.stackroute.security.jwtsecurity.model.UsersDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
@@ -43,7 +43,7 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
         List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList(user.getRole());
 
 
-        return new RetailerDetails(user.getEmail(), user.getId(), token, grantedAuthorities);
+        return new UsersDetail(user.getEmail(), user.getId(), token, grantedAuthorities);
     }
 
     @Override

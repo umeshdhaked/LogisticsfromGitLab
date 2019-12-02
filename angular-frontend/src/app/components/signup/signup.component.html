@@ -20,7 +20,10 @@
         <input #email type="email" placeholder="Email Id" name="email" required>
       </div>
       <div class="col-md-4 offset-md-4 col-12">
-        <button type="submit" class="btn" (click)='registerNewUser(firstName.value, lastName.value, email.value)'>Create
+        <input #role type="text" placeholder="Admin/Vehicle Company/Retailer" name="Role" required>
+      </div>
+      <div class="col-md-4 offset-md-4 col-12">
+        <button type="submit" class="btn" (click)='registerNewUser(firstName.value, lastName.value, email.value, role.value)'>Create
           Account
         </button>
       </div>
