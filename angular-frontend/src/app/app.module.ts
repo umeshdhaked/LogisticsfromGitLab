@@ -97,6 +97,11 @@ import { SignatureComponent } from './components/signature/signature.component';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { SignatureService } from './services/signature.service';
 import { InteractionService } from './services/interaction.service';
+import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
+import { AdminfrontendComponent } from './components/adminfrontend/adminfrontend.component';
+import { RetailerdetailsComponent } from './components/retailerdetails/retailerdetails.component';
+import { Statistic1Component } from './components/statistic1/statistic1.component';
+import { VehicledetailsComponent } from './components/vehicledetails/vehicledetails.component';
 
 @NgModule({
   declarations: [
@@ -132,7 +137,12 @@ import { InteractionService } from './services/interaction.service';
     CancelreasonComponent,
     MaindriverdashboardComponent,
     NavigatelocationComponent,
-    SignatureComponent
+    SignatureComponent,
+    AdminloginComponent,
+    AdminfrontendComponent,
+    RetailerdetailsComponent,
+    Statistic1Component,
+    VehicledetailsComponent
   ],
 
   imports: [
