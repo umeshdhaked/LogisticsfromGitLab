@@ -16,9 +16,8 @@ export class Retailerdetails{
   phoneNo: string;
   address: string;
   docName: string;
-  profilePic: Array<any> ;
+  profilePic: string ;
   profilePicType: string;
-
-  docPic: Array<any>;
+  docPic: string;
   docPicType: string;
 }

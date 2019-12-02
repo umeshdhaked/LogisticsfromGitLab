@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {EditProfileService} from '../../services/edit-profile.service';
+import { Component, OnInit } from '@angular/core';
+import { EditProfileService } from '../../services/edit-profile.service';
 import * as jwt_decode from 'jwt-decode';
+import { Retailerdetails } from 'src/app/interfaces/retailerDetails';
+import { DecodedJwtData } from 'src/app/interfaces/decoded-jwt-data';
 
 @Component({
   selector: 'app-view-profile',
@@ -9,48 +11,39 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class ViewProfileComponent implements OnInit {
 
-  retailerObj = {
-    "fullName": "",
-    "email": "",
-    "phoneNo": "",
-    "address": "",
-    "gstIn": "",
-    "docName": "",
-    "profilePic": "",
-    "profilePicType": "",
-    "docPic": "",
-    "docPicType": "",
-  }
 
 
-  picurl = '';
-  docurl = '';
+
+
 
   constructor(private editProfileService: EditProfileService) {
   }
 
+  decodedData: DecodedJwtData;
+  retailerObj: Retailerdetails
+  picurl = '';
+  docurl = '';
+  check = '';
+
+
   ngOnInit() {
 
-    // getting email from token
-    var decoded = {
-      "sub": ""
-    }
     let token = localStorage.getItem('token');
     let email = '';
 
     if (token != null) {
-      decoded = jwt_decode(token);
-      email = decoded.sub;
+      this.decodedData = jwt_decode(token);
+      email = this.decodedData.sub;
     }
 
 
-// finding profile detail from email
+    // finding profile detail from email
 
     this.editProfileService.getProfileFromEmail(email).subscribe((datas: any) => {
       this.retailerObj = datas;
       this.picurl = 'data:' + this.retailerObj.profilePicType + ';base64,' + this.retailerObj.profilePic;
       this.docurl = 'data:' + this.retailerObj.docPicType + ';base64,' + this.retailerObj.docPic;
-      // console.log(this.retailerObj.fullName);
+      this.check = '.'
     });
   }
 
