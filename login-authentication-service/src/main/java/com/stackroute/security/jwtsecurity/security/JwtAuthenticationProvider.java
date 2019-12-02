@@ -11,6 +11,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
@@ -21,11 +22,13 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
     private JwtValidator validator;
 
     @Override
+    @CrossOrigin
     protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken) throws AuthenticationException {
 
     }
 
     @Override
+    @CrossOrigin
     protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken) throws AuthenticationException {
 
         JwtAuthenticationToken jwtAuthenticationToken = (JwtAuthenticationToken) usernamePasswordAuthenticationToken;
@@ -37,14 +40,14 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
             throw new RuntimeException("JWT Token is incorrect");
         }
 
-        List<GrantedAuthority> grantedAuthorities = AuthorityUtils
-                .commaSeparatedStringToAuthorityList(user.getRole());
+        List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList(user.getRole());
 
 
         return new RetailerDetails(user.getEmail(), user.getId(), token, grantedAuthorities);
     }
 
     @Override
+    @CrossOrigin
     public boolean supports(Class<?> aClass) {
         return (JwtAuthenticationToken.class.isAssignableFrom(aClass));
     }

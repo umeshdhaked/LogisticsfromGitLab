@@ -8,12 +8,16 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
 
-@CrossOrigin
+//    @CrossOrigin is not Necessary if webconfig cors is configured
+
 @RestController
 @RequestMapping("/retailerProfile")
 public class RetailerController {
@@ -57,11 +61,11 @@ public class RetailerController {
     }
 
 
-    @CrossOrigin
+
     @GetMapping("/getRetailerFromEmail")
-    public RetailerProfile picHandler(@RequestParam("email") String email) {
-        //  System.out.println("email = "+email);
-//        System.out.println();
+    public RetailerProfile sendProfileData(@RequestParam("email") String email, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+          System.out.println("email = "+email);
+        System.out.println("header in profile = "+httpServletRequest.getHeader("authorization"));
 
         return service.getRetailerByEmail(email);
 

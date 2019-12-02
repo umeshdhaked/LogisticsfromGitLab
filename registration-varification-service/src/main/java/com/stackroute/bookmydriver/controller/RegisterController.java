@@ -207,8 +207,9 @@ public class RegisterController {
             User user = userService.findByConfirmationToken((String) requestParam.get("token"));
             //set up new password
 
-//            user.setPassword(passwordEncoder.encode((CharSequence) requestParam.get("password")));
-            user.setPassword(requestParam.get("password").toString());
+
+            user.setPassword(passwordEncoder.encode((CharSequence) requestParam.get("password")));
+          //  user.setPassword(requestParam.get("password").toString());
             //set user to enable
             user.setEnabled(true);
             //save user

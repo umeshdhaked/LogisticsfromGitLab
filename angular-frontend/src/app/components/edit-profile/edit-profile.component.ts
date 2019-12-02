@@ -150,6 +150,10 @@ export class EditProfileComponent implements OnInit {
 
       this.editProfileService.saveRetailerData(formData);
 
+      // window.location.reload();
+      this.router.navigate(['/user']);
+
+
     }
 
     this.delete();
