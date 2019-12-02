@@ -1,6 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from 'src/environments/environment';
+import * as jwt_decode from 'jwt-decode';
+import { JwtHelperService } from "@auth0/angular-jwt";
+import { Router } from '@angular/router';
+
+const helper = new JwtHelperService();
+
 
 
 @Injectable({
@@ -9,7 +15,7 @@ import {environment} from 'src/environments/environment';
 export class LoginAuthService {
 
 
-  constructor(private httpclient: HttpClient) {
+  constructor(private httpclient: HttpClient, private router:Router) {
   }
 
 
@@ -22,11 +28,26 @@ export class LoginAuthService {
 
   }
 
+  isTokenExpired() {
+    let token = localStorage.getItem('token')  
+     let decoded = {"sub":"","exp":""};
+    
+      decoded = jwt_decode(token);
 
-  isUserLoggedIn() {
-    let checkLogin = localStorage.getItem('token')  //we need to verify this token we can't blindly allow any string
-    //console.log(!(user === null))
-    return !(checkLogin === null)
+     
+const decodedToken = helper.decodeToken(token);
+const expirationDate = helper.getTokenExpirationDate(token);
+const isExpired = helper.isTokenExpired(token);
+
+
+if(isExpired){
+  console.log("Token is Expired");
+  alert("Session Expired!");
+  localStorage.removeItem('token');
+  this.router.navigate(['/login']);
+}
+
+    return !isExpired;
   }
 
   logOut() {

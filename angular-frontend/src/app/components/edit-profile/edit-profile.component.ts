@@ -151,7 +151,7 @@ export class EditProfileComponent implements OnInit {
       this.editProfileService.saveRetailerData(formData);
 
       // window.location.reload();
-      this.router.navigate(['/viewProfile']);
+      this.router.navigate(['/user']);
 
 
     }

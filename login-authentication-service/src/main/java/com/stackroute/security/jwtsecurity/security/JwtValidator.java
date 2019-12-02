@@ -27,9 +27,9 @@ public class JwtValidator {
 //            user.setId(Long.parseLong((String) body.get("userId")));
 //            user.setRole((String) body.get("role"));
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("token validation exception is = "+e);
         }
-
+    
         return user;
     }
 }
