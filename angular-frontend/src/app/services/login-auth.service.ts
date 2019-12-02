@@ -29,14 +29,15 @@ export class LoginAuthService {
   }
 
   isTokenExpired() {
-    let token = localStorage.getItem('token')  
+    let token = localStorage.getItem('token')
      let decoded = {"sub":"","exp":""};
-    
+
       decoded = jwt_decode(token);
 
-     
-const decodedToken = helper.decodeToken(token);
-const expirationDate = helper.getTokenExpirationDate(token);
+
+// const decodedToken = helper.decodeToken(token);
+// const expirationDate = helper.getTokenExpirationDate(token);
+
 const isExpired = helper.isTokenExpired(token);
 
 

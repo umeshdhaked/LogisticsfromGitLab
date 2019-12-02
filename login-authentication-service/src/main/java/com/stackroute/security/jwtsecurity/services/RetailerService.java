@@ -25,7 +25,7 @@ public class RetailerService {
     }
 
 
-    public long checkValidateDb(User user) {
+    public User checkValidateDb(User user) {
 
         User user1 = retailerRepository.findUserByEmail(user.getEmail());
 //
@@ -34,14 +34,14 @@ public class RetailerService {
 
         if (user1 == null) {
             System.out.println("in profile DB user not exist (=null)");
-            return -1;
+            return null;
         }
 
 
         if (user.getEmail().equals(user1.getEmail()) && passwordEncoder.matches(user.getPassword(),user1.getPassword())) {
-            return user1.getId();
+            return user1;
         } else {
-            return -1;
+            return null;
         }
 
     }

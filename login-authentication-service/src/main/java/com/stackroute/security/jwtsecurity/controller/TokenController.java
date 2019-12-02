@@ -33,11 +33,12 @@ public class TokenController {
 
         System.out.println(user);
         String generatedToken = "";
-        long userId = retailerService.checkValidateDb(user);
+        User user1 = retailerService.checkValidateDb(user);
 
-        if (userId != -1) {
-             System.out.println("userID = "+userId);
-            user.setId(userId);
+        if (user1 != null) {
+
+            user.setId(user1.getId());
+            user.setRole(user1.getRole());
 
             generatedToken = jwtGenerator.generate(user);
 
