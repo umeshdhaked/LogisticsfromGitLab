@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from 'src/environments/environment';
+import {Observable} from "rxjs";
 
 
 @Injectable({
@@ -13,9 +14,9 @@ export class EditProfileService {
 
   public saveRetailerData(data) {
 
-    let url = environment.apiUrl + ':8082/retailerProfile/saveDetailOfRetailer';
+    const url = environment.apiUrl + ':8082/retailerProfile/saveDetailOfRetailer';
     // console.log(url);
-    console.log('profile data = ')
+    console.log('profile data = ');
     console.log(data);
 
     setTimeout(() => {
@@ -30,11 +31,14 @@ export class EditProfileService {
 
   public getProfileFromEmail(data) {
 
-    let url = environment.apiUrl + ':8082/retailerProfile/getRetailerFromEmail?email=' + data;
+    const url = environment.apiUrl + ':8082/retailerProfile/getRetailerFromEmail?email=' + data;
 
     return this.http.get(url);
 
   }
-
+ public getAllRetailer(): Observable<any> {
+    const url = environment.apiUrl + '8082/retailerProfile/getAllRetailersProfileList';
+    return this.http.get(url);
+ }
 
 }
