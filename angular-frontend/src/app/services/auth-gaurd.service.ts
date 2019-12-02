@@ -7,12 +7,12 @@ import { LoginAuthService } from './login-auth.service';
 })
 export class AuthGaurdService implements CanActivate {
 
-  constructor(private router: Router,
-              private loginAuthService: LoginAuthService) {
+  constructor(private router: Router,private loginAuthService: LoginAuthService) {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.loginAuthService.isUserLoggedIn())
+
+    if (this.loginAuthService.isTokenExpired())
       return true;
 
     this.router.navigate(['login']);
