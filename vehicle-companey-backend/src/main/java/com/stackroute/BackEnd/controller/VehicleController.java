@@ -189,7 +189,7 @@ public class VehicleController<VehicleDao> {
         if(vehicleArray.length > 0){
             Gson gson = new Gson();
             sendKafkaMessage(gson.toJson(vehicleArray), producer, bookDriverTopic);
-        }    
+        }
         ResponseEntity responseEntity;
         responseEntity = new ResponseEntity(vehicleList, HttpStatus.OK);
 
