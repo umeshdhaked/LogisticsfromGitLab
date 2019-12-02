@@ -33,10 +33,12 @@ public class TokenController {
 
         System.out.println(user);
         String generatedToken = "";
-        boolean check = retailerService.checkValidateDb(user);
+        long userId = retailerService.checkValidateDb(user);
 
-        if (check) {
-            // System.out.println("retailer Exist");
+        if (userId != -1) {
+             System.out.println("userID = "+userId);
+            user.setId(userId);
+
             generatedToken = jwtGenerator.generate(user);
 
             String tokenStr = "{\"token\":" + "\"" + generatedToken + "\"}";
@@ -62,7 +64,7 @@ public class TokenController {
 
         User user1 = jwtValidator.validate(token);  //It will return the retailer using generated token
 
-        // System.out.println("retailer1 = "+ user1.toString());
+        System.out.println("retailer1 = "+ user1.toString());
 
         if (user1 != null) {
             if (email.equals(user1.getEmail())) {

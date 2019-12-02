@@ -24,12 +24,12 @@ public class JwtValidator {
 
             user.setEmail(body.getSubject());
 //            user.setPass((String) body.get("pass"));
-//            user.setId(Long.parseLong((String) body.get("userId")));
-//            user.setRole((String) body.get("role"));
+            user.setId(Long.parseLong((String) body.get("userId")));
+            user.setRole((String) body.get("role"));
         } catch (Exception e) {
             System.out.println("token validation exception is = "+e);
         }
-    
+
         return user;
     }
 }

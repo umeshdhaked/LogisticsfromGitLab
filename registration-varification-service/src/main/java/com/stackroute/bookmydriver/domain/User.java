@@ -46,8 +46,19 @@ public class User {
     @Column(name = "confirmation_token")
     private String confirmationToken;
 
+    @Column(name = "role")
+    private String role;
 
     //getter and setters
+
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public int getId() {
         return id;
