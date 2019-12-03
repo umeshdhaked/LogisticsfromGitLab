@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LoginAuthService} from 'src/app/services/login-auth.service';
 import * as jwt_decode from 'jwt-decode';
 import {Router} from '@angular/router';
+import { DecodedJwtData } from 'src/app/interfaces/decoded-jwt-data';
 
 @Component({
   selector: 'app-login-page',
@@ -33,10 +34,7 @@ export class LoginPageComponent implements OnInit {
       "password": password
     }
 
-    var decodedDetail = {
-      "sub": ""
-    }
-
+    var decodedDetail:DecodedJwtData;
 
     // getting jwtToken from backend and storing it in localstorage
 
@@ -54,7 +52,11 @@ export class LoginPageComponent implements OnInit {
         decodedDetail = jwt_decode(this.token);   // decoding token into json objects
         console.log(decodedDetail);
         console.log(decodedDetail.sub);
+
+        if(decodedDetail.role === "Retailer")
         this.router.navigate(['/viewProfile']);
+        if(decodedDetail.role === "VehicleCompany")
+        this.router.navigate(['/manage-vehicle']);
 
       } else {
         this.loginMessage = 'UserName or Password is incorrect';
