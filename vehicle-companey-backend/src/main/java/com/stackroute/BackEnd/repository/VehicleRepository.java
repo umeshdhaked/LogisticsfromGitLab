@@ -2,10 +2,17 @@ package com.stackroute.BackEnd.repository;
 
 import com.stackroute.BackEnd.domain.Vehicle;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 
 import java.util.List;
 
 public interface VehicleRepository extends MongoRepository<Vehicle, Integer> {
+
+    
+//   @Query("{'date': ?0,'slot': ?1,''}")
+//   public List<Vehicle> findbydateslotandstatus(String date,String slot,String status);
+
+
 
     List<Vehicle> findByVehicleNumber(String vehicleNumber);
 

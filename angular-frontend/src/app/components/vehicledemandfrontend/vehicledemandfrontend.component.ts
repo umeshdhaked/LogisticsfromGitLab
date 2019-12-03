@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {VehicledemandfrontendService} from "../../vehicledemandfrontend.service";
 import {RetailerDetails} from "../../vehicledemanded";
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-vehicledemandfrontend',
@@ -11,12 +12,15 @@ import {RetailerDetails} from "../../vehicledemanded";
 export class VehicledemandfrontendComponent implements OnInit {
   volume: string;
   slot: string;
-  date: Date;
+  date=new Date();
+  vehicleStatus: string;
 
   constructor(
     private dialog: MatDialog,
-    private vehicleService: VehicledemandfrontendService
+    private vehicleService: VehicledemandfrontendService,
+    private datePipe: DatePipe
   ) {
+    this.date = this.datePipe.transform(this.date, 'yyyy-MM-dd');
   }
 
   ngOnInit() {

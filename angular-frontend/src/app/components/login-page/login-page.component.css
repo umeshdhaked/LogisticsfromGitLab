@@ -1,12 +1,15 @@
 
 .Text-container {
-  width: 35%;
-  height: 45%;
-  margin: 0 auto;
+  width: 40%;
+  height: 50%;
+ 
+  margin:auto;
   background-color: white;
-  padding: 16px;
-  border-radius: 8px;
+  padding: 20px;
+  border-radius: 20px;
   text-align: center;
+  position: relative;
+  top: 40px;
 }
 .fullScreen{
   min-height: 100vh;

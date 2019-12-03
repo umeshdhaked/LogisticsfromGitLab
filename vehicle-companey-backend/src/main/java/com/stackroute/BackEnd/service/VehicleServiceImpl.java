@@ -59,6 +59,7 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public boolean deleteVehicle(int vehicleId) {
         vehicleRepository.deleteById(vehicleId);
+
         return true;
     }
 
@@ -103,5 +104,9 @@ public class VehicleServiceImpl implements VehicleService {
 
         return null;
     }
+//     @Override
+//     List<Vehicle> getvehiclebyDateSlotandStatus(String date,String slot,String status){
+//     List<Vehicle> mylist= vehicleRepository.findBy
+//     }
 }
 

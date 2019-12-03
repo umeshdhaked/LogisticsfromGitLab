@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 //@Entity
-@Document
+@Document(collection="VehicleTable")
 public class Vehicle {
 
     @Id
@@ -23,19 +23,37 @@ public class Vehicle {
     int capacity;
     int costPerSlot;
     String vehicleStatus;
-    String slot;
+    String slot1;
+    String slot2;
+    String slot3;
 
 
     String date;
     String slot1Status;
     String slot2Status;
 
-    public String getSlot() {
-        return slot;
+    public String getSlot1() {
+        return slot1;
     }
 
-    public void setSlot(String slot) {
-        this.slot = slot;
+    public void setSlot1(String slot1) {
+        this.slot1 = slot1;
+    }
+
+    public String getSlot2() {
+        return slot2;
+    }
+
+    public void setSlot2(String slot2) {
+        this.slot2 = slot2;
+    }
+
+    public String getSlot3() {
+        return slot3;
+    }
+
+    public void setSlot3(String slot3) {
+        this.slot3 = slot3;
     }
 
     String slot3Status;

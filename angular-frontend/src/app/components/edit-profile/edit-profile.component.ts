@@ -5,6 +5,7 @@ import {EditProfileService} from '../../services/edit-profile.service';
 import * as jwt_decode from 'jwt-decode';
 import { Retailerdetails } from 'src/app/interfaces/retailerDetails';
 import { DecodedJwtData } from 'src/app/interfaces/decoded-jwt-data';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-edit-profile',
@@ -17,6 +18,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   decodedData:DecodedJwtData;
+  retailerObj:Retailerdetails;
 
   ngOnInit() {
 
@@ -25,6 +27,10 @@ export class EditProfileComponent implements OnInit {
     if (token != null) {
      this.decodedData = jwt_decode(token);
     }
+
+    this.editProfileService.getProfileFromEmail(this.decodedData.sub).subscribe((datas: any) => {
+      this.retailerObj = datas;
+    });
 
   }
 
@@ -110,6 +116,7 @@ export class EditProfileComponent implements OnInit {
   }
 
 
+    // retailerData:Retailerdetails;
   public save(fullName, phone, address, gstIn, docName, check) {
 
     if (!check) {
@@ -122,19 +129,44 @@ export class EditProfileComponent implements OnInit {
       alert('Select a document');
       this.router.navigate(['/editProfile']);
     } else {
-      var retailerData:Retailerdetails
       
-     
-        retailerData.id = this.decodedData.userId;
-        retailerData.fullName = fullName;
-        retailerData.email = this.decodedData.sub;
-        retailerData.phoneNo = phone;
-        retailerData.address = address;
-        retailerData.gstIn = gstIn;
-        retailerData.docName = docName;
+      var retailerData = {     
+        "id" : this.decodedData.userId,
+        "fullName" : fullName,
+        "email" : this.decodedData.sub,
+        "phoneNo" : phone,
+        "address" : address,
+        "gstIn" : gstIn,
+        "docName" : docName
         // "profilePic":this.url,
         // "docPic":this.docurl,
-    
+      };
+
+      // this.retailerData = {
+      // id :   this.decodedData.userId,
+      // firstName: "",
+      // lastName: "",
+      // age: "",
+      // emergencyContact: "",
+      // dateOfBirth: "",
+      // placeOfBirth: "",
+      // gstIn: "",
+      // permanentAddress: "",
+      // shopAddress: "",
+      // mobileNo: "",
+      // fullName: fullName,
+      // email: this.decodedData.sub,
+      // phoneNo: phone,
+      // address: address,
+      // docName: docName,
+      // profilePic: "",
+      // profilePicType: "",
+      // docPic: "",
+      // docPicType: "",
+
+      // }
+
+      
 
       var retailerDataString = JSON.stringify(retailerData);  //converting json to string
 
