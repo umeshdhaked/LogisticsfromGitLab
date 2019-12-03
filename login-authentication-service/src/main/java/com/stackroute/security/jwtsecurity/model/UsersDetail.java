@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-public class RetailerDetails implements UserDetails {
+public class UsersDetail implements UserDetails {
 
     private String email;
     private String token;
@@ -14,7 +14,7 @@ public class RetailerDetails implements UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
 
 
-    public RetailerDetails(String email, long id, String token, List<GrantedAuthority> grantedAuthorities) {
+    public UsersDetail(String email, long id, String token, List<GrantedAuthority> grantedAuthorities) {
 
         this.email = email;
         this.id = id;

@@ -19,8 +19,22 @@
       <div class="col-md-4 offset-md-4 col-12">
         <input #email type="email" placeholder="Email Id" name="email" required>
       </div>
+
+      
       <div class="col-md-4 offset-md-4 col-12">
-        <button type="submit" class="btn" (click)='registerNewUser(firstName.value, lastName.value, email.value)'>Create
+        <mat-form-field>
+          <mat-select #roles value="none" placeholder="Role" required>
+            <mat-option value="Retailer">Retailer</mat-option>
+            <mat-option value="VehicleCompany">Vehicle Company</mat-option>
+            <!-- <mat-option value="Admin">PassPort</mat-option> -->
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+
+      <div class="col-md-4 offset-md-4 col-12">
+        <button type="submit" class="btn" (click)='registerNewUser(firstName.value, lastName.value, email.value, roles.value)'>Create
           Account
         </button>
       </div>

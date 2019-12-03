@@ -12,11 +12,15 @@ export class AuthGaurdService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
+    // if (this.loginAuthService.isTokenValid())
+    // return true;
+
     if (this.loginAuthService.isTokenExpired())
       return true;
 
     this.router.navigate(['login']);
     return false;
+
 
   }
 

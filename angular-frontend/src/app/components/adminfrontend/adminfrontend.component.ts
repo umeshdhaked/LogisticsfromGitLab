@@ -11,6 +11,7 @@ export class AdminfrontendComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    //this.router.navigate(['statistics']);
   }
   goToStatistics() {
     this.router.navigate(['statistics']);

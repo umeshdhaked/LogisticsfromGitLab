@@ -25,23 +25,23 @@ public class RetailerService {
     }
 
 
-    public boolean checkValidateDb(User user) {
+    public User checkValidateDb(User user) {
 
         User user1 = retailerRepository.findUserByEmail(user.getEmail());
-
-        System.out.println("user input = " + user.toString());
-         System.out.println("user from register_db = "+user1.toString());
+//
+//        System.out.println("user input = " + user.toString());
+//         System.out.println("user from register_db = "+user1.toString());
 
         if (user1 == null) {
-            System.out.println("in user1 null");
-            return false;
+            System.out.println("in profile DB user not exist (=null)");
+            return null;
         }
 
 
         if (user.getEmail().equals(user1.getEmail()) && passwordEncoder.matches(user.getPassword(),user1.getPassword())) {
-            return true;
+            return user1;
         } else {
-            return false;
+            return null;
         }
 
     }

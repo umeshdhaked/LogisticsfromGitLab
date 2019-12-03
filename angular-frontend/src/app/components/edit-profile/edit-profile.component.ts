@@ -3,6 +3,9 @@ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {EditProfileService} from '../../services/edit-profile.service';
 import * as jwt_decode from 'jwt-decode';
+import { Retailerdetails } from 'src/app/interfaces/retailerDetails';
+import { DecodedJwtData } from 'src/app/interfaces/decoded-jwt-data';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-edit-profile',
@@ -11,27 +14,23 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class EditProfileComponent implements OnInit {
 
-
-  email = '';
-
   constructor(private httpClient: HttpClient, private router: Router, private editProfileService: EditProfileService) {
   }
 
+  decodedData:DecodedJwtData;
+  retailerObj:Retailerdetails;
+
   ngOnInit() {
 
-
-    // getting email from token
-    var decoded = {
-      "sub": ""
-    }
     let token = localStorage.getItem('token');
 
-
     if (token != null) {
-      decoded = jwt_decode(token);
-      this.email = decoded.sub;
+     this.decodedData = jwt_decode(token);
     }
 
+    this.editProfileService.getProfileFromEmail(this.decodedData.sub).subscribe((datas: any) => {
+      this.retailerObj = datas;
+    });
 
   }
 
@@ -117,28 +116,57 @@ export class EditProfileComponent implements OnInit {
   }
 
 
+    // retailerData:Retailerdetails;
   public save(fullName, phone, address, gstIn, docName, check) {
 
     if (!check) {
       alert('Please check terms and condition');
       this.router.navigate(['/editProfile']);
-    } else if (fullName === "" || this.email === "" || phone === "" || address === "" || gstIn === "") {
+    } else if (fullName === "" || phone === "" || address === "" || gstIn === "") {
       alert('fill all the fields');
       this.router.navigate(['/editProfile']);
     } else if (docName === "none") {
       alert('Select a document');
       this.router.navigate(['/editProfile']);
     } else {
-      var retailerData = {
-        "fullName": fullName,
-        "email": this.email,
-        "phoneNo": phone,
-        "address": address,
-        "gstIn": gstIn,
-        "docName": docName,
+      
+      var retailerData = {     
+        "id" : this.decodedData.userId,
+        "fullName" : fullName,
+        "email" : this.decodedData.sub,
+        "phoneNo" : phone,
+        "address" : address,
+        "gstIn" : gstIn,
+        "docName" : docName
         // "profilePic":this.url,
         // "docPic":this.docurl,
-      }
+      };
+
+      // this.retailerData = {
+      // id :   this.decodedData.userId,
+      // firstName: "",
+      // lastName: "",
+      // age: "",
+      // emergencyContact: "",
+      // dateOfBirth: "",
+      // placeOfBirth: "",
+      // gstIn: "",
+      // permanentAddress: "",
+      // shopAddress: "",
+      // mobileNo: "",
+      // fullName: fullName,
+      // email: this.decodedData.sub,
+      // phoneNo: phone,
+      // address: address,
+      // docName: docName,
+      // profilePic: "",
+      // profilePicType: "",
+      // docPic: "",
+      // docPicType: "",
+
+      // }
+
+      
 
       var retailerDataString = JSON.stringify(retailerData);  //converting json to string
 
@@ -150,9 +178,7 @@ export class EditProfileComponent implements OnInit {
 
       this.editProfileService.saveRetailerData(formData);
 
-      // window.location.reload();
       this.router.navigate(['/user']);
-
 
     }
 

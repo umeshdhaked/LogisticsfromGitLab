@@ -1,12 +1,15 @@
 
 .Text-container {
-  width: 35%;
-  height: 45%;
-  margin: 0 auto;
+  width: 40%;
+  height: 50%;
+ 
+  margin:auto;
   background-color: white;
-  padding: 16px;
-  border-radius: 8px;
+  padding: 20px;
+  border-radius: 20px;
   text-align: center;
+  position: relative;
+  top: 40px;
 }
 
 .Text-container {
@@ -26,11 +29,15 @@
 
 
 .btn.btn-primary {
-  width: 20%;
+  width: auto;
   height: 40px;
-  margin-left: 40%;
+  margin: auto;
   background-color: #45A94C;
   color: white;
-  margin-top: 15px;
+  position: relative;
+  bottom: 30px;
+  
 
 }
+
+

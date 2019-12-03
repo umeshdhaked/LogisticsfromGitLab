@@ -14,13 +14,15 @@ import java.util.Date;
 public class JwtGenerator {
 
 
-    public String generate(User user) throws ParseException {
+    public String generate(User user) {
 
 
-        Claims claims = Jwts.claims().setSubject(user.getEmail()); // claims.put("sub",retailer.getEmail());
-//        claims.put("pass", user.getPass());
-//        claims.put("userId", String.valueOf(user.getId()));
-//        claims.put("role", user.getRole());
+        Claims claims = Jwts.claims();
+
+        claims.setSubject(user.getEmail()); // claims.put("sub",retailer.getEmail());
+//        claims.put("pass", user.getPassword());
+        claims.put("userId", String.valueOf(user.getId()));
+        claims.put("role", user.getRole());
 
         claims.setExpiration(new Date(System.currentTimeMillis()+ 3600000));
 

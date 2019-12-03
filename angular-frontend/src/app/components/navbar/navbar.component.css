@@ -7,6 +7,10 @@ h6 {
   visibility: hidden;
 }
 
+.navbar-fixed-top
+{
+  height: 360px;
+}
 
 /* .navbar.nav-link.scrolled{
     border-color: white;
@@ -48,4 +52,7 @@ a:hover {
   .navbar {
     background: rgb(54, 59, 68);
   }
+
+ 
 }
+ 
