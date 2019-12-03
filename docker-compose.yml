@@ -6,6 +6,7 @@ services:
       - "27017:27017"
     container_name: mongo-container
     network_mode: host
+    restart: always
   neo4j:
     image: neo4j:latest
     container_name: neo4j
@@ -17,6 +18,7 @@ services:
     network_mode: host
     volumes:
       - $HOME/neo4j/data:/data
+    restart: always  
   mysql1:
     image: mysql:5.7
     container_name: mysql
@@ -81,6 +83,7 @@ services:
       - 9091
     expose:
       - 9091
+    restart: always  
   order-service:
     image: order-service
     build: order-service/
@@ -95,6 +98,7 @@ services:
     expose:
       - 7687
       - 8084
+    restart: always  
   angular-frontend:
     image: angular-frontend
     build: angular-frontend/
@@ -104,6 +108,7 @@ services:
     #     build: .
     ports:
       - 80:80
+    restart: always  
   driver-dashboard-service:
     image: driver-dashboard-service
     build: driver-dashboard-service/
@@ -147,6 +152,7 @@ services:
     ports:
       - "2181:2181"
     hostname: zookeeper
+    restart: always
   kafka:
     image: wurstmeister/kafka
     command: [start-kafka.sh]
@@ -162,6 +168,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - "zookeeper"
+    restart: always  
   vehiclecompany:
     image: vehiclecompany
     build: vehicle-companey-backend
