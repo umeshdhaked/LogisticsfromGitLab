@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {environment} from 'src/environments/environment';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 import * as jwt_decode from 'jwt-decode';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Router } from '@angular/router';
@@ -15,7 +15,7 @@ const helper = new JwtHelperService();
 export class LoginAuthService {
 
 
-  constructor(private httpclient: HttpClient, private router:Router) {
+  constructor(private httpclient: HttpClient, private router: Router) {
   }
 
 
@@ -28,28 +28,39 @@ export class LoginAuthService {
 
   }
 
+  isTokenValid(){
+    // write token validation logic goes here
+    return true;
+  }
+
+
   isTokenExpired() {
     let token = localStorage.getItem('token')
-     let decoded = {"sub":"","exp":""};
+    let decoded = { "sub": "", "exp": "" };
 
-      decoded = jwt_decode(token);
-
-
-// const decodedToken = helper.decodeToken(token);
-// const expirationDate = helper.getTokenExpirationDate(token);
-
-const isExpired = helper.isTokenExpired(token);
+    decoded = jwt_decode(token);
 
 
-if(isExpired){
-  console.log("Token is Expired");
-  alert("Session Expired!");
-  localStorage.removeItem('token');
-  this.router.navigate(['/login']);
-}
+    // const decodedToken = helper.decodeToken(token);
+    // const expirationDate = helper.getTokenExpirationDate(token);
+
+    const isExpired = helper.isTokenExpired(token);
+
+
+    if (isExpired) {
+      console.log("Token is Expired");
+      alert("Session Expired!");
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    }
 
     return !isExpired;
   }
+
+
+
+
+
 
   logOut() {
     localStorage.removeItem('token')
