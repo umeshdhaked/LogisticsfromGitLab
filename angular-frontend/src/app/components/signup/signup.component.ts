@@ -24,9 +24,9 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
-  registerNewUser(firstName, lastName, email, role) {
+  registerNewUser(firstName, lastName, email, role, mobile) {
     if (firstName != "" && lastName != "" && email != "" && role != "none") {
-      this.regService.registerNewUser(firstName, lastName, email, role).subscribe((data) => {
+      this.regService.registerNewUser(firstName, lastName, email, role, mobile).subscribe((data) => {
         this.zone.run(() => {
           if (data.message == "OK") {
             this.userNotSaved = false;

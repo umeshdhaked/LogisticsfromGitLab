@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 //@Entity
-@Document
+@Document(collection="VehicleTable")
 public class Vehicle {
 
     @Id
@@ -23,22 +23,39 @@ public class Vehicle {
     int capacity;
     int costPerSlot;
     String vehicleStatus;
-    String slot;
+    String slot1;
+    String slot2;
+    String slot3;
 
 
     String date;
-    String slot1Status;
-    String slot2Status;
 
-    public String getSlot() {
-        return slot;
+
+    public String getSlot1() {
+        return slot1;
     }
 
-    public void setSlot(String slot) {
-        this.slot = slot;
+    public void setSlot1(String slot1) {
+        this.slot1 = slot1;
     }
 
-    String slot3Status;
+    public String getSlot2() {
+        return slot2;
+    }
+
+    public void setSlot2(String slot2) {
+        this.slot2 = slot2;
+    }
+
+    public String getSlot3() {
+        return slot3;
+    }
+
+    public void setSlot3(String slot3) {
+        this.slot3 = slot3;
+    }
+
+//    String slot3Status;
 
     public Vehicle() { }
 
@@ -50,29 +67,29 @@ public class Vehicle {
         this.date = date;
     }
 
-    public String getSlot1Status() {
-        return slot1Status;
-    }
+//    public String getSlot1Status() {
+//        return slot1Status;
+//    }
 
-    public void setSlot1Status(String slot1Status) {
-        this.slot1Status = slot1Status;
-    }
+//    public void setSlot1Status(String slot1Status) {
+//        this.slot1Status = slot1Status;
+//    }
+//
+//    public String getSlot2Status() {
+//        return slot2Status;
+//    }
+//
+//    public void setSlot2Status(String slot2Status) {
+//        this.slot2Status = slot2Status;
+//    }
 
-    public String getSlot2Status() {
-        return slot2Status;
-    }
-
-    public void setSlot2Status(String slot2Status) {
-        this.slot2Status = slot2Status;
-    }
-
-    public String getSlot3Status() {
-        return slot3Status;
-    }
-
-    public void setSlot3Status(String slot3Status) {
-        this.slot3Status = slot3Status;
-    }
+//    public String getSlot3Status() {
+//        return slot3Status;
+//    }
+//
+//    public void setSlot3Status(String slot3Status) {
+//        this.slot3Status = slot3Status;
+//    }
 
     public int getId() {
         return id;

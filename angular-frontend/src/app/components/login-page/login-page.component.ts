@@ -59,7 +59,7 @@ export class LoginPageComponent implements OnInit {
         this.router.navigate(['/manage-vehicle']);
 
       } else {
-        this.loginMessage = 'UserName or Password is incorrect';
+        this.loginMessage= 'UserName or Password is incorrect';
       }
 
     });

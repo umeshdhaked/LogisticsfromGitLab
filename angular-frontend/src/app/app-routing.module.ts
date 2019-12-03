@@ -46,25 +46,46 @@ const routes: Routes = [
   { path : 'driverdashboard', component: MaindriverdashboardComponent},
   { path : 'signature', component: SignatureComponent},
   {path: 'reasons' , component: CancelreasonComponent},
-  {path: 'editProfile', component: EditProfileComponent, canActivate: [AuthGaurdService]},
-  {path: 'addOrder', component: AddOrderComponent, canActivate: [AuthGaurdService]},
-  {path: 'driver', component: DriverDashboardComponent, canActivate: [AuthGaurdService]},
-  {path: 'user', component: RetailerDashboardComponent, canActivate: [AuthGaurdService]},
+  {path: 'editProfile', component: EditProfileComponent},
+  // {path: 'editProfile', component: EditProfileComponent, canActivate: [AuthGaurdService]},
+  {path: 'addOrder', component: AddOrderComponent},
+  // {path: 'addOrder', component: AddOrderComponent, canActivate: [AuthGaurdService]},
+  {path: 'driver', component: DriverDashboardComponent},
+  // {path: 'driver', component: DriverDashboardComponent, canActivate: [AuthGaurdService]},
+  // {path: 'user', component: RetailerDashboardComponent, canActivate: [AuthGaurdService]},
+  {path: 'user', component: RetailerDashboardComponent},
   {
     path: 'vehicle-management', component: VehicleManagementComponent, children: [
       {path: 'requests', component: RequestsComponent}
-    ], canActivate: [AuthGaurdService]
+    ]
   },
-  {path: 'manage-vehicle', component: ManageVehiclesComponent, canActivate: [AuthGaurdService]},
+
+  // {
+  //   path: 'vehicle-management', component: VehicleManagementComponent, children: [
+  //     {path: 'requests', component: RequestsComponent}
+  //   ], canActivate: [AuthGaurdService]
+  // },
+  // {path: 'manage-vehicle', component: ManageVehiclesComponent, canActivate: [AuthGaurdService]},
+  {path: 'manage-vehicle', component: ManageVehiclesComponent},
+  {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent},
+  // {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent, canActivate: [AuthGaurdService]},
+  {path: 'viewProfile', component: ViewProfileComponent},
+  // {path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGaurdService]},
+
+  {path: 'manage-vehicle', component: ManageVehiclesComponent},
   {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent, canActivate: [AuthGaurdService]},
   {path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGaurdService]},
 
 
-  {path: 'vehicle-history', component: VehicleHistoryComponent, canActivate: [AuthGaurdService]},
+
+  {path: 'vehicle-history', component: VehicleHistoryComponent},
+  // {path: 'vehicle-history', component: VehicleHistoryComponent, canActivate: [AuthGaurdService]},
+
 
   {path: 'confirm/:token', component: VerifyUserComponent},
   {path: 'login', component: LoginPageComponent},
-  {path: 'sendToken', component:TokenFilterCheckComponent, canActivate: [AuthGaurdService] },
+  {path: 'sendToken', component:TokenFilterCheckComponent },
+  // {path: 'sendToken', component:TokenFilterCheckComponent, canActivate: [AuthGaurdService] },
 
   { path : 'adminLogin', component: AdminloginComponent},
   { path : 'adminDashboard', component: AdminfrontendComponent},

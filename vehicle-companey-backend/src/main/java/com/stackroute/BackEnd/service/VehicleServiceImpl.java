@@ -59,6 +59,7 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public boolean deleteVehicle(int vehicleId) {
         vehicleRepository.deleteById(vehicleId);
+
         return true;
     }
 
@@ -85,6 +86,24 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
+    public List<Vehicle> getlistbyslot1anddate(String date, String slot1) {
+        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot1(date,slot1);
+        return myVehicle;
+    }
+
+    @Override
+    public List<Vehicle> getlistbyslot2anddate(String date, String slot2) {
+        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot1(date,slot2);
+        return myVehicle;
+    }
+
+    @Override
+    public List<Vehicle> getlistbyslot3anddate(String date, String slot3) {
+        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot1(date,slot3);
+        return myVehicle;
+    }
+
+    @Override
     public List<Vehicle> getVehicleForRetailerRequest(String slot, String date, String vehicleType) {
 
         System.out.printf(slot + " "+date+" "+vehicleType);
@@ -103,5 +122,9 @@ public class VehicleServiceImpl implements VehicleService {
 
         return null;
     }
+//     @Override
+//     List<Vehicle> getvehiclebyDateSlotandStatus(String date,String slot,String status){
+//     List<Vehicle> mylist= vehicleRepository.findBy
+//     }
 }
 

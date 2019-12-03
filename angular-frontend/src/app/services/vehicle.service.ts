@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {VehicleManagement} from '../interfaces/vehicle-management';
 import {environment} from 'src/environments/environment';
+import {Vehicle} from "../interfaces/vehicle";
 
 @Injectable({
   providedIn: 'root'

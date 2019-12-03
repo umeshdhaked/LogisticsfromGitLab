@@ -103,6 +103,7 @@ import { AdminfrontendComponent } from './components/adminfrontend/adminfrontend
 import { RetailerdetailsComponent } from './components/retailerdetails/retailerdetails.component';
 import { Statistic1Component } from './components/statistic1/statistic1.component';
 import { VehicledetailsComponent } from './components/vehicledetails/vehicledetails.component';
+import {DatePipe} from "@angular/common";
 
 
 @NgModule({
@@ -240,7 +241,7 @@ import { VehicledetailsComponent } from './components/vehicledetails/vehicledeta
       useClass: BasicAuthHtppInterceptorService,
       multi: true
     },
-    SignatureService, InteractionService,
+    SignatureService, InteractionService, DatePipe
 
   ],
 

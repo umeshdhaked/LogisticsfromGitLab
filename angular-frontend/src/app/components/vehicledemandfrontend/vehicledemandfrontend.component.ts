@@ -2,6 +2,10 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {VehicledemandfrontendService} from "../../vehicledemandfrontend.service";
 import {RetailerDetails} from "../../vehicledemanded";
+import {DatePipe} from '@angular/common';
+import {Router} from "@angular/router";
+import {environment} from "../../../environments/environment";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-vehicledemandfrontend',
@@ -11,12 +15,18 @@ import {RetailerDetails} from "../../vehicledemanded";
 export class VehicledemandfrontendComponent implements OnInit {
   volume: string;
   slot: string;
-  date: Date;
+  // date : string;
+  vehicleStatus: string;
+  myUrl: any;
 
   constructor(
     private dialog: MatDialog,
-    private vehicleService: VehicledemandfrontendService
+    private vehicleService: VehicledemandfrontendService,
+    private datePipe: DatePipe,
+    private router: Router,
+    private http: HttpClient
   ) {
+    // this.date = this.datePipe.transform(this.date, 'yyyy-MM-dd');
   }
 
   ngOnInit() {
@@ -29,7 +39,7 @@ export class VehicledemandfrontendComponent implements OnInit {
   sendRequest() {
 
     const retailerDetails = new RetailerDetails();
-    retailerDetails.date = this.date;
+    // retailerDetails.date = this.date;
     retailerDetails.timeSlot = this.slot;
     retailerDetails.volume = this.volume;
     console.log(retailerDetails.volume);
@@ -42,5 +52,14 @@ export class VehicledemandfrontendComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  sendrequest() {
+    if (this.slot === 'slot1') {
+      this.myUrl = environment.apiUrl + 'queryslot1/'  + '/' + 'available';
+      return this.http.get(this.myUrl, {
+        responseType: 'text'
+      });
+    }
   }
 }
