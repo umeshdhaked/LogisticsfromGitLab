@@ -27,15 +27,15 @@
                 <tr *ngFor="let vehicle of filteredData">
                     <td>{{ vehicle.id }}</td>
                     <!-- <td>{{vehicle.date}}</td> -->
-                    <td>{{vehicle.slot1}}</td>
-                    <td>{{vehicle.slot2}}</td>
-                    <td>{{vehicle.slot3}}</td>
+                    <td [ngStyle]="{'color':vehicle.slot1 === 'Available' ? 'green' : 'red' }">{{vehicle.slot1}}</td>
+                    <td [ngStyle]="{'color':vehicle.slot2 === 'Available' ? 'green' : 'red' }">{{vehicle.slot2}}</td>
+                    <td [ngStyle]="{'color':vehicle.slot3 === 'Available' ? 'green' : 'red' }">{{vehicle.slot3}}</td>
                     <td>{{ vehicle.vehicleNumber }}</td>
                     <td>{{ vehicle.driverName }}</td>
                     <td>{{ vehicle.vehicleType }}</td>
                     <td>{{ vehicle.capacity }}</td>
                     <td>{{ vehicle.costPerSlot }}</td>
-                    <td>{{ vehicle.vehicleStatus }}</td>
+                    <td [ngStyle]="{'color':vehicle.vehicleStatus === 'Good Condition' ? 'green' : 'red' }">{{ vehicle.vehicleStatus }}</td>
 
                     <td>
                         <button class="btn btn-info mr-2" (click)="showEditVehicleForm(vehicle)">
@@ -105,8 +105,6 @@
 
 
 
-
-
             </div>
 
             <p>
@@ -167,6 +165,8 @@
                 <button type="button" class="btn btn-warning" (click)="cancelEdits()">Cancel</button>
             </p>
         </form>
+
+
     </div>
 
 </div>
