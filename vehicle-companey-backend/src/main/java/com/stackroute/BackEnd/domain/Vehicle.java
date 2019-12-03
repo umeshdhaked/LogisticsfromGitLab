@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 //@Entity
-@Document
+@Document(collection="VehicleTable")
 public class Vehicle {
 
     @Id
