@@ -5,7 +5,9 @@
   background: transparent;
   font-family: 'Montserrat', sans-serif;
 }
-
+h6{
+  visibility: hidden;
+}
 h4 {
   color: goldenrod;
 }
