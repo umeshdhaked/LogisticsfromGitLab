@@ -7,8 +7,8 @@ export interface VehicleManagement {
   costPerSlot: number,
   vehicleStatus: string,
   // slot: string,
-  // date: string
+  // date: string;
   slot1: string,
   slot2: string,
-  slot3: string
+  slot3: string;
 }

@@ -126,6 +126,6 @@ export class RetailerDashboardComponent implements OnInit {
   }
 
   retailervehicleDemand() {
-    this.router.navigate('retailerVehicleDemand');
+    this.router.navigate(['retailerVehicleDemand']);
   }
 }

@@ -62,13 +62,13 @@
 
 
 <!--      <span date="MM/dd/yyyy"></span>-->
-    <div class="currentdate col-sm-3">
+    <div class="currentdate col-sm-4">
      <p> Date: {{date | date:'yyyy-MM-dd'}}</p>
     </div>
     <!--        <p>You selected {{date}}</p>-->
 
 
-  <div class="slot col-sm-3">
+  <div class="slot col-sm-4">
       <mat-form-field>
           <mat-label>Time Slot</mat-label>
           <mat-select [(value)]="slot">
@@ -84,18 +84,9 @@
   </div>
 
 
-  <div class="vehicleStatus col-sm-3">
-      <mat-form-field>
-          <mat-label>Status</mat-label>
-          <mat-select [(value)]="vehicleStatus">
-              <mat-option value="Available">Available</mat-option>
-              <mat-option value="Busy">Busy</mat-option>
-          </mat-select>
-      </mat-form-field>
-      <p>You selected: {{vehicleStatus}}</p>
-  </div>
-    <div class="col-sm-3">
-    <button  mat-stroked-button>Search</button>
+
+    <div class="col-sm-4">
+    <button  mat-stroked-button (click)="sendrequest()">Search</button>
     </div>
       <!-- <div class="tablerate">
       <h4>Ratecard</h4>

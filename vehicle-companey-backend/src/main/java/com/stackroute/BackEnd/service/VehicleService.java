@@ -22,7 +22,9 @@ public interface VehicleService {
     public Optional<Vehicle> getVehicleById(int id) throws VehicleNotFoundException;
 
     public List<Vehicle> getVehicleByVehicleNumber(String vehicleNumber) throws VehicleNotFoundException;
-
+    List<Vehicle> getlistbyslot1anddate(String date,String slot1);
+    List<Vehicle> getlistbyslot2anddate(String date,String slot2);
+    List<Vehicle> getlistbyslot3anddate(String date,String slot3);
     List<Vehicle> getVehicleForRetailerRequest(String slot, String date, String vehicleType);
 //     List<Vehicle> getvehiclebyDateSlotandStatus(String date,String slot,String status);
 }

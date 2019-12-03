@@ -8,9 +8,13 @@ import java.util.List;
 
 public interface VehicleRepository extends MongoRepository<Vehicle, Integer> {
 
-    
-//   @Query("{'date': ?0,'slot': ?1,''}")
-//   public List<Vehicle> findbydateslotandstatus(String date,String slot,String status);
+
+   @Query("{'date': ?0,'slot1': ?1}")
+   public List<Vehicle> findbydateandslot1(String date,String slot1);
+   @Query("{'date': ?0,'slot2': ?1}")
+   public List<Vehicle> findbydateandslot2(String date,String slot2);
+   @Query("{'date': ?0,'slot2': ?1}")
+   public List<Vehicle> findbydateandslot3(String date,String slot3);
 
 
 
