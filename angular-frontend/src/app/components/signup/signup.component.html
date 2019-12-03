@@ -20,6 +20,9 @@
           <div class=" col-md-4 offset-md-4 col-12">
             <input #email type="email" placeholder="Email Id" name="email" required>
           </div>
+          <div class=" col-md-4 offset-md-4 col-12">
+            <input #mobile type="mobile" placeholder="Mobile No." name="mobile" required>
+          </div>
 
           
           <div class="col-md-4 offset-md-4 col-12">
@@ -34,7 +37,7 @@
 
 
           <div class="col-md-4 offset-md-4 col-12">
-            <button type="submit" class="btn btn-outline-danger" (click)='registerNewUser(firstName.value, lastName.value, email.value, roles.value)'>Create
+            <button type="submit" class="btn btn-outline-danger" (click)='registerNewUser(firstName.value, lastName.value, email.value, roles.value, mobile.value)'>Create
               Account
             </button>
           </div>
