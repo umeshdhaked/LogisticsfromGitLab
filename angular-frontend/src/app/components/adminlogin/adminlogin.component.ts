@@ -18,7 +18,7 @@ export class AdminloginComponent implements OnInit {
   checkLogin() {
     // tslint:disable-next-line:triple-equals
     if (this.username === 'admin' && this.password === 'root123') {
-      this.router.navigateByUrl('adminDashboard');
+      this.router.navigateByUrl('statistics');
     } else {
       alert('please enter correct username and password');
     }

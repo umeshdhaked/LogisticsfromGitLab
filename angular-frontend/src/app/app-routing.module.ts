@@ -57,6 +57,7 @@ const routes: Routes = [
       {path: 'requests', component: RequestsComponent}
     ]
   },
+
   // {
   //   path: 'vehicle-management', component: VehicleManagementComponent, children: [
   //     {path: 'requests', component: RequestsComponent}
@@ -68,6 +69,10 @@ const routes: Routes = [
   // {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent, canActivate: [AuthGaurdService]},
   {path: 'viewProfile', component: ViewProfileComponent},
   // {path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGaurdService]},
+
+  {path: 'manage-vehicle', component: ManageVehiclesComponent},
+  {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent, canActivate: [AuthGaurdService]},
+  {path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGaurdService]},
 
 
 
