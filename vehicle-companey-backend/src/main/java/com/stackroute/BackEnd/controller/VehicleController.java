@@ -9,6 +9,7 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -72,9 +73,9 @@ public class VehicleController<VehicleDao> {
 
 //        vehicle.setDate("today");
 
-        vehicle.setSlot1Status("Available");
-        vehicle.setSlot2Status("Available");
-        vehicle.setSlot3Status("Available");
+//        vehicle.setSlot1Status("Available");
+//        vehicle.setSlot2Status("Available");
+//        vehicle.setSlot3Status("Available");
 
 
         ResponseEntity responseEntity;
@@ -197,7 +198,44 @@ public class VehicleController<VehicleDao> {
     }
 
 
-
-
+    @GetMapping(value="queryslot1/{date}/{slot1}")
+    @CrossOrigin
+    public ResponseEntity<?> getVehiclesforslot1anddate(@PathVariable("date") String date, @PathVariable("slot1") String slot1) {
+        ResponseEntity responseEntity;
+        List<Vehicle> vehicles = vehicleService.getlistbyslot1anddate(date,slot1);
+        System.out.print(vehicles);
+        //try{
+        responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
+        //}catch (Exception ex) {
+        //  responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
+        //}
+        return responseEntity;
+    }
+    @GetMapping("queryslot2")
+    @CrossOrigin
+    public ResponseEntity<?> getVehiclesforslot2anddate(@RequestParam("date") String date, @RequestParam("slot2") String slot2) {
+        ResponseEntity responseEntity;
+        List<Vehicle> vehicles = vehicleService.getlistbyslot2anddate(date,slot2);
+        System.out.print(vehicles);
+        //try{
+        responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
+        //}catch (Exception ex) {
+        //  responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
+        //}
+        return responseEntity;
+    }
+    @GetMapping("queryslot3")
+    @CrossOrigin
+    public ResponseEntity<?> getVehiclesforslot3anddate(@RequestParam("date") String date, @RequestParam("slot3") String slot2) {
+        ResponseEntity responseEntity;
+        List<Vehicle> vehicles = vehicleService.getlistbyslot3anddate(date,slot2);
+        System.out.print(vehicles);
+        //try{
+        responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
+        //}catch (Exception ex) {
+        //  responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
+        //}
+        return responseEntity;
+    }
 }
 

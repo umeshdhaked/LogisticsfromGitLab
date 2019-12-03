@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 //@Entity
-@Document
+@Document(collection="VehicleTable")
 public class Vehicle {
 
     @Id
@@ -29,8 +29,7 @@ public class Vehicle {
 
 
     String date;
-    String slot1Status;
-    String slot2Status;
+
 
     public String getSlot1() {
         return slot1;
@@ -56,7 +55,7 @@ public class Vehicle {
         this.slot3 = slot3;
     }
 
-    String slot3Status;
+//    String slot3Status;
 
     public Vehicle() { }
 
@@ -68,29 +67,29 @@ public class Vehicle {
         this.date = date;
     }
 
-    public String getSlot1Status() {
-        return slot1Status;
-    }
+//    public String getSlot1Status() {
+//        return slot1Status;
+//    }
 
-    public void setSlot1Status(String slot1Status) {
-        this.slot1Status = slot1Status;
-    }
+//    public void setSlot1Status(String slot1Status) {
+//        this.slot1Status = slot1Status;
+//    }
+//
+//    public String getSlot2Status() {
+//        return slot2Status;
+//    }
+//
+//    public void setSlot2Status(String slot2Status) {
+//        this.slot2Status = slot2Status;
+//    }
 
-    public String getSlot2Status() {
-        return slot2Status;
-    }
-
-    public void setSlot2Status(String slot2Status) {
-        this.slot2Status = slot2Status;
-    }
-
-    public String getSlot3Status() {
-        return slot3Status;
-    }
-
-    public void setSlot3Status(String slot3Status) {
-        this.slot3Status = slot3Status;
-    }
+//    public String getSlot3Status() {
+//        return slot3Status;
+//    }
+//
+//    public void setSlot3Status(String slot3Status) {
+//        this.slot3Status = slot3Status;
+//    }
 
     public int getId() {
         return id;
