@@ -13,7 +13,7 @@ h6 {
 } */
 
 .nav-link {
-  color: whitesmoke;
+  color: white;
   /* padding: 12px 0; */
   border-bottom: 3px solid transparent;
 }
@@ -40,7 +40,11 @@ a:hover {
   }
 
   .navbar.scrolled {
-    background: rgba(54, 59, 68, 0.9);
+    background: rgba(54, 59, 68, 0.98);
+  }
+  .navbar.scrolled.btn{
+    border-color: whitesmoke;
+    color:whitesmoke;
   }
 }
 

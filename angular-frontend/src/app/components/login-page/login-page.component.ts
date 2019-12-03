@@ -57,7 +57,7 @@ export class LoginPageComponent implements OnInit {
         this.router.navigate(['/viewProfile']);
 
       } else {
-        this.loginMessage = 'UserName or Password is incorrect';
+        this.loginMessage= 'UserName or Password is incorrect';
       }
 
     });
