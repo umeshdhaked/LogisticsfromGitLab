@@ -15,7 +15,7 @@ import {HttpClient} from "@angular/common/http";
 export class VehicledemandfrontendComponent implements OnInit {
   volume: string;
   slot: string;
-  date : string;
+  // date : string;
   vehicleStatus: string;
   myUrl: any;
 
@@ -24,9 +24,9 @@ export class VehicledemandfrontendComponent implements OnInit {
     private vehicleService: VehicledemandfrontendService,
     private datePipe: DatePipe,
     private router: Router,
-    private http:HttpClient
+    private http: HttpClient
   ) {
-    this.date = this.datePipe.transform(this.date, 'yyyy-MM-dd');
+    // this.date = this.datePipe.transform(this.date, 'yyyy-MM-dd');
   }
 
   ngOnInit() {
@@ -56,7 +56,7 @@ export class VehicledemandfrontendComponent implements OnInit {
 
   sendrequest() {
     if (this.slot === 'slot1') {
-      this.myUrl = environment.apiUrl + 'queryslot1/' + this.date + '/' + 'available';
+      this.myUrl = environment.apiUrl + 'queryslot1/'  + '/' + 'available';
       return this.http.get(this.myUrl, {
         responseType: 'text'
       });
