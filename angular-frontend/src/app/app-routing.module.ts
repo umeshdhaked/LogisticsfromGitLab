@@ -53,7 +53,7 @@ const routes: Routes = [
       {path: 'requests', component: RequestsComponent}
     ], canActivate: [AuthGaurdService]
   },
-  {path: 'manage-vehicle', component: ManageVehiclesComponent, canActivate: [AuthGaurdService]},
+  {path: 'manage-vehicle', component: ManageVehiclesComponent},
   {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent, canActivate: [AuthGaurdService]},
   {path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGaurdService]},
 
