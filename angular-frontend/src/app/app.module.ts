@@ -1,3 +1,4 @@
+import { PricingComponent } from './components/pricing/pricing.component';
 import { GetlistService } from './services/getlist.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -104,6 +105,7 @@ import { Statistic1Component } from './components/statistic1/statistic1.componen
 import { VehicledetailsComponent } from './components/vehicledetails/vehicledetails.component';
 import {DatePipe} from "@angular/common";
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -123,7 +125,7 @@ import {DatePipe} from "@angular/common";
     BookedVehiclesComponent,
 
     RequestsComponent,
-
+    PricingComponent,
     ManageVehiclesComponent,
     ViewProfileComponent,
     TimeSlotPipe,
@@ -143,7 +145,8 @@ import {DatePipe} from "@angular/common";
     AdminfrontendComponent,
     RetailerdetailsComponent,
     Statistic1Component,
-    VehicledetailsComponent
+    VehicledetailsComponent,
+    PricingComponent
   ],
 
   imports: [
