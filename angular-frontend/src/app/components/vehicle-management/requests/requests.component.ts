@@ -7,10 +7,14 @@ import {Component, OnInit} from '@angular/core';
 })
 export class RequestsComponent implements OnInit {
 
+
   constructor() {
   }
 
   ngOnInit() {
+
+
+
   }
 
 }
