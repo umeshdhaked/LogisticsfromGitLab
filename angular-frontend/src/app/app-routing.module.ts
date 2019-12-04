@@ -38,6 +38,7 @@ import {AdminfrontendComponent} from "./components/adminfrontend/adminfrontend.c
 import {AdminloginComponent} from "./components/adminlogin/adminlogin.component";
 import { PricingComponent } from './components/pricing/pricing.component';
 import { PaymeComponent } from './components/payme/payme.component';
+import { VehicleCompanyProfileComponent } from './components/vehicle-company-profile/vehicle-company-profile.component';
 
 
 
@@ -99,6 +100,7 @@ const routes: Routes = [
   { path : 'retailerDetails', component: RetailerdetailsComponent},
   { path : 'pricing', component: PricingComponent},
   { path : 'statistics', component: Statistic1Component},
+  { path : 'editVehicleCompanyProfile', component: VehicleCompanyProfileComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
