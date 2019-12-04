@@ -10,13 +10,15 @@ import javax.persistence.Id;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigInteger;
+
 //@Entity
-@Document(collection="VehicleTable")
+@Document(collection = "VehicleTableQuery")
 public class Vehicle {
 
     @Id
     @GeneratedValue
-    int id;
+    BigInteger id;
     String vehicleNumber;
     String driverName;
     String vehicleType;
@@ -26,76 +28,30 @@ public class Vehicle {
     String slot1;
     String slot2;
     String slot3;
-
-
     String date;
 
-
-    public String getSlot1() {
-        return slot1;
-    }
-
-    public void setSlot1(String slot1) {
+    public Vehicle(BigInteger id, String vehicleNumber, String driverName, String vehicleType, int capacity, int costPerSlot, String vehicleStatus, String slot1, String slot2, String slot3, String date) {
+        this.id = id;
+        this.vehicleNumber = vehicleNumber;
+        this.driverName = driverName;
+        this.vehicleType = vehicleType;
+        this.capacity = capacity;
+        this.costPerSlot = costPerSlot;
+        this.vehicleStatus = vehicleStatus;
         this.slot1 = slot1;
-    }
-
-    public String getSlot2() {
-        return slot2;
-    }
-
-    public void setSlot2(String slot2) {
         this.slot2 = slot2;
-    }
-
-    public String getSlot3() {
-        return slot3;
-    }
-
-    public void setSlot3(String slot3) {
         this.slot3 = slot3;
-    }
-
-//    String slot3Status;
-
-    public Vehicle() { }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
         this.date = date;
     }
 
-//    public String getSlot1Status() {
-//        return slot1Status;
-//    }
+    public Vehicle() {
+    }
 
-//    public void setSlot1Status(String slot1Status) {
-//        this.slot1Status = slot1Status;
-//    }
-//
-//    public String getSlot2Status() {
-//        return slot2Status;
-//    }
-//
-//    public void setSlot2Status(String slot2Status) {
-//        this.slot2Status = slot2Status;
-//    }
-
-//    public String getSlot3Status() {
-//        return slot3Status;
-//    }
-//
-//    public void setSlot3Status(String slot3Status) {
-//        this.slot3Status = slot3Status;
-//    }
-
-    public int getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 
@@ -145,6 +101,55 @@ public class Vehicle {
 
     public void setVehicleStatus(String vehicleStatus) {
         this.vehicleStatus = vehicleStatus;
+    }
+
+    public String getSlot1() {
+        return slot1;
+    }
+
+    public void setSlot1(String slot1) {
+        this.slot1 = slot1;
+    }
+
+    public String getSlot2() {
+        return slot2;
+    }
+
+    public void setSlot2(String slot2) {
+        this.slot2 = slot2;
+    }
+
+    public String getSlot3() {
+        return slot3;
+    }
+
+    public void setSlot3(String slot3) {
+        this.slot3 = slot3;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "id=" + id +
+                ", vehicleNumber='" + vehicleNumber + '\'' +
+                ", driverName='" + driverName + '\'' +
+                ", vehicleType='" + vehicleType + '\'' +
+                ", capacity=" + capacity +
+                ", costPerSlot=" + costPerSlot +
+                ", vehicleStatus='" + vehicleStatus + '\'' +
+                ", slot1='" + slot1 + '\'' +
+                ", slot2='" + slot2 + '\'' +
+                ", slot3='" + slot3 + '\'' +
+                ", date='" + date + '\'' +
+                '}';
     }
 }
 

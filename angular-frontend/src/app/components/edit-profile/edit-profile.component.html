@@ -26,7 +26,7 @@
     <br>
 
     <label class="hoverable" for="fileInput">
-      <img [src]="picUrl ? picUrl : 'https://www.w3schools.com/howto/img_avatar.png'">
+      <img [src]="picUrl ? picUrl : 'https://i.stack.imgur.com/gjwr8.png'">
       <div class="hover-text">Choose file</div>
       <div class="background"></div>
     </label>
@@ -83,7 +83,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-md-6 offset-md-3">
+        <div class="col-md-6">
 
 
           <!-- for getting Document image input -->
@@ -114,17 +114,18 @@
 
     <!-- Save Button-->
 
-    <div id="terms">
+    <div id="terms text-center">
       <mat-checkbox #c>I Agree with terms and conditions</mat-checkbox>
     </div>
-
-    <button class="btn btn-primary"
+<div class="row ">
+    <button class="col-sm-6 btn btn-outline-danger "
             (click)="save(fullName.value,phone.value,address.value,gstIn.value,docName.value,c.checked)"
            ><b> Save </b>
     </button>
-    <button class="btn btn-primary" routerLink="/viewProfile"><b> Back </b>
+    <br>
+    <button class="col-sm-6 btn btn-outline-danger " routerLink="/viewProfile"><b> Cancel </b>
     </button>
-
+</div>
   </div>
 
 

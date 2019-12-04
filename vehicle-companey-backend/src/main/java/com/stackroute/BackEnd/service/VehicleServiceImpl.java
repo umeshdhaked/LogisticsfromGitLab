@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 import java.util.Properties;
@@ -57,14 +58,14 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public boolean deleteVehicle(int vehicleId) {
+    public boolean deleteVehicle(BigInteger vehicleId) {
         vehicleRepository.deleteById(vehicleId);
 
         return true;
     }
 
     @Override
-    public Optional<Vehicle> getVehicleById(int id) throws VehicleNotFoundException {
+    public Optional<Vehicle> getVehicleById(BigInteger id) throws VehicleNotFoundException {
 
         if (!vehicleRepository.existsById(id)) {
             throw new VehicleNotFoundException("Vehicle not found");
@@ -76,30 +77,30 @@ public class VehicleServiceImpl implements VehicleService {
         return vehicleRepository.findById(id);
     }
 
-    @Override
-    public List<Vehicle> getVehicleByVehicleNumber(String vehicleNumber) throws VehicleNotFoundException {
-        List<Vehicle> list = vehicleRepository.findByVehicleNumber(vehicleNumber);
-        if (list.isEmpty()) {
-            throw new VehicleNotFoundException("Vehicle not Found");
-        }
-        return list;
-    }
+//    @Override
+//    public List<Vehicle> getVehicleByVehicleNumber(String vehicleNumber) throws VehicleNotFoundException {
+//        List<Vehicle> list = vehicleRepository.findByVehicleNumber(vehicleNumber);
+//        if (list.isEmpty()) {
+//            throw new VehicleNotFoundException("Vehicle not Found");
+//        }
+//        return list;
+//    }
 
     @Override
-    public List<Vehicle> getlistbyslot1anddate(String date, String slot1) {
-        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot1(date,slot1);
+    public List<Vehicle> getlistbyslot1anddate(int capacity, String slot1) {
+        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot1(capacity,"available");
         return myVehicle;
     }
 
     @Override
-    public List<Vehicle> getlistbyslot2anddate(String date, String slot2) {
-        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot1(date,slot2);
+    public List<Vehicle> getlistbyslot2anddate(int capacity, String slot2) {
+        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot2(capacity,"available");
         return myVehicle;
     }
 
     @Override
-    public List<Vehicle> getlistbyslot3anddate(String date, String slot3) {
-        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot1(date,slot3);
+    public List<Vehicle> getlistbyslot3anddate(int capacity, String slot3) {
+        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot3(capacity,"available");
         return myVehicle;
     }
 
@@ -109,14 +110,10 @@ public class VehicleServiceImpl implements VehicleService {
         System.out.printf(slot + " "+date+" "+vehicleType);
 
         if(slot.equals("slot1")){
-            return vehicleRepository.findBySlot1StatusAndDateAndVehicleType("Available",date,vehicleType);
         }
         if(slot.equals("slot2")){
-           return vehicleRepository.findBySlot2StatusAndDateAndVehicleType("Available", date,vehicleType);
-
         }
         if(slot.equals("slot3")){
-            return vehicleRepository.findBySlot3StatusAndDateAndVehicleType("Available",date,vehicleType);
         }
 
 

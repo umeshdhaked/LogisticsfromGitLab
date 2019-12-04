@@ -1,5 +1,5 @@
 export class RetailerDetails {
-  volume: string;
+  volume: number;
   timeSlot: string;
   date: Date;
 }
