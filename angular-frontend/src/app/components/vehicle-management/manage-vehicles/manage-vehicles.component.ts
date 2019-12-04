@@ -49,7 +49,7 @@ export class ManageVehiclesComponent implements OnInit {
   // applyFilter(filterValue: string) {
   //   this.dataSource.filter = filterValue.trim().toLowerCase();
   // }
-  time=8;
+  time=12;
   slot1;
   slot2;
   slot3;
