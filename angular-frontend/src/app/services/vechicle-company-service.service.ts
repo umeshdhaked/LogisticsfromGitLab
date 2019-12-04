@@ -9,14 +9,17 @@ export class VechicleCompanyServiceService {
 
   constructor(private http:HttpClient) { }
 
-  public getVehicleCompanyProfileFromEmail(email){
-    let url = environment.apiUrl+':8082/vehicleCompanyProfile/getProfile?email='+email;
-  
+  getVehicleCompanyProfileFromEmail(email){
+    console.log("vehicle profille get");
+    let url = environment.apiUrl+":8082/vehicleCompanyProfile/getProfile?email="+email;
+    console.log(url)
     return this.http.get(url);
   }
 
-  public saveVehicleCompanyProfile(dataObj){
-    let url = environment.apiUrl + ':8082:/vehicleCompanyProfile/saveVehicleCompanyDetail';
+  saveVehicleCompanyProfile(dataObj){
+    console.log("vehicle profile save");
+    let url = environment.apiUrl + ":8082/vehicleCompanyProfile/saveVehicleCompanyDetail";
+    console.log(url)
     this.http.post(url,dataObj).subscribe();
   }
 
