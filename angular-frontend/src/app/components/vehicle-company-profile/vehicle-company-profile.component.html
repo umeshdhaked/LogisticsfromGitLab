@@ -1,0 +1,52 @@
+  <div class="Body">
+  
+
+  
+    <div class="Text-container">
+  
+  
+      <!-- <button class="deleteButton" *ngIf="picUrl" (click)="delete()">Change</button> -->
+  
+  
+      <!-- Prfile Form div -->
+  
+      <mat-form-field>
+        <input #compnayName matInput placeholder="Company Name" type="text" required>
+        <!-- <mat-placeholder class="placeholder">FullName</mat-placeholder> -->
+      </mat-form-field>
+      <!--
+  <mat-form-field>
+    <input #email matInput placeholder="Email" required>
+  </mat-form-field> -->
+  
+      <mat-form-field>
+        <input #contact matInput placeholder="Contect Number" type="number" required>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input #address matInput placeholder="Companey Address"  required>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input #gstIn matInput placeholder="GST IN"  required>
+      </mat-form-field>
+
+      <!-- Save Button-->
+  
+      <div id="terms text-center">
+        <mat-checkbox #c>I Agree with terms and conditions</mat-checkbox>
+      </div>
+  <div class="row ">
+      <button class="col-sm-6 btn btn-outline-danger "
+              (click)="save(compnayName.value,contact.value,address.value,gstIn.value,c.checked)"
+             ><b> Save </b>
+      </button>
+      <br>
+      <button class="col-sm-6 btn btn-outline-danger " routerLink="/vehicle-management"><b> Cancel </b>
+      </button>
+  </div>
+    </div>
+  
+  
+  </div>
+  

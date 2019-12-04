@@ -54,9 +54,9 @@ export class LoginPageComponent implements OnInit {
         console.log(decodedDetail.sub);
 
         if(decodedDetail.role === "Retailer")
-        this.router.navigate(['/viewProfile']);
+        this.router.navigate(['/user']);
         if(decodedDetail.role === "VehicleCompany")
-        this.router.navigate(['/manage-vehicle']);
+        this.router.navigate(['/vehicle-management']);
 
       } else {
         this.loginMessage= 'UserName or Password is incorrect';
