@@ -87,11 +87,29 @@
                 <label class="form-label" for="">Enter Driver Name:</label>
                 <input type="text" name="driverName" id="driverName" [(ngModel)]="newVehicle.driverName" class="form-control" />
 
+                <!-- <label class="form-label" for="">Enter Vehicle Type:</label>
+                <input type="text" name="vehicleType" id="vehicleType" [(ngModel)]="newVehicle.vehicleType" class="form-control" /> -->
+
                 <label class="form-label" for="">Enter Vehicle Type:</label>
-                <input type="text" name="vehicleType" id="vehicleType" [(ngModel)]="newVehicle.vehicleType" class="form-control" />
+                <select name="vehicleType" id="vehicleType" [(ngModel)]="newVehicle.vehicleType" class="form-control">
+                    <option value="bike">bike</option>
+                    <option value="car">car</option>
+                    <option value="truck">truck</option>
+                    
+                    <!-- <option selected value="Under Maintenance">Under Maintenance</option> -->
+                </select>
+
+
+                <!-- <label class="form-label" for="">Enter Vehicle Capacity:</label>
+                <input type="number" placeholder="integer value in lit" name="capacity" id="capacity" [(ngModel)]="newVehicle.capacity" class="form-control" /> -->
 
                 <label class="form-label" for="">Enter Vehicle Capacity:</label>
-                <input type="number" placeholder="integer value in lit" name="capacity" id="capacity" [(ngModel)]="newVehicle.capacity" class="form-control" />
+                <select name="capacity" id="capacity" [(ngModel)]="newVehicle.capacity" class="form-control">
+                    <option value="50">50 lit</option>
+                    <option value="100">100 lit</option>
+                    <option value="500">500 lit</option>
+                
+                </select>
 
                 <label class="form-label" for="">Enter Vehicle Cost Per Slot:</label>
                 <input type="number" placeholder="integer value in Rs" name="costPerSlot" id="costPerSlot" [(ngModel)]="newVehicle.costPerSlot" class="form-control" />
@@ -144,11 +162,28 @@
                 <label class="form-label" for="">Enter Driver Name:</label>
                 <input type="text" name="driverName" id="driverName" [(ngModel)]="editedVehicle.driverName" class="form-control" />
 
+                <!-- <label class="form-label" for="">Enter Vehicle Type:</label>
+                <input type="text" name="vehicleType" id="vehicleType" [(ngModel)]="editedVehicle.vehicleType" class="form-control" /> -->
+
                 <label class="form-label" for="">Enter Vehicle Type:</label>
-                <input type="text" name="vehicleType" id="vehicleType" [(ngModel)]="editedVehicle.vehicleType" class="form-control" />
+                <select name="vehicleType" id="vehicleType" [(ngModel)]="editedVehicle.vehicleType" class="form-control">
+                    <option value="bike">bike</option>
+                    <option value="car">car</option>
+                    <option value="truck">truck</option>
+                    
+                    <!-- <option selected value="Under Maintenance">Under Maintenance</option> -->
+                </select>
+
+                <!-- <label class="form-label" for="">Enter Vehicle Capacity:</label>
+                <input type="number" placeholder="integer value" name="capacity" id="capacity" [(ngModel)]="editedVehicle.capacity" class="form-control" /> -->
 
                 <label class="form-label" for="">Enter Vehicle Capacity:</label>
-                <input type="number" placeholder="integer value" name="capacity" id="capacity" [(ngModel)]="editedVehicle.capacity" class="form-control" />
+                <select name="capacity" id="capacity" [(ngModel)]="editedVehicle.capacity" class="form-control">
+                    <option value="50">50 lit</option>
+                    <option value="100">100 lit</option>
+                    <option value="500">500 lit</option>
+                
+                </select>
 
                 <label class="form-label" for="">Enter Vehicle Cost Per Slot:</label>
                 <input type="number" placeholder="integer value" name="costPerSlot" id="costPerSlot" [(ngModel)]="editedVehicle.costPerSlot" class="form-control" />
