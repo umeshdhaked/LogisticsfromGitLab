@@ -40,4 +40,14 @@ export class RegistrationService {
       }
     });
   }
+
+  resetPassword(email): Observable<Message>{
+    let uri = environment.apiUrl + ":8088/forgot?email=" + email;
+    return this.http.post<Message>(uri, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
+    });
+  }
 }

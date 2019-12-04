@@ -109,6 +109,8 @@ import { PaymeComponent } from './components/payme/payme.component';
 import { PaymemonthlyComponent } from './components/paymemonthly/paymemonthly.component';
 import { VehicleCompanyProfileComponent } from './components/vehicle-company-profile/vehicle-company-profile.component';
 import { TermsComponent } from './components/terms/terms.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { PendingVehicleRequestComponent } from './components/pending-vehicle-request/pending-vehicle-request.component';
 
 
 @NgModule({
@@ -156,7 +158,9 @@ import { TermsComponent } from './components/terms/terms.component';
     PaymeComponent,
     PaymemonthlyComponent,
     VehicleCompanyProfileComponent,
-    TermsComponent
+    TermsComponent,
+    ResetPasswordComponent,
+    PendingVehicleRequestComponent
   ],
 
   imports: [
