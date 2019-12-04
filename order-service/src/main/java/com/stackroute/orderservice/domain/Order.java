@@ -32,11 +32,11 @@ public class Order {
     public Order() {
     }
 
-    public String getRetailerEmail() {
+    public String getRetailerId() {
         return retailerId;
     }
 
-    public void setRetailerEmail(String retailerEmail) {
+    public void setRetailerId(String retailerId) {
         this.retailerId = retailerId;
     }
 
