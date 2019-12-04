@@ -2,17 +2,15 @@ package com.stackroute.controller;
 
 import com.google.gson.Gson;
 import com.stackroute.domain.RetailerProfile;
-import com.stackroute.service.Services;
+import com.stackroute.service.RetailerServices;
+import com.stackroute.service.VehicleCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -22,11 +20,11 @@ import java.util.List;
 @RequestMapping("/retailerProfile")
 public class RetailerController {
 
-    private Services service;
+    private RetailerServices service;
 
     @Autowired
-    public RetailerController(Services services) {
-        this.service = services;
+    public RetailerController(RetailerServices retailerServices) {
+        this.service = retailerServices;
     }
 
 
@@ -111,6 +109,13 @@ public class RetailerController {
 //        }
 //        return result;
 //    }
+
+
+
+
+
+
+
 
 
 }

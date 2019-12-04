@@ -7,7 +7,7 @@ import java.util.List;
 
 
 @Service
-public interface Services {
+public interface RetailerServices {
 
 
     public void updateRetailer(RetailerProfile retailerProfile);

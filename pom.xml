@@ -67,7 +67,7 @@
         <module>config-service</module>
         <module>zuul-service</module>
         <module>order-service</module>
-        <module>retailer-profile-service</module>
+        <module>profile-service</module>
         <module>driver-dashboard-service</module>
         <module>registration-varification-service</module>
         <module>login-authentication-service</module>
