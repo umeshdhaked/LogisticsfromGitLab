@@ -81,9 +81,8 @@
         <mat-label>Volume</mat-label>
         <mat-select [(ngModel)]="capacity">
           <mat-option value="50">50L</mat-option>
-          <mat-option value="150">150L</mat-option>
-          <mat-option value="250">250L</mat-option>
-          <mat-option value="350">350L</mat-option>
+          <mat-option value="100">100L</mat-option>
+          <mat-option value="200">200L</mat-option>
           <mat-option value="500">>500L</mat-option>
         </mat-select>
       </mat-form-field>
@@ -171,11 +170,7 @@
         <td>{{data.vehicleType}}</td>
         <td>{{data.costPerSlot}}</td>
         <td>{{data.companyName}}</td>
-
-
-        <td>
-          <button mat-stroked-button>Book</button>
-        </td>
+        <td><button mat-stroked-button (click)="demandrow(data)">Book</button></td>
 
 
       </tr>

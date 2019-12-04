@@ -46,6 +46,11 @@
     background-color: #eee;
     font-size: 20px;
   }
+
+  .price .white {
+    background-color: silver;
+    font-size: 20px;
+  }
   
   /* The "Sign Up" button */
   .button {
@@ -69,3 +74,4 @@
   .container {
    height: auto;
   }
+
