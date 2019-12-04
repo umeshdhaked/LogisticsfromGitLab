@@ -141,6 +141,48 @@ public class RegisterController {
         return responseEntity;
     }
 
+    @CrossOrigin("*")
+    @PostMapping("/forgot")
+    public ResponseEntity<?> processRegistrationForm(@RequestParam("email") String email, HttpServletRequest request) {
+        System.out.println("test");
+        User userExists = userService.findByEmail(email);
+        System.out.println(userExists);
+        //System.out.println("Email : = " + user.getEmail());
+
+        if (userExists == null) {
+            responseEntity = new ResponseEntity<String>("{\"message\":\"User Doesn't Exist\"}", HttpStatus.OK);
+        } else {
+            try {
+                //--------------------------email-verification for new user -------------
+                //thus new user, so we need to create a new user and send confirmation email
+                //disable user until the user click on confirmation link in email
+                userExists.setEnabled(false);
+                //Generate random 36-character string token for confirmation link
+                userExists.setConfirmationToken(UUID.randomUUID().toString());
+
+                userService.saveUser(userExists);
+
+                String appUrl = request.getScheme() + "://" + request.getServerName() + ":80";
+
+
+                SimpleMailMessage registrationEmail = new SimpleMailMessage();
+
+                registrationEmail.setTo(user.getEmail());//to which email we want to send the appUrl ::which is the mail of the user
+                //Email subject , body
+                registrationEmail.setSubject("Password Reset Email from Wysser");
+                registrationEmail.setText("To reset your password please click the link below:\n\n" +
+                        appUrl + "/#/confirm/" + user.getConfirmationToken());
+                registrationEmail.setFrom("umdk456@gmail.com");
+
+                emailService.sendEmail(registrationEmail);//sending mail to the user email
+                responseEntity = new ResponseEntity<String>("{\"message\":\"OK\"}", HttpStatus.OK);
+            } catch (Exception e) {
+                responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+        return responseEntity;
+    }
+
     //Process to  Confirm link
 //    @CrossOrigin
 //    @GetMapping(value = "/confirm")
