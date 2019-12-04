@@ -18,7 +18,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
@@ -32,7 +31,7 @@ import com.google.ortools.constraintsolver.RoutingModel;
 import com.google.ortools.constraintsolver.RoutingSearchParameters;
 import com.google.ortools.constraintsolver.main;
 import org.springframework.stereotype.Service;
-
+import javax.imageio.ImageIO;
 
 @Service
 public class RouteServiceImpl implements RouteService {
@@ -40,7 +39,6 @@ public class RouteServiceImpl implements RouteService {
 //    static {
 //        System.loadLibrary("jniortools");
 //    }
-
 
     DepotRepository depotRepository;
     OrderRepository orderRepository;
@@ -90,8 +88,6 @@ public class RouteServiceImpl implements RouteService {
         JSONObject obj_JSONObject;
         for(int i=0;i<addresses.length;i++)
         {
-
-
             JSONObject locationCoordinates=new JSONObject();
             String url = "http://dev.virtualearth.net/REST/v1/Locations?query="+addresses[i]+"&includeNeighborhood=1&include=1&maxResults=5&key="+key;
             URL obj = new URL(url);
@@ -101,14 +97,11 @@ public class RouteServiceImpl implements RouteService {
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));
             String inputLine;
-
             StringBuffer response = new StringBuffer();
             while ((inputLine = in .readLine()) != null) {
                 response.append(inputLine);
             } in .close();
-
-
-                System.out.println(response.toString());
+            System.out.println(response.toString());
             obj_JSONObject = new JSONObject(response.toString());
             JSONObject point=obj_JSONObject.getJSONArray("resourceSets")
                     .getJSONObject(0)
@@ -116,16 +109,13 @@ public class RouteServiceImpl implements RouteService {
                     .getJSONObject(0)
                     .getJSONObject("point");
 
-
             float latitude=point.getJSONArray("coordinates").getFloat(0);
             float longitude=point.getJSONArray("coordinates").getFloat(1);
 //                System.out.println(latitude+" "+longitude);
             locationCoordinates.put("latitude",latitude);
             locationCoordinates.put("longitude",longitude);
             allLocations.put(i,locationCoordinates);
-
         }
-
         //                System.out.println(allLocations.toString());
         JSONObject requestObject=new JSONObject();
         requestObject.put("origins",allLocations);

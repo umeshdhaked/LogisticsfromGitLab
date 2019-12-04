@@ -24,9 +24,10 @@ public class Order {
     private String customerAddress;
 //    private String customerPhoneNumber;
     private String deliveryDate;
-    private int slotNumber;
+    private String slotNumber;
     private long orderVolume;
     private String orderStatus;
+
 
 //    public String toString()
 //    {

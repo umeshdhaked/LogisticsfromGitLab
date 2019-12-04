@@ -8,4 +8,6 @@ public interface DepotService {
     public Depot addDepot(Depot depot) throws Exception;
 
     public Depot deleteDepot(int wholesalerId) throws Exception;
+
+    public Depot updateDepot(Depot depot) throws Exception;
 }
