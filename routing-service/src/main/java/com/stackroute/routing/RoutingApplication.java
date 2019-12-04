@@ -1,13 +1,14 @@
-package com.stackroute.spring_with_kafka;
+package com.stackroute.routing;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringWithKafkaApplication {
+
+public class RoutingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringWithKafkaApplication.class, args);
+		SpringApplication.run(RoutingApplication.class, args);
 	}
 
 }

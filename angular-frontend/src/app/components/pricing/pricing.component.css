@@ -69,3 +69,9 @@
   .container {
    height: auto;
   }
+
+  .nav nav-tabs.li
+  {
+    height: auto;
+    padding: 20px;
+  }

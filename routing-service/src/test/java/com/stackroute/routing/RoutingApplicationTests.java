@@ -1,10 +1,10 @@
-package com.stackroute.spring_with_kafka;
+package com.stackroute.routing;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringWithKafkaApplicationTests {
+class RoutingApplicationTests {
 
 	@Test
 	void contextLoads() {
