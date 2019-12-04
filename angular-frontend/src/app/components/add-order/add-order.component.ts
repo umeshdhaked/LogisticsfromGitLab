@@ -14,7 +14,7 @@ import * as jwt_decode from 'jwt-decode';
 export class AddOrderComponent implements OnInit {
   //retailerId will depend on saved cookie
 
-  retailerEmail: string = "";
+  retailerId: string = "";
   success: boolean = false;
   //property which indicates whether a given slot can be picked
   slotValid = {"slot1": true, "slot2": true, "slot3": true};
@@ -52,13 +52,13 @@ export class AddOrderComponent implements OnInit {
   ngOnInit() {
     // getting email from token
     var decoded = {
-      "sub": ""
+      "userId": ""
     }
     let token = localStorage.getItem('token');
 
     if (token != null) {
       decoded = jwt_decode(token);
-      this.retailerEmail = decoded.sub;
+      this.retailerId = decoded.userId;
     }
   }
 
@@ -105,7 +105,7 @@ export class AddOrderComponent implements OnInit {
     console.log(this.selectedSlot);
     if (customerName != "" && customerNumber != "" && customerAddress != "" && orderVolume != null && deliveryDate != "" && this.selectedSlot != "") {
       console.log(this.orderVolume);
-      this.orderService.saveOrder(customerName, customerNumber, customerAddress, orderVolume, deliveryDate, this.selectedSlot, "pending", this.retailerEmail)
+      this.orderService.saveOrder(customerName, customerNumber, customerAddress, orderVolume, deliveryDate, this.selectedSlot, "pending", this.retailerId)
         .pipe(
           tap((newOrder) => {
             console.log(newOrder);
