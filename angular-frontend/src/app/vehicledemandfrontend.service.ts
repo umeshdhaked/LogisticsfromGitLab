@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {RetailerDetails} from "./vehicledemanded";
-import {HttpClient} from "@angular/common/http";
+import {RetailerDetails} from './vehicledemanded';
+import {HttpClient} from '@angular/common/http';
 import {environment} from '../environments/environment';
 
 @Injectable({
