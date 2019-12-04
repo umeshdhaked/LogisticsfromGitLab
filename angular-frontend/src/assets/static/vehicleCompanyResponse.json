@@ -1,0 +1,13 @@
+// [
+//     {
+//       "id": "1",
+//       "vehicleNumber": "KA103", 
+//       "driverName": "Raj", 
+//       "capacity": 500,
+//       "costPerSlot": 100,
+//       "vehicleStatus": "Good Condition",
+//       "timeslot": "17:00-19:00",
+//       "date": "2019-11-30",
+      
+//     },
+//   ]
