@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DepotRepository extends MongoRepository<Depot,Integer> {
 
-    @Query("{depotId : ?0}")
-    Depot findByDepotId(String depotId);
+    @Query("{wholesalerId : ?0}")
+    Depot findByWholesalerId(int wholesalerId);
 
 
 }

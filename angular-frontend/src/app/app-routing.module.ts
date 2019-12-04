@@ -30,18 +30,19 @@ import {ViewProfileComponent} from './components/view-profile/view-profile.compo
 import {VerifyUserComponent} from './components/verify-user/verify-user.component';
 import {LoginPageComponent} from './components/login-page/login-page.component';
 import { TokenFilterCheckComponent } from './components/token-filter-check/token-filter-check.component';
-import {CancelreasonComponent} from "./components/cancelreason/cancelreason.component";
-import {SignatureComponent} from "./components/signature/signature.component";
-import {MaindriverdashboardComponent} from "./components/maindriverdashboard/maindriverdashboard.component";
-import {NavigatelocationComponent} from "./components/navigatelocation/navigatelocation.component";
-import {Statistic1Component} from "./components/statistic1/statistic1.component";
-import {RetailerdetailsComponent} from "./components/retailerdetails/retailerdetails.component";
-import {VehicledetailsComponent} from "./components/vehicledetails/vehicledetails.component";
-import {AdminfrontendComponent} from "./components/adminfrontend/adminfrontend.component";
-import {AdminloginComponent} from "./components/adminlogin/adminlogin.component";
+import {CancelreasonComponent} from './components/cancelreason/cancelreason.component';
+import {SignatureComponent} from './components/signature/signature.component';
+import {MaindriverdashboardComponent} from './components/maindriverdashboard/maindriverdashboard.component';
+import {NavigatelocationComponent} from './components/navigatelocation/navigatelocation.component';
+import {Statistic1Component} from './components/statistic1/statistic1.component';
+import {RetailerdetailsComponent} from './components/retailerdetails/retailerdetails.component';
+import {VehicledetailsComponent} from './components/vehicledetails/vehicledetails.component';
+import {AdminfrontendComponent} from './components/adminfrontend/adminfrontend.component';
+import {AdminloginComponent} from './components/adminlogin/adminlogin.component';
 import { PricingComponent } from './components/pricing/pricing.component';
 import { PaymeComponent } from './components/payme/payme.component';
 import { VehicleCompanyProfileComponent } from './components/vehicle-company-profile/vehicle-company-profile.component';
+import {PendingVehicleRequestComponent} from './components/pending-vehicle-request/pending-vehicle-request.component';
 
 
 
@@ -97,6 +98,7 @@ const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
   {path: 'sendToken', component:TokenFilterCheckComponent },
   {path:  'resetPassword', component: ResetPasswordComponent},
+  {path: 'sendToken', component: TokenFilterCheckComponent },
   // {path: 'sendToken', component:TokenFilterCheckComponent, canActivate: [AuthGaurdService] },
 
   { path : 'adminLogin', component: AdminloginComponent},
@@ -106,6 +108,7 @@ const routes: Routes = [
   { path : 'pricing', component: PricingComponent},
   { path : 'statistics', component: Statistic1Component},
   { path : 'editVehicleCompanyProfile', component: VehicleCompanyProfileComponent},
+  {path: 'viewPendinVehicleRequest', component: PendingVehicleRequestComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
@@ -116,5 +119,5 @@ const routes: Routes = [
 export class AppRoutingModule {
 }
 
-export const routingModule = [HomeComponent, SignupComponent, VerifyComponent, EditProfileComponent, PageNotFoundComponent, VehicleManagementComponent, RequestsComponent, ManageVehiclesComponent, ViewProfileComponent, VehicleHistoryComponent, BookedVehiclesComponent]
+export const routingModule = [HomeComponent, SignupComponent, VerifyComponent, EditProfileComponent, PageNotFoundComponent, VehicleManagementComponent, RequestsComponent, ManageVehiclesComponent, ViewProfileComponent, VehicleHistoryComponent, BookedVehiclesComponent];
 

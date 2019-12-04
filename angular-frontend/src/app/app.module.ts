@@ -110,6 +110,7 @@ import { PaymemonthlyComponent } from './components/paymemonthly/paymemonthly.co
 import { VehicleCompanyProfileComponent } from './components/vehicle-company-profile/vehicle-company-profile.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { PendingVehicleRequestComponent } from './components/pending-vehicle-request/pending-vehicle-request.component';
 
 
 @NgModule({
@@ -158,7 +159,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     PaymemonthlyComponent,
     VehicleCompanyProfileComponent,
     TermsComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    PendingVehicleRequestComponent
   ],
 
   imports: [
