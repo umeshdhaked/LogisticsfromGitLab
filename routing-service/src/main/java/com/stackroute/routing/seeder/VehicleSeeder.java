@@ -10,14 +10,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class VehicleSeeder  implements CommandLineRunner {
-
-    VehicleRepository vehicleRepository;
-
     @Autowired
-    public VehicleSeeder(VehicleRepository vehicleRepository) {
-        this.vehicleRepository = vehicleRepository;
-    }
-
+    VehicleRepository vehicleRepository;
     @Override
     public void run(String... args) throws Exception {
         Vehicle vehicle=new Vehicle();
@@ -25,7 +19,7 @@ public class VehicleSeeder  implements CommandLineRunner {
         vehicle.setVehicleNumber("22");
         vehicle.setCapacity(50);
 
-        if(vehicleRepository.findAll().isEmpty())
+        if(vehicleRepository.findAll()==null)
         vehicleRepository.save(vehicle);
     }
 }

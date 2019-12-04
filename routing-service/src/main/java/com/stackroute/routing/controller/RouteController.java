@@ -46,13 +46,6 @@ public class RouteController {
         this.depotService = depotService;
     }
 
-    @PutMapping("depot/{wholesalerId}")
-    public ResponseEntity<?> saveOrder(@PathVariable int wholesalerId,@RequestBody Order order) throws Exception {
-
-    }
-
-
-
     @PostMapping("order")
     public ResponseEntity<?> saveOrder(@RequestBody Order order) throws Exception
     {

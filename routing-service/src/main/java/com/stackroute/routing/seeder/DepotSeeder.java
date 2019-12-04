@@ -10,22 +10,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DepotSeeder  implements CommandLineRunner {
-
-    DepotRepository depotRepository;
-
     @Autowired
-    public DepotSeeder(DepotRepository depotRepository) {
-        this.depotRepository = depotRepository;
-    }
-
+    DepotRepository depotRepository;
     @Override
     public void run(String... args) throws Exception {
         Depot depot =new Depot();
         depot.setId(0);
         depot.setWholesalerId(11);
         depot.setDepotAddress("koramangala");
-        System.out.printf("here");
-        if(depotRepository.findById(depot.getId())==null)
+        if(depotRepository.findAll()==null)
         depotRepository.save(depot);
     }
 }
