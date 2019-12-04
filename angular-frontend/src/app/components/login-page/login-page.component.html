@@ -9,19 +9,17 @@
     <mat-form-field>
       <input #password matInput placeholder="Password" required type="password">
     </mat-form-field>
-    <a routerLink="/resetPassword"><p class="text-center" >Forgot Password?</p></a>
+    <a routerLink="/resetPassword" ><p class="text-center" style="font-size: smaller;">Forgot Password?</p></a>
     
     
-    <button class="btn btn-outline-danger check"
+    <button style="width: 50%;margin: auto;" class="btn btn-outline-danger check"
             (click)="validateLogin(email.value,password.value)" routerLink="/login"><b> Login </b>
     </button>
-    <div class="loginSignUpSeparator">
-      <span class="textInSeparator">or</span>
-    </div>
 
-    <button class="btn btn-outline-primary check"
-            (click)="validateLogin(email.value,password.value)" routerLink="/signup"><b> Signup </b>
-    </button>
+    <hr>
+ 
+    <a (click)="validateLogin(email.value,password.value)" routerLink="/signup"><b>New to us, Please Signup </b>
+  </a>
     <br>
         <p style="color: brown;"> {{loginMessage}} </p>
         
