@@ -50,9 +50,11 @@
         </ul>
         <ul class="navbar-nav ml-auto">
           <div *ngIf="checkLogin == null ">
+              <div [hidden]="hideElement">
             <li class="nav-item">
               <button class="btn btn-outline-danger my-2 my-sm-0" routerLink="/login">Login</button>
             </li>
+          </div>
           </div>
          
           <div *ngIf="checkLogin != null ">
