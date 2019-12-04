@@ -57,13 +57,13 @@ public class RouteController {
     public ResponseEntity<?> saveVehicle(@RequestBody Vehicle vehicle) throws Exception
     {
         vehicleService.saveVehicle(vehicle);
-        return new ResponseEntity<String>("depot added", HttpStatus.OK);
+        return new ResponseEntity<String>("vehicle added", HttpStatus.OK);
     }
     @PostMapping("depot")
     public ResponseEntity<?> saveDepot(@RequestBody Depot depot) throws Exception
     {
         depotService.addDepot(depot);
-        return new ResponseEntity<String>("vehicle added", HttpStatus.OK);
+        return new ResponseEntity<String>("depot added", HttpStatus.OK);
     }
 
 
@@ -81,17 +81,17 @@ public class RouteController {
         vehicleService.deleteVehicle(no);
         return new ResponseEntity<String>("vehicle deleted", HttpStatus.OK);
     }
-    @DeleteMapping("depot/{no}")
-    public ResponseEntity<?>deleteDepot(@PathVariable String no) throws Exception
+    @DeleteMapping("depot/{id}")
+    public ResponseEntity<?>deleteDepot(@PathVariable int id) throws Exception
     {
-        depotService.deleteDepot(no);
-        return new ResponseEntity<String>("vehicle deleted", HttpStatus.OK);
+        depotService.deleteDepot(id);
+        return new ResponseEntity<String>("depot deleted", HttpStatus.OK);
     }
 
 
-    @GetMapping("routes")
-    public String getAllRoutes() throws  Exception
+    @GetMapping("routes/{wholesalerId}")
+    public String getAllRoutes(@PathVariable int wholesalerId) throws  Exception
     {
-        return routeService.getRoutes().toString();
+        return routeService.getRoutes(wholesalerId).toString();
     }
 }

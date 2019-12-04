@@ -14,20 +14,25 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Order {
     private static final AtomicInteger counter = new AtomicInteger();
 
-    public static int nextValue() {
-        return counter.getAndIncrement();
-    }
-
 
     @Id
-    private int id =nextValue();
+    private int id ;
     private int wholesalerId;
     private int orderId ;
+
 //    private String customerName;
     private String customerAddress;
 //    private String customerPhoneNumber;
-    private Date deliveryDate;
+    private String deliveryDate;
     private int slotNumber;
     private long orderVolume;
+    private String orderStatus;
+
+//    public String toString()
+//    {
+////        String
+//        return null;
+//    }
+
 }
 

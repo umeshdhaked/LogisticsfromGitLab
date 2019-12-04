@@ -2,15 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.stackroute</groupId>
+	<artifactId>routing</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.2.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.stackroute</groupId>
-	<artifactId>routing</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+
+
 	<name>routing</name>
 
 	<description>Demo project for Spring Boot</description>
@@ -20,6 +25,35 @@
 	</properties>
 
 	<dependencies>
+  
+		<!--<dependency>
+		    <groupId>com.google.ortools</groupId>
+		    <artifactId>com-google-ortools</artifactId>
+		    <version>1.0</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>com.google.ortools</groupId>
+		    <artifactId>protobuf</artifactId>
+		    <version>1.0</version>
+		</dependency>-->
+
+		<dependency>
+		    <groupId>com.google.ortools</groupId>
+		    <artifactId>com-google-ortools</artifactId>
+		    <version>1.0</version>
+		    <scope>system</scope>
+		    <systemPath>/home/cgi/local_lib/com-google-ortools-1.0.jar</systemPath>
+		</dependency>
+
+		<dependency>
+		    <groupId>com.google.ortools</groupId>
+		    <artifactId>protobuf</artifactId>
+		    <version>1.0</version>
+		    <scope>system</scope>
+		    <systemPath>/home/cgi/local_lib/protobuf-1.0.jar</systemPath>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
@@ -34,12 +68,6 @@
 		<artifactId>spring-boot-starter-hateoas</artifactId>
 		</dependency>
 
-
-
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-data-jpa</artifactId>-->
-<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>

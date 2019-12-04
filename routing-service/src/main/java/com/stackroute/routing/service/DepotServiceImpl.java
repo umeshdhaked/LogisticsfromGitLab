@@ -20,9 +20,9 @@ public class DepotServiceImpl implements  DepotService{
     }
 
     @Override
-    public Depot deleteDepot(String depotId) throws Exception {
-        Depot depot=depotRepository.findByDepotId(depotId);
+    public Depot deleteDepot(int wholesalerId) throws Exception {
+        Depot depot=depotRepository.findByWholesalerId(wholesalerId);
          depotRepository.deleteById(depot.getId());
-        return depotRepository.findByDepotId(depotId);
+        return depotRepository.findByWholesalerId(wholesalerId);
     }
 }
