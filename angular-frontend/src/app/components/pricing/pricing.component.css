@@ -46,6 +46,11 @@
     background-color: #eee;
     font-size: 20px;
   }
+
+  .price .white {
+    background-color: silver;
+    font-size: 20px;
+  }
   
   /* The "Sign Up" button */
   .button {
@@ -70,8 +75,3 @@
    height: auto;
   }
 
-  .nav nav-tabs.li
-  {
-    height: auto;
-    padding: 20px;
-  }
