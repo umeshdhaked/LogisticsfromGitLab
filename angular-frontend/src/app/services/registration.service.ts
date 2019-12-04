@@ -14,7 +14,7 @@ export class RegistrationService {
   constructor(private http: HttpClient) {
   }
 
-  registerNewUser(firstName, lastName, email, role): Observable<Message> {
+  registerNewUser(firstName, lastName, email, role, mobile): Observable<Message> {
     let uri = environment.apiUrl + ":8088/register";
     let data = {"firstName": firstName, "lastName": lastName, "email": email, "role": role};
     return this.http.post<Message>(uri, JSON.stringify(data), {

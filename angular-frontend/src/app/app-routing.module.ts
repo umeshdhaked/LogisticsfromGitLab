@@ -1,3 +1,6 @@
+import { PaymemonthlyComponent } from './components/paymemonthly/paymemonthly.component';
+
+
 import {AuthGaurdService} from './services/auth-gaurd.service';
 import {VerifyComponent} from './components/verify/verify.component';
 import {HomeComponent} from './components/home/home.component';
@@ -33,6 +36,9 @@ import {RetailerdetailsComponent} from "./components/retailerdetails/retailerdet
 import {VehicledetailsComponent} from "./components/vehicledetails/vehicledetails.component";
 import {AdminfrontendComponent} from "./components/adminfrontend/adminfrontend.component";
 import {AdminloginComponent} from "./components/adminlogin/adminlogin.component";
+import { PricingComponent } from './components/pricing/pricing.component';
+import { PaymeComponent } from './components/payme/payme.component';
+
 
 
 const routes: Routes = [
@@ -81,6 +87,8 @@ const routes: Routes = [
 
 
   {path: 'confirm/:token', component: VerifyUserComponent},
+  {path: 'payment', component: PaymeComponent},
+  {path: 'monthlypayment', component: PaymemonthlyComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'sendToken', component:TokenFilterCheckComponent },
   // {path: 'sendToken', component:TokenFilterCheckComponent, canActivate: [AuthGaurdService] },
@@ -89,7 +97,7 @@ const routes: Routes = [
   { path : 'adminDashboard', component: AdminfrontendComponent},
   { path : 'vehicleDetails', component: VehicledetailsComponent},
   { path : 'retailerDetails', component: RetailerdetailsComponent},
-
+  { path : 'pricing', component: PricingComponent},
   { path : 'statistics', component: Statistic1Component},
   {path: '**', component: PageNotFoundComponent}
 ];
