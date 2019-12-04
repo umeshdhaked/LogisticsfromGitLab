@@ -31,14 +31,14 @@ import com.google.ortools.constraintsolver.RoutingModel;
 import com.google.ortools.constraintsolver.RoutingSearchParameters;
 import com.google.ortools.constraintsolver.main;
 import org.springframework.stereotype.Service;
-import javax.imageio.ImageIO;
+
 
 @Service
 public class RouteServiceImpl implements RouteService {
 
-//    static {
-//        System.loadLibrary("jniortools");
-//    }
+    static {
+        System.loadLibrary("jniortools");
+    }
 
     DepotRepository depotRepository;
     OrderRepository orderRepository;
