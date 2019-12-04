@@ -11,14 +11,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OrderSeeder  implements CommandLineRunner {
-
-    OrderRepository orderRepository;
-
     @Autowired
-    public OrderSeeder(OrderRepository orderRepository) {
-        this.orderRepository = orderRepository;
-    }
-
+    OrderRepository orderRepository;
     @Override
     public void run(String... args) throws Exception {
         Order order = new Order();
@@ -30,7 +24,7 @@ public class OrderSeeder  implements CommandLineRunner {
         order.setSlotNumber("1");
         order.setOrderStatus("free");
 
-        if(orderRepository.findAll().isEmpty())
+        if(orderRepository.findAll()==null)
         orderRepository.save(order);
     }
 }
