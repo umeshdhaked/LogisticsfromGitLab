@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
     this.checkLogin = localStorage.getItem('token');
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        if (event.url === '/login') {
+        if (event.url === '/login' || event.url === '/signup') {
           this.hideElement = true;
         }  else {
           this.hideElement = false;
