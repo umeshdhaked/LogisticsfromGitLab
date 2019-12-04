@@ -12,15 +12,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Document
 @Data
 public class Vehicle {
-    private static final AtomicInteger counter = new AtomicInteger();
-
-    public static int nextValue() {
-        return counter.getAndIncrement();
-    }
-
 
     @Id
-    int id =nextValue();
+    int id ;
     String vehicleNumber;
 //    String vehicleName;
 //    String phoneNumber;

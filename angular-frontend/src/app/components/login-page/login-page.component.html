@@ -9,10 +9,17 @@
     <mat-form-field>
       <input #password matInput placeholder="Password" required type="password">
     </mat-form-field>
-    <a routerLink="/signup"><p class="text-center" >New User? Register Here</p></a>
-    <button class="btn btn-outline-danger check"
+    <a routerLink="/resetPassword" ><p class="text-center" style="font-size: smaller;">Forgot Password?</p></a>
+    
+    
+    <button style="width: 50%;margin: auto;" class="btn btn-outline-danger check"
             (click)="validateLogin(email.value,password.value)" routerLink="/login"><b> Login </b>
     </button>
+
+    <hr>
+ 
+    <a (click)="validateLogin(email.value,password.value)" routerLink="/signup"><b>New to us, Please Signup </b>
+  </a>
     <br>
         <p style="color: brown;"> {{loginMessage}} </p>
         
