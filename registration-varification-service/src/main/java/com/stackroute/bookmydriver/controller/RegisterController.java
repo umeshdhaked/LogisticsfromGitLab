@@ -167,11 +167,11 @@ public class RegisterController {
 
                 SimpleMailMessage registrationEmail = new SimpleMailMessage();
 
-                registrationEmail.setTo(user.getEmail());//to which email we want to send the appUrl ::which is the mail of the user
+                registrationEmail.setTo(email);//to which email we want to send the appUrl ::which is the mail of the user
                 //Email subject , body
                 registrationEmail.setSubject("Password Reset Email from Wysser");
                 registrationEmail.setText("To reset your password please click the link below:\n\n" +
-                        appUrl + "/#/confirm/" + user.getConfirmationToken());
+                        appUrl + "/#/confirm/" + userExists.getConfirmationToken());
                 registrationEmail.setFrom("umdk456@gmail.com");
 
                 emailService.sendEmail(registrationEmail);//sending mail to the user email

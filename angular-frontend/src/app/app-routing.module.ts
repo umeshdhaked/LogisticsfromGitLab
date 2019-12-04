@@ -1,3 +1,5 @@
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+
 import { TermsComponent } from './components/terms/terms.component';
 import { PaymemonthlyComponent } from './components/paymemonthly/paymemonthly.component';
 
@@ -94,6 +96,7 @@ const routes: Routes = [
   {path: 'monthlypayment', component: PaymemonthlyComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'sendToken', component:TokenFilterCheckComponent },
+  {path:  'resetPassword', component: ResetPasswordComponent},
   // {path: 'sendToken', component:TokenFilterCheckComponent, canActivate: [AuthGaurdService] },
 
   { path : 'adminLogin', component: AdminloginComponent},
