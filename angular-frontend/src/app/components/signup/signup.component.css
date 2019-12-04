@@ -3,6 +3,12 @@
   box-sizing: border-box;
 }
 
+.checkbox
+{
+  margin: auto;
+  padding: 10px;
+}
+
 .bg-img {
   /* The image used */
   background-image: url("../../../assets/images/main.jpg");
@@ -15,6 +21,12 @@
 
   /* background-size: cover; */
   /* position: relative; */
+}
+
+.alreadyexist
+{
+  margin: auto;
+  padding: 20px;
 }
 
 /* Add styles to the form container */

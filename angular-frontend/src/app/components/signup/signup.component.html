@@ -6,11 +6,12 @@
       </div>
     </div>
     <div class="text-center" *ngIf="userNotSaved">
-      <form id="registrationForm" class="container-fluid" onsubmit="return false" method="POST">
+      <form id="registrationForm" action="#" onsubmit="if(document.getElementById('agree').checked) { return true; } else { alert('Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy'); return false; }" class="container-fluid"  method="POST">
         <h5>Join Wysser</h5>
         <h2 id="sign">Create your Account</h2>
         <br/>
         <div class="row">
+           
           <div class=" col-md-4 offset-md-4 col-12">
             <input #firstName type="text" placeholder="First Name" name="firstName" required>
           </div>
@@ -34,12 +35,18 @@
             </mat-form-field>
           </div>
 
-
+         
+        <div class="checkbox">
+              <input type="checkbox" name="checkbox" value="check" id="agree" /> I have read and agree to the Terms and Conditions and Privacy Policy
+        </div>
 
           <div class="col-md-4 offset-md-4 col-12">
-            <button type="submit" class="btn btn-outline-danger" (click)='registerNewUser(firstName.value, lastName.value, email.value, roles.value, mobile.value)'>Create
+            <button type="submit"  name="submit" class="btn btn-outline-danger" (click)='registerNewUser(firstName.value, lastName.value, email.value, roles.value, mobile.value)'>Create
               Account
             </button>
+          <div class="alreadyexist">
+            <a routerLink="/login">Already a member, Please Login</a>
+          </div>
           </div>
         </div>
       </form>
