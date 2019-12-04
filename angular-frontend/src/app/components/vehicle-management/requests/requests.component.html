@@ -5,12 +5,15 @@
             <tr>
                 <th class="text-center">ID</th>
                 <th class="text-center">Slot</th>
+                <th class="text-center">Company Name</th>
                 <th class="text-center">Vehicle Number</th>
                 <th class="text-center">Driver Name</th>
                 <th class="text-center">Vehicle Type</th>
                 <th class="text-center">Capacity(lit)</th>
                 <th class="text-center">Cost Per Slot(Rs)</th>
                 <th class="text-center">Vehicle Status</th>
+                <th class="text-center">Retailer ID</th>
+
                 <th class="text-center">Accept/Reject</th>
 
             </tr>
@@ -20,6 +23,7 @@
                 <td>{{ vehicle.id }}</td>
 
                 <td>{{vehicle.slot}}</td>
+                <td>{{vehicle.companyName}}</td>
 
                 <td>{{ vehicle.vehicleNumber }}</td>
                 <td>{{ vehicle.driverName }}</td>
@@ -27,6 +31,7 @@
                 <td>{{ vehicle.capacity }}</td>
                 <td>{{ vehicle.costPerSlot }}</td>
                 <td>{{ vehicle.vehicleStatus }}</td>
+                <td>{{ vehicle.retailerId }}</td>
 
                 <td>
 
