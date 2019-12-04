@@ -3,7 +3,6 @@ package com.stackroute.controller;
 import com.google.gson.Gson;
 import com.stackroute.domain.RetailerProfile;
 import com.stackroute.service.RetailerServices;
-import com.stackroute.service.VehicleCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,18 +19,18 @@ import java.util.List;
 @RequestMapping("/retailerProfile")
 public class RetailerController {
 
-    private RetailerServices service;
+    private RetailerServices retailerService;
 
     @Autowired
     public RetailerController(RetailerServices retailerServices) {
-        this.service = retailerServices;
+        this.retailerService = retailerServices;
     }
 
 
     @CrossOrigin
     @GetMapping("/getAllRetailersProfileList")
     public List<RetailerProfile> getUser() {
-        return service.getAllUser();
+        return retailerService.getAllUser();
     }
 
 
@@ -44,7 +43,7 @@ public class RetailerController {
         Gson g = new Gson();
         RetailerProfile profileData = g.fromJson(jstring, RetailerProfile.class);
 
-        RetailerProfile existRetailer = service.getRetailerByEmail(profileData.getEmail()); //checking if user exist
+        RetailerProfile existRetailer = retailerService.getRetailerByEmail(profileData.getEmail()); //checking if user exist
 
         if (existRetailer != null) {
             profileData.setId(existRetailer.getId());
@@ -54,7 +53,7 @@ public class RetailerController {
         profileData.setDocPicType(file1.getContentType());
         profileData.setProfilePic(file2.getBytes());
         profileData.setProfilePicType(file2.getContentType());
-        service.updateRetailer(profileData);
+        retailerService.updateRetailer(profileData);
 
     }
 
@@ -65,7 +64,7 @@ public class RetailerController {
           System.out.println("email = "+email);
         System.out.println("header in profile = "+httpServletRequest.getHeader("authorization"));
 
-        return service.getRetailerByEmail(email);
+        return retailerService.getRetailerByEmail(email);
 
     }
 
