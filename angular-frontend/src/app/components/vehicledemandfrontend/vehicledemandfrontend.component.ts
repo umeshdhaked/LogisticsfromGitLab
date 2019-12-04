@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {VehicleService} from '../../services/vehicle.service';
 import {Observable} from 'rxjs';
+import {VehicleRentService} from "../../services/vehicle-rent.service";
 
 @Component({
   selector: 'app-vehicledemandfrontend',
@@ -31,7 +32,8 @@ export class VehicledemandfrontendComponent implements OnInit {
     private vehicleService: VehicledemandfrontendService,
     private datePipe: DatePipe,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private testservice: VehicleRentService
   ) {
     // this.date = this.datePipe.transform(this.date, 'yyyy-MM-dd');
   }
@@ -63,6 +65,11 @@ export class VehicledemandfrontendComponent implements OnInit {
 
   sendrequest() {
     this.flag = 'true';
+    // this.testservice.getVCResponse(this.capacity, 'available').subscribe(vehicle => {
+    //       this.vehiclequery = vehicle;
+    //       console.log(vehicle);
+    //       console.log('in slot 1');
+    //     });
     if (this.slot === 'slot1') {
       this.queryvehicleservice.getvolumeandslot1(this.capacity, 'available').subscribe(vehicle => {
         this.vehiclequery = vehicle;
