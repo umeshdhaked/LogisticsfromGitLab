@@ -150,7 +150,7 @@ import { PaymemonthlyComponent } from './components/paymemonthly/paymemonthly.co
     Statistic1Component,
     VehicledetailsComponent,
     PricingComponent,
-    PaymentComponent,
+    // PaymentComponent,
     PaymeComponent,
     PaymemonthlyComponent
   ],
