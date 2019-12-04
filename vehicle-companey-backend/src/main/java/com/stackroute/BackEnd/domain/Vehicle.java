@@ -29,8 +29,10 @@ public class Vehicle {
     String slot2;
     String slot3;
     String date;
+    String companyName;
 
-    public Vehicle(BigInteger id, String vehicleNumber, String driverName, String vehicleType, int capacity, int costPerSlot, String vehicleStatus, String slot1, String slot2, String slot3, String date) {
+
+    public Vehicle(BigInteger id, String vehicleNumber, String driverName, String vehicleType, int capacity, int costPerSlot, String vehicleStatus, String slot1, String slot2, String slot3, String date, String companyName) {
         this.id = id;
         this.vehicleNumber = vehicleNumber;
         this.driverName = driverName;
@@ -42,9 +44,18 @@ public class Vehicle {
         this.slot2 = slot2;
         this.slot3 = slot3;
         this.date = date;
+        this.companyName=companyName;
     }
 
     public Vehicle() {
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
     public BigInteger getId() {

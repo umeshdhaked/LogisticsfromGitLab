@@ -1,3 +1,4 @@
+import { TermsComponent } from './components/terms/terms.component';
 import { PaymemonthlyComponent } from './components/paymemonthly/paymemonthly.component';
 
 
@@ -45,6 +46,7 @@ import { VehicleCompanyProfileComponent } from './components/vehicle-company-pro
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
+  {path: 'terms', component: TermsComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'verify', component: VerifyComponent},
   { path : 'navigate', component: NavigatelocationComponent},

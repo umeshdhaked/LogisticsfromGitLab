@@ -54,7 +54,7 @@ input[type=text], input[type=password], input[type=email] ,select{
   display: inline-block;
   border: 1px solid red;
   border-radius: 4px;
-  box-sizing: border-box;
+  box-sizing: none;
 }
 
 input[type=text]:focus, input[type=password]:focus {

@@ -108,6 +108,7 @@ import {DatePipe} from "@angular/common";
 import { PaymeComponent } from './components/payme/payme.component';
 import { PaymemonthlyComponent } from './components/paymemonthly/paymemonthly.component';
 import { VehicleCompanyProfileComponent } from './components/vehicle-company-profile/vehicle-company-profile.component';
+import { TermsComponent } from './components/terms/terms.component';
 
 
 @NgModule({
@@ -154,7 +155,8 @@ import { VehicleCompanyProfileComponent } from './components/vehicle-company-pro
     // PaymentComponent,
     PaymeComponent,
     PaymemonthlyComponent,
-    VehicleCompanyProfileComponent
+    VehicleCompanyProfileComponent,
+    TermsComponent
   ],
 
   imports: [
