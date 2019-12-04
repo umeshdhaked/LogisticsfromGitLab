@@ -104,7 +104,7 @@ import { RetailerdetailsComponent } from './components/retailerdetails/retailerd
 import { Statistic1Component } from './components/statistic1/statistic1.component';
 import { VehicledetailsComponent } from './components/vehicledetails/vehicledetails.component';
 import {DatePipe} from "@angular/common";
-import { PaymentComponent } from './components/payment/payment.component';
+// import { PaymentComponent } from './components/payment/payment.component';
 import { PaymeComponent } from './components/payme/payme.component';
 import { PaymemonthlyComponent } from './components/paymemonthly/paymemonthly.component';
 
