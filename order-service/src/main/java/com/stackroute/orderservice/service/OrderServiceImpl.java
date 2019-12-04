@@ -122,8 +122,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> findOrderByStatus(String orderStatus, String retailerEmail) {
-        return orderRepository.findByOrderStatusAndRetailerEmail(orderStatus, retailerEmail);
+    public List<Order> findOrderByStatus(String orderStatus, String retailerId) {
+        return orderRepository.findByOrderStatusAndRetailerId(orderStatus, retailerId);
     }
 
     @Override
@@ -132,7 +132,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> findAllOrdersOfRetailer(String retailerEmail) {
-        return orderRepository.findAllOrdersByRetailerEmail(retailerEmail);
+    public List<Order> findAllOrdersOfRetailer(String retailerId) {
+        return orderRepository.findAllOrdersByRetailerId(retailerId);
     }
 }

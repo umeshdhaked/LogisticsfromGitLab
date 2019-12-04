@@ -15,6 +15,7 @@ export class AddOrderComponent implements OnInit {
   //retailerId will depend on saved cookie
 
   retailerId: string = "";
+  retailerEmail: string = "";
   success: boolean = false;
   //property which indicates whether a given slot can be picked
   slotValid = {"slot1": true, "slot2": true, "slot3": true};
@@ -52,13 +53,17 @@ export class AddOrderComponent implements OnInit {
   ngOnInit() {
     // getting email from token
     var decoded = {
-      "userId": ""
+      "userId": "",
+      "sub": ""
     }
     let token = localStorage.getItem('token');
 
     if (token != null) {
       decoded = jwt_decode(token);
       this.retailerId = decoded.userId;
+      this.retailerEmail = decoded.sub;
+      console.log(this.retailerEmail);
+      console.log(this.retailerId);
     }
   }
 
