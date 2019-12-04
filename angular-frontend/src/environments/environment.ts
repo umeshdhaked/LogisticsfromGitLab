@@ -5,11 +5,11 @@
 export const environment = {
   production: false,
 
-  // apiUrl: 'http://15.206.105.26',
+  apiUrl: 'http://15.206.105.26',
 
-  apiUrl: 'http://localhost'
+  // apiUrl: 'http://localhost'
 
-//  apiUrl: 'http://15.206.105.26',
+ // apiUrl: 'http://15.206.105.26',
 
   //  apiUrl: 'http://localhost'
 
