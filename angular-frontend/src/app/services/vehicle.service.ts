@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {VehicleManagement} from '../interfaces/vehicle-management';
 import {environment} from 'src/environments/environment';
+import {Vehicle} from '../interfaces/vehicle';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,8 @@ export class VehicleService {
     //   vehicleStatus: 'free'
     // }
 
-  ]
+  ];
+  private myUrl: string;
 
   constructor(public http: HttpClient) {
   }
@@ -42,14 +44,14 @@ export class VehicleService {
     // vehicle.id = this.upersons.length + 1;
     this.upersons.push(vehicle);
 
-    let uri = environment.apiUrl + ":8095/api/v1/vehicle";
+    const uri = environment.apiUrl + ':8095/api/v1/vehicle';
 
     this.http.post(uri, vehicle).subscribe();
 
   }
 
   updateVehicle(vehicle: VehicleManagement) {
-    let index = this.upersons.findIndex(u => vehicle.id === u.id);
+    const index = this.upersons.findIndex(u => vehicle.id === u.id);
     this.upersons[index] = vehicle;
   }
 
@@ -58,15 +60,26 @@ export class VehicleService {
 
     console.log(vehicle.id);
 
-    let url = environment.apiUrl + ":8095/api/v1/vehicle/" + vehicle.id;
+    const url = environment.apiUrl + ':8095/api/v1/vehicle/' + vehicle.id;
 
     this.http.delete(url).subscribe();
   }
 
   getAllVehicles(): Observable<any> {
-    let url = environment.apiUrl + ":8095/api/v1/vehicles";
+    const url = environment.apiUrl + ':8095/api/v1/vehicles';
 
     return this.http.get(url);
   }
-
+  getvolumeandslot1(capacity: number, slot1: string): Observable<any> {
+    this.myUrl = environment.apiUrl + ':8095/api/v1/queryslot1/'  + capacity + '/' + 'available';
+    return this.http.get(this.myUrl);
+  }
+  getvolumeandslot2(capacity: number, slot2: string): Observable<any> {
+    this.myUrl = environment.apiUrl + ':8095/api/v1/queryslot2/'  + capacity + '/' + 'available';
+    return this.http.get(this.myUrl);
+  }
+  getvolumeandslot3(capacity: number, slot3: string): Observable<any> {
+    this.myUrl = environment.apiUrl + ':8095/api/v1/queryslot3/'  + capacity + '/' + 'available';
+    return this.http.get(this.myUrl);
+  }
 }

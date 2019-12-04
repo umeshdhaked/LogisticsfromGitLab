@@ -9,10 +9,14 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.BindHandler;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 import java.util.Properties;
@@ -52,6 +56,7 @@ public class VehicleController<VehicleDao> {
         producerProperties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         producer = new KafkaProducer<>(producerProperties);
     }
+
     VehicleService vehicleService;
 
     @Autowired
@@ -72,9 +77,9 @@ public class VehicleController<VehicleDao> {
 
 //        vehicle.setDate("today");
 
-        vehicle.setSlot1Status("Available");
-        vehicle.setSlot2Status("Available");
-        vehicle.setSlot3Status("Available");
+//        vehicle.setSlot1Status("Available");
+//        vehicle.setSlot2Status("Available");
+//        vehicle.setSlot3Status("Available");
 
 
         ResponseEntity responseEntity;
@@ -116,7 +121,7 @@ public class VehicleController<VehicleDao> {
 
 
     @GetMapping("vehicle/{id}")
-    public ResponseEntity<?> getVehicleById(@PathVariable int id) throws VehicleNotFoundException {
+    public ResponseEntity<?> getVehicleById(@PathVariable BigInteger id) throws VehicleNotFoundException {
         ResponseEntity responseEntity;
         // try{
         responseEntity = new ResponseEntity<Optional<Vehicle>>(vehicleService.getVehicleById(id), HttpStatus.CREATED);
@@ -126,39 +131,39 @@ public class VehicleController<VehicleDao> {
         return responseEntity;
     }
 
-    @GetMapping("vehicle/vehicleNumber")
-    public ResponseEntity<?> getVehicleByVehicleNumber(@PathVariable(value = "vehicleNumber") String vehicleNumber) throws VehicleNotFoundException {
-        ResponseEntity responseEntity;
-        // try{
-        vehicleService.getVehicleByVehicleNumber(vehicleNumber);
-        responseEntity = new ResponseEntity<List<Vehicle>>(vehicleService.getVehicleByVehicleNumber(vehicleNumber), HttpStatus.OK);
-        // }catch (TrackNotFoundException ex) {
-        //   responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
-        //}
-        return responseEntity;
-    }
+//    @GetMapping("vehicle/vehicleNumber")
+//    public ResponseEntity<?> getVehicleByVehicleNumber(@PathVariable(value = "vehicleNumber") String vehicleNumber) throws VehicleNotFoundException {
+//        ResponseEntity responseEntity;
+//        // try{
+//        vehicleService.getVehicleByVehicleNumber(vehicleNumber);
+//        responseEntity = new ResponseEntity<List<Vehicle>>(vehicleService.getVehicleByVehicleNumber(vehicleNumber), HttpStatus.OK);
+//        // }catch (TrackNotFoundException ex) {
+//        //   responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
+//        //}
+//        return responseEntity;
+//    }
 
 
-    // @PutMapping("vehicle/{id}")
-    // public  ResponseEntity<?> updateVehicles(@PathVariable(value = "id") int id,@Valid @RequestBody Vehicle vehicle) throws VehicleNotFoundException, VehicleAlreadyExistsException {
-    //   ResponseEntity responseEntity;
-    // Optional<Vehicle> vehicle1 = vehicleService.getVehicleById(id);
-    // try{
-    //if(!vehicle1.isPresent()){
-    //  throw new Exception("id-"+id);
-    // }
-    //   vehicle.setVehicleId(id);
-    // vehicleService.saveVehicle(vehicle);
-    // responseEntity = new ResponseEntity(vehicleService.getVehicles(), HttpStatus.CREATED);
-    //}catch (Exception ex) {
-    // responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
-    //  }
-    //  return responseEntity;
-    // }
+     @PutMapping("vehicle/{id}")
+     public  ResponseEntity<?> updateVehicles(@PathVariable(value = "id") BigInteger id,@Valid @RequestBody Vehicle vehicle) throws VehicleNotFoundException, VehicleAlreadyExistsException {
+       ResponseEntity responseEntity;
+     Optional<Vehicle> vehicle1 = vehicleService.getVehicleById(id);
+     try{
+    if(!vehicle1.isPresent()){
+      throw new Exception("id-"+id);
+     }
+       vehicle.setId(id);
+     vehicleService.saveVehicle(vehicle);
+     responseEntity = new ResponseEntity(vehicleService.getVehicles(), HttpStatus.CREATED);
+    }catch (Exception ex) {
+     responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
+      }
+      return responseEntity;
+     }
 
     @DeleteMapping("vehicle/{id}")
     @CrossOrigin
-    public ResponseEntity<?> deleteVehicles(@PathVariable("id") int id) {
+    public ResponseEntity<?> deleteVehicles(@PathVariable("id") BigInteger id) {
 
         ResponseEntity responseEntity;
         //try{
@@ -195,9 +200,53 @@ public class VehicleController<VehicleDao> {
 
         return responseEntity;
     }
+//
+//
+    @GetMapping(value="queryslot1/{capacity}/{slot1}")
+    @CrossOrigin
+    public ResponseEntity<?> getVehiclesforslot1anddate(@PathVariable("capacity") int capacity, @PathVariable("slot1") String slot1) {
+        ResponseEntity responseEntity;
+        System.out.print(capacity);
+        System.out.print(slot1);
 
-
-
-
+        List<Vehicle> vehicles = vehicleService.getlistbyslot1anddate(capacity,"available");
+        System.out.print(vehicles);
+        //try{
+        responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
+        //}catch (Exception ex) {
+        //  responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
+        //}
+        return responseEntity;
+    }
+    @GetMapping(value="queryslot2/{capacity}/{slot2}")
+    @CrossOrigin
+    public ResponseEntity<?> getVehiclesforslot2anddate(@PathVariable("capacity") int capacity, @PathVariable("slot2") String slot2) {
+        ResponseEntity responseEntity;
+        System.out.print(capacity);
+        System.out.print(slot2);
+        List<Vehicle> vehicles = vehicleService.getlistbyslot2anddate(capacity,"available");
+        System.out.print(vehicles);
+        //try{
+        responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
+        //}catch (Exception ex) {
+        //  responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
+        //}
+        return responseEntity;
+    }
+    @GetMapping(value="queryslot3/{capacity}/{slot3}")
+    @CrossOrigin
+    public ResponseEntity<?> getVehiclesforslot3anddate(@PathVariable("capacity") int capacity, @PathVariable("slot3") String slot3) {
+        ResponseEntity responseEntity;
+        System.out.print(capacity);
+        System.out.print(slot3);
+        List<Vehicle> vehicles = vehicleService.getlistbyslot3anddate(capacity,slot3);
+        System.out.print(vehicles);
+        //try{
+        responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
+        //}catch (Exception ex) {
+        //  responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
+        //}
+        return responseEntity;
+    }
 }
 

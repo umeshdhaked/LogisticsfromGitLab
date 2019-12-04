@@ -4,6 +4,7 @@ import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
 import {Color, Label, MultiDataSet} from 'ng2-charts';
 import {VehicleRentService} from '../../services/vehicle-rent.service';
 import * as jwt_decode from 'jwt-decode';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-retailer-dashboard',
@@ -57,7 +58,7 @@ export class RetailerDashboardComponent implements OnInit {
   //vehicles tables
   tableColumns: string[] = ['vehicleId', 'date', 'volume', 'timeSlot'];
 
-  constructor(private orderService: OrderServiceService, private zone: NgZone, private rentedVehicleService: VehicleRentService) {
+  constructor(private orderService: OrderServiceService, private zone: NgZone, private rentedVehicleService: VehicleRentService,private router:Router) {
   }
 
   ngOnInit() {
@@ -122,5 +123,9 @@ export class RetailerDashboardComponent implements OnInit {
     this.doughnutChartData.push(orderData.reduce((acc, cur) => cur.slotNumber === "slot1" ? ++acc : acc, 0));
     this.doughnutChartData.push(orderData.reduce((acc, cur) => cur.slotNumber === "slot2" ? ++acc : acc, 0));
     this.doughnutChartData.push(orderData.reduce((acc, cur) => cur.slotNumber === "slot3" ? ++acc : acc, 0));
+  }
+
+  retailervehicleDemand() {
+    this.router.navigate(['retailerVehicleDemand']);
   }
 }

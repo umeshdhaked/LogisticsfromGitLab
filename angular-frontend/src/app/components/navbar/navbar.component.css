@@ -7,13 +7,17 @@ h6 {
   visibility: hidden;
 }
 
+.navbar-fixed-top
+{
+  height: 360px;
+}
 
 /* .navbar.nav-link.scrolled{
     border-color: white;
 } */
 
 .nav-link {
-  color: whitesmoke;
+  color: white;
   /* padding: 12px 0; */
   border-bottom: 3px solid transparent;
 }
@@ -40,7 +44,11 @@ a:hover {
   }
 
   .navbar.scrolled {
-    background: rgba(54, 59, 68, 0.9);
+    background: rgba(54, 59, 68, 0.98);
+  }
+  .navbar.scrolled.btn{
+    border-color: whitesmoke;
+    color:whitesmoke;
   }
 }
 
@@ -48,4 +56,7 @@ a:hover {
   .navbar {
     background: rgb(54, 59, 68);
   }
+
+ 
 }
+ 

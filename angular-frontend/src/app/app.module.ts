@@ -1,3 +1,4 @@
+import { PricingComponent } from './components/pricing/pricing.component';
 import { GetlistService } from './services/getlist.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -102,6 +103,11 @@ import { AdminfrontendComponent } from './components/adminfrontend/adminfrontend
 import { RetailerdetailsComponent } from './components/retailerdetails/retailerdetails.component';
 import { Statistic1Component } from './components/statistic1/statistic1.component';
 import { VehicledetailsComponent } from './components/vehicledetails/vehicledetails.component';
+import {DatePipe} from "@angular/common";
+// import { PaymentComponent } from './components/payment/payment.component';
+import { PaymeComponent } from './components/payme/payme.component';
+import { PaymemonthlyComponent } from './components/paymemonthly/paymemonthly.component';
+
 
 @NgModule({
   declarations: [
@@ -122,7 +128,7 @@ import { VehicledetailsComponent } from './components/vehicledetails/vehicledeta
     BookedVehiclesComponent,
 
     RequestsComponent,
-
+    PricingComponent,
     ManageVehiclesComponent,
     ViewProfileComponent,
     TimeSlotPipe,
@@ -142,7 +148,11 @@ import { VehicledetailsComponent } from './components/vehicledetails/vehicledeta
     AdminfrontendComponent,
     RetailerdetailsComponent,
     Statistic1Component,
-    VehicledetailsComponent
+    VehicledetailsComponent,
+    PricingComponent,
+    // PaymentComponent,
+    PaymeComponent,
+    PaymemonthlyComponent
   ],
 
   imports: [
@@ -237,7 +247,7 @@ import { VehicledetailsComponent } from './components/vehicledetails/vehicledeta
       useClass: BasicAuthHtppInterceptorService,
       multi: true
     },
-    SignatureService, InteractionService,
+    SignatureService, InteractionService, DatePipe
 
   ],
 

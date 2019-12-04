@@ -1,3 +1,6 @@
+import { PaymemonthlyComponent } from './components/paymemonthly/paymemonthly.component';
+
+
 import {AuthGaurdService} from './services/auth-gaurd.service';
 import {VerifyComponent} from './components/verify/verify.component';
 import {HomeComponent} from './components/home/home.component';
@@ -33,6 +36,9 @@ import {RetailerdetailsComponent} from "./components/retailerdetails/retailerdet
 import {VehicledetailsComponent} from "./components/vehicledetails/vehicledetails.component";
 import {AdminfrontendComponent} from "./components/adminfrontend/adminfrontend.component";
 import {AdminloginComponent} from "./components/adminlogin/adminlogin.component";
+import { PricingComponent } from './components/pricing/pricing.component';
+import { PaymeComponent } from './components/payme/payme.component';
+
 
 
 const routes: Routes = [
@@ -44,31 +50,54 @@ const routes: Routes = [
   { path : 'driverdashboard', component: MaindriverdashboardComponent},
   { path : 'signature', component: SignatureComponent},
   {path: 'reasons' , component: CancelreasonComponent},
-  {path: 'editProfile', component: EditProfileComponent, canActivate: [AuthGaurdService]},
-  {path: 'addOrder', component: AddOrderComponent, canActivate: [AuthGaurdService]},
-  {path: 'driver', component: DriverDashboardComponent, canActivate: [AuthGaurdService]},
-  {path: 'user', component: RetailerDashboardComponent, canActivate: [AuthGaurdService]},
+  {path: 'editProfile', component: EditProfileComponent},
+  // {path: 'editProfile', component: EditProfileComponent, canActivate: [AuthGaurdService]},
+  {path: 'addOrder', component: AddOrderComponent},
+  // {path: 'addOrder', component: AddOrderComponent, canActivate: [AuthGaurdService]},
+  {path: 'driver', component: DriverDashboardComponent},
+  // {path: 'driver', component: DriverDashboardComponent, canActivate: [AuthGaurdService]},
+  // {path: 'user', component: RetailerDashboardComponent, canActivate: [AuthGaurdService]},
+  {path: 'user', component: RetailerDashboardComponent},
   {
     path: 'vehicle-management', component: VehicleManagementComponent, children: [
       {path: 'requests', component: RequestsComponent}
-    ], canActivate: [AuthGaurdService]
+    ]
   },
-  {path: 'manage-vehicle', component: ManageVehiclesComponent, canActivate: [AuthGaurdService]},
+
+  // {
+  //   path: 'vehicle-management', component: VehicleManagementComponent, children: [
+  //     {path: 'requests', component: RequestsComponent}
+  //   ], canActivate: [AuthGaurdService]
+  // },
+  // {path: 'manage-vehicle', component: ManageVehiclesComponent, canActivate: [AuthGaurdService]},
+  {path: 'manage-vehicle', component: ManageVehiclesComponent},
+  {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent},
+  // {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent, canActivate: [AuthGaurdService]},
+  {path: 'viewProfile', component: ViewProfileComponent},
+  // {path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGaurdService]},
+
+  {path: 'manage-vehicle', component: ManageVehiclesComponent},
   {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent, canActivate: [AuthGaurdService]},
   {path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGaurdService]},
 
 
-  {path: 'vehicle-history', component: VehicleHistoryComponent, canActivate: [AuthGaurdService]},
+
+  {path: 'vehicle-history', component: VehicleHistoryComponent},
+  // {path: 'vehicle-history', component: VehicleHistoryComponent, canActivate: [AuthGaurdService]},
+
 
   {path: 'confirm/:token', component: VerifyUserComponent},
+  {path: 'payment', component: PaymeComponent},
+  {path: 'monthlypayment', component: PaymemonthlyComponent},
   {path: 'login', component: LoginPageComponent},
-  {path: 'sendToken', component:TokenFilterCheckComponent, canActivate: [AuthGaurdService] },
+  {path: 'sendToken', component:TokenFilterCheckComponent },
+  // {path: 'sendToken', component:TokenFilterCheckComponent, canActivate: [AuthGaurdService] },
 
   { path : 'adminLogin', component: AdminloginComponent},
   { path : 'adminDashboard', component: AdminfrontendComponent},
   { path : 'vehicleDetails', component: VehicledetailsComponent},
   { path : 'retailerDetails', component: RetailerdetailsComponent},
-
+  { path : 'pricing', component: PricingComponent},
   { path : 'statistics', component: Statistic1Component},
   {path: '**', component: PageNotFoundComponent}
 ];
