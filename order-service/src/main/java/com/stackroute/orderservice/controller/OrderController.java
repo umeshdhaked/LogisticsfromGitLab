@@ -64,10 +64,10 @@ public class OrderController {
     }
 
     @GetMapping("/findOrdersByStatus")
-    public ResponseEntity<?> findOrdersByStatus(@RequestParam("orderStatus") String orderStatus, @RequestParam("retailerEmail") String retailerEmail) {
+    public ResponseEntity<?> findOrdersByStatus(@RequestParam("orderStatus") String orderStatus, @RequestParam("retailerId") String retailerId) {
 
         try {
-            responseEntity = new ResponseEntity(orderService.findOrderByStatus(orderStatus, retailerEmail), HttpStatus.OK);
+            responseEntity = new ResponseEntity(orderService.findOrderByStatus(orderStatus, retailerId), HttpStatus.OK);
         } catch (Exception e) {
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
         }
@@ -97,10 +97,10 @@ public class OrderController {
     }
 
     @GetMapping("/findAllOrdersOfRetailer")
-    public ResponseEntity<?> findAllOrdersOfRetailer(@RequestParam("retailerEmail") String retailerEmail) {
+    public ResponseEntity<?> findAllOrdersOfRetailer(@RequestParam("retailerId") String retailerId) {
 
         try {
-            responseEntity = new ResponseEntity(orderService.findAllOrdersOfRetailer(retailerEmail), HttpStatus.OK);
+            responseEntity = new ResponseEntity(orderService.findAllOrdersOfRetailer(retailerId), HttpStatus.OK);
         } catch (Exception e) {
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
         }

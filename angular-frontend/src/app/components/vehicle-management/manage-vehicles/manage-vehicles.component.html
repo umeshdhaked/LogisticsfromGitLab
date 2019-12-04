@@ -19,7 +19,8 @@
                     <th class="text-center">Vehicle Type</th>
                     <th class="text-center">Capacity(lit)</th>
                     <th class="text-center">Cost Per Slot(Rs)</th>
-                    <th class="text-center">Vehicle Condition</th>
+                    <th class="text-center">Vehicle Status</th>
+                    <th class="text-center">Edit/Delete</th>
                     <!-- <th class="text-center">&nbsp;</th> -->
                 </tr>
             </thead>
@@ -95,6 +96,7 @@
                     <option value="bike">bike</option>
                     <option value="car">car</option>
                     <option value="truck">truck</option>
+                    <option value="van">van</option>
                     
                     <!-- <option selected value="Under Maintenance">Under Maintenance</option> -->
                 </select>
@@ -107,6 +109,7 @@
                 <select name="capacity" id="capacity" [(ngModel)]="newVehicle.capacity" class="form-control">
                     <option value="50">50 lit</option>
                     <option value="100">100 lit</option>
+                    <option value="200">200 lit</option>
                     <option value="500">500 lit</option>
                 
                 </select>
@@ -114,7 +117,7 @@
                 <label class="form-label" for="">Enter Vehicle Cost Per Slot:</label>
                 <input type="number" placeholder="integer value in Rs" name="costPerSlot" id="costPerSlot" [(ngModel)]="newVehicle.costPerSlot" class="form-control" />
 
-                <label class="form-label" for="">Enter Vehicle Condition:</label>
+                <label class="form-label" for="">Enter Vehicle Status:</label>
                 <select name="vehicleStatus" id="vehicleStatus" [(ngModel)]="newVehicle.vehicleStatus" class="form-control">
                     <option value="Good Condition">Good Condition</option>
                     <option selected value="Under Maintenance">Under Maintenance</option>
@@ -170,6 +173,7 @@
                     <option value="bike">bike</option>
                     <option value="car">car</option>
                     <option value="truck">truck</option>
+                    <option value="van">van</option>
                     
                     <!-- <option selected value="Under Maintenance">Under Maintenance</option> -->
                 </select>
@@ -181,6 +185,7 @@
                 <select name="capacity" id="capacity" [(ngModel)]="editedVehicle.capacity" class="form-control">
                     <option value="50">50 lit</option>
                     <option value="100">100 lit</option>
+                    <option value="200">200 lit</option>
                     <option value="500">500 lit</option>
                 
                 </select>
@@ -188,7 +193,7 @@
                 <label class="form-label" for="">Enter Vehicle Cost Per Slot:</label>
                 <input type="number" placeholder="integer value" name="costPerSlot" id="costPerSlot" [(ngModel)]="editedVehicle.costPerSlot" class="form-control" />
 
-                <label class="form-label" for="">Enter Vehicle Condition:</label>
+                <label class="form-label" for="">Enter Vehicle Status:</label>
                 <select name="vehicleStatus" id="vehicleStatus" [(ngModel)]="editedVehicle.vehicleStatus" class="form-control">
                     <option value="Good Condition">Good Condition</option>
                     <option value="Under Maintenance">Under Maintenance</option>

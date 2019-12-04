@@ -27,17 +27,17 @@ public class Order {
     private String slotNumber;
     private Double orderVolume;
     private String orderStatus;
-    private String retailerEmail;
+    private String retailerId;
 
     public Order() {
     }
 
-    public String getRetailerEmail() {
-        return retailerEmail;
+    public String getRetailerId() {
+        return retailerId;
     }
 
-    public void setRetailerEmail(String retailerEmail) {
-        this.retailerEmail = retailerEmail;
+    public void setRetailerId(String retailerId) {
+        this.retailerId = retailerId;
     }
 
     public Long getId() {

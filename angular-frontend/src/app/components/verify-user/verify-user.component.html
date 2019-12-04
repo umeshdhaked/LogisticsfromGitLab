@@ -16,10 +16,10 @@
         </button>
       </div>
 
-      <div *ngIf="passwordMismatch" class="alert alert-danger col-md-4 offset-md-4 col-12" role="alert">
+      <span *ngIf="passwordMismatch" class="alert alert-danger" role="alert">
         Passwords do not match!
-      </div>
-      <div *ngIf="emptyField" class="alert alert-danger col-md-4 offset-md-4 col-12" role="alert">
+      </span>
+      <div *ngIf="emptyField" class="alert alert-danger" role="alert">
         Both fields need to filled.
       </div>
 
