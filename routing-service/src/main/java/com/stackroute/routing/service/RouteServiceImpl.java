@@ -37,9 +37,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class RouteServiceImpl implements RouteService {
 
-    static {
-        System.loadLibrary("jniortools");
-    }
+//    static {
+//        System.loadLibrary("jniortools");
+//    }
 
 
     DepotRepository depotRepository;
