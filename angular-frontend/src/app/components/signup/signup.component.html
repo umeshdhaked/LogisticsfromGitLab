@@ -27,7 +27,9 @@
           <!-- </div>
           <div class=" col-md-4 offset-md-4 col-12"> -->
               <mat-form-field>
-            <input #mobile matInput type="mobile" placeholder="Mobile No." name="mobile" required></mat-form-field>
+            <input #mobile matInput type="mobile"maxlength="10" placeholder="Mobile No." name="mobile" required>
+            <!-- <mat-hint align="end">{{mobile.value?.length || 0}}/10</mat-hint> -->
+          </mat-form-field>
           <!-- </div> -->
 
           
