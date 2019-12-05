@@ -1,0 +1,18 @@
+version: '2'
+    
+services:
+  routing-service:
+    image: routing-service:1.0
+    build: ./
+    network_mode: host
+    hostname: localhost
+    ports:
+      - 8080:8080
+
+  mongo-service:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    network_mode: host
+    hostname: localhost
+

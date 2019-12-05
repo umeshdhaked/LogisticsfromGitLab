@@ -12,4 +12,6 @@ export interface VehicleManagement {
   slot2: string;
   slot3: string;
   companyName: string;
+  slot: string;
+  retailerId: number;
 }
