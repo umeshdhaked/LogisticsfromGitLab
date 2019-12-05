@@ -35,16 +35,16 @@ public class RouteServiceImpl implements RouteService {
     // static {
     //     System.loadLibrary("jniortools");
     // }
-    
-    static {
-        System.loadLibrary("jniortools");
-    }
+
+
+    @Autowired
+    Solution s;
 
 
 
-    DepotRepository depotRepository;
-    OrderRepository orderRepository;
-    VehicleRepository vehicleRepository;
+    private DepotRepository depotRepository;
+    private OrderRepository orderRepository;
+    private VehicleRepository vehicleRepository;
 
     private static final Logger
             logger = Logger.getLogger(RouteServiceImpl.class.getName());;
@@ -240,8 +240,9 @@ public class RouteServiceImpl implements RouteService {
         final long[] vehicleCapacities = capacities;
         // [END demands_capacities]
         final int vehicleNumber = i;
+        System.out.println("vech no:"+vehicleNumber);
 //        final int depot = 0;
-        int TABU_Horizon = 2;
+        int TABU_Horizon = 10;
 
         //Initialise
         //Create Random Customers
@@ -262,27 +263,43 @@ public class RouteServiceImpl implements RouteService {
         System.out.println("Attempting to resolve Vehicle Routing Problem (VRP) for "+demands.length+
                 " Customers and "+vehicleNumber+" Vehicles"+" with variable units of capacity\n");
 
-        Solution s = new Solution(demands.length-1, vehicleNumber, capacities);
 
+        s.solution(demands.length-1, vehicleNumber, capacities);
+
+        JSONObject routes =new JSONObject();
         s.GreedySolution(Nodes, distanceMatrix);
 
-        s.SolutionPrint("Greedy Solution");
+        Double minDistance=Double.MAX_VALUE;
+        String minRoute="";
+
+        routes.put("greedy",s.SolutionPrint("Greedy Solution",Vehicles,coordinates,wholesalerId,Orders));
 
         s.IntraRouteLocalSearch(Nodes, distanceMatrix);
 
-        s.SolutionPrint("Solution after Intra-Route Heuristic Neighborhood Search");
+        routes.put("intra",s.SolutionPrint("Solution after Intra-Route Heuristic Neighborhood Search",Vehicles,coordinates,wholesalerId,Orders));
 
         s.GreedySolution(Nodes, distanceMatrix);
 
         s.InterRouteLocalSearch(Nodes, distanceMatrix);
 
-        s.SolutionPrint("Solution after Inter-Route Heuristic Neighborhood Search");
+        routes.put("inter",s.SolutionPrint("Solution after Inter-Route Heuristic Neighborhood Search",Vehicles,coordinates,wholesalerId,Orders));
 
         s.GreedySolution(Nodes, distanceMatrix);
 
-        s.TabuSearch(TABU_Horizon, distanceMatrix);
+//        s.TabuSearch(TABU_Horizon, distanceMatrix);
+//
+//        routes.put("tabu",s.SolutionPrint("Solution After Tabu Search",Vehicles, coordinates,wholesalerId,Orders));
 
-        s.SolutionPrint("Solution After Tabu Search");
+        Iterator<String> keys = routes.keys();
+        while (keys.hasNext())
+        {
+            String key = keys.next();
+            if(routes.getJSONObject(key).getDouble("distance")<minDistance)
+            {
+                minDistance=routes.getJSONObject(key).getDouble("distance");
+                minRoute=key;
+            }
+        }
 
 
 //        RoutingIndexManager manager =
@@ -309,7 +326,7 @@ public class RouteServiceImpl implements RouteService {
 //                        .setFirstSolutionStrategy(FirstSolutionStrategy.Value.PATH_CHEAPEST_ARC)
 //                        .build();
 //                Assignment solution = routing.solveWithParameters(searchParameters);
-        JSONObject routes =new JSONObject();
+//        JSONObject routes =new JSONObject();
 //        for (i = 0; i <vehicleNumber; ++i) {
 //            long index = routing.start(i);
 //            float routeDistance = 0;
@@ -339,48 +356,47 @@ public class RouteServiceImpl implements RouteService {
 //            values.put("route",sortedOrders);
 //            routes.put(Vehicles[i].getVehicleNumber(),values);
 //        }
-//        System.out.println(routes.toString());
-//        String Routes =routes.toString();
-//        Routes=Routes.replaceAll("\"Order\\(","{");
-//        Routes=Routes.replaceAll("\\)\",\\{",",");
-//        Pattern pat=Pattern.compile("[a-zA-Z]+=[a-zA-Z0-9.%-]+[,]+");
-//        Matcher mat =pat.matcher(Routes);
-//        System.out.println(Routes);
-//        i=0;
-//        while (mat.find())
-//        {
-//            System.out.println(mat);
-//
-//            String subStr = Routes.substring(mat.start()+i,mat.end()+i);
-//            boolean isInteger =false;
-//            if(subStr.matches(".*(id|Id).*"))
-//                isInteger =true;
-//            System.out.println(subStr);
-//            Pattern Pat =Pattern.compile("([a-zA-Z]+)=([a-zA-Z0-9.%-]+),");
-//            String temp=subStr;
-//            Matcher Mat = Pat.matcher(subStr);
-//            while (Mat.find()){
-//                String right=Mat.group(2);
-//                String left=Mat.group(1);
-//                System.out.println(left+"  =     " +
-//                        "" +right);
-//                temp=temp.replace(left,"\""+left+"\"");
-//                i+=2;
-//                if(!isInteger)
-//                {
-//                    i+=2;
-//                    temp=temp.replace(right,"\""+right+"\"");
-//                }
-//                System.out.println(temp);
-//            }
-//            Routes=Routes.replaceFirst(subStr,temp);
-//        }
-//
-//        Routes=Routes.replaceAll("=",":");
-//        Routes=Routes.replaceAll(",\\s",",");
-//        System.out.println(Routes);
-//        return Routes;
-        return "";
+        System.out.println(routes.getJSONObject(minRoute).toString());
+        String Routes =routes.getJSONObject(minRoute).toString();
+        Routes=Routes.replaceAll("\"Order\\(","{");
+        Routes=Routes.replaceAll("\\)\",\\{",",");
+        Pattern pat=Pattern.compile("[a-zA-Z]+=[a-zA-Z0-9.%-]+[,]+");
+        Matcher mat =pat.matcher(Routes);
+        System.out.println(Routes);
+        i=0;
+        while (mat.find())
+        {
+            System.out.println(mat);
+
+            String subStr = Routes.substring(mat.start()+i,mat.end()+i);
+            boolean isInteger =false;
+            if(subStr.matches(".*(id|Id).*"))
+                isInteger =true;
+            System.out.println(subStr);
+            Pattern Pat =Pattern.compile("([a-zA-Z]+)=([a-zA-Z0-9.%-]+),");
+            String temp=subStr;
+            Matcher Mat = Pat.matcher(subStr);
+            while (Mat.find()){
+                String right=Mat.group(2);
+                String left=Mat.group(1);
+                System.out.println(left+"  =     " +
+                        "" +right);
+                temp=temp.replace(left,"\""+left+"\"");
+                i+=2;
+                if(!isInteger)
+                {
+                    i+=2;
+                    temp=temp.replace(right,"\""+right+"\"");
+                }
+                System.out.println(temp);
+            }
+            Routes=Routes.replaceFirst(subStr,temp);
+        }
+
+        Routes=Routes.replaceAll("=",":");
+        Routes=Routes.replaceAll(",\\s",",");
+        System.out.println(Routes);
+        return Routes;
     }
 }
 

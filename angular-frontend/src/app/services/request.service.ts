@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import { from } from 'rxjs';
+import { Message } from '../interfaces/message';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +19,18 @@ export class RequestService {
     return this.http.get(url);
   }
 
-  sendAccept(input:any){
+  sendAccept(input:any): Observable<Message>{
     const uri = environment.apiUrl + ':8095/api/v1/Accept';
+   return this.http.post<Message>(uri, input);
+  }
+
+  sendAccepttovehicledemand(input:any){
+    const uri = environment.apiUrl + ':9090/saveacceptedstatusdemand';
    return this.http.post(uri, input);
+  }
+  deleteinretailerdemand(id:number){
+    const uri= environment.apiUrl + ':9090/deletedemand/'+ id;
+    return this.http.delete(uri);
   }
 
   sendReject(input){
@@ -28,6 +38,11 @@ export class RequestService {
     const uri = environment.apiUrl + ':8095/api/v1/Reject';
     return this.http.post(uri, input);
 
+  }
+
+  sendRejecttovehicledemand(input:any){
+    const uri = environment.apiUrl + ':9090/saverejectedstatusdemand';
+   return this.http.post(uri, input);
   }
 
 
