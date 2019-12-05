@@ -57,4 +57,8 @@ public class RetailerService {
         retailerRepository.save(user);
     }
 
+    public void deleteById(Long id){
+        retailerRepository.deleteById(id);
+    }
+
 }

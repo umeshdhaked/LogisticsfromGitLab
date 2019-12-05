@@ -68,6 +68,13 @@ public class RetailerController {
 
     }
 
+    @GetMapping("/getRetailerById")
+    @CrossOrigin
+    public RetailerProfile getRetailer(@RequestParam("id") int id){
+
+        return retailerService.getRetailerById(id);
+    }
+
 
 //
 //    // Trash for Rest Template
@@ -110,7 +117,15 @@ public class RetailerController {
 //    }
 
 
+    @DeleteMapping("/deleteAccount")
+    @CrossOrigin
+    public void deleteHandler(@RequestParam("id") int id ){
+        System.out.println("delete this id acc = "+id);
 
+        retailerService.deleteAccount(id);
+
+
+    }
 
 
 
