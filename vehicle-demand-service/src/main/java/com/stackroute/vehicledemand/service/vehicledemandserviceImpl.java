@@ -39,6 +39,7 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
     @Override
     public List<newRetailerDemand> getallvehicledemanded() {
         return newRetailerDemandRepository.findAll();
+        
     }
 
     @Override
