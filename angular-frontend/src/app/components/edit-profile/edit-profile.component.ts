@@ -20,7 +20,10 @@ export class EditProfileComponent implements OnInit {
   decodedData:DecodedJwtData;
   retailerObj:Retailerdetails;
 
+
   ngOnInit() {
+
+   
 
     let token = localStorage.getItem('token');
 
@@ -31,6 +34,9 @@ export class EditProfileComponent implements OnInit {
     this.editProfileService.getProfileFromEmail(this.decodedData.sub).subscribe((datas: any) => {
       this.retailerObj = datas;
     });
+
+    
+
 
   }
 
@@ -117,7 +123,7 @@ export class EditProfileComponent implements OnInit {
 
 
     // retailerData:Retailerdetails;
-  public save(fullName, phone, address, gstIn, docName, check) {
+  public save(fullName, phone, address, companyName, gstIn, docName, check) {
 
     if (!check) {
       alert('Please check terms and condition');
@@ -137,35 +143,14 @@ export class EditProfileComponent implements OnInit {
         "phoneNo" : phone,
         "address" : address,
         "gstIn" : gstIn,
-        "docName" : docName
+        "docName" : docName,
+        "companyName" : companyName
         // "profilePic":this.url,
         // "docPic":this.docurl,
       };
 
-      // this.retailerData = {
-      // id :   this.decodedData.userId,
-      // firstName: "",
-      // lastName: "",
-      // age: "",
-      // emergencyContact: "",
-      // dateOfBirth: "",
-      // placeOfBirth: "",
-      // gstIn: "",
-      // permanentAddress: "",
-      // shopAddress: "",
-      // mobileNo: "",
-      // fullName: fullName,
-      // email: this.decodedData.sub,
-      // phoneNo: phone,
-      // address: address,
-      // docName: docName,
-      // profilePic: "",
-      // profilePicType: "",
-      // docPic: "",
-      // docPicType: "",
 
-      // }
-
+      
       
 
       var retailerDataString = JSON.stringify(retailerData);  //converting json to string

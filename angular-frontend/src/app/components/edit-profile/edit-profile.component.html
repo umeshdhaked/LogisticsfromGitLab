@@ -65,7 +65,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input #retailerCompanyName matInput placeholder="Retailer Company Name"  required>
+      <input #retailerCompanyName matInput placeholder="Company Name"  required>
     </mat-form-field>
 
     <mat-form-field>
@@ -123,7 +123,7 @@
     </div>
 <div class="row ">
     <button class="col-sm-6 btn btn-outline-danger "
-            (click)="save(fullName.value,phone.value,address.value,gstIn.value,docName.value,c.checked)"
+            (click)="save(fullName.value,phone.value,address.value,retailerCompanyName.value,gstIn.value,docName.value,c.checked)"
            ><b> Save </b>
     </button>
     <br>

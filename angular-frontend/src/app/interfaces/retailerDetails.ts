@@ -16,6 +16,7 @@ export class Retailerdetails{
   phoneNo: string;
   address: string;
   docName: string;
+  companyName: string;
   profilePic: string ;
   profilePicType: string;
   docPic: string;
