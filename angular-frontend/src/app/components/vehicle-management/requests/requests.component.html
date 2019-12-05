@@ -39,9 +39,9 @@
 
                     <md-button class="btn1" ng-click="rejectOffer();"> Reject </md-button> -->
 
-                    <button mat-stroked-button style="color:green">Accept</button>
+                    <button mat-stroked-button (click)="AcceptRequest(vehicle)" style="color:green">Accept</button>
 
-                    <button mat-stroked-button style="color:red">Reject</button>
+                    <button mat-stroked-button (click)="RejectRequest(vehicle)" style="color:red">Reject</button>
 
                 </td>
             </tr>

@@ -23,7 +23,7 @@ export class VehicleHistoryComponent implements OnInit {
 				{ y: 71, label: "Bike" },
 				{ y: 55, label: "Car" },
 				{ y: 50, label: "Truck" },
-				// { y: 40, label: "Van" },
+				{ y: 40, label: "Van" },
 
 			]
 		}]
