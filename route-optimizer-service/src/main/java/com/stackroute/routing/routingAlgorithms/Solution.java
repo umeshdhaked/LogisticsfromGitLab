@@ -494,9 +494,9 @@ public class Solution
                 int RoutSize = vehicleNodes[j].Route.size();
                 for (int k = 0; k < RoutSize ; k++) {
                     if (k == RoutSize-1)
-                    { System.out.print(vehicleNodes[j].Route.get(k).NodeId );  }
+                    { System.out.print(vehicleNodes[j].Route.get(k).address );  }
                     else
-                    { System.out.print(vehicleNodes[j].Route.get(k).NodeId+ "->"); }
+                    { System.out.print(vehicleNodes[j].Route.get(k).address+ "->"); }
                 }
                 System.out.println();
             }

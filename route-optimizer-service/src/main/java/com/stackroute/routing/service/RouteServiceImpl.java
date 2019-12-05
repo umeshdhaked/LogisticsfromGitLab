@@ -78,7 +78,7 @@ public class RouteServiceImpl implements RouteService {
         JSONObject coordinates = coordinateFinder(adressess);
         JSONArray JS =coordinates.getJSONArray("origins");
         double distance[][] = jsonParser(coordinates);
-        return routeOptimizer(distance,wholesalerId,JS);
+        return routeOptimizer(distance,wholesalerId,JS,adressess);
 
     }
 
@@ -203,7 +203,7 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public String routeOptimizer(double[][] distanceMatrix,int wholesalerId,JSONArray coordinates) throws Exception {
+    public String routeOptimizer(double[][] distanceMatrix,int wholesalerId,JSONArray coordinates,String[] addresses) throws Exception {
 
 
         for (int i = 0; i < coordinates.length(); i++) {
@@ -246,7 +246,7 @@ public class RouteServiceImpl implements RouteService {
         //Initialise
         //Create Random Customers
         Node[] Nodes = new Node[demands.length];
-        Node depot = new Node(coordinates.getJSONObject(0).getFloat("latitude"),coordinates.getJSONObject(0).getFloat("longitude"));
+        Node depot = new Node(coordinates.getJSONObject(0).getFloat("latitude"),coordinates.getJSONObject(0).getFloat("longitude"),addresses[0]);
         System.out.println("here1");
         System.out.println(coordinates.length()+" "+capacities.length+" "+demands.length);
         Nodes[0] = depot;
@@ -254,7 +254,8 @@ public class RouteServiceImpl implements RouteService {
             Nodes[i] = new Node(i, //Id ) is reserved for depot
                     coordinates.getJSONObject(i).getFloat("latitude"), //Random Cordinates
                     coordinates.getJSONObject(i).getFloat("longitude"),
-                    demands[i] //Random Demand
+                    demands[i] ,//Random Demand
+                    addresses[i]
             );
         }
         System.out.println("here2");
