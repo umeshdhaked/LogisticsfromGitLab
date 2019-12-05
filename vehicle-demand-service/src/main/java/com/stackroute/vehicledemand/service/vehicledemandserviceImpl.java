@@ -67,4 +67,14 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
         rejectedRetailerDemand.save(rejectedRetailerRequest);
         return rejectedRetailerRequest;
     }
+
+    @Override
+    public List<newRetailerDemand> searchbyretailerId(int id) {
+        return this.newRetailerDemandRepository.findByRetailerId(id);
+    }
+
+    @Override
+    public List<rejectedRetailerRequest> findByRetailerIdinrejectedlist(int retailerId) {
+        return this.rejectedRetailerDemand.findByRetailerIdinrejected(retailerId);
+    }
 }

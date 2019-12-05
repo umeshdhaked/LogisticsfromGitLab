@@ -155,4 +155,34 @@ public class retailervehicledemandcontroller {
         }
         return responseEntity;
     }
+
+
+    @GetMapping(value = "searchbyretailerid/{retailerId}")
+    public ResponseEntity<BigInteger> searchbyretailerId(@PathVariable int retailerId) {
+
+//        this.vehicledemandservice.searchbyretailerId(retailerId);
+
+
+        ResponseEntity responseEntity;
+        try {
+            responseEntity = new ResponseEntity(vehicledemandservice.searchbyretailerId(retailerId), HttpStatus.OK);
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+    @GetMapping(value = "searchbyretaileridinrejected/{retailerId}")
+    public ResponseEntity<BigInteger> searchbyretailerIdinrejected(@PathVariable int retailerId) {
+
+//        this.vehicledemandservice.searchbyretailerId(retailerId);
+
+
+        ResponseEntity responseEntity;
+        try {
+            responseEntity = new ResponseEntity(vehicledemandservice.findByRetailerIdinrejectedlist(retailerId), HttpStatus.OK);
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
 }

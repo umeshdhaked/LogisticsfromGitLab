@@ -89,13 +89,13 @@ export class VehicledemandfrontendComponent implements OnInit {
 
     if (this.slot === 'slot1') {
       this.queryvehicleservice.getvolumeandslot1(this.capacity, 'available').subscribe(vehicle => {
-        this.zone.run(()=>{
+        this.zone.run(() => {
           this.vehiclequery = vehicle;
         console.log(vehicle);
         console.log('in slot 1');
         this.flag = true;
-        })
-        
+        });
+
       });
     } else if (this.slot === 'slot2') {
      this.queryvehicleservice.getvolumeandslot2(this.capacity, 'available').subscribe(vehicle => {
