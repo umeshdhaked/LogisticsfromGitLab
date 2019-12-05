@@ -11,7 +11,7 @@ import java.util.List;
 public interface vehicledemandservice {
     public retailerdemand savenewvehicledemand(retailerdemand retailerdemand);
 
-    public List<retailerdemand> getvehicledemand();
+    public List<newRetailerDemand> getvehicledemand();
     public newRetailerDemand savenewvehicledemandbyretailer(newRetailerDemand newRetailerDemand);
     public List<newRetailerDemand> getallvehicledemanded();
     public boolean deletebyId(BigInteger Id);
