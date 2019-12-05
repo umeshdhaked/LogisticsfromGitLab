@@ -6,6 +6,8 @@ import * as jwt_decode from 'jwt-decode';
 import { Retailerdetails } from 'src/app/interfaces/retailerDetails';
 import { DecodedJwtData } from 'src/app/interfaces/decoded-jwt-data';
 import { stringify } from 'querystring';
+import { Observable, Observer } from 'rxjs';
+
 
 @Component({
   selector: 'app-edit-profile',
@@ -19,8 +21,27 @@ export class EditProfileComponent implements OnInit {
 
   decodedData:DecodedJwtData;
   retailerObj:Retailerdetails;
+  names;
+  phones;
+  addresss;
+  companys;
+  gsts;
+  picUrl;
+  docUrl;
+  docNames;
+  
 
   ngOnInit() {
+
+    this.names="";
+    this.phones="";
+    this.addresss="";
+    this.companys="";
+    this.gsts="";
+    this.picUrl='';
+    this.docUrl='';
+    this.docNames="none";
+
 
     let token = localStorage.getItem('token');
 
@@ -30,7 +51,28 @@ export class EditProfileComponent implements OnInit {
 
     this.editProfileService.getProfileFromEmail(this.decodedData.sub).subscribe((datas: any) => {
       this.retailerObj = datas;
+
+      console.log(this.retailerObj)
+
+      if(this.retailerObj!=null){
+
+        this.names=this.retailerObj.fullName;
+        this.phones=this.retailerObj.phoneNo;
+        this.addresss=this.retailerObj.address;
+        this.companys= this.retailerObj.companyName;
+        this.gsts = this.retailerObj.gstIn;
+        this.docNames=this.retailerObj.docName
+
+        this.picUrl = 'data:' + this.retailerObj.profilePicType + ';base64,' + this.retailerObj.profilePic;
+        this.docUrl = 'data:' + this.retailerObj.docPicType + ';base64,' + this.retailerObj.docPic;
+
+      }
+
     });
+
+
+ 
+
 
   }
 
@@ -41,7 +83,7 @@ export class EditProfileComponent implements OnInit {
   // fileData: File = null;
   // previewUrl:any = null;
   // fileUploadProgress: string = null;
-  // uploadedFilePath: string = null;
+  // uploadedFilePath: string = nuldocurl = '';l;
 
 
   // fileProgress(fileInput: any) {
@@ -65,13 +107,16 @@ export class EditProfileComponent implements OnInit {
   //   }
   // }
 
+  newPic = "false";
+  newDoc = "false";
 
-  // for set url of Profile image
+  
   public picFile;
-  picUrl = '';
 
   onSelectPicture(event) {
+
     this.picFile = event.target.files[0];
+
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
 
@@ -82,18 +127,19 @@ export class EditProfileComponent implements OnInit {
         this.picUrl = target.result;
       }
     }
-
+    
+    this.newPic = "true";
+    
   }
 
 
-// for set url of document image
+
+
   public docFile;
-  docurl = '';
 
   onSelectDoc(event) {
 
     this.docFile = event.target.files[0];
-
 
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
@@ -102,22 +148,43 @@ export class EditProfileComponent implements OnInit {
 
       reader.onload = (event) => {               // called once readAsDataURL is completed
         let target: any = event.target;
-        this.docurl = target.result;
+        this.docUrl = target.result;
       }
     }
+
+    this.newDoc = "true";
 
   }
 
 
   public delete() {
-    this.docurl = null;
+    this.docUrl = null;
     this.picUrl = null;
 
   }
 
 
+
+
+
+
+  dataURItoBlob(dataURI) {
+    const byteString = window.atob(dataURI);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const int8Array = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+      int8Array[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([int8Array], { type: 'image/jpeg' });    
+    return blob;
+ }
+
+
+
+
+
     // retailerData:Retailerdetails;
-  public save(fullName, phone, address, gstIn, docName, check) {
+  public save(fullName, phone, address, companyName, gstIn, docName, check) {
 
     if (!check) {
       alert('Please check terms and condition');
@@ -137,36 +204,39 @@ export class EditProfileComponent implements OnInit {
         "phoneNo" : phone,
         "address" : address,
         "gstIn" : gstIn,
-        "docName" : docName
+        "docName" : docName,
+        "companyName" : companyName
         // "profilePic":this.url,
         // "docPic":this.docurl,
       };
 
-      // this.retailerData = {
-      // id :   this.decodedData.userId,
-      // firstName: "",
-      // lastName: "",
-      // age: "",
-      // emergencyContact: "",
-      // dateOfBirth: "",
-      // placeOfBirth: "",
-      // gstIn: "",
-      // permanentAddress: "",
-      // shopAddress: "",
-      // mobileNo: "",
-      // fullName: fullName,
-      // email: this.decodedData.sub,
-      // phoneNo: phone,
-      // address: address,
-      // docName: docName,
-      // profilePic: "",
-      // profilePicType: "",
-      // docPic: "",
-      // docPicType: "",
-
-      // }
 
       
+    //  convert Urls to imageFile
+
+      // if(this.picUrl != '' && this.newPic == "false"){
+      //   var contentType = this.retailerObj.profilePicType;
+      //   var realData =  this.picUrl;
+      //   var blob = this.dataURItoBlob(realData);
+
+      //   this.picFile = new File([blob], "image", { type: contentType });
+      // }
+      // if(this.docUrl != '' && this.newDoc == "false"){
+        
+      //   var contentType = this.retailerObj.docPicType;
+      //   var realData =  this.docUrl;
+      //   var blob = this.dataURItoBlob(realData);
+
+      //   this.docFile = new File([blob], "image", { type: contentType });
+
+
+      // }
+     
+      // console.log(this.picUrl)
+      // console.log(this.picFile)
+
+      //////////////////////////////////////////////////
+
 
       var retailerDataString = JSON.stringify(retailerData);  //converting json to string
 
@@ -182,8 +252,6 @@ export class EditProfileComponent implements OnInit {
 
     }
 
-    this.delete();
-
-
+  
   }
 }

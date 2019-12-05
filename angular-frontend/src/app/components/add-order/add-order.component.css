@@ -19,24 +19,9 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 /* Set a style for the submit button */
-.btnSlot {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  /* width: 100%; */
-  opacity: 0.9;
-}
-.btnSlot p{
-  font-size: 15px;
-}
 
-.btnSlot:hover {
-  opacity: 1;
-}
 
-.btn-slot {
+/* .btn-slot {
   font-size: 10px;
   margin-bottom: 20px;
   color: white;
@@ -46,10 +31,10 @@ input[type=text]:focus, input[type=password]:focus {
   width: 100%;
   opacity: 0.9;
   height: 70px;
-}
+} */
 
 .selected {
-  font-size: 10px;
+  /* font-size: 10px; */
   background-color: yellowgreen;
   margin-bottom: 20px;
   color: white;

@@ -11,7 +11,7 @@
       <!-- Prfile Form div -->
   
       <mat-form-field>
-        <input #compnayName matInput placeholder="Company Name" type="text" required>
+        <input #compnayName matInput placeholder="Company Name" type="text" value="{{cName}}" required>
         <!-- <mat-placeholder class="placeholder">FullName</mat-placeholder> -->
       </mat-form-field>
       <!--
@@ -20,15 +20,15 @@
   </mat-form-field> -->
   
       <mat-form-field>
-        <input #contact matInput placeholder="Contect Number" type="number" required>
+        <input #contact matInput placeholder="Contect Number" value="{{cNumber}}" required>
       </mat-form-field>
   
       <mat-form-field>
-        <input #address matInput placeholder="Companey Address"  required>
+        <input #address matInput placeholder="Companey Address" value="{{cAddress}}"  required>
       </mat-form-field>
   
       <mat-form-field>
-        <input #gstIn matInput placeholder="GST IN"  required>
+        <input #gstIn matInput placeholder="GST IN" value="{{cGst}}"  required>
       </mat-form-field>
 
       <!-- Save Button-->

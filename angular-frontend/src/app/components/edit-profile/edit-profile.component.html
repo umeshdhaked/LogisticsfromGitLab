@@ -48,7 +48,7 @@
     <!-- Prfile Form div -->
 
     <mat-form-field>
-      <input #fullName matInput placeholder="Full Name" required>
+      <input #fullName matInput placeholder="Full Name" value="{{names}}" required>
       <!-- <mat-placeholder class="placeholder">FullName</mat-placeholder> -->
     </mat-form-field>
     <!--
@@ -57,25 +57,25 @@
 </mat-form-field> -->
 
     <mat-form-field>
-      <input #phone matInput placeholder="Phone" required>
+      <input #phone matInput placeholder="Phone" value="{{phones}}" required>
     </mat-form-field>
 
     <mat-form-field>
-      <input #address matInput placeholder="Address"  required>
+      <input #address matInput placeholder="Address" value="{{addresss}}"  required>
     </mat-form-field>
 
     <mat-form-field>
-      <input #retailerCompanyName matInput placeholder="Retailer Company Name"  required>
+      <input #retailerCompanyName matInput placeholder="Company Name" value="{{companys}}"  required>
     </mat-form-field>
 
     <mat-form-field>
-      <input #gstIn matInput placeholder="GST IN"  required>
+      <input #gstIn matInput placeholder="GST IN" value="{{gsts}}" required>
     </mat-form-field>
 
     <!--Dropdown for document-->
 
     <mat-form-field>
-      <mat-select #docName value="none" placeholder="Documentation" required>
+      <mat-select #docName value="{{docNames}}" placeholder="Documentation" required>
         <mat-option value="AdharCard">AdharCard</mat-option>
         <mat-option value="DrivingLicence">DrivingLicence</mat-option>
         <mat-option value="PassPort">PassPort</mat-option>
@@ -123,7 +123,7 @@
     </div>
 <div class="row ">
     <button class="col-sm-6 btn btn-outline-danger "
-            (click)="save(fullName.value,phone.value,address.value,gstIn.value,docName.value,c.checked)"
+            (click)="save(fullName.value,phone.value,address.value,retailerCompanyName.value,gstIn.value,docName.value,c.checked)"
            ><b> Save </b>
     </button>
     <br>

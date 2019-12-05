@@ -19,7 +19,10 @@ services:
       - NEO4J_AUTH=neo4j/12345
     network_mode: host
     volumes:
-      - $HOME/neo4j/data:/data
+      #- /DB:/var/lib/neo4j
+      - ./plugins:/plugins
+      - ./data:/data
+      - ./import:/import
     restart: always  
   mysql1:
     image: mysql:5.7
@@ -82,9 +85,9 @@ services:
     depends_on:
       - mysql1
     ports:
-      - 9091
-    expose:
-      - 9091
+      - 9091:9091
+    # expose:
+    #   - 9091
     restart: always  
   order-service:
     image: order-service
@@ -95,11 +98,11 @@ services:
     depends_on:
       - neo4j
     ports:
-      - 8084
-      - 7687
-    expose:
-      - 7687
-      - 8084
+      - 8084:8084
+      - 7687:7687
+    # expose:
+    #   - 7687
+    #   - 8084
     restart: always  
   angular-frontend:
     image: angular-frontend

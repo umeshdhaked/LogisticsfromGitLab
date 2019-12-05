@@ -30,6 +30,7 @@ public class RetailerProfile {
     private String phoneNo;
     private String address;
     private String docName;
+    private String companyName;
 
 
     @Lob
@@ -55,6 +56,13 @@ public class RetailerProfile {
     public RetailerProfile() {
     }
 
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
 
     public String getProfilePicType() {
         return profilePicType;
