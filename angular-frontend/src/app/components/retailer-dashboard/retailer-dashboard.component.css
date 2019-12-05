@@ -1,23 +1,26 @@
-.dashboard{
+.dashboard {
   margin-top: 40px;
-}    
-
-
-.container{
-    margin-top: 30px;
-    width: 80%;
 }
+
+
+.container {
+  margin-top: 30px;
+  width: 80%;
+}
+
 /* On small screens, set height to 'auto' for the grid */
 @media screen and (max-width: 767px) {
-  .row.content {height: auto;} 
+  .row.content {
+    height: auto;
+  }
 }
 
 .nav-link {
-  color:rgb(43, 40, 40);
+  color: rgb(43, 40, 40);
   /* padding: 12px 0; */
-  border-bottom: transparent ; 
+  border-bottom: transparent;
 }
 
 .nav-link:hover {
-  color:rgb(43,40,40);
+  color: rgb(43, 40, 40);
 }

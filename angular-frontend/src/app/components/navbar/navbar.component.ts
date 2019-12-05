@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+
+import {Component, OnInit} from '@angular/core';
+import { Location } from '@angular/common';
+import { RouterModule, Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   checkLogin;
+  hideElement = false;
 
-  constructor() { 
+  constructor(private router: Router) {
     this.checkLogin = localStorage.getItem('token');
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        if (event.url === '/login' || event.url === '/signup') {
+          this.hideElement = true;
+        }  else {
+          this.hideElement = false;
+        }
+      }
+    });
   }
 
   ngOnInit() {
@@ -18,15 +31,14 @@ export class NavbarComponent implements OnInit {
 
 
   // for clearing local storage as logout button pressed
-  validateLogout(){
+  validateLogout() {
     console.log("loging out");
-    
+
     localStorage.removeItem('token');
 
     this.checkLogin = null;
 
   }
-  
 
 
 }

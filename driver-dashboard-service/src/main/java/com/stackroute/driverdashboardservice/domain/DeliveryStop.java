@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class DeliveryStop {
     private int stopNumber;
-    private double  longitude;
+    private double longitude;
     private double latitude;
     private int orderId;
 }

@@ -1,21 +1,61 @@
 package com.stackroute.BackEnd.controller;
 
+import com.google.gson.Gson;
 import com.stackroute.BackEnd.domain.Vehicle;
 import com.stackroute.BackEnd.exception.VehicleAlreadyExistsException;
 import com.stackroute.BackEnd.exception.VehicleNotFoundException;
 import com.stackroute.BackEnd.service.VehicleService;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.BindHandler;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
+import java.util.Properties;
 
 @RestController
 //@CrossOrigin("*")
 @RequestMapping(value = "/api/v1")
 public class VehicleController<VehicleDao> {
+    //Actual Kafka
+    @Value("${kafka.bootstrap.servers}")
+    private String kafkaBootstrapServers;
+    private Properties producerProperties;
+    private KafkaProducer<String, String> producer;
+    @Value("${kafka.topic.book_driver}")
+    private String bookDriverTopic;
+
+    //method to send messages
+    private static void sendKafkaMessage(String payload,
+                                         KafkaProducer<String, String> producer,
+                                         String topic) {
+        System.out.println("Sending Kafka message: " + payload);
+        producer.send(new ProducerRecord<>(topic, payload));
+    }
+
+    private void assignProducerProperties() {
+        /*
+         * Defining producer properties.
+         */
+        producerProperties = new Properties();
+        producerProperties.put("bootstrap.servers", kafkaBootstrapServers);
+        producerProperties.put("acks", "all");
+        producerProperties.put("retries", 0);
+        producerProperties.put("batch.size", 16384);
+        producerProperties.put("linger.ms", 1);
+        producerProperties.put("buffer.memory", 33554432);
+        producerProperties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        producerProperties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        producer = new KafkaProducer<>(producerProperties);
+    }
 
     VehicleService vehicleService;
 
@@ -32,7 +72,14 @@ public class VehicleController<VehicleDao> {
 
         System.out.println("values");
 
+        System.out.println("id = "+vehicle.getId());
         System.out.println(vehicle.toString());
+
+//        vehicle.setDate("today");
+
+//        vehicle.setSlot1Status("Available");
+//        vehicle.setSlot2Status("Available");
+//        vehicle.setSlot3Status("Available");
 
 
         ResponseEntity responseEntity;
@@ -74,7 +121,7 @@ public class VehicleController<VehicleDao> {
 
 
     @GetMapping("vehicle/{id}")
-    public ResponseEntity<?> getVehicleById(@PathVariable int id) throws VehicleNotFoundException {
+    public ResponseEntity<?> getVehicleById(@PathVariable BigInteger id) throws VehicleNotFoundException {
         ResponseEntity responseEntity;
         // try{
         responseEntity = new ResponseEntity<Optional<Vehicle>>(vehicleService.getVehicleById(id), HttpStatus.CREATED);
@@ -84,44 +131,118 @@ public class VehicleController<VehicleDao> {
         return responseEntity;
     }
 
-    @GetMapping("vehicle/vehicleNumber")
-    public ResponseEntity<?> getVehicleByVehicleNumber(@PathVariable(value = "vehicleNumber") String vehicleNumber) throws VehicleNotFoundException {
-        ResponseEntity responseEntity;
-        // try{
-        vehicleService.getVehicleByVehicleNumber(vehicleNumber);
-        responseEntity = new ResponseEntity<List<Vehicle>>(vehicleService.getVehicleByVehicleNumber(vehicleNumber), HttpStatus.OK);
-        // }catch (TrackNotFoundException ex) {
-        //   responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
-        //}
-        return responseEntity;
-    }
+//    @GetMapping("vehicle/vehicleNumber")
+//    public ResponseEntity<?> getVehicleByVehicleNumber(@PathVariable(value = "vehicleNumber") String vehicleNumber) throws VehicleNotFoundException {
+//        ResponseEntity responseEntity;
+//        // try{
+//        vehicleService.getVehicleByVehicleNumber(vehicleNumber);
+//        responseEntity = new ResponseEntity<List<Vehicle>>(vehicleService.getVehicleByVehicleNumber(vehicleNumber), HttpStatus.OK);
+//        // }catch (TrackNotFoundException ex) {
+//        //   responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
+//        //}
+//        return responseEntity;
+//    }
 
 
-    // @PutMapping("vehicle/{id}")
-    // public  ResponseEntity<?> updateVehicles(@PathVariable(value = "id") int id,@Valid @RequestBody Vehicle vehicle) throws VehicleNotFoundException, VehicleAlreadyExistsException {
-    //   ResponseEntity responseEntity;
-    // Optional<Vehicle> vehicle1 = vehicleService.getVehicleById(id);
-    // try{
-    //if(!vehicle1.isPresent()){
-    //  throw new Exception("id-"+id);
-    // }
-    //   vehicle.setVehicleId(id);
-    // vehicleService.saveVehicle(vehicle);
-    // responseEntity = new ResponseEntity(vehicleService.getVehicles(), HttpStatus.CREATED);
-    //}catch (Exception ex) {
-    // responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
-    //  }
-    //  return responseEntity;
-    // }
+     @PutMapping("vehicle/{id}")
+     public  ResponseEntity<?> updateVehicles(@PathVariable(value = "id") BigInteger id,@Valid @RequestBody Vehicle vehicle) throws VehicleNotFoundException, VehicleAlreadyExistsException {
+       ResponseEntity responseEntity;
+     Optional<Vehicle> vehicle1 = vehicleService.getVehicleById(id);
+     try{
+    if(!vehicle1.isPresent()){
+      throw new Exception("id-"+id);
+     }
+       vehicle.setId(id);
+     vehicleService.saveVehicle(vehicle);
+     responseEntity = new ResponseEntity(vehicleService.getVehicles(), HttpStatus.CREATED);
+    }catch (Exception ex) {
+     responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
+      }
+      return responseEntity;
+     }
 
     @DeleteMapping("vehicle/{id}")
     @CrossOrigin
-    public ResponseEntity<?> deleteVehicles(@PathVariable("id") int id) {
+    public ResponseEntity<?> deleteVehicles(@PathVariable("id") BigInteger id) {
 
         ResponseEntity responseEntity;
         //try{
         vehicleService.deleteVehicle(id);
         responseEntity = new ResponseEntity(vehicleService.getVehicles(), HttpStatus.CREATED);
+        //}catch (Exception ex) {
+        //  responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
+        //}
+        return responseEntity;
+    }
+
+
+    List<Vehicle> vehiclesForDriverDashboard;
+
+    @GetMapping("/BookVehicle")
+    @CrossOrigin
+    public ResponseEntity<?> bookVehicleHandler(@RequestParam("slot") String slot, @RequestParam("date") String date, @RequestParam("type") String vehicleType ){
+
+        List<Vehicle> vehicleList = vehicleService.getVehicleForRetailerRequest(slot,date,vehicleType);
+
+        System.out.printf("one");
+
+        this.vehiclesForDriverDashboard = vehicleList;
+        Vehicle[] vehicleArray = new Vehicle[vehiclesForDriverDashboard.size()];
+        for (int i =0; i < vehiclesForDriverDashboard.size(); i++) {
+            vehicleArray[i] = vehiclesForDriverDashboard.get(i);
+        }
+        // if(vehicleArray.length > 0){
+        //     Gson gson = new Gson();
+        //     sendKafkaMessage(gson.toJson(vehicleArray), producer, bookDriverTopic);
+        // }
+        ResponseEntity responseEntity;
+        responseEntity = new ResponseEntity(vehicleList, HttpStatus.OK);
+
+        return responseEntity;
+    }
+//
+//
+    @GetMapping(value="queryslot1/{capacity}/{slot1}")
+    @CrossOrigin
+    public ResponseEntity<?> getVehiclesforslot1anddate(@PathVariable("capacity") int capacity, @PathVariable("slot1") String slot1) {
+        ResponseEntity responseEntity;
+        System.out.print(capacity);
+        System.out.print(slot1);
+
+        List<Vehicle> vehicles = vehicleService.getlistbyslot1anddate(capacity,"Available");
+        System.out.print(vehicles);
+        //try{
+        responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
+        //}catch (Exception ex) {
+        //  responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
+        //}
+        return responseEntity;
+    }
+    @GetMapping(value="queryslot2/{capacity}/{slot2}")
+    @CrossOrigin
+    public ResponseEntity<?> getVehiclesforslot2anddate(@PathVariable("capacity") int capacity, @PathVariable("slot2") String slot2) {
+        ResponseEntity responseEntity;
+        System.out.print(capacity);
+        System.out.print(slot2);
+        List<Vehicle> vehicles = vehicleService.getlistbyslot2anddate(capacity,"Available");
+        System.out.print(vehicles);
+        //try{
+        responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
+        //}catch (Exception ex) {
+        //  responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
+        //}
+        return responseEntity;
+    }
+    @GetMapping(value="queryslot3/{capacity}/{slot3}")
+    @CrossOrigin
+    public ResponseEntity<?> getVehiclesforslot3anddate(@PathVariable("capacity") int capacity, @PathVariable("slot3") String slot3) {
+        ResponseEntity responseEntity;
+        System.out.print(capacity);
+        System.out.print(slot3);
+        List<Vehicle> vehicles = vehicleService.getlistbyslot3anddate(capacity, "Available");
+        System.out.print(vehicles);
+        //try{
+        responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
         //}catch (Exception ex) {
         //  responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
         //}

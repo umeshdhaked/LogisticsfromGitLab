@@ -10,8 +10,7 @@ public class User {
     private long id;
     private String email;
     private String password;
-    private String role;
-
+    private String role;   // admin or retailer or VehicleCompany
 
 
     public String getEmail() {

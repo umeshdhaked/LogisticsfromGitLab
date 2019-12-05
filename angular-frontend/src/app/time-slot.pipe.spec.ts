@@ -1,4 +1,4 @@
-import { TimeSlotPipe } from './time-slot.pipe';
+import {TimeSlotPipe} from './time-slot.pipe';
 
 describe('TimeSlotPipe', () => {
   it('create an instance', () => {

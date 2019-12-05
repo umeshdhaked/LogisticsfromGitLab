@@ -4,15 +4,14 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
 @Entity
-public class RetailerProfile
-{
+public class RetailerProfile {
 
     @Id
-    @GeneratedValue
     private int id;
     private String firstName;
     private String lastName;
@@ -39,8 +38,6 @@ public class RetailerProfile
     @Lob
     private byte[] docPic;
     private String docPicType;
-
-
 
 
 //    var retailerData = {

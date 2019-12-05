@@ -22,7 +22,9 @@ public interface OrderService {
 
     List<Order> findOrdersByDateAndTimeSlot(String date, String timeslot);
 
-    List<Order> findOrderByStatus(String orderStatus);
+    List<Order> findOrderByStatus(String orderStatus, String retailerId);
 
     Order updateOrderStatus(Long id, String orderStatus);
+
+    List<Order> findAllOrdersOfRetailer(String retailerId);
 }

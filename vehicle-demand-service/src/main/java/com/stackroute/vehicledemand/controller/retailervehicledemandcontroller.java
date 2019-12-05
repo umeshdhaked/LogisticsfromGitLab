@@ -6,6 +6,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.stackroute.vehicledemand.domain.DateDemand;
 import com.stackroute.vehicledemand.domain.TimeSlot;
+import com.stackroute.vehicledemand.domain.newRetailerDemand;
 import com.stackroute.vehicledemand.domain.retailerdemand;
 import com.stackroute.vehicledemand.repository.vehicledemandrepository;
 import com.stackroute.vehicledemand.service.vehicledemandservice;
@@ -18,11 +19,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
 import java.util.Properties;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/")
+
 public class retailervehicledemandcontroller {
     //Kafka Properties
     @Value("${kafka.bootstrap.servers}")
@@ -32,7 +34,7 @@ public class retailervehicledemandcontroller {
     @Value("${kafka.topic.vehicle_slots}")
     private String vehicleSlotsTopicName;
 
-    private void assignProducerProperties(){
+    private void assignProducerProperties() {
         /*
          * Defining producer properties.
          */
@@ -50,8 +52,7 @@ public class retailervehicledemandcontroller {
 
     private static void sendKafkaMessage(String payload,
                                          KafkaProducer<String, String> producer,
-                                         String topic)
-    {
+                                         String topic) {
         System.out.println("Sending Kafka message: " + payload);
         producer.send(new ProducerRecord<>(topic, payload));
     }
@@ -89,13 +90,47 @@ public class retailervehicledemandcontroller {
     }
 
 
-    public void toJson(DateDemand[] dateDemands){
+    public void toJson(DateDemand[] dateDemands) {
         //send to kafka topic
         Gson gson = new Gson();
         String json = gson.toJson(dateDemands);
         assignProducerProperties();
         sendKafkaMessage(json, producer, vehicleSlotsTopicName);
         //return json;
+    }
+    @PostMapping("/savenewdemand")
+    public ResponseEntity<?> savenewDemand(@RequestBody newRetailerDemand newRetailerDemand) {
+        System.out.println("test");
+        ResponseEntity responseEntity;
+        try {
+            //orderService.saveOrder(order);
+            responseEntity = new ResponseEntity(vehicledemandservice.savenewvehicledemandbyretailer(newRetailerDemand), HttpStatus.CREATED);
+            System.out.print(newRetailerDemand.toString());
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+    @GetMapping("/findAll")
+    public ResponseEntity<?> findallrequested() {
+        ResponseEntity responseEntity;
+        try {
+            responseEntity = new ResponseEntity(vehicledemandservice.getallvehicledemanded(), HttpStatus.OK);
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+    @DeleteMapping(value = "deletedemand/{id}")
+    public ResponseEntity<BigInteger> deletePost(@PathVariable BigInteger id) {
+
+        boolean isRemoved = vehicledemandservice.deletebyId(id);
+
+        if (!isRemoved) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<BigInteger>(id, HttpStatus.OK);
     }
 
 }

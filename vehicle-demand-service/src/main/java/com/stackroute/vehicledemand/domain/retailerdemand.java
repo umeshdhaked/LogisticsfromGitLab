@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
 
-@Document(collection="retailerdemand")
+@Document(collection = "retailerdemand")
 public class retailerdemand {
     @Id
     private String volume;

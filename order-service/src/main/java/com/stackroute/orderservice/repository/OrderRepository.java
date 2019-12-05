@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface OrderRepository extends Neo4jRepository<Order , Integer> {
+public interface OrderRepository extends Neo4jRepository<Order, Integer> {
 
     @Query("CREATE (o:Order{order}) return o;")
     Order saveOrders(@Param("order") Order order);
@@ -25,5 +25,8 @@ public interface OrderRepository extends Neo4jRepository<Order , Integer> {
 
     List<Order> findByDeliveryDateAndSlotNumber(@Param("deliveryDate") String date, @Param("slotNumber") String slotNumber);
 
-    List<Order> findByOrderStatus(@Param("orderStatus") String status);
+    List<Order> findByOrderStatusAndRetailerId(@Param("orderStatus") String status, @Param("retailerId") String retailerId);
+
+    @Query("MATCH (n:Order) WHERE n.retailerId = {retailerId} RETURN n")
+    List<Order> findAllOrdersByRetailerId(@Param("retailerId") String retailerId);
 }

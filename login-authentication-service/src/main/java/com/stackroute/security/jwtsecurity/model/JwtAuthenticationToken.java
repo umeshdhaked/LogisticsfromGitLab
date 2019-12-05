@@ -2,7 +2,7 @@ package com.stackroute.security.jwtsecurity.model;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
-public class JwtAuthenticationToken extends UsernamePasswordAuthenticationToken{
+public class JwtAuthenticationToken extends UsernamePasswordAuthenticationToken {
 
     private String token;
 

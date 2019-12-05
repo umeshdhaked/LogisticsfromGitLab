@@ -3,7 +3,7 @@
   background-image: white
 }
 
-#profile-image{
+#profile-image {
   margin-left: 42%;
 }
 
@@ -26,7 +26,7 @@
   width: 100%;
 }
 
-.Text-container .deleteButton{
+.Text-container .deleteButton {
   /* margin-left: 210px;
   width: 70px; */
   width: 25%;
@@ -35,24 +35,14 @@
 }
 
 
-.btn.btn-primary{
-  width: 20%;
-  height: 40px; 
-  margin-left: 40%;
-  background-color: #45A94C;
-  color: #000;
-  margin-top: 15px;
-
-}
-
 .container {
   margin-top: -10px;
 
 }
-#terms{
+
+#terms {
   margin-top: 20px;
 }
-
 
 
 p {
@@ -64,57 +54,62 @@ img {
   width: 100%;
   border-radius: 50%;
 }
-.hoverable{
+
+.hoverable {
   position: relative;
   display: block;
   cursor: pointer;
   height: 200px;
   width: 200px;
-  border: 5px solid #000;
+  border: 2px solid goldenrod;
   border-radius: 50%;
 }
-.hoverable .hover-text{
+
+.hoverable .hover-text {
   position: absolute;
   display: none;
   top: 50%;
-  left:  50%;
-  transform: translate(-50%,-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
 }
-.hoverable .background{
+
+.hoverable .background {
   position: absolute;
   display: none;
   top: 0;
-  left:  0;
+  left: 0;
   bottom: 0;
   right: 0;
-  background-color:rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   pointer-events: none;
   border-radius: 50%;
   z-index: 1;
 }
-.hoverable:hover .hover-text{
-  display: block;
-}
-.hoverable:hover .background{
+
+.hoverable:hover .hover-text {
   display: block;
 }
 
-#fileInput{
+.hoverable:hover .background {
+  display: block;
+}
+
+#fileInput {
   display: none;
 }
 
-.containerTop{
+.containerTop {
   margin-top: 40px;
   width: 80%;
 }
 
 .nav-link {
-  color:rgb(43, 40, 40);
+  color: rgb(43, 40, 40);
   /* padding: 12px 0; */
-  border-bottom: transparent ; 
+  border-bottom: transparent;
 }
 
 .nav-link:hover {
-  color:rgb(43,40,40);
+  color: rgb(43, 40, 40);
 }

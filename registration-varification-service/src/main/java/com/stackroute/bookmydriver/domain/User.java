@@ -1,5 +1,7 @@
 package com.stackroute.bookmydriver.domain;
+
 import org.springframework.data.annotation.Transient;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -14,7 +16,7 @@ public class User {
     private int id;
 
     //user input >> unique, compulsory email
-    @Column(name = "email",nullable = false,unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     @Email(message = "please provide valid e-mail")
     @NotEmpty(message = "please provide an e-mail")
     private String email;
@@ -44,8 +46,19 @@ public class User {
     @Column(name = "confirmation_token")
     private String confirmationToken;
 
+    @Column(name = "role")
+    private String role;
 
     //getter and setters
+
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public int getId() {
         return id;

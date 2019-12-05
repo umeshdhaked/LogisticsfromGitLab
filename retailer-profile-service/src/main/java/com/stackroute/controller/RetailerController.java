@@ -2,74 +2,71 @@ package com.stackroute.controller;
 
 import com.google.gson.Gson;
 import com.stackroute.domain.RetailerProfile;
-import com.stackroute.service.Services;
+import com.stackroute.service.RetailerServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 
-@CrossOrigin
+//    @CrossOrigin is not Necessary if webconfig cors is configured
+
 @RestController
 @RequestMapping("/retailerProfile")
-public class RetailerController
-{
+public class RetailerController {
 
-    private Services service;
+    private RetailerServices retailerService;
 
     @Autowired
-    public RetailerController(Services services)
-    {
-        this.service = services;
+    public RetailerController(RetailerServices retailerServices) {
+        this.retailerService = retailerServices;
     }
 
 
     @CrossOrigin
     @GetMapping("/getAllRetailersProfileList")
-    public List<RetailerProfile> getUser()
-    {
-        return service.getAllUser();
+    public List<RetailerProfile> getUser() {
+        return retailerService.getAllUser();
     }
 
 
     @CrossOrigin
     @PostMapping("/saveDetailOfRetailer")
-    public void updateRetailer(@RequestParam("docPic")MultipartFile file1,@RequestParam("profilePic")MultipartFile  file2,@RequestParam("retailer")String jstring) throws IOException //we will be getting retailerEmailDetail in this object with other details
+    public void updateRetailer(@RequestParam("docPic") MultipartFile file1, @RequestParam("profilePic") MultipartFile file2, @RequestParam("retailer") String jstring) throws IOException //we will be getting retailerEmailDetail in this object with other details
     {
 
 
         Gson g = new Gson();
         RetailerProfile profileData = g.fromJson(jstring, RetailerProfile.class);
 
+        RetailerProfile existRetailer = retailerService.getRetailerByEmail(profileData.getEmail()); //checking if user exist
+
+        if (existRetailer != null) {
+            profileData.setId(existRetailer.getId());
+        }
 
         profileData.setDocPic(file1.getBytes());
         profileData.setDocPicType(file1.getContentType());
         profileData.setProfilePic(file2.getBytes());
         profileData.setProfilePicType(file2.getContentType());
-
-
-        service.updateRetailer(profileData);
-    }
-
-
-
-    @CrossOrigin
-    @GetMapping("/getPic")
-    public RetailerProfile picHandler(@RequestParam("email") String email){
-      //  System.out.println("email = "+email);
-//        System.out.println();
-
-     return service.getRetailerByEmail(email);
+        retailerService.updateRetailer(profileData);
 
     }
 
 
 
+    @GetMapping("/getRetailerFromEmail")
+    public RetailerProfile sendProfileData(@RequestParam("email") String email, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+          System.out.println("email = "+email);
+        System.out.println("header in profile = "+httpServletRequest.getHeader("authorization"));
 
+        return retailerService.getRetailerByEmail(email);
+
+    }
 
 
 //
@@ -111,6 +108,13 @@ public class RetailerController
 //        }
 //        return result;
 //    }
+
+
+
+
+
+
+
 
 
 }

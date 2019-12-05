@@ -1,7 +1,7 @@
-import { Component, OnInit, NgZone } from '@angular/core';
-import { Router } from '@angular/router';
-import { RegistrationService } from '../../services/registration.service';
-import { Message } from '../../interfaces/message';
+import {Component, OnInit, NgZone} from '@angular/core';
+import {Router} from '@angular/router';
+import {RegistrationService} from '../../services/registration.service';
+import {Message} from '../../interfaces/message';
 
 var bcrypt = require('bcryptjs');
 
@@ -18,24 +18,24 @@ export class SignupComponent implements OnInit {
   alreadyExists: boolean = false;
   userNotSaved: boolean = true;
 
-  constructor(private regService : RegistrationService, private router:Router, private zone: NgZone) {
+  constructor(private regService: RegistrationService, private router: Router, private zone: NgZone) {
   }
 
   ngOnInit() {
   }
 
-  registerNewUser(firstName, lastName, email){
-    if(firstName!=""&&lastName!=""&&email!=""){
-      this.regService.registerNewUser(firstName,lastName,email).subscribe((data)=>{
-        this.zone.run(()=>{
-          if(data.message == "OK"){
+  registerNewUser(firstName, lastName, email, role, mobile) {
+    if (firstName != "" && lastName != "" && email != "" && role != "none") {
+      this.regService.registerNewUser(firstName, lastName, email, role, mobile).subscribe((data) => {
+        this.zone.run(() => {
+          if (data.message == "OK") {
             this.userNotSaved = false;
-          }else{
+          } else {
             this.alreadyExists = true;
           }
         })
       })
     }
   }
-  
+
 }

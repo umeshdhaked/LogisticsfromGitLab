@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 public class JwtValidator {
 
 
-    private String secret = "youtube";
+    private String secret = "stackroute";
 
     public User validate(String token) {
 
-        User user = new User();
+        User user = null;
         try {
             Claims body = Jwts.parser()
                     .setSigningKey(secret)
@@ -24,11 +24,10 @@ public class JwtValidator {
 
             user.setEmail(body.getSubject());
 //            user.setPass((String) body.get("pass"));
-//            user.setId(Long.parseLong((String) body.get("userId")));
-//            user.setRole((String) body.get("role"));
-        }
-        catch (Exception e) {
-            System.out.println(e);
+            user.setId(Long.parseLong((String) body.get("userId")));
+            user.setRole((String) body.get("role"));
+        } catch (Exception e) {
+            System.out.println("token validation exception is = "+e);
         }
 
         return user;

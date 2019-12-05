@@ -26,8 +26,8 @@ public class DashboardController {
     }
 
     @PostMapping("/accept")
-    public ResponseEntity<?> acceptDelivery(@RequestBody String vehicleId){
-        try{
+    public ResponseEntity<?> acceptDelivery(@RequestBody String vehicleId) {
+        try {
             deliveryService.acceptDelivery(vehicleId);
             responseEntity = new ResponseEntity<String>("{\"message\": \"accepted delivery\"}", HttpStatus.ACCEPTED);
         } catch (Exception e) {
@@ -37,8 +37,8 @@ public class DashboardController {
     }
 
     @PostMapping("/reject")
-    public ResponseEntity<?> rejectDelivery(@RequestBody String vehicleId){
-        try{
+    public ResponseEntity<?> rejectDelivery(@RequestBody String vehicleId) {
+        try {
             deliveryService.cancelDelivery(vehicleId);
             responseEntity = new ResponseEntity<String>("{\"message\": \"rejected delivery\"}", HttpStatus.ACCEPTED);
         } catch (Exception e) {

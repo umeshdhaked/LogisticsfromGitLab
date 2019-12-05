@@ -4,12 +4,17 @@ import com.stackroute.BackEnd.domain.Vehicle;
 import com.stackroute.BackEnd.exception.VehicleAlreadyExistsException;
 import com.stackroute.BackEnd.exception.VehicleNotFoundException;
 import com.stackroute.BackEnd.repository.VehicleRepository;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
+import java.util.Properties;
 
 @Primary
 @Service
@@ -53,13 +58,14 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public boolean deleteVehicle(int vehicleId) {
+    public boolean deleteVehicle(BigInteger vehicleId) {
         vehicleRepository.deleteById(vehicleId);
+
         return true;
     }
 
     @Override
-    public Optional<Vehicle> getVehicleById(int id) throws VehicleNotFoundException {
+    public Optional<Vehicle> getVehicleById(BigInteger id) throws VehicleNotFoundException {
 
         if (!vehicleRepository.existsById(id)) {
             throw new VehicleNotFoundException("Vehicle not found");
@@ -71,13 +77,51 @@ public class VehicleServiceImpl implements VehicleService {
         return vehicleRepository.findById(id);
     }
 
+//    @Override
+//    public List<Vehicle> getVehicleByVehicleNumber(String vehicleNumber) throws VehicleNotFoundException {
+//        List<Vehicle> list = vehicleRepository.findByVehicleNumber(vehicleNumber);
+//        if (list.isEmpty()) {
+//            throw new VehicleNotFoundException("Vehicle not Found");
+//        }
+//        return list;
+//    }
+
     @Override
-    public List<Vehicle> getVehicleByVehicleNumber(String vehicleNumber) throws VehicleNotFoundException {
-        List<Vehicle> list = vehicleRepository.findByVehicleNumber(vehicleNumber);
-        if (list.isEmpty()) {
-            throw new VehicleNotFoundException("Vehicle not Found");
-        }
-        return list;
+    public List<Vehicle> getlistbyslot1anddate(int capacity, String slot1) {
+        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot1(capacity,"Available");
+        return myVehicle;
     }
+
+    @Override
+    public List<Vehicle> getlistbyslot2anddate(int capacity, String slot2) {
+        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot2(capacity,"Available");
+        return myVehicle;
+    }
+
+    @Override
+    public List<Vehicle> getlistbyslot3anddate(int capacity, String slot3) {
+        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot3(capacity,"Available");
+        return myVehicle;
+    }
+
+    @Override
+    public List<Vehicle> getVehicleForRetailerRequest(String slot, String date, String vehicleType) {
+
+        System.out.printf(slot + " "+date+" "+vehicleType);
+
+        if(slot.equals("slot1")){
+        }
+        if(slot.equals("slot2")){
+        }
+        if(slot.equals("slot3")){
+        }
+
+
+        return null;
+    }
+//     @Override
+//     List<Vehicle> getvehiclebyDateSlotandStatus(String date,String slot,String status){
+//     List<Vehicle> mylist= vehicleRepository.findBy
+//     }
 }
 

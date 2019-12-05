@@ -1,34 +1,40 @@
-
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 * {
-    box-sizing: border-box;
-    background: transparent;
-    font-family:'Montserrat', sans-serif;
+  box-sizing: border-box;
+  background: transparent;
+  font-family: 'Montserrat', sans-serif;
+}
+h6{
+  visibility: hidden;
+}
+h4 {
+  color: goldenrod;
+}
+
+/* for screen width below 1024px */
+@media (max-width: 1023px) {
+  .bg-img {
+    background-image: linear-gradient(to bottom, transparent, mistyrose), url("../../../assets/images/main.jpg");
+    background-size: cover;
+    min-height: 360px;
+    /* margin-top: -30px; */
   }
-  h4{
-    color:goldenrod;
+
+  .over-image-text {
+    text-align: center;
+    padding: 36px;
+    color: black;
   }
-  /* for screen width below 1024px */
-  @media  (max-width: 1023px) {
-      .bg-img {
-        background-image: linear-gradient(to bottom, transparent, mistyrose),url("../../../assets/images/main.jpg");
-        background-size: cover;
-        min-height: 360px;
-        /* margin-top: -30px; */
-      }
-      .over-image-text {
-        text-align: center;
-        padding: 36px;
-        color:black;
-      }
-      .deliveryboy-icon{
-        display: none;
-        visibility: hidden;
-      }
+
+  .deliveryboy-icon {
+    display: none;
+    visibility: hidden;
   }
-  /* for screen width larger than 1024px */
-  @media (min-width:1024px){
+}
+
+/* for screen width larger than 1024px */
+@media (min-width: 1024px) {
   .bg-img {
     /* The image used */
     background-image: url("../../../assets/images/main.png");
@@ -38,11 +44,11 @@
     min-height: 760px;
     margin-top: -58px;
     /* 100vh  for full view */
-    background-repeat: no-repeat  ;
+    background-repeat: no-repeat;
     /* Center and scale the image nicely */
     background-size: contain;
   }
-  
+
   .over-image-text {
     position: absolute;
     right: 10px;
@@ -50,52 +56,56 @@
     margin: 20px;
     max-width: 450px;
     padding: 35px;
-    color:black;
-    
+    color: black;
+
   }
 }
 
-.stat{
+.stat {
   text-align: center;
   padding-top: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
- .goal{
+
+.goal {
   text-align: center;
   padding-top: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;  
+  justify-content: center;
   background: white;
   /* border: 2px solid grey;
   border-radius: 5px;   */
- box-shadow: 10px solid black;
- }
- .deliveryboy-icon{
+  box-shadow: 10px solid black;
+}
+
+.deliveryboy-icon {
   position: absolute;
   left: 0px;
   top: 450px;
   margin: 20px;
   max-width: 450px;
   padding: 35px;
- }
- .client{
-   margin:auto;
-   font-style: strong;
-   height: 200px;
-   width: 200px;
-   border-radius: 100px;
-   vertical-align: middle;
-   padding-top: 10px;
-   background: crimson;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-  color:whitesmoke;
- }
-.client:hover{
+}
+
+.client {
+  margin: auto;
+  font-style: strong;
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  vertical-align: middle;
+  padding-top: 10px;
+  background: crimson;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+}
+
+.client:hover {
   /* margin:auto; */
   font-style: strong;
   height: 200px;
@@ -107,28 +117,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: black;
-  color:white;
+  background-color: rgb(74, 105,4);
+  color: white;
   /* box-shadow: 10px solid black; */
   -webkit-transition: background-color 1s ease-out;
   -moz-transition: background-color 1s ease-out;
   -o-transition: background-color 1s ease-out;
   transition: background-color 1s ease-out;
 }
-.client strong{
+
+.client strong {
   display: contents;
 }
-.client:hover strong{
+
+.client:hover strong {
   display: none;
   -webkit-transition: background-color 1s ease-out;
   -moz-transition: background-color 1s ease-out;
   -o-transition: background-color 1s ease-out;
   transition: background-color 1s ease-out;
 }
-.client p{
+
+.client p {
   display: none;
 }
-.client:hover p{
+
+.client:hover p {
   display: contents;
   -webkit-transition: background-color 1s ease-in;
   -moz-transition: background-color 1s ease-in;
@@ -137,17 +151,19 @@
 }
 
 /* profile cards */
-.grid3img{
-    
+.grid3img {
+
   height: 150px;
   width: 150px;
   border-radius: 75px;
 }
-#grid{
+
+#grid {
   text-decoration: none;
   display: flex;
   /* box-shadow: 10px solid black; */
 }
-rounded{
+
+rounded {
   padding: 0 5px 0 5px;
 }

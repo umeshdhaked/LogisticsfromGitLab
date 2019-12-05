@@ -101,40 +101,82 @@ public class RegisterController {
 
     @CrossOrigin("*")
     @PostMapping("/register")
-    public ResponseEntity<?> processRegistrationForm(@RequestBody User user, HttpServletRequest request){
+    public ResponseEntity<?> processRegistrationForm(@RequestBody User user, HttpServletRequest request) {
         System.out.println("test");
         User userExists = userService.findByEmail(user.getEmail());
         System.out.println(userExists);
-        System.out.println("Email : = "+user.getEmail());
+        System.out.println("Email : = " + user.getEmail());
 
-        if (userExists!=null){
+        if (userExists != null) {
             responseEntity = new ResponseEntity<String>("{\"message\":\"User Already Exists\"}", HttpStatus.OK);
-        }else{
-            try{
+        } else {
+            try {
                 //--------------------------email-verification for new user -------------
-            //thus new user, so we need to create a new user and send confirmation email
-            //disable user until the user click on confirmation link in email
-            user.setEnabled(false);
-            //Generate random 36-character string token for confirmation link
-            user.setConfirmationToken(UUID.randomUUID().toString());
+                //thus new user, so we need to create a new user and send confirmation email
+                //disable user until the user click on confirmation link in email
+                user.setEnabled(false);
+                //Generate random 36-character string token for confirmation link
+                user.setConfirmationToken(UUID.randomUUID().toString());
 
-            userService.saveUser(user);
+                userService.saveUser(user);
 
-            String appUrl=request.getScheme() +"://"+request.getServerName()+":80";
+                String appUrl = request.getScheme() + "://" + request.getServerName() + ":80";
 
 
-            SimpleMailMessage registrationEmail = new SimpleMailMessage();
+                SimpleMailMessage registrationEmail = new SimpleMailMessage();
 
-            registrationEmail.setTo(user.getEmail());//to which email we want to send the appUrl ::which is the mail of the user
-           //Email subject , body
-            registrationEmail.setSubject("Confirmation Email from Wysser");
-            registrationEmail.setText("To create password and confirm your e-mail address, please click the link below:\n\n" +
-                    appUrl+"/#/confirm/"+user.getConfirmationToken());
-            registrationEmail.setFrom("umdk456@gmail.com");
+                registrationEmail.setTo(user.getEmail());//to which email we want to send the appUrl ::which is the mail of the user
+                //Email subject , body
+                registrationEmail.setSubject("Confirmation Email from Wysser");
+                registrationEmail.setText("To create password and confirm your e-mail address, please click the link below:\n\n" +
+                        appUrl + "/#/confirm/" + user.getConfirmationToken());
+                registrationEmail.setFrom("umdk456@gmail.com");
 
-            emailService.sendEmail(registrationEmail);//sending mail to the user email
-            responseEntity = new ResponseEntity<String>("{\"message\":\"OK\"}", HttpStatus.OK);
-            }catch (Exception e){
+                emailService.sendEmail(registrationEmail);//sending mail to the user email
+                responseEntity = new ResponseEntity<String>("{\"message\":\"OK\"}", HttpStatus.OK);
+            } catch (Exception e) {
+                responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+        return responseEntity;
+    }
+
+    @CrossOrigin("*")
+    @PostMapping("/forgot")
+    public ResponseEntity<?> processRegistrationForm(@RequestParam("email") String email, HttpServletRequest request) {
+        System.out.println("test");
+        User userExists = userService.findByEmail(email);
+        System.out.println(userExists);
+        //System.out.println("Email : = " + user.getEmail());
+
+        if (userExists == null) {
+            responseEntity = new ResponseEntity<String>("{\"message\":\"User Doesn't Exist\"}", HttpStatus.OK);
+        } else {
+            try {
+                //--------------------------email-verification for new user -------------
+                //thus new user, so we need to create a new user and send confirmation email
+                //disable user until the user click on confirmation link in email
+                userExists.setEnabled(false);
+                //Generate random 36-character string token for confirmation link
+                userExists.setConfirmationToken(UUID.randomUUID().toString());
+
+                userService.saveUser(userExists);
+
+                String appUrl = request.getScheme() + "://" + request.getServerName() + ":80";
+
+
+                SimpleMailMessage registrationEmail = new SimpleMailMessage();
+
+                registrationEmail.setTo(email);//to which email we want to send the appUrl ::which is the mail of the user
+                //Email subject , body
+                registrationEmail.setSubject("Password Reset Email from Wysser");
+                registrationEmail.setText("To reset your password please click the link below:\n\n" +
+                        appUrl + "/#/confirm/" + userExists.getConfirmationToken());
+                registrationEmail.setFrom("umdk456@gmail.com");
+
+                emailService.sendEmail(registrationEmail);//sending mail to the user email
+                responseEntity = new ResponseEntity<String>("{\"message\":\"OK\"}", HttpStatus.OK);
+            } catch (Exception e) {
                 responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
@@ -159,12 +201,12 @@ public class RegisterController {
 
     @CrossOrigin
     @GetMapping("/confirm")
-    public ResponseEntity<?> confirmUser(@RequestParam("token") String token){
-        User user=userService.findByConfirmationToken(token);
+    public ResponseEntity<?> confirmUser(@RequestParam("token") String token) {
+        User user = userService.findByConfirmationToken(token);
         //checking if  token found in db
-        if(user==null){
+        if (user == null) {
             responseEntity = new ResponseEntity("{\"message\":\"Invalid Token\"}", HttpStatus.OK);
-        }else {
+        } else {
             responseEntity = new ResponseEntity("{\"message\":\"OK\"}", HttpStatus.OK);
         }
         return responseEntity;
@@ -202,19 +244,20 @@ public class RegisterController {
 
     @CrossOrigin
     @PostMapping("/confirm")
-    public ResponseEntity<?> setPassword(@RequestParam Map requestParam){
+    public ResponseEntity<?> setPassword(@RequestParam Map requestParam) {
         try {
             User user = userService.findByConfirmationToken((String) requestParam.get("token"));
             //set up new password
 
-//            user.setPassword(passwordEncoder.encode((CharSequence) requestParam.get("password")));
-            user.setPassword(requestParam.get("password").toString());
+
+            user.setPassword(passwordEncoder.encode((CharSequence) requestParam.get("password")));
+          //  user.setPassword(requestParam.get("password").toString());
             //set user to enable
             user.setEnabled(true);
             //save user
             userService.saveUser(user);
             responseEntity = new ResponseEntity("{\"message\":\"OK\"}", HttpStatus.CREATED);
-        }catch (Exception e){
+        } catch (Exception e) {
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return responseEntity;
