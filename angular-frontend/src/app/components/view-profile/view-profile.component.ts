@@ -4,6 +4,7 @@ import * as jwt_decode from 'jwt-decode';
 import { Retailerdetails } from 'src/app/interfaces/retailerDetails';
 import { DecodedJwtData } from 'src/app/interfaces/decoded-jwt-data';
 import { Router } from '@angular/router';
+import { LoginAuthService } from 'src/app/services/login-auth.service';
 
 @Component({
   selector: 'app-view-profile',
@@ -17,7 +18,7 @@ export class ViewProfileComponent implements OnInit {
 
 
 
-  constructor(private editProfileService: EditProfileService, private router: Router) {
+  constructor(private editProfileService: EditProfileService, private router: Router, private loginAuth:LoginAuthService) {
   }
 
   decodedData: DecodedJwtData;
@@ -57,7 +58,7 @@ export class ViewProfileComponent implements OnInit {
 
   deleteAccount(){
     this.editProfileService.deleteRetailerAccount();
-    localStorage.removeItem('token');
+    this.loginAuth.deleteCredentials();
     this.router.navigate(['/home']);
     alert('Your account has heen deleted');
   }

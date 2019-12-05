@@ -73,6 +73,8 @@ export class LoginAuthService {
 
     this.httpclient.delete(url).subscribe();
 
+    localStorage.removeItem('token');
+
   }
 
 
