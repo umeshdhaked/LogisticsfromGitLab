@@ -1,15 +1,12 @@
 package com.stackroute.vehicledemand.domain;
 
-
-//import org.springframework.data.annotation.Id;
-//import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigInteger;
 
-@Document(collection = "Newretailerdemand")
-public class newRetailerDemand {
+@Document(collection = "RejectedRetailerDemand")
+public class rejectedRetailerRequest {
     @Id
     BigInteger id;
     String vehicleNumber;
@@ -23,23 +20,15 @@ public class newRetailerDemand {
     String slot3;
 //    String date;
 
-   String companyName;
-   String slot;
-   int retailerId;
-//   String requestStatus;
-//
-//    public String getRequestStatus() {
-//        return requestStatus;
-//    }
-//
-//    public void setRequestStatus(String requestStatus) {
-//        this.requestStatus = requestStatus;
-//    }
+    String companyName;
+    String slot;
+    int retailerId;
+    String requestStatus;
 
-    public newRetailerDemand() {
+    public rejectedRetailerRequest() {
     }
 
-    public newRetailerDemand(BigInteger id, String vehicleNumber, String driverName, String vehicleType, int capacity, int costPerSlot, String vehicleStatus, String slot1, String slot2, String slot3, String companyName, String slot, int retailerId) {
+    public rejectedRetailerRequest(BigInteger id, String vehicleNumber, String driverName, String vehicleType, int capacity, int costPerSlot, String vehicleStatus, String slot1, String slot2, String slot3, String companyName, String slot, int retailerId, String requestStatus) {
         this.id = id;
         this.vehicleNumber = vehicleNumber;
         this.driverName = driverName;
@@ -53,31 +42,7 @@ public class newRetailerDemand {
         this.companyName = companyName;
         this.slot = slot;
         this.retailerId = retailerId;
-//        this.requestStatus = requestStatus;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public String getSlot() {
-        return slot;
-    }
-
-    public void setSlot(String slot) {
-        this.slot = slot;
-    }
-
-    public int getRetailerId() {
-        return retailerId;
-    }
-
-    public void setRetailerId(int retailerId) {
-        this.retailerId = retailerId;
+        this.requestStatus = requestStatus;
     }
 
     public BigInteger getId() {
@@ -160,23 +125,36 @@ public class newRetailerDemand {
         this.slot3 = slot3;
     }
 
+    public String getCompanyName() {
+        return companyName;
+    }
 
-    @Override
-    public String toString() {
-        return "newRetailerDemand{" +
-                "id=" + id +
-                ", vehicleNumber='" + vehicleNumber + '\'' +
-                ", driverName='" + driverName + '\'' +
-                ", vehicleType='" + vehicleType + '\'' +
-                ", capacity=" + capacity +
-                ", costPerSlot=" + costPerSlot +
-                ", vehicleStatus='" + vehicleStatus + '\'' +
-                ", slot1='" + slot1 + '\'' +
-                ", slot2='" + slot2 + '\'' +
-                ", slot3='" + slot3 + '\'' +
-                ", companyName='" + companyName + '\'' +
-                ", slot='" + slot + '\'' +
-                ", retailerId=" + retailerId +
-                '}';
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getSlot() {
+        return slot;
+    }
+
+    public void setSlot(String slot) {
+        this.slot = slot;
+    }
+
+    public int getRetailerId() {
+        return retailerId;
+    }
+
+    public void setRetailerId(int retailerId) {
+        this.retailerId = retailerId;
+    }
+
+    public String getRequestStatus() {
+        return requestStatus;
+    }
+
+    public void setRequestStatus(String requestStatus) {
+        this.requestStatus = requestStatus;
     }
 }
+
