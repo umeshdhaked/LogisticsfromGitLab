@@ -88,19 +88,19 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public List<Vehicle> getlistbyslot1anddate(int capacity, String slot1) {
-        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot1(capacity,"available");
+        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot1(capacity,"Available");
         return myVehicle;
     }
 
     @Override
     public List<Vehicle> getlistbyslot2anddate(int capacity, String slot2) {
-        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot2(capacity,"available");
+        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot2(capacity,"Available");
         return myVehicle;
     }
 
     @Override
     public List<Vehicle> getlistbyslot3anddate(int capacity, String slot3) {
-        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot3(capacity,"available");
+        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot3(capacity,"Available");
         return myVehicle;
     }
 
