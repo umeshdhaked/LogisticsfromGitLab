@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="text-center" *ngIf="userNotSaved">
-      <form id="registrationForm" action="#" onsubmit="if(document.getElementById('agree').checked) { return true; } else { alert('Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy'); return false; }" class="container-fluid"  method="POST">
+      <form id="registrationForm" class="container-fluid" onsubmit="return false" method="POST">
         <h5>Join Wysser</h5>
         <h2 id="sign">Create your Account</h2>
         <br/>
@@ -42,7 +42,7 @@
 
          
         <div class="checkbox">
-              <input required type="checkbox" name="checkbox" value="check" id="agree" /> I have read and agree to the <a routerLink="/terms" target="_blank">Terms and Conditions</a> and Privacy Policy and I agree to abide by them
+              <p> By clicking “Create Account”, you agree to our <a routerLink="/terms" target="_blank">Terms and Conditions</a> and  <a routerLink="/terms" target="_blank">Privacy Policy </a>and agree to abide by them</p>
         </div>
 
           <!-- <div class="col-md-4 offset-md-4 col-12"> -->
