@@ -23,11 +23,25 @@ export class RequestService {
    return this.http.post(uri, input);
   }
 
+  sendAccepttovehicledemand(input:any){
+    const uri = environment.apiUrl + ':9090/saveacceptedstatusdemand';
+   return this.http.post(uri, input);
+  }
+  deleteinretailerdemand(id:number){
+    const uri= environment.apiUrl + ':9090/deletedemand/'+ id;
+    return this.http.delete(uri);
+  }
+
   sendReject(input){
 
     const uri = environment.apiUrl + ':8095/api/v1/Reject';
     return this.http.post(uri, input);
 
+  }
+
+  sendRejecttovehicledemand(input:any){
+    const uri = environment.apiUrl + ':9090/saverejectedstatusdemand';
+   return this.http.post(uri, input);
   }
 
 

@@ -1,6 +1,7 @@
 package com.stackroute.BackEnd.controller;
 
 import com.google.gson.Gson;
+import com.stackroute.BackEnd.domain.RetailerDemand;
 import com.stackroute.BackEnd.domain.Vehicle;
 import com.stackroute.BackEnd.exception.VehicleAlreadyExistsException;
 import com.stackroute.BackEnd.exception.VehicleNotFoundException;
@@ -98,15 +99,21 @@ public class VehicleController<VehicleDao> {
     @PostMapping("Accept")
 
     @CrossOrigin
-    public ResponseEntity<?> SendAcceptedVehicle(@RequestBody Vehicle vehicle) throws VehicleAlreadyExistsException {
+    public ResponseEntity<?> SendAcceptedVehicle(@RequestBody RetailerDemand retailerDemand) throws VehicleAlreadyExistsException {
 
         System.out.println("values");
 
-        System.out.println("id = "+vehicle.getId());
-        System.out.println(vehicle.toString());
+        System.out.println("id = "+retailerDemand.getId());
+        System.out.println(retailerDemand.toString());
         ResponseEntity responseEntity;
-        vehicleService.saveVehicle(vehicle);
-        responseEntity = new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
+        try {
+            Vehicle vehicle = vehicleService.getVehicleById(retailerDemand.getId()).get();
+            resetVehicleStatus(vehicle.getId(), retailerDemand.getSlot());
+            //vehicleService.saveVehicle(vehicle);
+            responseEntity = new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
+        }catch(Exception e){
+            responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+        }
         return responseEntity;
     }
 
