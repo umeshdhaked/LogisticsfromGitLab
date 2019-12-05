@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ServiceImpl implements Services {
+public class RetailerServiceImpl implements RetailerServices {
 
 
     private RetailerProfileRepository retailerProfileRepository;
 
 
     @Autowired
-    public ServiceImpl(RetailerProfileRepository retailerProfileRepository) {
+    public RetailerServiceImpl(RetailerProfileRepository retailerProfileRepository) {
         this.retailerProfileRepository = retailerProfileRepository;
     }
 
