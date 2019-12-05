@@ -17,7 +17,10 @@ export class VehicleCompanyProfileComponent implements OnInit {
 
   dataFromToken:DecodedJwtData;
   vehicleCompanyData:VehicleCompanyProfile;
-
+  cName;
+  cNumber;
+  cAddress;
+  cGst;
 
   ngOnInit() {
     if(localStorage.getItem('token')!=null){
@@ -32,7 +35,10 @@ export class VehicleCompanyProfileComponent implements OnInit {
     
 
       if(this.vehicleCompanyData!=null){
-        console.log('this is null');
+       this.cName = this.vehicleCompanyData.companyName;
+       this.cNumber = this.vehicleCompanyData.contact;
+       this.cAddress = this.vehicleCompanyData.address;
+       this.cGst = this.vehicleCompanyData.gst;
 
       }
 

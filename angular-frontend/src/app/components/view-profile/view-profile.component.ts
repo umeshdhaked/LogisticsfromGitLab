@@ -48,7 +48,6 @@ export class ViewProfileComponent implements OnInit {
       this.docurl = 'data:' + this.retailerObj.docPicType + ';base64,' + this.retailerObj.docPic;
       this.check = '.'
 
-
       if(this.retailerObj != null){
         this.companyName = this.retailerObj.companyName; 
       }
