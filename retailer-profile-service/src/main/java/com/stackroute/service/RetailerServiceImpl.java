@@ -47,5 +47,10 @@ public class RetailerServiceImpl implements RetailerServices {
        retailerProfileRepository.deleteById(id);
     }
 
+    @Override
+    public RetailerProfile getRetailerById(int id) {
+        return retailerProfileRepository.findById(id).get();
+    }
+
 
 }

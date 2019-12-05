@@ -18,4 +18,6 @@ public interface RetailerServices {
 
     public void deleteAccount(int id);
 
+    public RetailerProfile getRetailerById(int id);
+
 }

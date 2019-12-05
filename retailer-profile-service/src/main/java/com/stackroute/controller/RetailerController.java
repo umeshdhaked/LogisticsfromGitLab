@@ -68,6 +68,13 @@ public class RetailerController {
 
     }
 
+    @GetMapping("/getRetailerById")
+    @CrossOrigin
+    public RetailerProfile getRetailer(@RequestParam("id") int id){
+
+        return retailerService.getRetailerById(id);
+    }
+
 
 //
 //    // Trash for Rest Template
