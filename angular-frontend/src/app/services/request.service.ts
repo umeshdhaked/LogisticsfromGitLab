@@ -12,7 +12,7 @@ export class RequestService {
   constructor(public http: HttpClient) { }
 
   findallrequested(): Observable<any> {
-    const url = 'http://172.23.239.62:9090/findAll';
+    const url = environment.apiUrl + ':9090/findAll';
 
     return this.http.get(url);
   }
