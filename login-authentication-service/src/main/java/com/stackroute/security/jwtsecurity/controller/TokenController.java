@@ -94,6 +94,4 @@ public class TokenController {
 
         retailerService.deleteById(idL);
     }
-
-
 }
