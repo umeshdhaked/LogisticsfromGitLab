@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="text-center" *ngIf="userNotSaved">
-      <form id="registrationForm" action="#" onsubmit="if(document.getElementById('agree').checked) { return true; } else { alert('Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy'); return false; }" class="container-fluid"  method="POST">
+      <form id="registrationForm" action="#" onsubmit="return false" class="container-fluid"  method="POST">
         <h5>Join Wysser</h5>
         <h2 id="sign">Create your Account</h2>
         <br/>

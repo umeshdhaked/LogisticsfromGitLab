@@ -18,27 +18,16 @@
     "@angular/core": "^8.2.14",
     "@angular/forms": "^8.2.14",
     "@angular/material": "^8.2.3",
-<<<<<<< HEAD
     "@angular/platform-browser": "^8.2.14",
     "@angular/platform-browser-dynamic": "^8.2.14",
-    "@angular/router": "^8.2.14",
-=======
-    "@angular/platform-browser": "~8.2.11",
-    "@angular/platform-browser-dynamic": "~8.2.11",
     "@angular/router": "~8.2.11",
     "@auth0/angular-jwt": "^3.0.1",
     "@mapbox/mapbox-gl-geocoder": "^4.5.0",
->>>>>>> 4a713b9b7684ec996944d572bef52d06682db69e
     "@theo4u/ng-alert": "^2.1.0",
     "@types/bcrypt": "^3.0.0",
     "angular-animate": "^1.7.9",
     "angular-fusioncharts": "^3.0.3",
-<<<<<<< HEAD
     "bcrypt": "^3.0.7",
-=======
-    "angular2-signaturepad": "^2.9.0",
-    "bcrypt": "^3.0.6",
->>>>>>> 4a713b9b7684ec996944d572bef52d06682db69e
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.4.0",
     "chart.js": "^2.9.3",
