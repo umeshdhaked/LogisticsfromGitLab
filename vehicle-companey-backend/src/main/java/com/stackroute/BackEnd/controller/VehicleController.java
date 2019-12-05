@@ -209,7 +209,7 @@ public class VehicleController<VehicleDao> {
         System.out.print(capacity);
         System.out.print(slot1);
 
-        List<Vehicle> vehicles = vehicleService.getlistbyslot1anddate(capacity,"available");
+        List<Vehicle> vehicles = vehicleService.getlistbyslot1anddate(capacity,"Available");
         System.out.print(vehicles);
         //try{
         responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
@@ -224,7 +224,7 @@ public class VehicleController<VehicleDao> {
         ResponseEntity responseEntity;
         System.out.print(capacity);
         System.out.print(slot2);
-        List<Vehicle> vehicles = vehicleService.getlistbyslot2anddate(capacity,"available");
+        List<Vehicle> vehicles = vehicleService.getlistbyslot2anddate(capacity,"Available");
         System.out.print(vehicles);
         //try{
         responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
@@ -239,7 +239,7 @@ public class VehicleController<VehicleDao> {
         ResponseEntity responseEntity;
         System.out.print(capacity);
         System.out.print(slot3);
-        List<Vehicle> vehicles = vehicleService.getlistbyslot3anddate(capacity,slot3);
+        List<Vehicle> vehicles = vehicleService.getlistbyslot3anddate(capacity, "Available");
         System.out.print(vehicles);
         //try{
         responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
