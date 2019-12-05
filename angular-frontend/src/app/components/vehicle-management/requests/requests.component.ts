@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, NgZone} from '@angular/core';
 import { RequestService } from '../../../services/request.service';
 import { from } from 'rxjs';
 
@@ -11,19 +11,30 @@ export class RequestsComponent implements OnInit {
 
   Vehicles: Array<any>;
 
-  constructor(private requestService: RequestService) {
+  constructor(private requestService: RequestService, private zone:NgZone) {
   }
 
   ngOnInit() {
 
-    this.requestService.findallrequested().subscribe(data => {
-      this.Vehicles = data
-      console.log(this.Vehicles)
-      console.log('xyz')
-    });
-
-
-
+  //   setInterval(()=>{
+  //     this.requestService.findallrequested().subscribe(data => {
+  //       this.zone.run(()=>{
+  //         this.Vehicles = data
+  //       console.log(this.Vehicles)
+  //       console.log('xyz')
+  //       })
+      
+  //   }), 12000
+  // });
+  this.requestService.findallrequested().subscribe(data => {
+          this.zone.run(()=>{
+            this.Vehicles = data
+          console.log(this.Vehicles)
+          console.log('xyz')
+          })
+        
+      });
+      
   }
 
 }
