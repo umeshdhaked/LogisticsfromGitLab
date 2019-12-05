@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { RequestService } from '../../../services/request.service';
 import { from } from 'rxjs';
+import { VehicleManagement } from 'src/app/interfaces/vehicle-management';
 
 @Component({
   selector: 'app-requests',
@@ -14,6 +15,8 @@ export class RequestsComponent implements OnInit {
   constructor(private requestService: RequestService) {
   }
 
+  vehicle:VehicleManagement;
+
   ngOnInit() {
 
     this.requestService.findallrequested().subscribe(data => {
@@ -25,5 +28,25 @@ export class RequestsComponent implements OnInit {
 
 
   }
+
+abv;
+
+  AcceptRequest(data) {
+ this.vehicle = data
+    // this.vehicle.capacity = data.capacity;
+    // this.vehicle.companyName = data.companyName;
+    // this.vehicle.costPerSlot = data.costPerSlot;
+    // this.vehicle.driverName = data.driverName;
+    // this.vehicle.retailerId = data.retailerId;
+    // this.vehicle.id = data.id;
+    // this.vehicle.slot = data.slot;
+    // this.vehicle.vehicleNumber = data.vehicleNumber;
+    // this.vehicle.vehicleStatus = data.vehicleStatus;
+    // this.vehicle.vehicleType = data.vehicleType;
+    console.log(this.vehicle);
+    this.requestService.sendAcceptRequest(this.vehicle).subscribe();
+  }
+
+
 
 }

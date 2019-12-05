@@ -17,6 +17,11 @@ export class RequestService {
     return this.http.get(url);
   }
 
+  sendAcceptRequest(input){
+    const uri = environment.apiUrl + ':8095/api/v1/Accept';
+   return this.http.post(uri, input);
+  }
+
 
 
 }
