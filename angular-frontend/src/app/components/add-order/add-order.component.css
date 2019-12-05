@@ -19,7 +19,7 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 /* Set a style for the submit button */
-.btn {
+.btnSlot {
   background-color: #4CAF50;
   color: white;
   padding: 16px 20px;
@@ -28,8 +28,11 @@ input[type=text]:focus, input[type=password]:focus {
   /* width: 100%; */
   opacity: 0.9;
 }
+.btnSlot p{
+  font-size: 15px;
+}
 
-.btn:hover {
+.btnSlot:hover {
   opacity: 1;
 }
 

@@ -93,6 +93,26 @@ public class VehicleController<VehicleDao> {
         return responseEntity;
     }
 
+
+
+    @PostMapping("Accept")
+
+    @CrossOrigin
+    public ResponseEntity<?> SendAcceptedVehicle(@RequestBody Vehicle vehicle) throws VehicleAlreadyExistsException {
+
+        System.out.println("values");
+
+        System.out.println("id = "+vehicle.getId());
+        System.out.println(vehicle.toString());
+        ResponseEntity responseEntity;
+        vehicleService.saveVehicle(vehicle);
+        responseEntity = new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
+        return responseEntity;
+    }
+
+
+
+
     @GetMapping("vehicle")
     @CrossOrigin
     public ResponseEntity<?> getVehicles() {

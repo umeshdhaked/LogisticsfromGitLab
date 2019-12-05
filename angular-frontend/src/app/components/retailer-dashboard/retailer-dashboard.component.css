@@ -1,7 +1,9 @@
 .dashboard {
   margin-top: 40px;
 }
-
+.dashboard h3{
+  text-align: center;
+}
 
 .container {
   margin-top: 30px;
