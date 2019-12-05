@@ -82,9 +82,9 @@ services:
     depends_on:
       - mysql1
     ports:
-      - 9091
-    expose:
-      - 9091
+      - 9091:9091
+    # expose:
+    #   - 9091
     restart: always  
   order-service:
     image: order-service
@@ -95,11 +95,11 @@ services:
     depends_on:
       - neo4j
     ports:
-      - 8084
-      - 7687
-    expose:
-      - 7687
-      - 8084
+      - 8084:8084
+      - 7687:7687
+    # expose:
+    #   - 7687
+    #   - 8084
     restart: always  
   angular-frontend:
     image: angular-frontend
