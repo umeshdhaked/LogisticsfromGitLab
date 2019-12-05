@@ -1,11 +1,26 @@
 package com.stackroute.routing.routingAlgorithms;
 
+import com.stackroute.routing.domain.Order;
+import com.stackroute.routing.domain.Vehicle;
+import com.stackroute.routing.repository.DepotRepository;
+import com.stackroute.routing.repository.OrderRepository;
+import com.stackroute.routing.repository.VehicleRepository;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Random;
 
+@Service
 public class Solution
 {
+    private DepotRepository depotRepository;
+    private OrderRepository orderRepository;
+    private VehicleRepository vehicleRepository;
     int NoOfVehicles;
     int NoOfCustomers;
     VehicleNode[] vehicleNodes;
@@ -17,8 +32,17 @@ public class Solution
 
     public ArrayList<Double> PastSolutions;
 
-    public Solution(int CustNum, int VechNum, long[] VechCap)
+
+    @Autowired
+    public Solution(DepotRepository depotRepository, OrderRepository orderRepository, VehicleRepository vehicleRepository) {
+        this.depotRepository = depotRepository;
+        this.orderRepository = orderRepository;
+        this.vehicleRepository = vehicleRepository;
+    }
+
+    public void solution(int CustNum, int VechNum, long[] VechCap)
     {
+
         this.NoOfVehicles = VechNum;
         this.NoOfCustomers = CustNum;
         this.Cost = 0;
@@ -44,7 +68,7 @@ public class Solution
     }
 
     public void GreedySolution(Node[] Nodes , double[][] CostMatrix) {
-
+        System.out.println(Nodes.length);
         double CandCost,EndCost;
         int VehIndex = 0;
 
@@ -57,6 +81,7 @@ public class Solution
             if (vehicleNodes[VehIndex].Route.isEmpty())
             {
                 vehicleNodes[VehIndex].AddNode(Nodes[0]);
+                System.out.println("added");
             }
 
             for (int i = 1; i <= NoOfCustomers; i++) {
@@ -93,11 +118,13 @@ public class Solution
             }
             else
             {
+                System.out.println("customer added");
                 vehicleNodes[VehIndex].AddNode(Candidate);//If a fitting Customer is Found
                 Nodes[CustIndex].IsRouted = true;
                 this.Cost += minCost;
             }
         }
+        System.out.println("route size:"+vehicleNodes[0].Route.size());
 
         EndCost = CostMatrix[vehicleNodes[VehIndex].CurLoc][0];
         vehicleNodes[VehIndex].AddNode(Nodes[0]);
@@ -482,26 +509,57 @@ public class Solution
         } catch (Exception e) {}
     }
 
-    public void SolutionPrint(String Solution_Label)//Print Solution In console
+    public JSONObject SolutionPrint(String Solution_Label, Vehicle[] Vehicles, JSONArray coordinates, int wholesalerId, Order[] Orders)//Print Solution In console
     {
         System.out.println("=========================================================");
         System.out.println(Solution_Label+"\n");
 
+        JSONObject routes =new JSONObject();
         for (int j=0 ; j < NoOfVehicles ; j++)
         {
+            JSONObject  values= new JSONObject();
+            JSONArray sortedOrders =new JSONArray();
+            values.put("wholesalerId",wholesalerId);
+
+            values.put("depotAddress",depotRepository.findByWholesalerId(wholesalerId).getDepotAddress());
+            values.put("depotLatitude",coordinates.getJSONObject(0).getFloat("latitude"));
+            values.put("depotLongitude",coordinates.getJSONObject(0).getFloat("longitude"));
+            System.out.println("Route length:"+vehicleNodes[j].Route.size());
             if (! vehicleNodes[j].Route.isEmpty())
             {   System.out.print("Vehicle " + j + ":");
-                int RoutSize = vehicleNodes[j].Route.size();
-                for (int k = 0; k < RoutSize ; k++) {
-                    if (k == RoutSize-1)
-                    { System.out.print(vehicleNodes[j].Route.get(k).address );  }
+            int RoutSize;
+            if(Solution_Label.matches(".*(Inter).*")&&j==0)
+                RoutSize = vehicleNodes[j].Route.size()-1;
+            else
+                RoutSize=vehicleNodes[j].Route.size();
+                for (int k = 1; k < RoutSize-1 ; k++) {
+
+                    Node node =vehicleNodes[j].Route.get(k);
+                    if (k == RoutSize-2)
+                    {
+                        System.out.print(node.address );
+                    }
                     else
-                    { System.out.print(vehicleNodes[j].Route.get(k).address+ "->"); }
+                    { System.out.print(node.address+ "->"); }
+
+                    sortedOrders.put(Orders[(node.NodeId)-1]);
+                    JSONObject location = new JSONObject();
+                    location.put("latitude",coordinates.getJSONObject(node.NodeId).getFloat("latitude"));
+                    location.put("longitude",coordinates.getJSONObject(node.NodeId).getFloat("longitude"));
+                    sortedOrders.put(location);
+
                 }
                 System.out.println();
+
+                values.put("route",sortedOrders);
+
+                routes.put(Vehicles[j].getVehicleNumber(),values);
             }
         }
+        routes.put("distance",Cost);
         System.out.println("\nSolution Cost "+this.Cost+"\n");
+
+        return routes;
     }
 }
 
