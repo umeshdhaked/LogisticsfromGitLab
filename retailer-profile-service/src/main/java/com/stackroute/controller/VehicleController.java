@@ -44,4 +44,16 @@ public class VehicleController {
     }
 
 
+
+    @DeleteMapping("/deleteAccount")
+    @CrossOrigin
+    public void deleteHandler(@RequestParam("id") int id ){
+        System.out.println("delete this id acc = "+id);
+
+        vehicleCompanyService.deleteAccount(id);
+
+
+    }
+
+
 }

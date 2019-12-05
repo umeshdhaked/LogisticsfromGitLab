@@ -33,4 +33,12 @@ private VehicleCompanyRepository vehicleCompanyRepository;
     public List<VehicleCompanyProfile> getAllVehicleCompanyProfile() {
         return (List<VehicleCompanyProfile>)vehicleCompanyRepository.findAll();
     }
+
+
+    public void deleteAccount(int id){
+        vehicleCompanyRepository.deleteById(id);
+    }
+
+
+
 }

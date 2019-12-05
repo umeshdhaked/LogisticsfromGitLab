@@ -110,7 +110,15 @@ public class RetailerController {
 //    }
 
 
+    @DeleteMapping("/deleteAccount")
+    @CrossOrigin
+    public void deleteHandler(@RequestParam("id") int id ){
+        System.out.println("delete this id acc = "+id);
 
+        retailerService.deleteAccount(id);
+
+
+    }
 
 
 

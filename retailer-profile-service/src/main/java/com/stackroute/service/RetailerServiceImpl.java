@@ -42,5 +42,10 @@ public class RetailerServiceImpl implements RetailerServices {
         return retailerProfileRepository.findRetailerProfileByEmail(email);
     }
 
+    @Override
+    public void deleteAccount(int id) {
+       retailerProfileRepository.deleteById(id);
+    }
+
 
 }
