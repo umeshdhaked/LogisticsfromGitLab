@@ -23,4 +23,13 @@ export class VehicledemandfrontendService {
     const myurl = environment.apiUrl + ':9090/savenewdemand';
     return this.http.post(myurl, retailerdemand);
   }
+  searchByRetailerId(retailerId: number) {
+    const myurl = environment.apiUrl + ':9090/searchbyretailerid/' + retailerId;
+    return this.http.get(myurl);
+  }
+  searchByRetailerIdinrejected(retailerId: number) {
+    const myurl = environment.apiUrl + ':9090/searchbyretaileridinrejected/' + retailerId;
+    return this.http.get(myurl);
+  }
+
 }

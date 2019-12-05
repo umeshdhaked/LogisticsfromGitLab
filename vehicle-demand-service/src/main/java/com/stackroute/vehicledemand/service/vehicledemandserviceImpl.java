@@ -33,8 +33,8 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
     }
 
     @Override
-    public List<retailerdemand> getvehicledemand() {
-        return vehicledemandrepository.findAll();
+    public List<newRetailerDemand> getvehicledemand() {
+        return newRetailerDemandRepository.findAll();
     }
 
     @Override
@@ -66,5 +66,15 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
     public rejectedRetailerRequest savenewrejectedVehicleDemand(rejectedRetailerRequest rejectedRetailerRequest) {
         rejectedRetailerDemand.save(rejectedRetailerRequest);
         return rejectedRetailerRequest;
+    }
+
+    @Override
+    public List<newRetailerDemand> searchbyretailerId(int id) {
+        return this.newRetailerDemandRepository.findByRetailerId(id);
+    }
+
+    @Override
+    public List<rejectedRetailerRequest> findByRetailerIdinrejectedlist(int retailerId) {
+        return this.rejectedRetailerDemand.findByRetailerIdinrejected(retailerId);
     }
 }

@@ -46,6 +46,9 @@ export class RequestsComponent implements OnInit {
     this.vehicle.requestStatus='Accepted';
     console.log(this.vehicle);
     this.requestService.sendAccept(this.vehicle).subscribe();
+    this.requestService.sendAccepttovehicledemand(this.vehicle).subscribe();
+    this.requestService.deleteinretailerdemand(this.vehicle.id).subscribe();
+
   }
 
   RejectRequest(data){
@@ -53,6 +56,8 @@ export class RequestsComponent implements OnInit {
     this.vehicle.requestStatus='Rejected';
     console.log(this.vehicle);
     this.requestService.sendReject(this.vehicle).subscribe();
+    this.requestService. sendRejecttovehicledemand(this.vehicle).subscribe();
+    this.requestService.deleteinretailerdemand(this.vehicle.id).subscribe();
   }
 
 

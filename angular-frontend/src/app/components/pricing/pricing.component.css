@@ -40,13 +40,32 @@
     padding: 20px;
     text-align: center;
   }
+
   
+  .nav-tabs
+  {
+    background-color:aqua;
+  }
   /* Grey list item */
   .price .grey {
     background-color: #eee;
     font-size: 20px;
   }
+  .nav-tabs > li> a {
+   
+    color: #ffffff;
+    
+  }
+  .nav-tabs > li > a:hover,
+  .nav-tabs > li > a:focus,
+  .nav-tabs > li.active > a:hover,
+  .nav-tabs > li.active > a:focus {
+    background-color:green;
+    color: #fff;
+   
+  }
 
+ 
   
   /* The "Sign Up" button */
   .button {
