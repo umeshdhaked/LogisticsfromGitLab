@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { VechicleCompanyServiceService } from 'src/app/services/vechicle-company-service.service';
 import * as jwt_decode from 'jwt-decode';
 import { DecodedJwtData } from 'src/app/interfaces/decoded-jwt-data';
+import { VehicleCompanyProfile } from 'src/app/interfaces/vehicle-company-profile';
 
 @Component({
   selector: 'app-vehicle-company-profile',
@@ -15,17 +16,28 @@ export class VehicleCompanyProfileComponent implements OnInit {
 
 
   dataFromToken:DecodedJwtData;
-  vehicleCompanyData;
+  vehicleCompanyData:VehicleCompanyProfile;
 
 
   ngOnInit() {
     if(localStorage.getItem('token')!=null){
-      this.dataFromToken= jwt_decode(localStorage.getItem('token'))
+      this.dataFromToken= jwt_decode(localStorage.getItem('token'));
     }
+
+
+      // getting vehicle company profile from backend if exist;
 
     this.vehicleCompanyService.getVehicleCompanyProfileFromEmail(this.dataFromToken.sub).subscribe( (data:any) =>{
       this.vehicleCompanyData = data;
-      console.log(data);
+    
+
+      if(this.vehicleCompanyData!=null){
+        console.log('this is null');
+
+      }
+
+  
+  
     })
 
   }
