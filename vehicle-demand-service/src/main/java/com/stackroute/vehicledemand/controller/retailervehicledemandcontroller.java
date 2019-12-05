@@ -4,10 +4,7 @@ import ch.qos.logback.core.net.SyslogOutputStream;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.stackroute.vehicledemand.domain.DateDemand;
-import com.stackroute.vehicledemand.domain.TimeSlot;
-import com.stackroute.vehicledemand.domain.newRetailerDemand;
-import com.stackroute.vehicledemand.domain.retailerdemand;
+import com.stackroute.vehicledemand.domain.*;
 import com.stackroute.vehicledemand.repository.vehicledemandrepository;
 import com.stackroute.vehicledemand.service.vehicledemandservice;
 //import netscape.javascript.JSObject;
@@ -132,5 +129,30 @@ public class retailervehicledemandcontroller {
 
         return new ResponseEntity<BigInteger>(id, HttpStatus.OK);
     }
-
+    @PostMapping("/saveacceptedstatusdemand")
+    public ResponseEntity savenewDemand(@RequestBody acceptedRetailerRequest acceptedRetailerRequest) {
+        System.out.println("test");
+        ResponseEntity responseEntity;
+        try {
+            //orderService.saveOrder(order);
+            responseEntity = new ResponseEntity<>(vehicledemandservice.savenewaccepetedVehicleDemand(acceptedRetailerRequest), HttpStatus.CREATED);
+            System.out.print(acceptedRetailerRequest.toString());
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+    @PostMapping("/saverejectedstatusdemand")
+    public ResponseEntity savenewDemand(@RequestBody rejectedRetailerRequest rejectedRetailerRequest) {
+        System.out.println("test");
+        ResponseEntity responseEntity;
+        try {
+            //orderService.saveOrder(order);
+            responseEntity = new ResponseEntity<>(vehicledemandservice.savenewrejectedVehicleDemand(rejectedRetailerRequest), HttpStatus.CREATED);
+            System.out.print(rejectedRetailerRequest.toString());
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
 }
