@@ -129,6 +129,58 @@ public class VehicleController<VehicleDao> {
 
 
 
+    @PostMapping("resetStatus/{id}/{slot}")
+    @CrossOrigin
+    public ResponseEntity<?> resetVehicleStatus(@PathVariable("id") BigInteger id, @PathVariable("slot") String slot) throws VehicleAlreadyExistsException {
+
+        System.out.println("values");
+
+        System.out.println("id = " + id);
+        System.out.println("slot = " + slot);
+//        System.out.println(vehicle.toString());
+        ResponseEntity responseEntity;
+        try {
+            String currentStatus = "";
+            Vehicle savedVehicle = vehicleService.getVehicleById(id).get();
+            if(slot.equals("slot1")){
+                currentStatus = savedVehicle.getSlot1();
+                if (currentStatus.equals("Available")){
+                    savedVehicle.setSlot1("Not Available");
+                }else{
+                    savedVehicle.setSlot1("Available");
+                }
+            }
+            else if(slot.equals("slot2")){
+                System.out.println("inside slot2");
+                currentStatus = savedVehicle.getSlot2();
+                if (currentStatus.equals("Available")){
+                    savedVehicle.setSlot2("Not Available");
+                }else{
+                    savedVehicle.setSlot2("Available");
+                }
+            }
+            else if(slot.equals("slot3")){
+                currentStatus = savedVehicle.getSlot3();
+                if (currentStatus.equals("Available")){
+                    savedVehicle.setSlot3("Not Available");
+                }else{
+                    savedVehicle.setSlot3("Available");
+                }
+            }
+
+            responseEntity = new ResponseEntity<Vehicle>(vehicleService.updateVehicle(savedVehicle), HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+        }
+
+//        vehicleService.saveVehicle(vehicle);
+//        responseEntity = new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
+        return responseEntity;
+    }
+
+
+
+
     @GetMapping("vehicle")
     @CrossOrigin
     public ResponseEntity<?> getVehicles() {
