@@ -18,6 +18,8 @@ public interface VehicleService {
 
     public Vehicle updateComments(Vehicle vehicle);
 
+    public Vehicle updateVehicle(Vehicle vehicle);
+
     public boolean deleteVehicle(BigInteger vehicleId);
 
     public Optional<Vehicle> getVehicleById(BigInteger id) throws VehicleNotFoundException;

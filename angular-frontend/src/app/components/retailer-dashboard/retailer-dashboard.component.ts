@@ -5,6 +5,9 @@ import {Color, Label, MultiDataSet} from 'ng2-charts';
 import {VehicleRentService} from '../../services/vehicle-rent.service';
 import * as jwt_decode from 'jwt-decode';
 import {Router} from "@angular/router";
+import {EditProfileService} from "../../services/edit-profile.service";
+import {DecodedJwtData} from "../../interfaces/decoded-jwt-data";
+import {Retailerdetails} from "../../interfaces/retailerDetails";
 
 @Component({
   selector: 'app-retailer-dashboard',
@@ -17,6 +20,8 @@ export class RetailerDashboardComponent implements OnInit {
   pendingOrders: number = 0;
   deliveredOrders: number = 0;
 
+  decodedData: DecodedJwtData;
+  retailerObj: Retailerdetails;
   totalOrdersPerDay = [];
   orderDates = [];
   rentedVehicles = [];
@@ -58,7 +63,7 @@ export class RetailerDashboardComponent implements OnInit {
   //vehicles tables
   tableColumns: string[] = ['vehicleId', 'date', 'volume', 'timeSlot'];
 
-  constructor(private orderService: OrderServiceService, private zone: NgZone, private rentedVehicleService: VehicleRentService,private router:Router) {
+  constructor(private orderService: OrderServiceService, private zone: NgZone, private editProfileService: EditProfileService, private rentedVehicleService: VehicleRentService,private router:Router) {
   }
 
   ngOnInit() {
@@ -66,6 +71,7 @@ export class RetailerDashboardComponent implements OnInit {
       "userId": ""
     }
     let token = localStorage.getItem('token');
+
 
     if (token != null) {
       decoded = jwt_decode(token);
@@ -94,8 +100,12 @@ export class RetailerDashboardComponent implements OnInit {
       this.zone.run(() => {
         console.log(data);
         this.rentedVehicles = data;
-      })
-    })
+      });
+    });
+
+    this.editProfileService.getProfileFromEmail(this.retailerEmail).subscribe((datas: any) => {
+      this.retailerObj = datas;
+    });
   }
 
   populateLineChartData(orderData) {

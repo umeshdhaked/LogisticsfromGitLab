@@ -58,6 +58,12 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
+    public Vehicle updateVehicle(Vehicle vehicle) {
+
+        return vehicleRepository.save(vehicle);
+    }
+
+    @Override
     public boolean deleteVehicle(BigInteger vehicleId) {
         vehicleRepository.deleteById(vehicleId);
 
@@ -88,19 +94,22 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public List<Vehicle> getlistbyslot1anddate(int capacity, String slot1) {
-        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot1(capacity,"available");
+        List<Vehicle> myVehicle =this.vehicleRepository.findByCapacityAndSlot1(capacity,"Available");
         return myVehicle;
     }
 
     @Override
     public List<Vehicle> getlistbyslot2anddate(int capacity, String slot2) {
-        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot2(capacity,"available");
+        System.out.println("in service");
+        
+        // List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot2(capacity,"Available");
+        List<Vehicle> myVehicle =this.vehicleRepository.findByCapacityAndSlot2(capacity,"Available");
         return myVehicle;
     }
 
     @Override
     public List<Vehicle> getlistbyslot3anddate(int capacity, String slot3) {
-        List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot3(capacity,"available");
+        List<Vehicle> myVehicle =this.vehicleRepository.findByCapacityAndSlot3(capacity,"Available");
         return myVehicle;
     }
 

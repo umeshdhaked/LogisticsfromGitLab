@@ -28,7 +28,7 @@ public class Vehicle {
     String slot1;
     String slot2;
     String slot3;
-    String date;
+//    String date;
     String companyName;
 
 
@@ -43,7 +43,7 @@ public class Vehicle {
         this.slot1 = slot1;
         this.slot2 = slot2;
         this.slot3 = slot3;
-        this.date = date;
+//        this.date = date;
         this.companyName=companyName;
     }
 
@@ -138,13 +138,13 @@ public class Vehicle {
         this.slot3 = slot3;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
+//    public String getDate() {
+//        return date;
+//    }
+//
+//    public void setDate(String date) {
+//        this.date = date;
+//    }
 
     @Override
     public String toString() {
@@ -159,7 +159,7 @@ public class Vehicle {
                 ", slot1='" + slot1 + '\'' +
                 ", slot2='" + slot2 + '\'' +
                 ", slot3='" + slot3 + '\'' +
-                ", date='" + date + '\'' +
+//                ", date='" + date + '\'' +
                 '}';
     }
 }

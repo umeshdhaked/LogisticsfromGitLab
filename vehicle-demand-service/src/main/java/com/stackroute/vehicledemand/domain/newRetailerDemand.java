@@ -26,6 +26,15 @@ public class newRetailerDemand {
    String companyName;
    String slot;
    int retailerId;
+//   String requestStatus;
+//
+//    public String getRequestStatus() {
+//        return requestStatus;
+//    }
+//
+//    public void setRequestStatus(String requestStatus) {
+//        this.requestStatus = requestStatus;
+//    }
 
     public newRetailerDemand() {
     }
@@ -44,6 +53,7 @@ public class newRetailerDemand {
         this.companyName = companyName;
         this.slot = slot;
         this.retailerId = retailerId;
+//        this.requestStatus = requestStatus;
     }
 
     public String getCompanyName() {

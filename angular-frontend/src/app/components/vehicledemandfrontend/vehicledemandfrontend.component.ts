@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, NgZone} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {VehicledemandfrontendService} from '../../vehicledemandfrontend.service';
 import {RetailerDetails} from '../../vehicledemanded';
@@ -27,7 +27,7 @@ export class VehicledemandfrontendComponent implements OnInit {
   // Queryresponse: Observable<any>;
   vehiclequery: Array<any> = new Array<any>();
   vehicleDemanded: VehicleDemanded;
-  flag = 'false';
+  flag = false;
 
   constructor(
     private dialog: MatDialog,
@@ -36,7 +36,8 @@ export class VehicledemandfrontendComponent implements OnInit {
     private datePipe: DatePipe,
     private router: Router,
     private http: HttpClient,
-    private testservice: VehicleRentService
+    private testservice: VehicleRentService,
+    private zone: NgZone
   ) {
     // this.date = this.datePipe.transform(this.date, 'yyyy-MM-dd');
   }
@@ -78,7 +79,7 @@ export class VehicledemandfrontendComponent implements OnInit {
   }
 
   sendrequest() {
-    this.flag = 'true';
+    // this.flag = true;
     // this.testservice.getVCResponse(this.capacity, 'available').subscribe(vehicle => {
     //       this.vehiclequery = vehicle;
     //       console.log(vehicle);
@@ -88,9 +89,13 @@ export class VehicledemandfrontendComponent implements OnInit {
 
     if (this.slot === 'slot1') {
       this.queryvehicleservice.getvolumeandslot1(this.capacity, 'available').subscribe(vehicle => {
-        this.vehiclequery = vehicle;
+        this.zone.run(()=>{
+          this.vehiclequery = vehicle;
         console.log(vehicle);
         console.log('in slot 1');
+        this.flag = true;
+        })
+        
       });
     } else if (this.slot === 'slot2') {
      this.queryvehicleservice.getvolumeandslot2(this.capacity, 'available').subscribe(vehicle => {

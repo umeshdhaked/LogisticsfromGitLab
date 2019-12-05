@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, NgZone} from '@angular/core';
 import { RequestService } from '../../../services/request.service';
 import { from } from 'rxjs';
+import { VehicleManagement } from 'src/app/interfaces/vehicle-management';
 
 @Component({
   selector: 'app-requests',
@@ -11,19 +12,49 @@ export class RequestsComponent implements OnInit {
 
   Vehicles: Array<any>;
 
-  constructor(private requestService: RequestService) {
+  constructor(private requestService: RequestService, private zone:NgZone) {
   }
+
+  // vehicle:VehicleManagement;
+  vehicle= new VehicleManagement();
 
   ngOnInit() {
 
-    this.requestService.findallrequested().subscribe(data => {
-      this.Vehicles = data
-      console.log(this.Vehicles)
-      console.log('xyz')
-    });
-
-
-
+  //   setInterval(()=>{
+  //     this.requestService.findallrequested().subscribe(data => {
+  //       this.zone.run(()=>{
+  //         this.Vehicles = data
+  //       console.log(this.Vehicles)
+  //       console.log('xyz')
+  //       })
+      
+  //   }), 12000
+  // });
+  this.requestService.findallrequested().subscribe(data => {
+          this.zone.run(()=>{
+            this.Vehicles = data
+          console.log(this.Vehicles)
+          console.log('xyz')
+          })
+        
+      });
+      
   }
+  AcceptRequest(data) {
+    
+    this.vehicle = data;
+    this.vehicle.requestStatus='Accepted';
+    console.log(this.vehicle);
+    this.requestService.sendAccept(this.vehicle).subscribe();
+  }
+
+  RejectRequest(data){
+    this.vehicle = data
+    this.vehicle.requestStatus='Rejected';
+    console.log(this.vehicle);
+    this.requestService.sendReject(this.vehicle).subscribe();
+  }
+
+
 
 }

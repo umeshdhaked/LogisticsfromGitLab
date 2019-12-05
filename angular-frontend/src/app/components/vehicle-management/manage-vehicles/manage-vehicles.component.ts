@@ -49,7 +49,7 @@ export class ManageVehiclesComponent implements OnInit {
   // applyFilter(filterValue: string) {
   //   this.dataSource.filter = filterValue.trim().toLowerCase();
   // }
-  time=9;
+  time=6;
   slot1;
   slot2;
   slot3;
@@ -95,17 +95,17 @@ export class ManageVehiclesComponent implements OnInit {
 
     if (this.time <= 7 || this.time > 15) {
       this.slot1 = "Available";
-      this.slot2 = "Not Available";
-      this.slot3 = "Not Available";
+      this.slot2 = "Available";
+      this.slot3 = "Available";
     }
     else if (this.time > 7 && this.time <= 11 ) {
-      this.slot1 = "Not Available";
+      this.slot1 = "Available";
       this.slot2 = "Available";
-      this.slot3 = "Not Available";
+      this.slot3 = "Available";
     }
     else if (this.time > 11 && this.time <=15) {
-      this.slot1 = "Not Available";
-      this.slot2 = "Not Available";
+      this.slot1 = "Available";
+      this.slot2 = "Available";
       this.slot3 = "Available";
     }
 

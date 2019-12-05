@@ -20,7 +20,7 @@ export class ViewProfileComponent implements OnInit {
   }
 
   decodedData: DecodedJwtData;
-  retailerObj: Retailerdetails
+  retailerObj: Retailerdetails;
   picurl = '';
   docurl = '';
   check = '';
