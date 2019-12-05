@@ -25,6 +25,7 @@ export class SignupComponent implements OnInit {
   }
 
   registerNewUser(firstName, lastName, email, role, mobile) {
+    console.log(role)
     if (firstName != "" && lastName != "" && email != "" && role != "none") {
       this.regService.registerNewUser(firstName, lastName, email, role, mobile).subscribe((data) => {
         this.zone.run(() => {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, NgZone} from '@angular/core';
 import { RequestService } from '../../../services/request.service';
 import { from } from 'rxjs';
 import { VehicleManagement } from 'src/app/interfaces/vehicle-management';
@@ -12,39 +12,47 @@ export class RequestsComponent implements OnInit {
 
   Vehicles: Array<any>;
 
-  constructor(private requestService: RequestService) {
+  constructor(private requestService: RequestService, private zone:NgZone) {
   }
 
-  vehicle:VehicleManagement;
+  // vehicle:VehicleManagement;
+  vehicle= new VehicleManagement();
 
   ngOnInit() {
 
-    this.requestService.findallrequested().subscribe(data => {
-      this.Vehicles = data
-      console.log(this.Vehicles)
-      console.log('xyz')
-    });
-
-
-
+  //   setInterval(()=>{
+  //     this.requestService.findallrequested().subscribe(data => {
+  //       this.zone.run(()=>{
+  //         this.Vehicles = data
+  //       console.log(this.Vehicles)
+  //       console.log('xyz')
+  //       })
+      
+  //   }), 12000
+  // });
+  this.requestService.findallrequested().subscribe(data => {
+          this.zone.run(()=>{
+            this.Vehicles = data
+          console.log(this.Vehicles)
+          console.log('xyz')
+          })
+        
+      });
+      
+  }
+  AcceptRequest(data) {
+    
+    this.vehicle = data;
+    this.vehicle.requestStatus='Accepted';
+    console.log(this.vehicle);
+    this.requestService.sendAccept(this.vehicle).subscribe();
   }
 
-abv;
-
-  AcceptRequest(data) {
- this.vehicle = data
-    // this.vehicle.capacity = data.capacity;
-    // this.vehicle.companyName = data.companyName;
-    // this.vehicle.costPerSlot = data.costPerSlot;
-    // this.vehicle.driverName = data.driverName;
-    // this.vehicle.retailerId = data.retailerId;
-    // this.vehicle.id = data.id;
-    // this.vehicle.slot = data.slot;
-    // this.vehicle.vehicleNumber = data.vehicleNumber;
-    // this.vehicle.vehicleStatus = data.vehicleStatus;
-    // this.vehicle.vehicleType = data.vehicleType;
+  RejectRequest(data){
+    this.vehicle = data
+    this.vehicle.requestStatus='Rejected';
     console.log(this.vehicle);
-    this.requestService.sendAcceptRequest(this.vehicle).subscribe();
+    this.requestService.sendReject(this.vehicle).subscribe();
   }
 
 
