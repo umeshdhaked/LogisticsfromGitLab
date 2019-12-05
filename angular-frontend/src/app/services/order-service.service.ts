@@ -43,19 +43,19 @@ export class OrderServiceService {
 
   getAllOrderData(retailerEmail) {
     // let url = 'assets/static/orders.json';
-    let url = environment.apiUrl + ":8084/orders/findAllOrdersOfRetailer?retailerEmail=" + retailerEmail
+    let url = environment.apiUrl + ":8084/orders/findAllOrdersOfRetailer?retailerId=" + retailerEmail
     return this.http.get<Order[]>(url);
   }
 
   getCompletedOrders(retailerEmail) {
     // let url = 'assets/static/delivered.json';
-    let url = environment.apiUrl + ":8084/orders/findOrdersByStatus?retailerEmail=" + retailerEmail + "&orderStatus=delivered"
+    let url = environment.apiUrl + ":8084/orders/findOrdersByStatus?retailerId=" + retailerEmail + "&orderStatus=delivered"
     return this.http.get<Order[]>(url);
   }
 
   getPendingOrders(retailerEmail) {
     //let url = 'assets/static/pending.json';
-    let url = environment.apiUrl + ":8084/orders/findOrdersByStatus?retailerEmail=" + retailerEmail + "&orderStatus=pending"
+    let url = environment.apiUrl + ":8084/orders/findOrdersByStatus?retailerId=" + retailerEmail + "&orderStatus=pending"
     return this.http.get<Order[]>(url);
   }
 }

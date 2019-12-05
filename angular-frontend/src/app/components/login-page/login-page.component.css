@@ -29,10 +29,14 @@
   margin: 0 auto;
 
 }
+
+
 .loginSignUpSeparator .textInSeparator {
-  background-color: #fff;
-  padding: 0 .5em;
-  position: relative;
-  color: #6c7378;
-  top: -.7em;
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
 }

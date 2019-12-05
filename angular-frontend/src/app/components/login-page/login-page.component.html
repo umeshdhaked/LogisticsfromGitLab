@@ -1,27 +1,26 @@
 <div class="fullScreen">
   <div class="Text-container container">
     <br><br>
-    <h2>Login</h2>
-    <mat-form-field>
+    <p>Get Started</p>
+    <h3>Sign in to Wysser</h3>
+    <mat-form-field style="padding: 5px;">
       <input #email matInput placeholder="Email" required>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field style="padding: 5px;">
       <input #password matInput placeholder="Password" required type="password">
     </mat-form-field>
-    <a routerLink="/resetPassword"><p class="text-center" >Forgot Password?</p></a>
+    <a routerLink="/resetPassword" ><p class="text-center" style="font-size: smaller;">Forgot Password?</p></a>
     
     
-    <button class="btn btn-outline-danger check"
-            (click)="validateLogin(email.value,password.value)" routerLink="/login"><b> Login </b>
+    <button style="width: 50%;margin: auto;" class="btn btn-outline-danger check"
+            (click)="validateLogin(email.value,password.value)" routerLink="/login"><b> Sign in </b>
     </button>
-    <div class="loginSignUpSeparator">
-      <span class="textInSeparator">or</span>
-    </div>
 
-    <button class="btn btn-outline-primary check"
-            (click)="validateLogin(email.value,password.value)" routerLink="/signup"><b> Signup </b>
-    </button>
+    <hr>
+ 
+    <p >New to us, <a (click)="validateLogin(email.value,password.value)" routerLink="/signup">Register</a>
+    </p>
     <br>
         <p style="color: brown;"> {{loginMessage}} </p>
         
