@@ -7,6 +7,8 @@ services:
     container_name: mongo-container
     network_mode: host
     restart: always
+    volumes:
+      - /db-data:/var/lib/mongodb
   neo4j:
     image: neo4j:latest
     container_name: neo4j

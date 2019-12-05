@@ -111,6 +111,22 @@ public class VehicleController<VehicleDao> {
     }
 
 
+    @PostMapping("Reject")
+
+    @CrossOrigin
+    public ResponseEntity<?> SendRejectedVehicle(@RequestBody Vehicle vehicle) throws VehicleAlreadyExistsException {
+
+        System.out.println("values");
+
+        System.out.println("id = "+vehicle.getId());
+        System.out.println(vehicle.toString());
+        ResponseEntity responseEntity;
+        vehicleService.saveVehicle(vehicle);
+        responseEntity = new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
+        return responseEntity;
+    }
+
+
 
 
     @GetMapping("vehicle")
