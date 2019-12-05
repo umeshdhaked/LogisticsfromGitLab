@@ -67,15 +67,13 @@ export class RetailerDashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    var decoded = {
-      "userId": ""
-    }
+  
     let token = localStorage.getItem('token');
 
 
     if (token != null) {
-      decoded = jwt_decode(token);
-      this.retailerEmail = decoded.userId;
+      this.decodedData = jwt_decode(token);
+      this.retailerEmail = this.decodedData.sub;
     }
     this.orderService.getAllOrderData(this.retailerEmail).subscribe(data =>
       this.zone.run(() => {

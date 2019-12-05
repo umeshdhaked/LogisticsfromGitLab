@@ -12,7 +12,7 @@ import { DecodedJwtData } from 'src/app/interfaces/decoded-jwt-data';
 export class ViewProfileComponent implements OnInit {
 
 
-
+  companyName;
 
 
 
@@ -27,6 +27,9 @@ export class ViewProfileComponent implements OnInit {
 
 
   ngOnInit() {
+
+
+    this.companyName = "";
 
     let token = localStorage.getItem('token');
     let email = '';
@@ -44,8 +47,13 @@ export class ViewProfileComponent implements OnInit {
       this.picurl = 'data:' + this.retailerObj.profilePicType + ';base64,' + this.retailerObj.profilePic;
       this.docurl = 'data:' + this.retailerObj.docPicType + ';base64,' + this.retailerObj.docPic;
       this.check = '.'
+
+      if(this.retailerObj != null){
+        this.companyName = this.retailerObj.companyName; 
+      }
     });
   }
+
 
 
 }

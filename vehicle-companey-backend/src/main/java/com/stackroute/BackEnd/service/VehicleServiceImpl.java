@@ -58,6 +58,12 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
+    public Vehicle updateVehicle(Vehicle vehicle) {
+
+        return vehicleRepository.save(vehicle);
+    }
+
+    @Override
     public boolean deleteVehicle(BigInteger vehicleId) {
         vehicleRepository.deleteById(vehicleId);
 
