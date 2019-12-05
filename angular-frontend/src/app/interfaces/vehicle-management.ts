@@ -1,4 +1,4 @@
-export interface VehicleManagement {
+export class VehicleManagement {
    id: number;
   vehicleNumber: string;
   driverName: string;
@@ -14,4 +14,5 @@ export interface VehicleManagement {
   companyName: string;
   slot: string;
   retailerId: number;
+  requestStatus: string;
 }

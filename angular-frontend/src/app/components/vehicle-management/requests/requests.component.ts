@@ -15,36 +15,32 @@ export class RequestsComponent implements OnInit {
   constructor(private requestService: RequestService) {
   }
 
-  vehicle:VehicleManagement;
+  // vehicle:VehicleManagement;
+  vehicle= new VehicleManagement();
 
   ngOnInit() {
 
     this.requestService.findallrequested().subscribe(data => {
       this.Vehicles = data
-      console.log(this.Vehicles)
-      console.log('xyz')
+    
     });
 
 
 
   }
-
-abv;
-
   AcceptRequest(data) {
- this.vehicle = data
-    // this.vehicle.capacity = data.capacity;
-    // this.vehicle.companyName = data.companyName;
-    // this.vehicle.costPerSlot = data.costPerSlot;
-    // this.vehicle.driverName = data.driverName;
-    // this.vehicle.retailerId = data.retailerId;
-    // this.vehicle.id = data.id;
-    // this.vehicle.slot = data.slot;
-    // this.vehicle.vehicleNumber = data.vehicleNumber;
-    // this.vehicle.vehicleStatus = data.vehicleStatus;
-    // this.vehicle.vehicleType = data.vehicleType;
+    
+    this.vehicle = data;
+    this.vehicle.requestStatus='Accepted';
     console.log(this.vehicle);
-    this.requestService.sendAcceptRequest(this.vehicle).subscribe();
+    this.requestService.sendAccept(this.vehicle).subscribe();
+  }
+
+  RejectRequest(data){
+    this.vehicle = data
+    this.vehicle.requestStatus='Rejected';
+    console.log(this.vehicle);
+    this.requestService.sendReject(this.vehicle).subscribe();
   }
 
 
