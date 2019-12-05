@@ -12,12 +12,16 @@ public interface VehicleRepository extends MongoRepository<Vehicle, BigInteger> 
 //    Query querrytest= new Query();
 //    querrytest.addCriteria();
 //
-   @Query("{'capacity': ?0 ,'slot1': ?1}")
-   public List<Vehicle> findbydateandslot1(int capacity,String slot1);
-   @Query("{'capacity': ?0,'slot2': ?1}")
-   public List<Vehicle> findbydateandslot2(int capacity,String slot2);
-   @Query("{'capacity': ?0,'slot2': ?1}")
-   public List<Vehicle> findbydateandslot3(int capacity,String slot3);
+//    @Query("{'capacity': ?0 ,'slot1': ?1}")
+//    public List<Vehicle> findbydateandslot1(int capacity,String slot1);
+//    @Query("{'capacity': ?0,'slot2': ?1}")
+//    public List<Vehicle> findbydateandslot2(int capacity,String slot2);
+//    @Query("{'capacity': ?0,'slot2': ?1}")
+//    public List<Vehicle> findbydateandslot3(int capacity,String slot3);
+
+   public List<Vehicle> findByCapacityAndSlot1(int capacity, String slot1);
+   public List<Vehicle> findByCapacityAndSlot2(int capacity, String slot2);
+   public List<Vehicle> findByCapacityAndSlot3(int capacity, String slot3);
 //
 //
 //
