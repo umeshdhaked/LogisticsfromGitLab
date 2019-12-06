@@ -111,6 +111,7 @@ import { VehicleCompanyProfileComponent } from './components/vehicle-company-pro
 import { TermsComponent } from './components/terms/terms.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { PendingVehicleRequestComponent } from './components/pending-vehicle-request/pending-vehicle-request.component';
+import { FaqComponent } from './components/faq/faq.component';
 
 
 @NgModule({
@@ -160,7 +161,8 @@ import { PendingVehicleRequestComponent } from './components/pending-vehicle-req
     VehicleCompanyProfileComponent,
     TermsComponent,
     ResetPasswordComponent,
-    PendingVehicleRequestComponent
+    PendingVehicleRequestComponent,
+    FaqComponent
   ],
 
   imports: [
