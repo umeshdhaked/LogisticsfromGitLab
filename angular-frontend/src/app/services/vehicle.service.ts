@@ -44,6 +44,8 @@ export class VehicleService {
     // vehicle.id = this.upersons.length + 1;
     this.upersons.push(vehicle);
 
+   
+
     const uri = environment.apiUrl + ':8095/api/v1/vehicle';
 
     this.http.post(uri, vehicle).subscribe();

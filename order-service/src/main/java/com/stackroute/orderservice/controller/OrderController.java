@@ -20,9 +20,9 @@ public class OrderController {
     ResponseEntity responseEntity;
 
     @GetMapping("/slots")
-    public ResponseEntity<?> getAvailableSlots(@RequestParam("date") String date) {
+    public ResponseEntity<?> getAvailableSlots(@RequestParam("retailerId") int retailerId) {
         try {
-            responseEntity = new ResponseEntity<DateDemand>(orderService.checkSlotAvailability(date), HttpStatus.OK);
+            responseEntity = new ResponseEntity<DateDemand>(orderService.checkSlotAvailability(retailerId), HttpStatus.OK);
         } catch (Exception e) {
             responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
         }

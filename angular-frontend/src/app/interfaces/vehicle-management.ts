@@ -1,5 +1,5 @@
 export class VehicleManagement {
-   id: number;
+  id: number;
   vehicleNumber: string;
   driverName: string;
   vehicleType: string;
@@ -14,4 +14,5 @@ export class VehicleManagement {
   slot: string;
   retailerId: number;
   requestStatus: string;
+  remainingCapacity: number;
 }

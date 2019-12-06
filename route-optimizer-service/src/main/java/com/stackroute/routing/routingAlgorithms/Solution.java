@@ -4,7 +4,6 @@ import com.stackroute.routing.domain.Order;
 import com.stackroute.routing.domain.Vehicle;
 import com.stackroute.routing.repository.DepotRepository;
 import com.stackroute.routing.repository.OrderRepository;
-import com.stackroute.routing.repository.VehicleRepository;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ public class Solution
 {
     private DepotRepository depotRepository;
     private OrderRepository orderRepository;
-    private VehicleRepository vehicleRepository;
     int NoOfVehicles;
     int NoOfCustomers;
     VehicleNode[] vehicleNodes;
@@ -34,10 +32,9 @@ public class Solution
 
 
     @Autowired
-    public Solution(DepotRepository depotRepository, OrderRepository orderRepository, VehicleRepository vehicleRepository) {
+    public Solution(DepotRepository depotRepository, OrderRepository orderRepository) {
         this.depotRepository = depotRepository;
         this.orderRepository = orderRepository;
-        this.vehicleRepository = vehicleRepository;
     }
 
     public void solution(int CustNum, int VechNum, long[] VechCap)
@@ -509,7 +506,7 @@ public class Solution
         } catch (Exception e) {}
     }
 
-    public JSONObject SolutionPrint(String Solution_Label, Vehicle[] Vehicles, JSONArray coordinates, int wholesalerId, Order[] Orders)//Print Solution In console
+    public JSONObject SolutionPrint(String Solution_Label, Vehicle[] Vehicles, JSONArray coordinates, int wholesalerId, Order[] Orders,String depotAddress)//Print Solution In console
     {
         System.out.println("=========================================================");
         System.out.println(Solution_Label+"\n");
@@ -521,7 +518,7 @@ public class Solution
             JSONArray sortedOrders =new JSONArray();
             values.put("wholesalerId",wholesalerId);
 
-            values.put("depotAddress",depotRepository.findByWholesalerId(wholesalerId).getDepotAddress());
+            values.put("depotAddress",depotAddress);
             values.put("depotLatitude",coordinates.getJSONObject(0).getFloat("latitude"));
             values.put("depotLongitude",coordinates.getJSONObject(0).getFloat("longitude"));
             System.out.println("Route length:"+vehicleNodes[j].Route.size());

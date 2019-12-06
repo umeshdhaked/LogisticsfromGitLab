@@ -6,10 +6,10 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface VehicleRepository extends MongoRepository<Vehicle, Integer> {
-
-
-    @Query("{vehicleNumber : ?0}")
-    Vehicle findByVehicleNumber(String vehicleNumber);
-}
+//@Repository
+//public interface VehicleRepository extends MongoRepository<Vehicle, Integer> {
+//
+//
+//    @Query("{vehicleNumber : ?0}")
+//    Vehicle findByVehicleNumber(String vehicleNumber);
+//}

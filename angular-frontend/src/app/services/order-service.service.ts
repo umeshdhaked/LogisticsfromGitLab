@@ -14,8 +14,8 @@ export class OrderServiceService {
   constructor(private http: HttpClient) {
   }
 
-  checkSlots(deliveryDate): Observable<DateDemand> {
-    let url = environment.apiUrl + ':8084/orders/slots?date=' + deliveryDate;
+  checkSlots(retailerId): Observable<DateDemand> {
+    let url = environment.apiUrl + ':8084/orders/slots?retailerId=' + retailerId;
     return this.http.get<DateDemand>(url);
   }
 
