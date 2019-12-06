@@ -215,4 +215,15 @@ public class retailervehicledemandcontroller {
         }
         return responseEntity;
     }
+
+    @GetMapping(value = "searchByRetailerIdAndSlot/{retailerId}/{slot}")
+    public ResponseEntity<BigInteger> searchbyretaileridandslot(@PathVariable("retailerId") int retailerId, @PathVariable("slot") String slot) {
+        ResponseEntity responseEntity;
+        try {
+            responseEntity = new ResponseEntity(vehicledemandservice.findByRetailerIdAndSlot(retailerId, slot), HttpStatus.OK);
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
 }
