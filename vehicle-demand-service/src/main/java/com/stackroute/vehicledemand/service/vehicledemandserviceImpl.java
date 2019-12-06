@@ -12,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.ListIterator;
 
 @Service
 public class vehicledemandserviceImpl implements vehicledemandservice {
@@ -77,4 +80,20 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
     public List<rejectedRetailerRequest> findByRetailerIdinrejectedlist(int retailerId) {
         return this.rejectedRetailerDemand.findByRetailerIdinrejected(retailerId);
     }
+
+    @Override
+    public List<acceptedRetailerRequest> addordertoSlotvehicle(int retailerId, String slot,int volumebooked) {
+         List<acceptedRetailerRequest> bookedVehicles= this.acceptedRetailerDemandRepository.findByRetailerIdAndSlot(retailerId,slot);
+         List<acceptedRetailerRequest> sortedtemp;
+         List<acceptedRetailerRequest> bookedvehiclesarraylist= new ArrayList<acceptedRetailerRequest>();
+         Object[] bookedvehiclesarray= bookedvehiclesarraylist.toArray();
+        ListIterator<acceptedRetailerRequest> iterator = bookedVehicles.listIterator();
+
+
+        while (iterator1.hasNext()) {
+
+        }
+    }
+
+
 }
