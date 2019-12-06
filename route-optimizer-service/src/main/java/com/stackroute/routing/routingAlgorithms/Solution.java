@@ -2,7 +2,7 @@ package com.stackroute.routing.routingAlgorithms;
 
 import com.stackroute.routing.domain.Order;
 import com.stackroute.routing.domain.Vehicle;
-import com.stackroute.routing.repository.DepotRepository;
+//import com.stackroute.routing.repository.DepotRepository;
 import com.stackroute.routing.repository.OrderRepository;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,7 +17,7 @@ import java.util.Random;
 @Service
 public class Solution
 {
-    private DepotRepository depotRepository;
+//    private DepotRepository depotRepository;
     private OrderRepository orderRepository;
     int NoOfVehicles;
     int NoOfCustomers;
@@ -32,8 +32,7 @@ public class Solution
 
 
     @Autowired
-    public Solution(DepotRepository depotRepository, OrderRepository orderRepository) {
-        this.depotRepository = depotRepository;
+    public Solution( OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 
@@ -511,6 +510,7 @@ public class Solution
         System.out.println("=========================================================");
         System.out.println(Solution_Label+"\n");
 
+        JSONObject Routes =new JSONObject();
         JSONObject routes =new JSONObject();
         for (int j=0 ; j < NoOfVehicles ; j++)
         {
@@ -553,10 +553,11 @@ public class Solution
                 routes.put(Vehicles[j].getVehicleNumber(),values);
             }
         }
-        routes.put("distance",Cost);
+        Routes.put("routes",routes);
+        Routes.put("distance",Cost);
         System.out.println("\nSolution Cost "+this.Cost+"\n");
 
-        return routes;
+        return Routes;
     }
 }
 

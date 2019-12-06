@@ -12,7 +12,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Document
 @Data
 public class Order {
-    private static final AtomicInteger counter = new AtomicInteger();
 
 
     @Id

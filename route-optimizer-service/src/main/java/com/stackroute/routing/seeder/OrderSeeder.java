@@ -26,7 +26,7 @@ public class OrderSeeder  implements CommandLineRunner {
         order.setCustomerAddress("marathahalli");
         order.setOrderId(2);
         order.setOrderVolume(20);
-        order.setSlotNumber("1");
+        order.setSlot("1");
 
         order.setOrderStatus("free");
 
