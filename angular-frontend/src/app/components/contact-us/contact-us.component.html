@@ -1,1 +1,70 @@
-<p>contact-us works!</p>
+
+<br>
+<br>
+    <section class="Material-contact-section section-padding section-dark">
+      <div class="container">
+          <div class="row">
+              <!-- Section Titile -->
+              <div class="col-md-12">
+                  <h1 class="section-title">Love to Hear From You</h1>
+              </div>
+          </div>
+          <div class="row">
+              <!-- Section Titile -->
+              <div class="col-md-6 mt-3">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla modi inventore repellendus atque, corporis iste voluptatibus dolorem iusto autem delectus architecto, aut fugiat, labore dolorum eos nostrum assumenda excepturi! Officiis?
+                    
+                </p>
+                <div>
+                 Company:  <a href="#">Wysser</a>
+                </div>
+                <div>
+                 Address: <a href="#">38, 4th B Cross Rd, Koramangala 5th Block, Koramangala Industrial
+                    Layout, Near JNC College Rd, Bengaluru, Karnataka 560095</a>
+                </div>
+                <div>
+                  Phone:  <a href="#">+ 879-890-9767</a>
+                </div>
+                
+                <div>
+                  Website:  <a href="#">www.wysser.com</a>
+                </div>
+              </div>
+              <!-- contact form -->
+              <div class="col-md-6 ">
+                  <form class="shake" role="form" method="post" id="contactForm" name="contact-form" data-toggle="validator">
+                      <!-- Name -->
+                      <div class="form-group label-floating">
+                        <label class="control-label" for="name">Name</label>
+                        <input class="form-control" id="name" type="text" name="name" required data-error="Please enter your name">
+                        <div class="help-block with-errors"></div>
+                      </div>
+                      <!-- email -->
+                      <div class="form-group label-floating">
+                        <label class="control-label" for="email">Email</label>
+                        <input class="form-control" id="email" type="email" name="email" required data-error="Please enter your Email">
+                        <div class="help-block with-errors"></div>
+                      </div>
+                      <!-- Subject -->
+                      <div class="form-group label-floating">
+                        <label class="control-label">Subject</label>
+                        <input class="form-control" id="msg_subject" type="text" name="subject" required data-error="Please enter your message subject">
+                        <div class="help-block with-errors"></div>
+                      </div>
+                      <!-- Message -->
+                      <div class="form-group label-floating">
+                          <label for="message" class="control-label">Message</label>
+                          <textarea class="form-control" rows="3" id="message" name="message" required data-error="Write your message"></textarea>
+                          <div class="help-block with-errors"></div>
+                      </div>
+                      <!-- Form Submit -->
+                      <div class="form-submit mt-5">
+                          <button class="btn btn-outline-danger" type="submit" id="form-submit"><i class="material-icons mdi mdi-message-outline"></i> Send Message</button>
+                          <div id="msgSubmit" class="h3 text-center hidden"></div>
+                          <div class="clearfix"></div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+    </section>

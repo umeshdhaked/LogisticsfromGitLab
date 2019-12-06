@@ -42,6 +42,7 @@
                             <th class="text-center">Capacity(lit)</th>
                             <th class="text-center">Cost Per Slot(Rs)</th>
                             <th class="text-center">Vehicle Status</th>
+                            <th class="text-center">Company Name</th>
                             <th class="text-center">Edit/Delete</th>
                             <!-- <th class="text-center">&nbsp;</th> -->
                         </tr>
@@ -59,6 +60,7 @@
                             <td>{{ vehicle.capacity }}</td>
                             <td>{{ vehicle.costPerSlot }}</td>
                             <td [ngStyle]="{'color':vehicle.vehicleStatus === 'Good Condition' ? 'green' : 'red' }">{{ vehicle.vehicleStatus }}</td>
+                            <td>{{cName }}</td>
 
                             <td>
                                 <button class="btn btn-info mr-2" (click)="showEditVehicleForm(vehicle)">
