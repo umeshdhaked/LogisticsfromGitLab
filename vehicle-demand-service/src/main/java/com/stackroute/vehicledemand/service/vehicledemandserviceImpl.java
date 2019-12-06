@@ -88,10 +88,12 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
     @Override
 
     public List<acceptedRetailerRequest> updateremainingvolumeinvehicle(int retailerId, String slot,int volumebooked) {
-         List<acceptedRetailerRequest> bookedVehicles= this.acceptedRetailerDemandRepository.findByRetailerIdAndSlot(retailerId,slot);
+         System.out.println(retailerId+slot);
+         List<acceptedRetailerRequest> bookedVehicles= this.acceptedRetailerDemandRepository.findByRetailerIdAndSlot(retailerId, slot);
+         System.out.println(bookedVehicles.toString());
          List<acceptedRetailerRequest> sortedtemp = new ArrayList<acceptedRetailerRequest>();
          List<acceptedRetailerRequest> bookedvehiclesarraylist= new ArrayList<acceptedRetailerRequest>();
-         acceptedRetailerRequest[] bookedvehiclesarray= (acceptedRetailerRequest[]) bookedvehiclesarraylist.toArray();
+         acceptedRetailerRequest[] bookedvehiclesarray= bookedVehicles.toArray(new acceptedRetailerRequest[bookedVehicles.size()]);
         acceptedRetailerRequest tempobj = new acceptedRetailerRequest();
          for(int i=0;i<bookedvehiclesarray.length;i++){
 //             int temp=bookedvehiclesarray[i].getCapacity();
@@ -105,14 +107,15 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
              }
 //             sortedtemp.add(bookedvehiclesarray[i]);
          }
-
+        //  System.out.println(bookedvehiclesarray[0].toString());
 //        sortedtemp= Arrays.asList(bookedvehiclesarray);
          for(int i=0;i<bookedvehiclesarray.length;i++){
-             if(bookedvehiclesarray[i].getCapacity()>= volumebooked){
-                 int temp=bookedvehiclesarray[i].getRemaningCapacity()-volumebooked;
-                 bookedvehiclesarray[i].setRemaningCapacity(temp);
+             if(bookedvehiclesarray[i].getRemainingCapacity()>= volumebooked){
+                 int temp=bookedvehiclesarray[i].getRemainingCapacity()-volumebooked;
+                 bookedvehiclesarray[i].setRemainingCapacity(temp);
                 acceptedRetailerRequest particularvehicle= acceptedRetailerDemandRepository.findByRetailerIdAndVehicleNumber(bookedvehiclesarray[i].getRetailerId(),bookedvehiclesarray[i].getVehicleNumber());
                 acceptedRetailerDemandRepository.save(particularvehicle);
+                break;
 
              }
          }
