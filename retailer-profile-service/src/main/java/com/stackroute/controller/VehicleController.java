@@ -43,5 +43,21 @@ public class VehicleController {
         return vehicleCompanyService.getAllVehicleCompanyProfile();
     }
 
+    @GetMapping("/findById")
+    @CrossOrigin
+    public VehicleCompanyProfile getProfileById(@RequestParam("id") int id){
+        return vehicleCompanyService.getProfileById(id);
+    }
+
+
+
+    @DeleteMapping("/deleteAccount")
+    @CrossOrigin
+    public void deleteHandler(@RequestParam("id") int id ){
+        System.out.println("delete this id acc = "+id);
+
+        vehicleCompanyService.deleteAccount(id);
+    }
+
 
 }
