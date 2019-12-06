@@ -14,4 +14,5 @@ public interface AcceptedRetailerDemandRepository extends MongoRepository<accept
     public List<acceptedRetailerRequest> findByRetailerIdAndSlot(int retailerId,String slot);
     public acceptedRetailerRequest findByRetailerIdAndVehicleNumber(int retailerId,String vehicleNumber);
     public List<acceptedRetailerRequest> findByRetailerId(int retailerId);
+   // public List<acceptedRetailerRequest> findByRetailerIdAndSlot(int retailerId, String slot);
 }

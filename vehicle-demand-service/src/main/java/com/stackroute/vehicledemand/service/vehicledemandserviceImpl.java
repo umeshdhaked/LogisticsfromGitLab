@@ -86,6 +86,7 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
     }
 
     @Override
+
     public List<acceptedRetailerRequest> updateremainingvolumeinvehicle(int retailerId, String slot,int volumebooked) {
          List<acceptedRetailerRequest> bookedVehicles= this.acceptedRetailerDemandRepository.findByRetailerIdAndSlot(retailerId,slot);
          List<acceptedRetailerRequest> sortedtemp = new ArrayList<acceptedRetailerRequest>();
@@ -117,6 +118,23 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
          }
          return Arrays.asList(bookedvehiclesarray);
     }
+
+    public List<acceptedRetailerRequest> findByRetailerIdAndSlot(int retailerId, String slot) {
+        return this.acceptedRetailerDemandRepository.findByRetailerIdAndSlot(retailerId, slot);
+    }
+//    @Override
+//    public List<acceptedRetailerRequest> addordertoSlotvehicle(int retailerId, String slot,int volumebooked) {
+//         List<acceptedRetailerRequest> bookedVehicles= this.acceptedRetailerDemandRepository.findByRetailerIdAndSlot(retailerId,slot);
+//         List<acceptedRetailerRequest> sortedtemp;
+//         List<acceptedRetailerRequest> bookedvehiclesarraylist= new ArrayList<acceptedRetailerRequest>();
+//         Object[] bookedvehiclesarray= bookedvehiclesarraylist.toArray();
+//        ListIterator<acceptedRetailerRequest> iterator = bookedVehicles.listIterator();
+
+
+//        while (iterator1.hasNext()) {
+
+//        }
+//    }
 
 
 }

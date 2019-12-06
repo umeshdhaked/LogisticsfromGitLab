@@ -20,9 +20,14 @@ public interface vehicledemandservice {
     public List<newRetailerDemand> searchbyretailerId(int id);
     public List<rejectedRetailerRequest> findByRetailerIdinrejectedlist(int retailerId);
 
+
     public List<acceptedRetailerRequest> updateremainingvolumeinvehicle(int retailerId,String slot,int volumeBooked);
 
     public List<acceptedRetailerRequest> findByRetailerIdinacceptedlist(int retailerId);
 
+
+   // public List<acceptedRetailerRequest> addordertoSlotvehicle(int retailerId,String slot,int volumeBooked);
+//    public List<acceptedRetailerRequest> findByRetailerIdinacceptedlist(int retailerId);
+    public List<acceptedRetailerRequest> findByRetailerIdAndSlot(int retailerId, String slot);
 
 }
