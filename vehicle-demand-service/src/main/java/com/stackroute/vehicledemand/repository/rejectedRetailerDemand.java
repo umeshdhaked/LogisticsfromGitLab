@@ -11,5 +11,5 @@ import java.util.List;
 
 @Repository
 public interface rejectedRetailerDemand extends MongoRepository<rejectedRetailerRequest, BigInteger> {
-    public List<rejectedRetailerRequest> findByRetailerIdinrejected(int retailerId);
+    public List<rejectedRetailerRequest> findByRetailerId(int retailerId);
 }

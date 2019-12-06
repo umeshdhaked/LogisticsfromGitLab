@@ -25,6 +25,7 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
     AcceptedRetailerDemandRepository acceptedRetailerDemandRepository;
     @Autowired
     rejectedRetailerDemand rejectedRetailerDemand;
+    
 
     @Override
     public retailerdemand savenewvehicledemand(retailerdemand retailerdemand) {
@@ -75,6 +76,11 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
 
     @Override
     public List<rejectedRetailerRequest> findByRetailerIdinrejectedlist(int retailerId) {
-        return this.rejectedRetailerDemand.findByRetailerIdinrejected(retailerId);
+        return this.rejectedRetailerDemand.findByRetailerId(retailerId);
+    }
+
+    @Override
+    public List<acceptedRetailerRequest> findByRetailerIdinacceptedlist(int retailerId) {
+        return this.acceptedRetailerDemandRepository.findByRetailerId(retailerId);
     }
 }
