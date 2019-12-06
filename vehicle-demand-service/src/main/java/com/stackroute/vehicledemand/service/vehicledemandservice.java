@@ -19,10 +19,9 @@ public interface vehicledemandservice {
     public rejectedRetailerRequest savenewrejectedVehicleDemand(rejectedRetailerRequest rejectedRetailerRequest);
     public List<newRetailerDemand> searchbyretailerId(int id);
     public List<rejectedRetailerRequest> findByRetailerIdinrejectedlist(int retailerId);
-<<<<<<< HEAD
+
     public List<acceptedRetailerRequest> addordertoSlotvehicle(int retailerId,String slot,int volumeBooked);
-=======
     public List<acceptedRetailerRequest> findByRetailerIdinacceptedlist(int retailerId);
->>>>>>> 668337944932b95726739813fb93331f7945b754
+    public List<acceptedRetailerRequest> findByRetailerIdAndSlot(int retailerId, String slot);
 
 }
