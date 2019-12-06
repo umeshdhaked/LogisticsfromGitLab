@@ -15,6 +15,8 @@ import {Retailerdetails} from "../../interfaces/retailerDetails";
   styleUrls: ['./retailer-dashboard.component.css']
 })
 export class RetailerDashboardComponent implements OnInit {
+
+  showLoginName='';
   retailerEmail: string = "";
   retailerId: string;
   orderData = [];
@@ -113,6 +115,7 @@ export class RetailerDashboardComponent implements OnInit {
       this.retailerObj = datas;
     });
   }
+
 
   populateLineChartData(orderData) {
     let uniqueDates = orderData.reduce(function (a, d) {
