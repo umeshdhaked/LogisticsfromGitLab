@@ -25,10 +25,6 @@ export class ManageVehiclesComponent implements OnInit {
   cName='';
 
 
-
-
-
-
   vehicles: VehicleManagement[];
   vehicleForm: boolean = false;
   isNewVehicle: boolean;
@@ -71,11 +67,7 @@ export class ManageVehiclesComponent implements OnInit {
   slot3;
 
 
-
-
   ngOnInit() {
-
-
 
     if(localStorage.getItem('token')!=null){
       this.dataFromToken= jwt_decode(localStorage.getItem('token'));
@@ -88,9 +80,6 @@ export class ManageVehiclesComponent implements OnInit {
         this.cName = ''+this.vehicleCompanyData.companyName;
       }
     })
-
-
-
 
     this.vehicleService.getAllVehicles().subscribe(data => {
       this.vehicles = data
@@ -125,8 +114,6 @@ export class ManageVehiclesComponent implements OnInit {
 
   saveVehicle(vehicle: VehicleManagement) {
 
-
-
     if (this.time <= 7 || this.time > 15) {
       this.slot1 = "Available";
       this.slot2 = "Available";
@@ -147,9 +134,11 @@ vehicle.slot1 = this.slot1;
 vehicle.slot2 = this.slot2;
 vehicle.slot3 = this.slot3;
 
+vehicle.companyName = ''+this.vehicleCompanyData.companyName;
 
 
     if (this.isNewVehicle) {
+    
       //add a new vehicle
       this.vehicleService.addVehicle(vehicle);
     }
@@ -177,9 +166,6 @@ vehicle.slot3 = this.slot3;
     this.newVehicle = {};
     this.vehicleForm = false;
   }
-
-
-
 }
 
 

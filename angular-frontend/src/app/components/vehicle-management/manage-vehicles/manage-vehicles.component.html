@@ -60,7 +60,7 @@
                             <td>{{ vehicle.capacity }}</td>
                             <td>{{ vehicle.costPerSlot }}</td>
                             <td [ngStyle]="{'color':vehicle.vehicleStatus === 'Good Condition' ? 'green' : 'red' }">{{ vehicle.vehicleStatus }}</td>
-                            <td>{{cName }}</td>
+                            <td>{{vehicle.companyName }}</td>
 
                             <td>
                                 <button class="btn btn-info mr-2" (click)="showEditVehicleForm(vehicle)">
