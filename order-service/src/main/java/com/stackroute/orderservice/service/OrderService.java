@@ -4,7 +4,7 @@ import com.stackroute.orderservice.domain.DateDemand;
 import com.stackroute.orderservice.domain.Order;
 import com.stackroute.orderservice.domain.TimeSlot;
 import org.json.simple.parser.ParseException;
-
+import com.stackroute.orderservice.domain.VehicleDemanded;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -18,7 +18,7 @@ public interface OrderService {
     Order saveOrder(Order order);
 
     //Should consume from time_slots topic
-    DateDemand checkSlotAvailability(String deliveryDate) throws ParseException;
+    DateDemand checkSlotAvailability(int retailerId) throws ParseException;
 
     List<Order> findOrdersByDateAndTimeSlot(String date, String timeslot);
 

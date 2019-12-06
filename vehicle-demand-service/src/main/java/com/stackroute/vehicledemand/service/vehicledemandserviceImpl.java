@@ -4,6 +4,8 @@ import com.stackroute.vehicledemand.domain.acceptedRetailerRequest;
 import com.stackroute.vehicledemand.domain.newRetailerDemand;
 import com.stackroute.vehicledemand.domain.rejectedRetailerRequest;
 import com.stackroute.vehicledemand.domain.retailerdemand;
+import com.stackroute.vehicledemand.domain.DateDemand;
+import com.stackroute.vehicledemand.domain.TimeSlot;
 import com.stackroute.vehicledemand.repository.AcceptedRetailerDemandRepository;
 import com.stackroute.vehicledemand.repository.newRetailerDemandRepository;
 import com.stackroute.vehicledemand.repository.rejectedRetailerDemand;
@@ -113,8 +115,8 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
              if(bookedvehiclesarray[i].getRemainingCapacity()>= volumebooked){
                  int temp=bookedvehiclesarray[i].getRemainingCapacity()-volumebooked;
                  bookedvehiclesarray[i].setRemainingCapacity(temp);
-                acceptedRetailerRequest particularvehicle= acceptedRetailerDemandRepository.findByRetailerIdAndVehicleNumber(bookedvehiclesarray[i].getRetailerId(),bookedvehiclesarray[i].getVehicleNumber());
-                acceptedRetailerDemandRepository.save(particularvehicle);
+                // acceptedRetailerRequest particularvehicle= acceptedRetailerDemandRepository.findByRetailerIdAndVehicleNumber(bookedvehiclesarray[i].getRetailerId(),bookedvehiclesarray[i].getVehicleNumber());
+                acceptedRetailerDemandRepository.save(bookedvehiclesarray[i]);
                 break;
 
              }
@@ -138,6 +140,23 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
 
 //        }
 //    }
+    public DateDemand[] findByRetailerIdForOrder(int retailerId){
+        List<acceptedRetailerRequest> vehicles = this.acceptedRetailerDemandRepository.findByRetailerId(retailerId);
+        int slot1Volume = 0, slot2Volume = 0, slot3Volume = 0;
+        for(acceptedRetailerRequest vehicle : vehicles){
+            if(vehicle.getSlot().equals("slot1")){
+                slot1Volume += vehicle.getRemainingCapacity();
+            }else if(vehicle.getSlot().equals("slot2")){
+                slot2Volume += vehicle.getRemainingCapacity();
+            }else{
+                slot3Volume += vehicle.getRemainingCapacity();
+            }
+        }
+        DateDemand[] dateDemand = {new DateDemand(
+            "today", new TimeSlot("11:00-13:00", slot1Volume), new TimeSlot("14:00-16:00", slot2Volume), new TimeSlot("17:00-19:00", slot3Volume)
+        )};
+        return dateDemand;
 
+    }
 
 }
