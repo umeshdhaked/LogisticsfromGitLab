@@ -87,19 +87,19 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
         return this.acceptedRetailerDemandRepository.findByRetailerId(retailerId);
     }
 
-    @Override
-    public List<acceptedRetailerRequest> addordertoSlotvehicle(int retailerId, String slot,int volumebooked) {
-         List<acceptedRetailerRequest> bookedVehicles= this.acceptedRetailerDemandRepository.findByRetailerIdAndSlot(retailerId,slot);
-         List<acceptedRetailerRequest> sortedtemp;
-         List<acceptedRetailerRequest> bookedvehiclesarraylist= new ArrayList<acceptedRetailerRequest>();
-         Object[] bookedvehiclesarray= bookedvehiclesarraylist.toArray();
-        ListIterator<acceptedRetailerRequest> iterator = bookedVehicles.listIterator();
-
-
-        while (iterator1.hasNext()) {
-
-        }
-    }
+//    @Override
+//    public List<acceptedRetailerRequest> addordertoSlotvehicle(int retailerId, String slot,int volumebooked) {
+//         List<acceptedRetailerRequest> bookedVehicles= this.acceptedRetailerDemandRepository.findByRetailerIdAndSlot(retailerId,slot);
+//         List<acceptedRetailerRequest> sortedtemp;
+//         List<acceptedRetailerRequest> bookedvehiclesarraylist= new ArrayList<acceptedRetailerRequest>();
+//         Object[] bookedvehiclesarray= bookedvehiclesarraylist.toArray();
+//        ListIterator<acceptedRetailerRequest> iterator = bookedVehicles.listIterator();
+//
+//
+//        while (iterator1.hasNext()) {
+//
+//        }
+//    }
 
 
 }
