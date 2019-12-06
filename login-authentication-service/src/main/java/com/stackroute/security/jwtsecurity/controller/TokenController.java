@@ -86,5 +86,12 @@ public class TokenController {
         retailerService.saveDummyRetailer(user);
     }
 
+    @DeleteMapping("/deleteCredentials")
+    @CrossOrigin
+    public void deleteCredentials(@RequestParam("id") int id){
 
+        Long idL = Long.valueOf(id);
+
+        retailerService.deleteById(idL);
+    }
 }

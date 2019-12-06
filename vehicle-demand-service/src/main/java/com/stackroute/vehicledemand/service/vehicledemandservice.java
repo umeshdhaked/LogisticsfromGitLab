@@ -17,5 +17,8 @@ public interface vehicledemandservice {
     public boolean deletebyId(BigInteger Id);
     public acceptedRetailerRequest savenewaccepetedVehicleDemand( acceptedRetailerRequest acceptedRetailerRequest);
     public rejectedRetailerRequest savenewrejectedVehicleDemand(rejectedRetailerRequest rejectedRetailerRequest);
+    public List<newRetailerDemand> searchbyretailerId(int id);
+    public List<rejectedRetailerRequest> findByRetailerIdinrejectedlist(int retailerId);
+    public List<acceptedRetailerRequest> findByRetailerIdinacceptedlist(int retailerId);
 
 }

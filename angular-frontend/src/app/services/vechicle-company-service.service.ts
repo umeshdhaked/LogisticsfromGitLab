@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import * as jwt_decode from 'jwt-decode';
+import { DecodedJwtData } from '../interfaces/decoded-jwt-data';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,17 @@ export class VechicleCompanyServiceService {
     let url = environment.apiUrl + ":8082/vehicleCompanyProfile/saveVehicleCompanyDetail";
     console.log(url)
     this.http.post(url,dataObj).subscribe();
+  }
+
+  deleteVehicleCompanyProfile(){
+
+    var decodedData:DecodedJwtData;
+    decodedData = jwt_decode(localStorage.getItem('token'));
+
+    let url = environment.apiUrl + ":8082/vehicleCompanyProfile/deleteAccount?id="+decodedData.userId;
+
+    this.http.delete(url).subscribe();
+    
   }
 
 

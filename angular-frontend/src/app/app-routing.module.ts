@@ -108,7 +108,7 @@ const routes: Routes = [
   { path : 'pricing', component: PricingComponent},
   { path : 'statistics', component: Statistic1Component},
   { path : 'editVehicleCompanyProfile', component: VehicleCompanyProfileComponent},
-  {path: 'viewPendinVehicleRequest', component: PendingVehicleRequestComponent},
+  {path: 'viewPendingVehicleRequest', component: PendingVehicleRequestComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

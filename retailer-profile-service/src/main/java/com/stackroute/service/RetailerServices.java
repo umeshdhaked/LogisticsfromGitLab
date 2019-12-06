@@ -16,5 +16,8 @@ public interface RetailerServices {
 
     public RetailerProfile getRetailerByEmail(String email);
 
+    public void deleteAccount(int id);
+
+    public RetailerProfile getRetailerById(int id);
 
 }
