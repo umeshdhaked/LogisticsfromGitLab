@@ -19,5 +19,6 @@ public interface vehicledemandservice {
     public rejectedRetailerRequest savenewrejectedVehicleDemand(rejectedRetailerRequest rejectedRetailerRequest);
     public List<newRetailerDemand> searchbyretailerId(int id);
     public List<rejectedRetailerRequest> findByRetailerIdinrejectedlist(int retailerId);
+    public List<acceptedRetailerRequest> findByRetailerIdinacceptedlist(int retailerId);
 
 }
