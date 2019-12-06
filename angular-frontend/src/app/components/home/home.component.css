@@ -12,8 +12,8 @@ h4 {
   color: goldenrod;
 }
 
-/* for screen width below 1024px  and particular max height*/
-@media (max-width: 1024px) and (max-height:580px) {
+/* for screen width below 1024px */
+@media (max-width: 1024px)  {
   .bg-img {
     background-image: linear-gradient(to bottom, transparent, mistyrose), url("../../../assets/images/main.jpg");
     background-size: cover;
@@ -32,8 +32,8 @@ h4 {
     visibility: hidden;
   }
 }
-/* screen size 1440px width */
-@media (max-width: 1440px) and (max-height:580px) {
+/* for screen width larger than 1024px and height between 600 to 768px */
+@media (min-width: 1024px) and (max-height:768px) {
   .bg-img {
     /* The image used */
     background-image: url("../../../assets/images/main.png");
@@ -47,7 +47,14 @@ h4 {
     /* Center and scale the image nicely */
     background-size: contain;
   }
-
+.deliveryboy-icon {
+  position: absolute;
+  left: 0px;
+  top: 450px;
+  margin: 20px;
+  max-width: 450px;
+  padding: 35px;
+}
   .over-image-text {
     position: absolute;
     right: 10px;
@@ -58,11 +65,9 @@ h4 {
     color: black;
 
   }
-
 }
-
-/* for screen width larger than 1024px */
-@media (min-width: 1024px) and (min-height:600px) {
+/* for screen width larger than 1024px and height beyond 768px */
+@media (min-width: 1024px) and (min-height:768px) {
   .bg-img {
     /* The image used */
     background-image: url("../../../assets/images/main.png");
@@ -76,18 +81,29 @@ h4 {
     /* Center and scale the image nicely */
     background-size: contain;
   }
+  .deliveryboy-icon {
+    position: absolute;
+    left: 0px;
+    top: 450px;
+    margin: 20px;
+    max-width: 450px;
+    padding: 35px;
+  }
 
   .over-image-text {
     position: absolute;
-    right: 10px;
+    /* right: 50%; */
     top: 150px;
-    margin: 20px;
+    margin-left:50%;
     max-width: 450px;
     padding: 35px;
     color: black;
 
   }
+
 }
+
+
 
 
 .stat {
@@ -107,17 +123,10 @@ h4 {
   background: white;
   /* border: 2px solid grey;
   border-radius: 5px;   */
-  box-shadow: 10px solid black;
+  /* box-shadow: 10px solid black; */
 }
 
-.deliveryboy-icon {
-  position: absolute;
-  left: 0px;
-  top: 450px;
-  margin: 20px;
-  max-width: 450px;
-  padding: 35px;
-}
+
 
 .client {
   margin: auto;
