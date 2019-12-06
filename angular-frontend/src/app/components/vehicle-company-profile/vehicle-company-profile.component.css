@@ -1,61 +1,57 @@
-
 .Body {
     background-image: white
-  }
-  
-  #profile-image {
+}
+
+#profile-image {
     margin-left: 42%;
-  }
-  
-  .Text-container {
-    width: 40%;
+}
+
+.Text-container {
+    width: 50%;
     height: 80%;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    margin-left: 40px;
     background-color: white;
     padding: 16px;
     border-radius: 8px;
     text-align: center;
-  }
-  
-  .Text-container {
+}
+
+.Text-container {
     display: flex;
     flex-direction: column;
-  }
-  
-  .Text-container > * {
+}
+
+.Text-container>* {
     width: 100%;
-  }
-  
-  .Text-container .deleteButton {
+}
+
+.Text-container .deleteButton {
     /* margin-left: 210px;
     width: 70px; */
     width: 25%;
     margin: 0 auto;
-  
-  }
-  
-  
-  .container {
+}
+
+.container {
     margin-top: -10px;
-  
-  }
-  
-  #terms {
+}
+
+#terms {
     margin-top: 20px;
-  }
-  
-  
-  p {
+}
+
+p {
     font-family: Lato;
-  }
-  
-  img {
+}
+
+img {
     height: 100%;
     width: 100%;
     border-radius: 50%;
-  }
-  
-  .hoverable {
+}
+
+.hoverable {
     position: relative;
     display: block;
     cursor: pointer;
@@ -63,18 +59,18 @@
     width: 200px;
     border: 2px solid goldenrod;
     border-radius: 50%;
-  }
-  
-  .hoverable .hover-text {
+}
+
+.hoverable .hover-text {
     position: absolute;
     display: none;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-  }
-  
-  .hoverable .background {
+}
+
+.hoverable .background {
     position: absolute;
     display: none;
     top: 0;
@@ -85,32 +81,72 @@
     pointer-events: none;
     border-radius: 50%;
     z-index: 1;
-  }
-  
-  .hoverable:hover .hover-text {
+}
+
+.hoverable:hover .hover-text {
     display: block;
-  }
-  
-  .hoverable:hover .background {
+}
+
+.hoverable:hover .background {
     display: block;
-  }
-  
-  #fileInput {
+}
+
+#fileInput {
     display: none;
-  }
-  
-  .containerTop {
+}
+
+.containerTop {
     margin-top: 40px;
     width: 80%;
-  }
-  
-  .nav-link {
+}
+
+.nav-link {
     color: rgb(43, 40, 40);
     /* padding: 12px 0; */
     border-bottom: transparent;
-  }
-  
-  .nav-link:hover {
+}
+
+.nav-link:hover {
     color: rgb(43, 40, 40);
-  }
-  
+}
+
+/* ............................................................................................. */
+
+/* .container {
+    margin-top: 10px;
+    font-weight: bold;
+} */
+
+/* .AddVehicle {
+    margin-left: 200px;
+    padding: 0;
+    place-content: center;
+} */
+
+h1 {
+    color: greenyellow;
+    text-align: center;
+    font-weight: bold;
+}
+
+.example-container {
+    margin-top: 28px;
+    height: 600px;
+    /* border: 1px solid rgba(0, 0, 0, 0.5); */
+}
+
+.example-sidenav-content {
+    display: flex;
+    height: 10%;
+    /* height: 100%; */
+}
+
+.example-sidenav {
+    padding: 20px;
+}
+
+.vehicle {
+    width: 60px;
+    height: 60px;
+    border: none;
+}

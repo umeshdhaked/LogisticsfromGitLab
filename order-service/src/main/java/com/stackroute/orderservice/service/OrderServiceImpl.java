@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.stackroute.orderservice.domain.DateDemand;
 import com.stackroute.orderservice.domain.Order;
 import com.stackroute.orderservice.domain.TimeSlot;
-
+import com.stackroute.orderservice.domain.VehicleDemanded;
 import com.stackroute.orderservice.repository.OrderRepository;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
 
@@ -43,6 +44,7 @@ public class OrderServiceImpl implements OrderService {
     private String newOrderTopicName;
 
     private DateDemand[] dateDemands;
+    private VehicleDemanded[] vehicles;
 
     //listener
     @KafkaListener(topics = "vehicle_slots", groupId = "foo")
@@ -103,16 +105,17 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public DateDemand checkSlotAvailability(String deliveryDate) throws ParseException {
+    public DateDemand checkSlotAvailability(int retailerId) throws ParseException {
         //Use dummy message and parse it
         //Change this once actual rent service works
-        for (DateDemand date : dateDemandsDummy) {
-            if (date.getDate().equals(deliveryDate)) {
-                return date;
-            }
-        }
-
-        return null;
+        final String uri="http://localhost:9090/searchByRetailerIdForOrder/" + retailerId;
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(uri, String.class);
+        System.out.println(result);
+        Gson gson = new Gson();
+        dateDemands = gson.fromJson(result, DateDemand[].class);
+        System.out.println(dateDemands[0].toString());
+        return dateDemands[0];
 
     }
 

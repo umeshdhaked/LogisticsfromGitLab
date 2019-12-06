@@ -1,13 +1,9 @@
-package com.stackroute.vehicledemand.domain;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+package com.stackroute.orderservice.domain;
 
 import java.math.BigInteger;
 
-@Document(collection = "AcceptedRetailerDemand")
-public class acceptedRetailerRequest {
-    @Id
+
+public class VehicleDemanded {
     BigInteger id;
     String vehicleNumber;
     String driverName;
@@ -146,10 +142,10 @@ public class acceptedRetailerRequest {
         this.requestStatus = requestStatus;
     }
 
-    public acceptedRetailerRequest() {
+    public VehicleDemanded() {
     }
 
-    public acceptedRetailerRequest(BigInteger id, String vehicleNumber, String driverName, String vehicleType, int capacity, int costPerSlot, String vehicleStatus, String slot1, String slot2, String slot3, String companyName, String slot, int retailerId, String requestStatus, int remaningCapacity) {
+    public VehicleDemanded(BigInteger id, String vehicleNumber, String driverName, String vehicleType, int capacity, int costPerSlot, String vehicleStatus, String slot1, String slot2, String slot3, String companyName, String slot, int retailerId, String requestStatus, int remaningCapacity) {
         this.id = id;
         this.vehicleNumber = vehicleNumber;
         this.driverName = driverName;

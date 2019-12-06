@@ -6,12 +6,28 @@ import { MatTableDataSource } from '@angular/material/table';
 import { BehaviorSubject } from 'rxjs';
 import { style } from '@angular/animations';
 
+import * as jwt_decode from 'jwt-decode';
+import { DecodedJwtData } from 'src/app/interfaces/decoded-jwt-data';
+import { VehicleCompanyProfile } from 'src/app/interfaces/vehicle-company-profile';
+import { VechicleCompanyServiceService } from 'src/app/services/vechicle-company-service.service';
+
 @Component({
   selector: 'app-manage-vehicles',
   templateUrl: './manage-vehicles.component.html',
   styleUrls: ['./manage-vehicles.component.css']
 })
 export class ManageVehiclesComponent implements OnInit {
+
+
+
+  dataFromToken: DecodedJwtData;
+  vehicleCompanyData: VehicleCompanyProfile;
+  cName='';
+
+
+
+
+
 
   vehicles: VehicleManagement[];
   vehicleForm: boolean = false;
@@ -21,7 +37,7 @@ export class ManageVehiclesComponent implements OnInit {
   editedVehicle: any = {};
   filteredData: VehicleManagement[];
 
-  constructor(private vehicleService: VehicleService, private router: Router) {
+  constructor(private vehicleService: VehicleService, private router: Router, private vehicleCompanyService: VechicleCompanyServiceService) {
   }
 
   vehicleBehavior: BehaviorSubject<any>;
@@ -58,6 +74,24 @@ export class ManageVehiclesComponent implements OnInit {
 
 
   ngOnInit() {
+
+
+
+    if(localStorage.getItem('token')!=null){
+      this.dataFromToken= jwt_decode(localStorage.getItem('token'));
+    }
+
+
+    this.vehicleCompanyService.getVehicleCompanyProfileFromEmail(this.dataFromToken.sub).subscribe((data: any) => {
+      this.vehicleCompanyData = data;
+      if (this.vehicleCompanyData != null) {
+        this.cName = ''+this.vehicleCompanyData.companyName;
+      }
+    })
+
+
+
+
     this.vehicleService.getAllVehicles().subscribe(data => {
       this.vehicles = data
       this.filteredData = data;

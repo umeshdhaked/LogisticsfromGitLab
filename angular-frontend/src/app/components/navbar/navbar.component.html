@@ -44,7 +44,7 @@
         <ul class="navbar-nav">
           <div *ngIf="checkLogin != null ">
             <li class="nav-item text-center">
-              <a  style="color:goldenrod;font-weight: bold;" class="nav-link" routerLink="/viewProfile"><img style="width:30px;height:30px" src="assets/images/profile.png"/> Profile</a>
+              <a  style="color:goldenrod;font-weight: bold;" class="nav-link" (click) = "getRelatedProfile()"><img style="width:30px;height:30px" src="assets/images/profile.png"/> Profile</a>
             </li>
           </div>
           

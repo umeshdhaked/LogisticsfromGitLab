@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class DateDemand {
     private String date;
-    private TimeSlot timeSlot1;
-    private TimeSlot timeSlot2;
-    private TimeSlot timeSlot3;
+    private TimeSlot timeslot1;
+    private TimeSlot timeslot2;
+    private TimeSlot timeslot3;
 }

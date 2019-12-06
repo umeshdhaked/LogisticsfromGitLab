@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from 'src/environments/environment';
 import {Observable} from "rxjs";
-
+import { DecodedJwtData } from '../interfaces/decoded-jwt-data';
+import * as jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -40,5 +41,18 @@ export class EditProfileService {
     const url = environment.apiUrl + '8082/retailerProfile/getAllRetailersProfileList';
     return this.http.get(url);
  }
+
+ public deleteRetailerAccount(){
+   var decodedData:DecodedJwtData;
+   decodedData = jwt_decode(localStorage.getItem('token'));
+
+   let url = environment.apiUrl+':8082/retailerProfile/deleteAccount?id='+decodedData.userId;
+
+   return this.http.delete(url).subscribe();
+
+
+
+ }
+
 
 }

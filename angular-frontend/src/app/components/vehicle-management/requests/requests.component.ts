@@ -44,6 +44,7 @@ export class RequestsComponent implements OnInit {
     
     this.vehicle = data;
     this.vehicle.requestStatus='Accepted';
+    this.vehicle.remainingCapacity = this.vehicle.capacity;
     console.log(this.vehicle);
     this.requestService.sendAccept(this.vehicle).subscribe();
     this.requestService.sendAccepttovehicledemand(this.vehicle).subscribe();
