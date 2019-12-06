@@ -33,7 +33,6 @@ export class VechicleCompanyServiceService {
     let url = environment.apiUrl + ":8082/vehicleCompanyProfile/deleteAccount?id="+decodedData.userId;
 
     this.http.delete(url).subscribe();
-
     
   }
 
