@@ -125,6 +125,12 @@ export class NavigatelocationComponent implements OnInit {
       coordinates.innerHTML = 'Longitude: ' + longitude + '<br />Latitude: ' + latitude;
       geomarker.setLngLat([longitude, latitude]);
     });
+	    mapp.addControl(new mapboxgl.GeolocateControl({
+      positionOptions: {
+      enableHighAccuracy: true
+      },
+      trackUserLocation: true
+      }));  
 
     function makegeojsonline(coordinateset, lengthofset) {
       mapp.on('load', function() {
