@@ -16,6 +16,7 @@ import {Retailerdetails} from "../../interfaces/retailerDetails";
 })
 export class RetailerDashboardComponent implements OnInit {
   retailerEmail: string = "";
+  retailerId: string;
   orderData = [];
   pendingOrders: number = 0;
   deliveredOrders: number = 0;
@@ -71,9 +72,16 @@ export class RetailerDashboardComponent implements OnInit {
     let token = localStorage.getItem('token');
 
 
+    var decoded = {
+      "userId": "",
+      "sub": ""
+    }
     if (token != null) {
-      this.decodedData = jwt_decode(token);
-      this.retailerEmail = this.decodedData.sub;
+      decoded = jwt_decode(token);
+      this.retailerId = decoded.userId;
+      this.retailerEmail = decoded.sub;
+      console.log(this.retailerEmail);
+      console.log(this.retailerId);
     }
     this.orderService.getAllOrderData(this.retailerEmail).subscribe(data =>
       this.zone.run(() => {
@@ -94,7 +102,7 @@ export class RetailerDashboardComponent implements OnInit {
         this.pendingOrders = data.length;
       }));
 
-    this.rentedVehicleService.getBookedVehicles().subscribe(data => {
+    this.rentedVehicleService.getBookedVehicles(this.retailerId).subscribe(data => {
       this.zone.run(() => {
         console.log(data);
         this.rentedVehicles = data;
