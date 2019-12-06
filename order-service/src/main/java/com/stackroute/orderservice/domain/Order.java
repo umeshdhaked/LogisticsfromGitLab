@@ -25,7 +25,7 @@ public class Order {
     private String customerPhoneNumber;
     private String deliveryDate;
     private String slotNumber;
-    private Double orderVolume;
+    private int orderVolume;
     private String orderStatus;
     private String retailerId;
 
@@ -84,11 +84,11 @@ public class Order {
         this.slotNumber = slotNumber;
     }
 
-    public Double getOrderVolume() {
+    public int getOrderVolume() {
         return orderVolume;
     }
 
-    public void setOrderVolume(Double orderVolume) {
+    public void setOrderVolume(int orderVolume) {
         this.orderVolume = orderVolume;
     }
 

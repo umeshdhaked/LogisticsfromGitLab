@@ -24,6 +24,15 @@ public class acceptedRetailerRequest {
     String slot;
     int retailerId;
     String requestStatus;
+    int remaningCapacity;
+
+    public int getRemaningCapacity() {
+        return remaningCapacity;
+    }
+
+    public void setRemaningCapacity(int remaningCapacity) {
+        this.remaningCapacity = remaningCapacity;
+    }
 
     public BigInteger getId() {
         return id;
@@ -155,5 +164,6 @@ public class acceptedRetailerRequest {
         this.slot = slot;
         this.retailerId = retailerId;
         this.requestStatus = requestStatus;
+        this.remaningCapacity=capacity;
     }
 }

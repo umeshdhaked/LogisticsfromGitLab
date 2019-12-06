@@ -185,4 +185,34 @@ public class retailervehicledemandcontroller {
         }
         return responseEntity;
     }
+
+//    @GetMapping(value = "searchbyretailerandslotinaccepted/{retailerId}/{slot}/{volumeBooked}")
+//    public ResponseEntity<BigInteger> searchbyretailerIdinrejected(@PathVariable int retailerId, @PathVariable String slot,@PathVariable int volumeBooked) {
+//
+////        this.vehicledemandservice.searchbyretailerId(retailerId);
+//
+//
+//        ResponseEntity responseEntity;
+//        try {
+//            responseEntity = new ResponseEntity(vehicledemandservice.getBookedVehicleByRetaileridandSlot(retailerId,slot), HttpStatus.OK);
+//        } catch (Exception e) {
+//            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+//        }
+//        return responseEntity;
+//    }
+
+    @GetMapping(value = "searchbyretaileridinaccepted/{retailerId}")
+    public ResponseEntity<BigInteger> searchbyretailerIdinaccepted(@PathVariable int retailerId) {
+
+//        this.vehicledemandservice.searchbyretailerId(retailerId);
+
+
+        ResponseEntity responseEntity;
+        try {
+            responseEntity = new ResponseEntity(vehicledemandservice.findByRetailerIdinacceptedlist(retailerId), HttpStatus.OK);
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
 }

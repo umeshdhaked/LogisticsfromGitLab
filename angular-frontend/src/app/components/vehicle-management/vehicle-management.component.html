@@ -44,14 +44,10 @@
     <mat-drawer #drawer mode="side">
         <mat-nav-list>
             <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Home</a>
-            <a mat-list-item [routerLink]="'/profile'"> Profile </a>
+            <!-- <a mat-list-item [routerLink]="'/profile'"> Profile </a> -->
             <a mat-list-item [routerLink]="'/manage-vehicle'"> Manage-vehicle </a>
-            <!-- <a mat-list-item [routerLink]="'/list-vehicle'"> list-vehicle </a> -->
-            <a mat-list-item [routerLink]="'/editVehicleCompanyProfile'"> Edit-Profile </a>
+            <a mat-list-item [routerLink]="'/editVehicleCompanyProfile'"> Profile </a>
             <a mat-list-item [routerLink]="'/vehicle-history'"> History </a>
-
-            <!-- <a mat-list-item [routerLink]="'/Logout'"> Logout </a> -->
-            <!-- <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a> -->
         </mat-nav-list>
     </mat-drawer>
 

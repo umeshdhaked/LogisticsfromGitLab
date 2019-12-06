@@ -34,9 +34,9 @@
       <!-- Save Button-->
   
       <div class="checkbox">
-        <p> By clicking “Create Account”, you agree to our <a routerLink="/terms" target="_blank">Terms and Conditions</a> and  <a routerLink="/terms" target="_blank">Privacy Policy </a>and agree to abide by them</p>
+        <p #c> By clicking “Create Account”, you agree to our <a routerLink="/terms" target="_blank">Terms and Conditions</a> and  <a routerLink="/terms" target="_blank">Privacy Policy </a>and agree to abide by them</p>
   </div>
-  <div class="row ">
+  <div class="row ">  
       <button class="col-sm-6 btn btn-outline-danger "
               (click)="save(compnayName.value,contact.value,address.value,gstIn.value,c.checked)"
              ><b> Save </b>
@@ -44,6 +44,11 @@
       <br>
       <button class="col-sm-6 btn btn-outline-danger " routerLink="/vehicle-management"><b> Cancel </b>
       </button>
+  </div>
+  <br>
+  <div class="row ">
+  <button class="col-sm-12 btn btn-outline-danger " (click)="deleteAccount()"><b> Delete My Account </b>
+  </button>
   </div>
     </div>
   
