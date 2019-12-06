@@ -12,8 +12,8 @@ h4 {
   color: goldenrod;
 }
 
-/* for screen width below 1024px */
-@media (max-width: 1023px) {
+/* for screen width below 1024px  and particular max height*/
+@media (max-width: 1024px) and (max-height:580px) {
   .bg-img {
     background-image: linear-gradient(to bottom, transparent, mistyrose), url("../../../assets/images/main.jpg");
     background-size: cover;
@@ -32,9 +32,8 @@ h4 {
     visibility: hidden;
   }
 }
-
-/* for screen width larger than 1024px */
-@media (min-width: 1024px) {
+/* screen size 1440px width */
+@media (max-width: 1440px) and (max-height:580px) {
   .bg-img {
     /* The image used */
     background-image: url("../../../assets/images/main.png");
@@ -52,7 +51,36 @@ h4 {
   .over-image-text {
     position: absolute;
     right: 10px;
-    top: 200px;
+    top: 150px;
+    margin: 20px;
+    max-width: 450px;
+    padding: 35px;
+    color: black;
+
+  }
+
+}
+
+/* for screen width larger than 1024px */
+@media (min-width: 1024px) and (min-height:600px) {
+  .bg-img {
+    /* The image used */
+    background-image: url("../../../assets/images/main.png");
+    filter: contrast(90%);
+    height: auto;
+    width: 100%;
+    min-height: 760px;
+    margin-top: -58px;
+    /* 100vh  for full view */
+    background-repeat: no-repeat;
+    /* Center and scale the image nicely */
+    background-size: contain;
+  }
+
+  .over-image-text {
+    position: absolute;
+    right: 10px;
+    top: 150px;
     margin: 20px;
     max-width: 450px;
     padding: 35px;
@@ -60,6 +88,7 @@ h4 {
 
   }
 }
+
 
 .stat {
   text-align: center;
