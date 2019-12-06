@@ -122,6 +122,16 @@ services:
     container_name: driver-dashboard
     ports:
       - "8086:8086"
+  route-optimizer:
+    image: route-optimizer
+    build: route-optimizer-service/
+    restart: always
+    network_mode: host
+    container_name: route-cont
+    depends_on:
+      - mongodb
+    ports:
+      - "8091:8091"
   retailer-profile-service:
     image: retailer-profile-service
     build: retailer-profile-service/
