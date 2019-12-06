@@ -1,1 +1,37 @@
-<div id="chartContainer" style="width: 50%; height: 400px; margin-top: 50px; margin-left: 50px;"></div>
+<div class="row">
+
+    <div class="col-sm-3">
+
+        <mat-drawer-container style="background-color: white;" class="example-container" autosize>
+
+            <mat-drawer #drawer mode="side">
+                <mat-nav-list>
+                    <!-- <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Home</a> -->
+                    <!-- <a mat-list-item [routerLink]="'/profile'"> Profile </a> -->
+                    <a mat-list-item [routerLink]="'/vehicle-management'"> Dash Board </a>
+                    <a mat-list-item [routerLink]="'/manage-vehicle'"> Manage-vehicle </a>
+                    <a mat-list-item [routerLink]="'/editVehicleCompanyProfile'"> Profile </a>
+                    <a mat-list-item [routerLink]="'/vehicle-history'"> History </a>
+                </mat-nav-list>
+            </mat-drawer>
+
+            <div class="example-sidenav-content">
+                <button type="button" mat-button (click)="drawer.toggle()">
+      <img class="vehicle" src="../../assets/Vehicle.gif" alt="Menu">
+    </button>
+                <!-- <app-requests></app-requests> -->
+
+            </div>
+
+
+        </mat-drawer-container>
+
+
+    </div>
+
+    <div class="col-sm-9">
+        <div id="chartContainer" style="width: 80%; height: 400px; margin-top:50px;"></div>
+    </div>
+
+
+</div>

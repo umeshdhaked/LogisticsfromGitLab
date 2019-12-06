@@ -8,3 +8,14 @@
   bottom: 0;
   color: white;
 }
+a{
+  text-decoration: none;
+  color:lightslategray;
+}
+a:hover{
+  text-decoration: none;
+  color:white;
+}
+.fa-instagram,.fa-twitter,.fa-facebook{
+  font-size: 48px;
+}

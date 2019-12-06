@@ -2,7 +2,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 
 import { TermsComponent } from './components/terms/terms.component';
 import { PaymemonthlyComponent } from './components/paymemonthly/paymemonthly.component';
-
+import { FaqComponent } from './components/faq/faq.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 import {AuthGaurdService} from './services/auth-gaurd.service';
 import {VerifyComponent} from './components/verify/verify.component';
@@ -50,6 +51,8 @@ const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'terms', component: TermsComponent},
+  {path: 'faq', component: FaqComponent},
+  {path: 'contact-us', component: ContactUsComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'verify', component: VerifyComponent},
   { path : 'navigate', component: NavigatelocationComponent},

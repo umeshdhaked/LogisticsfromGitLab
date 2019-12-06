@@ -187,7 +187,7 @@ public class retailervehicledemandcontroller {
     }
 
     @PostMapping(value = "updateremainingvolume/{retailerId}/{slot}/{volumeBooked}")
-    public ResponseEntity<BigInteger> searchbyretailerIdinrejected(@PathVariable int retailerId, @PathVariable String slot,@PathVariable int volumeBooked) {
+    public ResponseEntity<BigInteger> searchbyretailerIdinrejected(@PathVariable("retailerId") int retailerId, @PathVariable("slot") String slot,@PathVariable("volumeBooked") int volumeBooked) {
 
 //        this.vehicledemandservice.searchbyretailerId(retailerId);
 
