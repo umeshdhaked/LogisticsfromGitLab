@@ -12,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 @Service
 public class vehicledemandserviceImpl implements vehicledemandservice {
@@ -57,6 +54,7 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
     @Override
     public boolean deletebyId(BigInteger Id) {
         newRetailerDemandRepository.deleteById(Id);
+
         return true;
     }
 
@@ -87,6 +85,46 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
         return this.acceptedRetailerDemandRepository.findByRetailerId(retailerId);
     }
 
+    @Override
+
+    public List<acceptedRetailerRequest> updateremainingvolumeinvehicle(int retailerId, String slot,int volumebooked) {
+         System.out.println(retailerId+slot);
+         List<acceptedRetailerRequest> bookedVehicles= this.acceptedRetailerDemandRepository.findByRetailerIdAndSlot(retailerId, slot);
+         System.out.println(bookedVehicles.toString());
+         List<acceptedRetailerRequest> sortedtemp = new ArrayList<acceptedRetailerRequest>();
+         List<acceptedRetailerRequest> bookedvehiclesarraylist= new ArrayList<acceptedRetailerRequest>();
+         acceptedRetailerRequest[] bookedvehiclesarray= bookedVehicles.toArray(new acceptedRetailerRequest[bookedVehicles.size()]);
+        acceptedRetailerRequest tempobj = new acceptedRetailerRequest();
+         for(int i=0;i<bookedvehiclesarray.length;i++){
+//             int temp=bookedvehiclesarray[i].getCapacity();
+             for(int j=i+1;j<bookedvehiclesarray.length;j++){
+               if(bookedvehiclesarray[i].getCapacity() > bookedvehiclesarray[j].getCapacity()){
+//                   temp=bookedvehiclesarray[j].getCapacity();
+                   tempobj=bookedvehiclesarray[i];
+                   bookedvehiclesarray[i]=bookedvehiclesarray[j];
+                   bookedvehiclesarray[j]=tempobj;
+               }
+             }
+//             sortedtemp.add(bookedvehiclesarray[i]);
+         }
+        //  System.out.println(bookedvehiclesarray[0].toString());
+//        sortedtemp= Arrays.asList(bookedvehiclesarray);
+         for(int i=0;i<bookedvehiclesarray.length;i++){
+             if(bookedvehiclesarray[i].getRemainingCapacity()>= volumebooked){
+                 int temp=bookedvehiclesarray[i].getRemainingCapacity()-volumebooked;
+                 bookedvehiclesarray[i].setRemainingCapacity(temp);
+                acceptedRetailerRequest particularvehicle= acceptedRetailerDemandRepository.findByRetailerIdAndVehicleNumber(bookedvehiclesarray[i].getRetailerId(),bookedvehiclesarray[i].getVehicleNumber());
+                acceptedRetailerDemandRepository.save(particularvehicle);
+                break;
+
+             }
+         }
+         return Arrays.asList(bookedvehiclesarray);
+    }
+
+    public List<acceptedRetailerRequest> findByRetailerIdAndSlot(int retailerId, String slot) {
+        return this.acceptedRetailerDemandRepository.findByRetailerIdAndSlot(retailerId, slot);
+    }
 //    @Override
 //    public List<acceptedRetailerRequest> addordertoSlotvehicle(int retailerId, String slot,int volumebooked) {
 //         List<acceptedRetailerRequest> bookedVehicles= this.acceptedRetailerDemandRepository.findByRetailerIdAndSlot(retailerId,slot);
@@ -94,10 +132,10 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
 //         List<acceptedRetailerRequest> bookedvehiclesarraylist= new ArrayList<acceptedRetailerRequest>();
 //         Object[] bookedvehiclesarray= bookedvehiclesarraylist.toArray();
 //        ListIterator<acceptedRetailerRequest> iterator = bookedVehicles.listIterator();
-//
-//
+
+
 //        while (iterator1.hasNext()) {
-//
+
 //        }
 //    }
 

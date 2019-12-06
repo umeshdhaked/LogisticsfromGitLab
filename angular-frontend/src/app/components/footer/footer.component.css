@@ -8,3 +8,11 @@
   bottom: 0;
   color: white;
 }
+a{
+  text-decoration: none;
+  color:lightslategray;
+}
+a:hover{
+  text-decoration: none;
+  color:white;
+}

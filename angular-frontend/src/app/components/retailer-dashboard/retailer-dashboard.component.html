@@ -3,7 +3,7 @@
         <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
 </div>       -->
 <div class="dashboard">
-  <div class="alert alert-dark" role="alert">
+  <div class="alert alert-dark" role="alert" *ngIf="retailerObj.fullName != ''">
     <h3> <mat-list-item>Logged In As: {{retailerObj.fullName}}</mat-list-item></h3>
   </div>
   <div class="container">
@@ -92,28 +92,30 @@
     </div>
   </div>
 
-<!--  <div class="container">-->
-<!--    <div class="row">-->
-<!--      <div class="col-sm-6 col-12">-->
-<!--        <div class="card">-->
-<!--          <div class="card-header">Booked Vehicles</div>-->
-<!--          <table class="table">-->
-<!--            <tr>-->
-<!--              <th>Vehicle Id</th>-->
-<!--              <th>Volume</th>-->
-<!--              <th>Date</th>-->
-<!--              <th>Timeslot</th>-->
-<!--            </tr>-->
-<!--            <tr *ngFor="let vehicle of rentedVehicles">-->
-<!--              <td>{{vehicle.vehicleId}}</td>-->
-<!--              <td>{{vehicle.volume}}</td>-->
-<!--              <td>{{vehicle.date}}</td>-->
-<!--              <td>{{vehicle.timeslot}}</td>-->
-<!--            </tr>-->
-<!--          </table>-->
-<!--        </div>-->
-<!--      </div>-->
+ <div class="container">
+   <div class="row">
+     <div class="col-sm-6 col-12">
+       <div class="card">
+         <div class="card-header">Confirmed Vehicles</div>
+         <table class="table">
+           <tr>
+             <th>Vehicle Number</th>
+             <th>Capacity</th>
+             <th>Vehicle Type</th>
+             <th>Timeslot</th>
+             <th>Leasing Company</th>
+           </tr>
+           <tr *ngFor="let vehicle of rentedVehicles">
+             <td>{{vehicle.vehicleNumber}}</td>
+             <td>{{vehicle.capacity}}</td>
+             <td>{{vehicle.vehicleType}}</td>
+             <td>{{vehicle.slot}}</td>
+             <td>{{vehicle.companyName}}</td>
+           </tr>
+         </table>
+       </div>
+     </div>
 
-<!--    </div>-->
-<!--  </div>-->
+   </div>
+ </div>
 </div>
