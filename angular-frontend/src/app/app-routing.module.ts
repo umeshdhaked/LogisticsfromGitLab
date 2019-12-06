@@ -52,7 +52,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'terms', component: TermsComponent},
   {path: 'faq', component: FaqComponent},
-  {path: 'contact-uus', component: ContactUsComponent},
+  {path: 'contact-us', component: ContactUsComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'verify', component: VerifyComponent},
   { path : 'navigate', component: NavigatelocationComponent},
