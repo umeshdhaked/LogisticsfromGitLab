@@ -1,12 +1,12 @@
 package com.stackroute.routing.service;
 
 
+import com.google.gson.Gson;
 import com.stackroute.routing.domain.Order;
 
 import com.stackroute.routing.domain.Vehicle;
-import com.stackroute.routing.repository.DepotRepository;
 import com.stackroute.routing.repository.OrderRepository;
-import com.stackroute.routing.repository.VehicleRepository;
+//import com.stackroute.routing.repository.VehicleRepository;
 import com.stackroute.routing.routingAlgorithms.Solution;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.stackroute.routing.routingAlgorithms.Node;
@@ -20,6 +20,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
@@ -42,28 +43,25 @@ public class RouteServiceImpl implements RouteService {
 
 
 
-    private DepotRepository depotRepository;
+//    private DepotRepository depotRepository;
     private OrderRepository orderRepository;
-    private VehicleRepository vehicleRepository;
+//    private VehicleRepository vehicleRepository;
 
     private static final Logger
             logger = Logger.getLogger(RouteServiceImpl.class.getName());;
     @Autowired
-    public RouteServiceImpl(OrderRepository orderRepository, VehicleRepository vehicleRepository,DepotRepository depotRepository) {
+    public RouteServiceImpl(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
-        this.vehicleRepository = vehicleRepository;
-        this.depotRepository = depotRepository;
+//        this.vehicleRepository = vehicleRepository;
     }
 
     @Override
-    public String getRoutes(int wholesalerId) throws Exception {
+    public String getRoutes(JSONArray vehicleJson,String depotAddress,int wholesalerId) throws Exception {
 
-        if(depotRepository.findByWholesalerId(wholesalerId)==null)
-            throw new Exception("depot not found");
         List<Order> orders = orderRepository.findAll();
 
         String[] adressess = new String[orders.size()+1];
-        adressess[0]=depotRepository.findByWholesalerId(wholesalerId).getDepotAddress();
+        adressess[0]=depotAddress;
         Iterator<Order> it =orders.iterator();
         int i=1;
         while (it.hasNext())
@@ -78,7 +76,7 @@ public class RouteServiceImpl implements RouteService {
         JSONObject coordinates = coordinateFinder(adressess);
         JSONArray JS =coordinates.getJSONArray("origins");
         double distance[][] = jsonParser(coordinates);
-        return routeOptimizer(distance,wholesalerId,JS,adressess);
+        return routeOptimizer(distance,wholesalerId,JS,vehicleJson,adressess);
 
     }
 
@@ -203,7 +201,7 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public String routeOptimizer(double[][] distanceMatrix,int wholesalerId,JSONArray coordinates,String[] addresses) throws Exception {
+    public String routeOptimizer(double[][] distanceMatrix,int wholesalerId,JSONArray coordinates,JSONArray vehicleJson,String[] addresses) throws Exception {
 
 
         for (int i = 0; i < coordinates.length(); i++) {
@@ -225,9 +223,18 @@ public class RouteServiceImpl implements RouteService {
         }
         final Long[] demands = orderVolumes;
         System.out.println("demands : "+demands.toString());
-        List<Vehicle> vehicles=vehicleRepository.findAll();
+        List<Vehicle> vehicles =new  ArrayList<>();
+        for(int k=0;i<vehicleJson.length();i++)
+        {
+            JSONObject vehicleJsonobj = vehicleJson.getJSONObject(i);
+
+            Gson g = new Gson();
+            Vehicle vehicle = g.fromJson(vehicleJsonobj.toString(),Vehicle.class);
+            vehicles.add(vehicle);
+        }
         long[] capacities = new long[vehicles.size()];
         Vehicle Vehicles[] =new Vehicle[vehicles.size()];
+//        List<Vehicle> vehicles=vehicleRepository.findAll();
         Iterator<Vehicle> It = vehicles.iterator();
         i=0;
         while (It.hasNext())
@@ -272,17 +279,17 @@ public class RouteServiceImpl implements RouteService {
         Double minDistance=Double.MAX_VALUE;
         String minRoute="";
 
-        routes.put("greedy",s.SolutionPrint("Greedy Solution",Vehicles,coordinates,wholesalerId,Orders));
+        routes.put("greedy",s.SolutionPrint("Greedy Solution",Vehicles,coordinates,wholesalerId,Orders,addresses[0]));
 
         s.IntraRouteLocalSearch(Nodes, distanceMatrix);
 
-        routes.put("intra",s.SolutionPrint("Solution after Intra-Route Heuristic Neighborhood Search",Vehicles,coordinates,wholesalerId,Orders));
+        routes.put("intra",s.SolutionPrint("Solution after Intra-Route Heuristic Neighborhood Search",Vehicles,coordinates,wholesalerId,Orders,addresses[0]));
 
         s.GreedySolution(Nodes, distanceMatrix);
 
         s.InterRouteLocalSearch(Nodes, distanceMatrix);
 
-        routes.put("inter",s.SolutionPrint("Solution after Inter-Route Heuristic Neighborhood Search",Vehicles,coordinates,wholesalerId,Orders));
+        routes.put("inter",s.SolutionPrint("Solution after Inter-Route Heuristic Neighborhood Search",Vehicles,coordinates,wholesalerId,Orders,addresses[0]));
 
         s.GreedySolution(Nodes, distanceMatrix);
 

@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigInteger;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
@@ -14,12 +15,21 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Vehicle {
 
     @Id
-    int id ;
+    BigInteger id;
     String vehicleNumber;
-//    String vehicleName;
-//    String phoneNumber;
-//    String vehicleType;
-    long capacity;
-//    String costPerSlot;
-//    String address;
+    String driverName;
+    String vehicleType;
+    int capacity;
+    int costPerSlot;
+    String vehicleStatus;
+    String slot1;
+    String slot2;
+    String slot3;
+//    String date;
+
+    String companyName;
+    String slot;
+    int retailerId;
+    String requestStatus;
+    int remaningCapacity;
 }
