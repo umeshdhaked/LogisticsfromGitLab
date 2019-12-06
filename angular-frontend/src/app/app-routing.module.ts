@@ -8,7 +8,7 @@ import {AuthGaurdService} from './services/auth-gaurd.service';
 import {VerifyComponent} from './components/verify/verify.component';
 import {HomeComponent} from './components/home/home.component';
 import {SignupComponent} from './components/signup/signup.component';
-import {NgModule} from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {VehicleHistoryComponent} from './components/vehicle-management/vehicle-history/vehicle-history.component';
 import {BookedVehiclesComponent} from './components/vehicledemandfrontend/booked-vehicles/booked-vehicles.component';
@@ -49,6 +49,7 @@ import {PendingVehicleRequestComponent} from './components/pending-vehicle-reque
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
+  {path: 'home/:members', component: HomeComponent},
   {path: 'terms', component: TermsComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'verify', component: VerifyComponent},
