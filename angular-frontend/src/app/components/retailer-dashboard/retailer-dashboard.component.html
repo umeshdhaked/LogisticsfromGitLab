@@ -3,8 +3,8 @@
         <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
 </div>       -->
 <div class="dashboard">
-  <div class="alert alert-dark" role="alert">
-    <h3> <mat-list-item>Logged In As: {{retailerEmail}}</mat-list-item></h3>
+  <div class="alert alert-dark" role="alert" *ngIf="retailerObj.fullName != ''">
+    <h3> <mat-list-item>Logged In As: {{retailerObj.fullName}}</mat-list-item></h3>
   </div>
   <div class="container">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
