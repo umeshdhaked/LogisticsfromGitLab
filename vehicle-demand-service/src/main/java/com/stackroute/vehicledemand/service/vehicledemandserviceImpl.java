@@ -98,10 +98,10 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
 //         List<acceptedRetailerRequest> bookedvehiclesarraylist= new ArrayList<acceptedRetailerRequest>();
 //         Object[] bookedvehiclesarray= bookedvehiclesarraylist.toArray();
 //        ListIterator<acceptedRetailerRequest> iterator = bookedVehicles.listIterator();
-//
-//
+
+
 //        while (iterator1.hasNext()) {
-//
+
 //        }
 //    }
 
