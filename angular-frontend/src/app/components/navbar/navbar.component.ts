@@ -1,8 +1,8 @@
-
 import {Component, OnInit, NgZone} from '@angular/core';
 import { Location } from '@angular/common';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
-
+import { DecodedJwtData } from 'src/app/interfaces/decoded-jwt-data';
+import * as jwt_decode from 'jwt-decode';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -49,6 +49,22 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('token');
 
     this.checkLogin = null;
+
+  }
+
+
+  getRelatedProfile(){
+    var Decoded:DecodedJwtData;
+    Decoded = jwt_decode(localStorage.getItem('token'));
+
+    if(Decoded.role === 'Retailer'){
+      this.router.navigate(['/viewProfile'])
+    }
+
+    if(Decoded.role === 'VehicleCompany'){
+        this.router.navigate(['/editVehicleCompanyProfile'])
+    }
+
 
   }
 
