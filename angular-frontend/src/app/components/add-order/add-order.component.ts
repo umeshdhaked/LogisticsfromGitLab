@@ -63,18 +63,25 @@ export class AddOrderComponent implements OnInit {
       this.retailerId = decoded.userId;
       this.retailerEmail = decoded.sub;
       console.log(this.retailerEmail);
-      console.log(this.retailerId);
     }
-
+    this.orderService.checkSlots(this.retailerId).subscribe(data =>
+      this.zone.run(() => {
+        console.log(data);
+        this.slotJson = data;
+        this.changeSlotValue(this.orderVolume);
+        console.log(this.slotJson);
+      }));
     this.checkSlotsOnDate(this.retailerId);
   }
 
   checkSlotsOnDate(retailerId) {
+    console.log(retailerId);
     this.orderService.checkSlots(retailerId).subscribe(data =>
       this.zone.run(() => {
         console.log(data);
         this.slotJson = data;
         this.changeSlotValue(this.orderVolume);
+        console.log(this.slotJson);
       }));
     console.log(this.slotJson);
   }
@@ -107,12 +114,12 @@ export class AddOrderComponent implements OnInit {
     console.log(this.selectedSlot);
   }
 
-  submitOrder(customerName, customerNumber, customerAddress, deliveryDate, orderVolume): void {
+  submitOrder(customerName, customerNumber, customerAddress, orderVolume): void {
     console.log(this.orderVolume);
     console.log(this.selectedSlot);
-    if (customerName != "" && customerNumber != "" && customerAddress != "" && orderVolume != null && deliveryDate != "" && this.selectedSlot != "") {
+    if (customerName != "" && customerNumber != "" && customerAddress != "" && orderVolume != null && this.selectedSlot != "") {
       console.log(this.orderVolume);
-      this.orderService.saveOrder(customerName, customerNumber, customerAddress, orderVolume, deliveryDate, this.selectedSlot, "pending", this.retailerId)
+      this.orderService.saveOrder(customerName, customerNumber, customerAddress, orderVolume, this.today, this.selectedSlot, "pending", this.retailerId)
         .pipe(
           tap((newOrder) => {
             console.log(newOrder);
