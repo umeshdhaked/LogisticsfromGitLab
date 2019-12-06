@@ -24,14 +24,14 @@ public class acceptedRetailerRequest {
     String slot;
     int retailerId;
     String requestStatus;
-    int remaningCapacity;
+    int remainingCapacity;
 
-    public int getRemaningCapacity() {
-        return remaningCapacity;
+    public int getRemainingCapacity() {
+        return remainingCapacity;
     }
 
-    public void setRemaningCapacity(int remaningCapacity) {
-        this.remaningCapacity = remaningCapacity;
+    public void setRemainingCapacity(int remainingCapacity) {
+        this.remainingCapacity = remainingCapacity;
     }
 
     public BigInteger getId() {
@@ -149,7 +149,7 @@ public class acceptedRetailerRequest {
     public acceptedRetailerRequest() {
     }
 
-    public acceptedRetailerRequest(BigInteger id, String vehicleNumber, String driverName, String vehicleType, int capacity, int costPerSlot, String vehicleStatus, String slot1, String slot2, String slot3, String companyName, String slot, int retailerId, String requestStatus) {
+    public acceptedRetailerRequest(BigInteger id, String vehicleNumber, String driverName, String vehicleType, int capacity, int costPerSlot, String vehicleStatus, String slot1, String slot2, String slot3, String companyName, String slot, int retailerId, String requestStatus, int remaningCapacity) {
         this.id = id;
         this.vehicleNumber = vehicleNumber;
         this.driverName = driverName;
@@ -164,6 +164,6 @@ public class acceptedRetailerRequest {
         this.slot = slot;
         this.retailerId = retailerId;
         this.requestStatus = requestStatus;
-        this.remaningCapacity=capacity;
+        this.remainingCapacity=remainingCapacity;
     }
 }
