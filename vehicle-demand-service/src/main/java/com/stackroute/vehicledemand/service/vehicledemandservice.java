@@ -20,5 +20,6 @@ public interface vehicledemandservice {
     public List<newRetailerDemand> searchbyretailerId(int id);
     public List<rejectedRetailerRequest> findByRetailerIdinrejectedlist(int retailerId);
     public List<acceptedRetailerRequest> findByRetailerIdinacceptedlist(int retailerId);
+    public List<acceptedRetailerRequest> findByRetailerIdAndSlot(int retailerId, String slot);
 
 }

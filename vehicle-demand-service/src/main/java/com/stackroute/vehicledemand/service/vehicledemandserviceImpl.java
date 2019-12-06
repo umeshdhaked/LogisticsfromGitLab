@@ -83,4 +83,9 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
     public List<acceptedRetailerRequest> findByRetailerIdinacceptedlist(int retailerId) {
         return this.acceptedRetailerDemandRepository.findByRetailerId(retailerId);
     }
+
+    @Override
+    public List<acceptedRetailerRequest> findByRetailerIdAndSlot(int retailerId, String slot) {
+        return this.acceptedRetailerDemandRepository.findByRetailerIdAndSlot(retailerId, slot);
+    }
 }

@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface AcceptedRetailerDemandRepository extends MongoRepository<acceptedRetailerRequest, BigInteger> {
     public List<acceptedRetailerRequest> findByRetailerId(int retailerId);
+    public List<acceptedRetailerRequest> findByRetailerIdAndSlot(int retailerId, String slot);
 }
