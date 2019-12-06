@@ -99,6 +99,7 @@ export class NavigatelocationComponent implements OnInit {
       mapboxgl,
       marker: false,
     });
+
     console.log(geocoder);
     mapp.addControl(geocoder);
 
@@ -108,7 +109,12 @@ export class NavigatelocationComponent implements OnInit {
       coordinates.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
       // console.log('Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat)
     }
-
+    mapp.addControl(new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true
+    }));
     // function result()
     //   {
     //     var lngLat = MapboxGeocoder.getLngLat();

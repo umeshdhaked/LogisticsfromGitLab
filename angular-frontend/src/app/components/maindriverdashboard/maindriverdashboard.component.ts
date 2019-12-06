@@ -5,6 +5,8 @@ import {InteractionService} from '../../services/interaction.service';
 import {DataorderService} from '../../services/dataorder.service';
 import {MatDialog} from '@angular/material/dialog';
 import {CanceldialogueComponent} from '../canceldialogue/canceldialogue.component';
+import {async} from "@angular/core/testing";
+import {DatafromrouteoptimizerService} from "../../services/datafromrouteoptimizer.service";
 
 @Component({
   selector: 'app-maindriverdashboard',
@@ -17,6 +19,7 @@ export class MaindriverdashboardComponent implements OnInit {
   orderData: Orderdata[];
   constructor(private router: Router,
               private interactionserv: InteractionService,
+              private datafromrouteoptimizer: DatafromrouteoptimizerService,
               private dataorder: DataorderService,
               public dialog: MatDialog) { }
 

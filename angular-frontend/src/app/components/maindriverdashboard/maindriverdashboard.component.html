@@ -5,14 +5,14 @@
   <div class="card-body text-center">
     <button type="button" class="btn btn-outline-danger" id="cancelbutton" (click)="openDialogue()">Cancel Delivery</button>
     <br>
-    <p class="card-text"> Order Id:{{temp[0].id}}</p>
-    <p class="card-text"> Customer Name:{{temp[0].customerName}}</p>
-    <p class="card-text"> Customer Address:{{temp[0].customerAddress}}</p>
-    <p class="card-text"> Customer Phone No.:{{temp[0].customerPhoneNumber}}</p>
-    <div class="card bg-light" id="detailscard">
-      <div class="card-body text-center">
-        <p class="card-text"  >Current Location:{{temp[0].customerAddress}}</p >
-        <p class="card-text"  >Next Stop:{{temp[1].customerAddress}}</p >
+<!--    <p class="card-text"> Order Id:{{temp[0].id}}</p>-->
+<!--    <p class="card-text"> Customer Name:{{temp[0].customerName}}</p>-->
+<!--    <p class="card-text"> Customer Address:{{temp[0].customerAddress}}</p>-->
+<!--    <p class="card-text"> Customer Phone No.:{{temp[0].customerPhoneNumber}}</p>-->
+<!--    <div class="card bg-light" id="detailscard">-->
+<!--      <div class="card-body text-center">-->
+<!--        <p class="card-text"  >Current Location:{{temp[0].customerAddress}}</p >-->
+<!--        <p class="card-text"  >Next Stop:{{temp[1].customerAddress}}</p >-->
 
       </div>
     </div>
@@ -44,15 +44,15 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let data of orderData ">
+<!--    <tr *ngFor="let data of orderData ">-->
 
-      <td *ngIf="data.orderStatus=='pending' && data.id !=temp[0].id">{{data.id}}</td>
-      <td *ngIf="data.orderStatus=='pending'  && data.id !=temp[0].id">{{data.customerName}}</td>
-      <td *ngIf="data.orderStatus=='pending'  && data.id !=temp[0].id">{{data.customerAddress}}</td>
-      <td *ngIf="data.orderStatus=='pending' && data.id !=temp[0].id">{{data.orderVolume}}</td>
+<!--      <td *ngIf="data.orderStatus=='pending' && data.id !=temp[0].id">{{data.id}}</td>-->
+<!--      <td *ngIf="data.orderStatus=='pending'  && data.id !=temp[0].id">{{data.customerName}}</td>-->
+<!--      <td *ngIf="data.orderStatus=='pending'  && data.id !=temp[0].id">{{data.customerAddress}}</td>-->
+<!--      <td *ngIf="data.orderStatus=='pending' && data.id !=temp[0].id">{{data.orderVolume}}</td>-->
 
 
-    </tr>
+<!--    </tr>-->
     </tbody>
   </table>
 
