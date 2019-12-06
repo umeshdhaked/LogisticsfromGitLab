@@ -23,7 +23,7 @@ public class Order {
     private String customerAddress;
 //    private String customerPhoneNumber;
     private String deliveryDate;
-    private String slotNumber;
+    private String slot;
     private long orderVolume;
     private String orderStatus;
 

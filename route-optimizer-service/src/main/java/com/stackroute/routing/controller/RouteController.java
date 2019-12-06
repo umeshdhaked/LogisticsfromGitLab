@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 
 import org.json.JSONObject;
 import org.json.JSONArray;
+import org.springframework.web.client.RestTemplate;
+
+import java.net.URL;
 import java.util.List;
 
 @RestController
@@ -47,10 +50,33 @@ public class RouteController {
     }
 
     @PostMapping("order")
-    public ResponseEntity<?> saveOrder(@RequestBody Order order) throws Exception
+    public String saveOrder(@RequestBody Order order) throws Exception
     {
-        orderService.addOrder(order);
-        return new ResponseEntity<String>("order added", HttpStatus.OK);
+        Order order1 =orderService.addOrder(order);
+        int wholesalerId=order1.getWholesalerId();
+        String slot =order1.getSlot();
+        //run route optimizer service
+        //use the vehicle demand service to get booked vehicles in current slot of retailer
+        //retailer id and timeslot are in order
+        String url = "http://localhost:9090/searchByRetailerIdAndSlot/"+wholesalerId+"/"+slot;
+        RestTemplate restTemplate = new RestTemplate();
+        String vehicleJsonString = restTemplate.getForObject(url,String.class);
+        JSONArray vehicleJson = new JSONArray(vehicleJsonString);
+        url="http://localhost:8082/getRetailerById/?id="+wholesalerId;
+        JSONObject depot = restTemplate.getForObject(url,JSONObject.class);
+        String depotAddress =depot.getString("address");
+
+
+        return routeService.getRoutes(vehicleJson,depotAddress,wholesalerId);
+
+
+        //http://localhost:9090/searchByRetailerIdAndSlot/{retailerId}/{slot}
+        //returns all available vehicles
+        //format available in vehicle-demand-service-->domain--->AcceptedRetailerDemand
+        //get retailer details using retailerId using retailer profile service
+        //use to get address 8082/ getRetailerById
+        //optimize and save to your database
+        //endpoint to access saved routes, based on retailerId and slot
     }
 
     @PostMapping("vehicle")
@@ -89,9 +115,9 @@ public class RouteController {
     }
 
 
-    @GetMapping("routes/{wholesalerId}")
-    public String getAllRoutes(@PathVariable int wholesalerId) throws  Exception
-    {
-        return routeService.getRoutes(wholesalerId).toString();
-    }
+//    @GetMapping("routes/{wholesalerId}")
+//    public String getAllRoutes(@PathVariable int wholesalerId) throws  Exception
+//    {
+//        return routeService.getRoutes(wholesalerId).toString();
+//    }
 }
