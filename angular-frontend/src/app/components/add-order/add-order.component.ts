@@ -21,15 +21,15 @@ export class AddOrderComponent implements OnInit {
   slotValid = {"slot1": true, "slot2": true, "slot3": true};
   slotJson: DateDemand = {
     "date": "",
-    "timeSlot1": {
+    "timeslot1": {
       "slot": "11:00-13:00",
       "volume": undefined
     },
-    "timeSlot2": {
+    "timeslot2": {
       "slot": "14:00-16:00",
       "volume": undefined
     },
-    "timeSlot3": {
+    "timeslot3": {
       "slot": "17:00-19:00",
       "volume": undefined
     }
@@ -65,10 +65,12 @@ export class AddOrderComponent implements OnInit {
       console.log(this.retailerEmail);
       console.log(this.retailerId);
     }
+
+    this.checkSlotsOnDate(this.retailerId);
   }
 
-  checkSlotsOnDate(deliveryDate) {
-    this.orderService.checkSlots(deliveryDate).subscribe(data =>
+  checkSlotsOnDate(retailerId) {
+    this.orderService.checkSlots(retailerId).subscribe(data =>
       this.zone.run(() => {
         console.log(data);
         this.slotJson = data;
@@ -79,17 +81,17 @@ export class AddOrderComponent implements OnInit {
 
   changeSlotValue(orderVolume) {
     console.log(orderVolume);
-    if (orderVolume > this.slotJson["timeSlot1"]["volume"]) {
+    if (orderVolume > this.slotJson["timeslot1"]["volume"]) {
       this.slotValid["slot1"] = false;
     } else {
       this.slotValid["slot1"] = true;
     }
-    if (orderVolume > this.slotJson["timeSlot2"]["volume"]) {
+    if (orderVolume > this.slotJson["timeslot2"]["volume"]) {
       this.slotValid["slot2"] = false;
     } else {
       this.slotValid["slot2"] = true;
     }
-    if (orderVolume > this.slotJson["timeSlot3"]["volume"]) {
+    if (orderVolume > this.slotJson["timeslot3"]["volume"]) {
       this.slotValid["slot3"] = false;
     } else {
       this.slotValid["slot3"] = true;

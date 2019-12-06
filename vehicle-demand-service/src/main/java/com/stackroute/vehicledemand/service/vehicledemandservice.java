@@ -4,6 +4,8 @@ import com.stackroute.vehicledemand.domain.acceptedRetailerRequest;
 import com.stackroute.vehicledemand.domain.newRetailerDemand;
 import com.stackroute.vehicledemand.domain.rejectedRetailerRequest;
 import com.stackroute.vehicledemand.domain.retailerdemand;
+import com.stackroute.vehicledemand.domain.DateDemand;
+import com.stackroute.vehicledemand.domain.TimeSlot;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -29,5 +31,5 @@ public interface vehicledemandservice {
    // public List<acceptedRetailerRequest> addordertoSlotvehicle(int retailerId,String slot,int volumeBooked);
 //    public List<acceptedRetailerRequest> findByRetailerIdinacceptedlist(int retailerId);
     public List<acceptedRetailerRequest> findByRetailerIdAndSlot(int retailerId, String slot);
-
+    public DateDemand[] findByRetailerIdForOrder(int retailerId);
 }
