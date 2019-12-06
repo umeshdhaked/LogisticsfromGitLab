@@ -7,9 +7,10 @@
 }
 
 .Text-container {
-    width: 40%;
+    width: 50%;
     height: 80%;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    margin-left: 40px;
     background-color: white;
     padding: 16px;
     border-radius: 8px;
@@ -107,4 +108,45 @@ img {
 
 .nav-link:hover {
     color: rgb(43, 40, 40);
+}
+
+/* ............................................................................................. */
+
+/* .container {
+    margin-top: 10px;
+    font-weight: bold;
+} */
+
+/* .AddVehicle {
+    margin-left: 200px;
+    padding: 0;
+    place-content: center;
+} */
+
+h1 {
+    color: greenyellow;
+    text-align: center;
+    font-weight: bold;
+}
+
+.example-container {
+    margin-top: 28px;
+    height: 600px;
+    /* border: 1px solid rgba(0, 0, 0, 0.5); */
+}
+
+.example-sidenav-content {
+    display: flex;
+    height: 10%;
+    /* height: 100%; */
+}
+
+.example-sidenav {
+    padding: 20px;
+}
+
+.vehicle {
+    width: 60px;
+    height: 60px;
+    border: none;
 }
