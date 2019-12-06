@@ -27,7 +27,7 @@
             <a class="nav-link" data-toggle="modal" routerLink="/home/goal">Why Wysser</a>
           </li> -->
           <li class="nav-item text-center">
-            <a class="nav-link"  [routerLink]="['/home/members']" >Community</a>
+            <a class="nav-link"  href="#members" >Community</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-center" data-toggle="modal" href="#askmodal">Help</a>
@@ -44,7 +44,7 @@
         <ul class="navbar-nav">
           <div *ngIf="checkLogin != null ">
             <li class="nav-item text-center">
-              <a  style="color:goldenrod;font-weight: bold;" class="nav-link" (click) = "getRelatedProfile()"><img style="width:30px;height:30px" src="assets/images/profile.png"/> Profile</a>
+              <a  style="color:goldenrod;font-weight: bold; cursor: pointer;" class="nav-link" (click) = "getRelatedProfile()"><img style="width:30px;height:30px" src="assets/images/profile.png"/> Profile</a>
             </li>
           </div>
           
