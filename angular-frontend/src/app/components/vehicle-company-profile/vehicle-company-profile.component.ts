@@ -4,6 +4,7 @@ import { VechicleCompanyServiceService } from 'src/app/services/vechicle-company
 import * as jwt_decode from 'jwt-decode';
 import { DecodedJwtData } from 'src/app/interfaces/decoded-jwt-data';
 import { VehicleCompanyProfile } from 'src/app/interfaces/vehicle-company-profile';
+import { LoginAuthService } from 'src/app/services/login-auth.service';
 
 @Component({
   selector: 'app-vehicle-company-profile',
@@ -12,7 +13,7 @@ import { VehicleCompanyProfile } from 'src/app/interfaces/vehicle-company-profil
 })
 export class VehicleCompanyProfileComponent implements OnInit {
 
-  constructor(private router:Router, private vehicleCompanyService:VechicleCompanyServiceService ) { }
+  constructor(private router:Router, private vehicleCompanyService:VechicleCompanyServiceService, private loginAuth:LoginAuthService ) { }
 
 
   dataFromToken:DecodedJwtData;
@@ -67,6 +68,19 @@ export class VehicleCompanyProfileComponent implements OnInit {
     this.vehicleCompanyService.saveVehicleCompanyProfile(companyData);
 
       this.router.navigate(['/vehicle-management']);
+  }
+
+
+
+  private deleteAccount(){
+
+
+    this.vehicleCompanyService.deleteVehicleCompanyProfile();
+
+    this.loginAuth.deleteCredentials();
+
+    this.router.navigate(['/home']);
+
   }
 
 

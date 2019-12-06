@@ -155,4 +155,75 @@ public class retailervehicledemandcontroller {
         }
         return responseEntity;
     }
+
+
+    @GetMapping(value = "searchbyretailerid/{retailerId}")
+    public ResponseEntity<BigInteger> searchbyretailerId(@PathVariable int retailerId) {
+
+//        this.vehicledemandservice.searchbyretailerId(retailerId);
+
+
+        ResponseEntity responseEntity;
+        try {
+            responseEntity = new ResponseEntity(vehicledemandservice.searchbyretailerId(retailerId), HttpStatus.OK);
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+    @GetMapping(value = "searchbyretaileridinrejected/{retailerId}")
+    public ResponseEntity<BigInteger> searchbyretailerIdinrejected(@PathVariable int retailerId) {
+
+//        this.vehicledemandservice.searchbyretailerId(retailerId);
+
+
+        ResponseEntity responseEntity;
+        try {
+            responseEntity = new ResponseEntity(vehicledemandservice.findByRetailerIdinrejectedlist(retailerId), HttpStatus.OK);
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+
+//    @GetMapping(value = "searchbyretailerandslotinaccepted/{retailerId}/{slot}/{volumeBooked}")
+//    public ResponseEntity<BigInteger> searchbyretailerIdinrejected(@PathVariable int retailerId, @PathVariable String slot,@PathVariable int volumeBooked) {
+//
+////        this.vehicledemandservice.searchbyretailerId(retailerId);
+//
+//
+//        ResponseEntity responseEntity;
+//        try {
+//            responseEntity = new ResponseEntity(vehicledemandservice.getBookedVehicleByRetaileridandSlot(retailerId,slot), HttpStatus.OK);
+//        } catch (Exception e) {
+//            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+//        }
+//        return responseEntity;
+//    }
+
+    @GetMapping(value = "searchbyretaileridinaccepted/{retailerId}")
+    public ResponseEntity<BigInteger> searchbyretailerIdinaccepted(@PathVariable int retailerId) {
+
+//        this.vehicledemandservice.searchbyretailerId(retailerId);
+
+
+        ResponseEntity responseEntity;
+        try {
+            responseEntity = new ResponseEntity(vehicledemandservice.findByRetailerIdinacceptedlist(retailerId), HttpStatus.OK);
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+
+    @GetMapping(value = "searchByRetailerIdAndSlot/{retailerId}/{slot}")
+    public ResponseEntity<BigInteger> searchbyretaileridandslot(@PathVariable("retailerId") int retailerId, @PathVariable("slot") String slot) {
+        ResponseEntity responseEntity;
+        try {
+            responseEntity = new ResponseEntity(vehicledemandservice.findByRetailerIdAndSlot(retailerId, slot), HttpStatus.OK);
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
 }

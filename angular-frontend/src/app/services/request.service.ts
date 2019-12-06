@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import { from } from 'rxjs';
+import { Message } from '../interfaces/message';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +19,9 @@ export class RequestService {
     return this.http.get(url);
   }
 
-  sendAccept(input:any){
+  sendAccept(input:any): Observable<Message>{
     const uri = environment.apiUrl + ':8095/api/v1/Accept';
-   return this.http.post(uri, input);
+   return this.http.post<Message>(uri, input);
   }
 
   sendAccepttovehicledemand(input:any){

@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import * as jwt_decode from 'jwt-decode';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Router } from '@angular/router';
+import { DecodedJwtData } from '../interfaces/decoded-jwt-data';
 
 const helper = new JwtHelperService();
 
@@ -58,12 +59,22 @@ export class LoginAuthService {
   }
 
 
-
-
-
-
   logOut() {
     localStorage.removeItem('token')
+  }
+
+  
+  deleteCredentials(){
+
+    var decodedData:DecodedJwtData;
+    decodedData = jwt_decode(localStorage.getItem('token'))
+
+    let url = environment.apiUrl+":9091/token/deleteCredentials?id="+decodedData.userId;
+
+    this.httpclient.delete(url).subscribe();
+
+    localStorage.removeItem('token');
+
   }
 
 
