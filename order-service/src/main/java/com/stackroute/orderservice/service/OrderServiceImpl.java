@@ -12,7 +12,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
+import org.springframework.http.ResponseEntity;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -96,7 +96,11 @@ public class OrderServiceImpl implements OrderService {
 //        System.out.println(order.toString());
 
         Order order1 = orderRepository.saveOrders(order);
+        //call vehicle demand service to updateVolume here
         //activeOrder = order1.toString();
+        final String uri="http://localhost:9090/updateremainingvolume/" + order1.getRetailerId() + "/"+ order1.getSlotNumber() + "/" + order1.getOrderVolume();
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> res = restTemplate.postForEntity(uri, order1, String.class);
         Gson gson = new Gson();
         String json = gson.toJson(order1);
         assignProducerProperties();

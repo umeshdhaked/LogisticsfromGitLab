@@ -22,7 +22,7 @@ h6 {
   border-bottom: 3px solid transparent;
 }
 
-a:hover {
+.nav-link:hover {
   color: whitesmoke;
 }
 
@@ -59,7 +59,7 @@ a:hover {
 
  
 }
-a{
+.nav-link{
   color: #fff;
   text-transform: uppercase;
   text-decoration: none;
@@ -69,7 +69,7 @@ a{
   /* padding: 15px 20px; */
   position: relative;
 }
-a:after {    
+.nav-link:after {    
   background: none repeat scroll 0 0 transparent;
   bottom: 0;
   content: "";
@@ -81,7 +81,7 @@ a:after {
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
 }
-a:hover:after { 
+.nav-link:hover:after { 
   width: 100%; 
   left: 0; 
 }

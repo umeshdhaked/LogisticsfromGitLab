@@ -12,7 +12,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Document
 @Data
 public class Order {
-    private static final AtomicInteger counter = new AtomicInteger();
 
 
     @Id
@@ -23,7 +22,7 @@ public class Order {
     private String customerAddress;
 //    private String customerPhoneNumber;
     private String deliveryDate;
-    private String slotNumber;
+    private String slot;
     private long orderVolume;
     private String orderStatus;
 

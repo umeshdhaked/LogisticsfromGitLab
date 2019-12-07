@@ -204,3 +204,13 @@ services:
       - mongodb
     ports:
       - "9095:9095"
+  admin:
+    image: admin
+    build: admin/
+    restart: always
+    network_mode: host
+    container_name: admin
+    depends_on:
+      - mongodb
+    ports:
+      - "7070:7070"

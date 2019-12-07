@@ -2,9 +2,8 @@ package com.stackroute.routing.routingAlgorithms;
 
 import com.stackroute.routing.domain.Order;
 import com.stackroute.routing.domain.Vehicle;
-import com.stackroute.routing.repository.DepotRepository;
+//import com.stackroute.routing.repository.DepotRepository;
 import com.stackroute.routing.repository.OrderRepository;
-import com.stackroute.routing.repository.VehicleRepository;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +17,8 @@ import java.util.Random;
 @Service
 public class Solution
 {
-    private DepotRepository depotRepository;
+//    private DepotRepository depotRepository;
     private OrderRepository orderRepository;
-    private VehicleRepository vehicleRepository;
     int NoOfVehicles;
     int NoOfCustomers;
     VehicleNode[] vehicleNodes;
@@ -34,10 +32,8 @@ public class Solution
 
 
     @Autowired
-    public Solution(DepotRepository depotRepository, OrderRepository orderRepository, VehicleRepository vehicleRepository) {
-        this.depotRepository = depotRepository;
+    public Solution( OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
-        this.vehicleRepository = vehicleRepository;
     }
 
     public void solution(int CustNum, int VechNum, long[] VechCap)
@@ -509,11 +505,12 @@ public class Solution
         } catch (Exception e) {}
     }
 
-    public JSONObject SolutionPrint(String Solution_Label, Vehicle[] Vehicles, JSONArray coordinates, int wholesalerId, Order[] Orders)//Print Solution In console
+    public JSONObject SolutionPrint(String Solution_Label, Vehicle[] Vehicles, JSONArray coordinates, int wholesalerId, Order[] Orders,String depotAddress)//Print Solution In console
     {
         System.out.println("=========================================================");
         System.out.println(Solution_Label+"\n");
 
+        JSONObject Routes =new JSONObject();
         JSONObject routes =new JSONObject();
         for (int j=0 ; j < NoOfVehicles ; j++)
         {
@@ -521,7 +518,7 @@ public class Solution
             JSONArray sortedOrders =new JSONArray();
             values.put("wholesalerId",wholesalerId);
 
-            values.put("depotAddress",depotRepository.findByWholesalerId(wholesalerId).getDepotAddress());
+            values.put("depotAddress",depotAddress);
             values.put("depotLatitude",coordinates.getJSONObject(0).getFloat("latitude"));
             values.put("depotLongitude",coordinates.getJSONObject(0).getFloat("longitude"));
             System.out.println("Route length:"+vehicleNodes[j].Route.size());
@@ -556,10 +553,11 @@ public class Solution
                 routes.put(Vehicles[j].getVehicleNumber(),values);
             }
         }
-        routes.put("distance",Cost);
+        Routes.put("routes",routes);
+        Routes.put("distance",Cost);
         System.out.println("\nSolution Cost "+this.Cost+"\n");
 
-        return routes;
+        return Routes;
     }
 }
 

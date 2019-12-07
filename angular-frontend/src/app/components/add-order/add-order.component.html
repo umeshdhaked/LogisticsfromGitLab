@@ -82,7 +82,7 @@
                     (click)="setSlot('slot1'); slot1 = true; slot2 = false; slot3 = false" class="btn-outline-danger"
                     [class.btn-outline-danger]="slotValid['slot1']" [class.btn-danger]="!slotValid['slot1']" [class.selected]="slot1">
              <p>11:00AM to 01:00PM 
-              <br/> {{slotJson["timeSlot1"]["volume"] | remainingVolume}}
+              <br/> {{slotJson["timeslot1"]["volume"] | remainingVolume}}
             </p>
             </button>
           </div>
@@ -91,7 +91,7 @@
                     (click)="setSlot('slot2'); slot1 = false; slot2 = true; slot3 = false" class="btn-outline-danger"
                     [class.btn-outline-danger]="slotValid['slot2']" [class.btn-danger]="!slotValid['slot2']" [class.selected]="slot2">
               <p>
-              02:00PM to 04:00PM <br/> {{slotJson["timeSlot2"]["volume"] | remainingVolume}}
+              02:00PM to 04:00PM <br/> {{slotJson["timeslot2"]["volume"] | remainingVolume}}
               </p>
             </button>
           </div>
@@ -100,7 +100,7 @@
                     (click)="setSlot('slot3'); slot1 = false; slot2 = false; slot3 = true" class="btn-outline-danger"
                     [class.btn-outline-danger]="slotValid['slot3']" [class.btn-danger]="!slotValid['slot3']" [class.selected]="slot3">
               <p>
-                    05:00PM to 07:00PM <br/> {{slotJson["timeSlot3"]["volume"] | remainingVolume}}
+                    05:00PM to 07:00PM <br/> {{slotJson["timeslot3"]["volume"] | remainingVolume}}
                </p>   
                   </button>
           </div>
@@ -111,7 +111,7 @@
       <div class="col-4 offset-4">
         <br>
         <button type="submit" class="btn btn-outline-danger"
-                (click)='submitOrder(customerName.value, customerNumber.value, customerAddress.value, deliveryDate.value, orderVolume.value)'>
+                (click)='submitOrder(customerName.value, customerNumber.value, customerAddress.value, orderVolume.value)'>
           Add Order
         </button>
       </div>
