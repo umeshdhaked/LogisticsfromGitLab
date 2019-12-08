@@ -1,6 +1,4 @@
 FROM openjdk:latest
-ADD ./target/routing-1.0.0.jar routing-1.0.0.jar
+ADD ./target/routing-v1.0.0.jar routing-v1.0.0.jar
 EXPOSE 8084
-ENTRYPOINT ["java","-jar","routing-1.0.0.jar"]
-
-
+ENTRYPOINT ["java","-jar","routing-v1.0.0.jar"]
