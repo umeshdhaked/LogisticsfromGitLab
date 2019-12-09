@@ -5,9 +5,13 @@
 export const environment = {
   production: false,
 
-   apiUrl: 'http://15.206.105.26',
+   // apiUrl: 'http://15.206.105.26',
 
+<<<<<<< HEAD
+ apiUrl: 'http://localhost'
+=======
 //  apiUrl: 'http://localhost'
+>>>>>>> 77dafb99c0a4596a8a4bea50e42a94e2f390e549
 
 };
 
