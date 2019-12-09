@@ -114,6 +114,9 @@ import { PendingVehicleRequestComponent } from './components/pending-vehicle-req
 import { FaqComponent } from './components/faq/faq.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { DriverPasswordComponent } from './components/vehicle-management/driver-password/driver-password.component';
+import { DriverLoginComponent } from './components/driver-login/driver-login.component';
+import { TeamComponent } from './components/home/team/team.component';
+import { PartnersComponent } from './components/home/partners/partners.component';
 
 
 @NgModule({
@@ -166,7 +169,10 @@ import { DriverPasswordComponent } from './components/vehicle-management/driver-
     PendingVehicleRequestComponent,
     FaqComponent,
     ContactUsComponent,
-    DriverPasswordComponent
+    DriverPasswordComponent,
+    DriverLoginComponent,
+    TeamComponent,
+    PartnersComponent
   ],
 
   imports: [

@@ -1,4 +1,4 @@
-import {Component, OnInit, NgZone} from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Location } from '@angular/common';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { DecodedJwtData } from 'src/app/interfaces/decoded-jwt-data';
@@ -24,21 +24,30 @@ export class NavbarComponent implements OnInit {
     //     }
     //   }
     // });
-    this.zone.run(()=>{
+    this.zone.run(() => {
       this.checkLogin = localStorage.getItem('token');
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        if (event.url === '/login' || event.url === '/signup') {
-          this.hideElement = true;
-        }  else {
-          this.hideElement = false;
+      this.router.events.subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+          if (event.url === '/login' || event.url === '/signup') {
+           this.hideElement = true;
+          } else {
+            this.hideElement = false;
+            
+            if(localStorage.getItem('token')==null){
+              this.checkLogin = null;
+            }
+            else{
+              this.checkLogin = 'abc';
+            }
+
+          }
         }
-      }
-    });
+      });
     })
   }
 
   ngOnInit() {
+
   }
 
 
@@ -50,19 +59,21 @@ export class NavbarComponent implements OnInit {
 
     this.checkLogin = null;
 
+    
+
   }
 
 
-  getRelatedProfile(){
-    var Decoded:DecodedJwtData;
+  getRelatedProfile() {
+    var Decoded: DecodedJwtData;
     Decoded = jwt_decode(localStorage.getItem('token'));
 
-    if(Decoded.role === 'Retailer'){
+    if (Decoded.role === 'Retailer') {
       this.router.navigate(['/viewProfile'])
     }
 
-    if(Decoded.role === 'VehicleCompany'){
-        this.router.navigate(['/editVehicleCompanyProfile'])
+    if (Decoded.role === 'VehicleCompany') {
+      this.router.navigate(['/editVehicleCompanyProfile'])
     }
 
 
