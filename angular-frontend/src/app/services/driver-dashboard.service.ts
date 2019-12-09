@@ -30,4 +30,10 @@ export class DriverDashboardService {
 
     return this.http.post(uri, JSON.stringify(data), {headers: {'Content-Type': 'application/json'}});
   }
+
+  authenticateDriver(username: String, password: String){
+    let uri = environment.apiUrl + ":8095/api/v1/findByVehicleNumber/" + username;
+
+    return this.http.get(uri);
+  }
 }
