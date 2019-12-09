@@ -1,3 +1,4 @@
+import { Driver } from './../interfaces/driver';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -34,6 +35,6 @@ export class DriverDashboardService {
   authenticateDriver(username: String, password: String){
     let uri = environment.apiUrl + ":8095/api/v1/findByVehicleNumber/" + username;
 
-    return this.http.get(uri);
+    return this.http.get<Driver>(uri);
   }
 }
