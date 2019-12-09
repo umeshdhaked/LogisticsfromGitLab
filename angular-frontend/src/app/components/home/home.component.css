@@ -128,68 +128,9 @@ h4 {
 
 
 
-.client {
-  margin: auto;
-  font-style: strong;
-  height: 200px;
-  width: 200px;
-  border-radius: 100px;
-  vertical-align: middle;
-  padding-top: 10px;
-  background: crimson;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: whitesmoke;
-}
-
-.client:hover {
-  /* margin:auto; */
-  font-style: strong;
-  height: 200px;
-  width: 200px;
-  cursor: pointer;
-  border-radius: 100px;
-  vertical-align: middle;
-  padding-top: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(74, 105,4);
-  color: white;
-  /* box-shadow: 10px solid black; */
-  -webkit-transition: background-color 1s ease-out;
-  -moz-transition: background-color 1s ease-out;
-  -o-transition: background-color 1s ease-out;
-  transition: background-color 1s ease-out;
-}
-
-.client strong {
-  display: contents;
-}
-
-.client:hover strong {
-  display: none;
-  -webkit-transition: background-color 1s ease-out;
-  -moz-transition: background-color 1s ease-out;
-  -o-transition: background-color 1s ease-out;
-  transition: background-color 1s ease-out;
-}
-
-.client p {
-  display: none;
-}
-
-.client:hover p {
-  display: contents;
-  -webkit-transition: background-color 1s ease-in;
-  -moz-transition: background-color 1s ease-in;
-  -o-transition: background-color 1s ease-in;
-  transition: background-color 1s ease-in;
-}
 
 /* profile cards */
-.grid3img {
+/* .grid3img {
 
   height: 150px;
   width: 150px;
@@ -199,10 +140,10 @@ h4 {
 #grid {
   text-decoration: none;
   display: flex;
-  /* box-shadow: 10px solid black; */
-}
+   box-shadow: 10px solid black; 
+} */
 
-rounded {
+.rounded {
   padding: 0 5px 0 5px;
 }
 
