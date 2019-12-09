@@ -61,6 +61,19 @@ public class VehicleServiceImpl implements VehicleService {
         return driverRepository.findByCompanyName(companyName);
     }
 
+
+    @Override
+    public List<Driver> getfindByVehicleNumber(String vehicleNumber) {
+        return driverRepository.findByVehicleNumber(vehicleNumber);
+    }
+
+
+    @Override
+    public List<Driver> getfindByCompanyName(String companyName) {
+        return driverRepository.findByCompanyName(companyName);
+    }
+    
+
     @Override
     public Vehicle updateComments(Vehicle vehicle) {
 

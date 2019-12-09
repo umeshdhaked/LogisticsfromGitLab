@@ -120,6 +120,34 @@ public class VehicleController<VehicleDao> {
     }
 
 
+
+
+
+    @GetMapping("findByVehicleNumber/{vehicleNumber}")
+    @CrossOrigin
+    public ResponseEntity<?> getfindByVehicleNumber(@PathVariable("vehicleNumber") String vehicleNumber) {
+        ResponseEntity responseEntity;
+        List<Driver> vehicles = vehicleService.getfindByVehicleNumber(vehicleNumber);
+
+        responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
+
+        return responseEntity;
+    }
+
+
+
+    @GetMapping("findByCompanyName/{companyName}")
+    @CrossOrigin
+    public ResponseEntity<?> getfindByCompanyName(@PathVariable("companyName") String companyName) {
+        ResponseEntity responseEntity;
+        List<Driver> vehicles = vehicleService.getfindByCompanyName(companyName);
+
+        responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
+
+        return responseEntity;
+    }
+
+
 //.......................Save Rejected Vehicle.........................
 
 
