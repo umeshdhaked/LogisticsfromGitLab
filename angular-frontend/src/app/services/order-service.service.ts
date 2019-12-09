@@ -1,3 +1,4 @@
+import { RouteOrder } from './../interfaces/route-order';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
@@ -21,6 +22,7 @@ export class OrderServiceService {
 
   saveOrder(customerName, customerNumber, customerAddress, orderVolume, deliveryDate, slotNumber, orderStatus, retailerId): Observable<Order[]> {
     let url = environment.apiUrl + ":8084/orders/save";
+    let url2 = environment.apiUrl + ":8091/api/v1/order";
     console.log(orderStatus);
     console.log(customerNumber);
     let data = {
@@ -33,6 +35,25 @@ export class OrderServiceService {
       "orderStatus": orderStatus,
       "retailerId": retailerId
     };
+
+    let routeData = {
+      "customerName": customerName,
+      "customerAddress": customerAddress,
+      "customerPhoneNumber": customerNumber,
+      "orderVolume": orderVolume,
+      "deliveryDate": deliveryDate,
+      "slotNumber": slotNumber,
+      "orderStatus": orderStatus,
+      "wholesalerId": retailerId
+    };
+
+    this.http.post<RouteOrder[]>(url2, JSON.stringify(data), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
+    });
+
     return this.http.post<Order[]>(url, JSON.stringify(data), {
       headers: {
         'Content-Type': 'application/json',
