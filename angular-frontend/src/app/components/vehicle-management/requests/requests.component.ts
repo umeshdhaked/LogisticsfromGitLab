@@ -47,6 +47,9 @@ export class RequestsComponent implements OnInit {
     this.vehicle.remainingCapacity = this.vehicle.capacity;
     console.log(this.vehicle);
     this.requestService.sendAccept(this.vehicle).subscribe();
+    //.....................save vehicle after accepted by vehicle company............
+    this.requestService.saveAccept(this.vehicle).subscribe();
+
     this.requestService.sendAccepttovehicledemand(this.vehicle).subscribe();
     this.requestService.deleteinretailerdemand(this.vehicle.id).subscribe();
 
@@ -57,6 +60,11 @@ export class RequestsComponent implements OnInit {
     this.vehicle.requestStatus='Rejected';
     console.log(this.vehicle);
     this.requestService.sendReject(this.vehicle).subscribe();
+
+    //..................save vehicle after rejected...........................
+
+    this.requestService.saveReject(this.vehicle).subscribe();
+    
     this.requestService. sendRejecttovehicledemand(this.vehicle).subscribe();
     this.requestService.deleteinretailerdemand(this.vehicle.id).subscribe();
   }

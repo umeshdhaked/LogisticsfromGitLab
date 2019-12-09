@@ -15,7 +15,7 @@ export class VehicleHistoryComponent implements OnInit {
 		animationEnabled: true,
 		exportEnabled: true,
 		title: {
-			text: "Vehicle History"
+			text: "Accepted Vehicle History"
 		},
 		data: [{
 			type: "column",
