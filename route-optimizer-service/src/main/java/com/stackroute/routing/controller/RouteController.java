@@ -94,4 +94,9 @@ public class RouteController {
     {
         return routeService.getRoutes(wholesalerId).toString();
     }
+
+
+
+
+
 }
