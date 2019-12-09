@@ -10,4 +10,5 @@ import java.util.List;
 public interface RouteRepository extends CrudRepository<Route,Integer> {
 
     public List<Route> findByVehicleNumber(String vehicleNumber);
+    public List<Route> findByWholesalerIdAndSlot(int wholesalerId,String slot);
 }
