@@ -10,7 +10,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./driver-dashboard.component.css']
 })
 export class DriverDashboardComponent implements OnInit {
-
   deliveryRoute: Deliveryroute;
   vehicleId = 'KA123';
   today: String = new Date().toISOString().slice(0, 10);

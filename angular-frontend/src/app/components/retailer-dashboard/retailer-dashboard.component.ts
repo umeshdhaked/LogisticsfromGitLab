@@ -85,20 +85,20 @@ export class RetailerDashboardComponent implements OnInit {
       console.log(this.retailerEmail);
       console.log(this.retailerId);
     }
-    this.orderService.getAllOrderData(this.retailerEmail).subscribe(data =>
+    this.orderService.getAllOrderData(this.retailerId).subscribe(data =>
       this.zone.run(() => {
         this.orderData = data;
         this.populateLineChartData(this.orderData);
         this.populateDoughnutChartData(this.orderData);
       }));
 
-    this.orderService.getCompletedOrders(this.retailerEmail).subscribe(data =>
+    this.orderService.getCompletedOrders(this.retailerId).subscribe(data =>
       this.zone.run(() => {
         console.log(data);
         this.deliveredOrders = data.length;
       }));
 
-    this.orderService.getPendingOrders(this.retailerEmail).subscribe(data =>
+    this.orderService.getPendingOrders(this.retailerId).subscribe(data =>
       this.zone.run(() => {
         console.log(data);
         this.pendingOrders = data.length;
@@ -115,6 +115,7 @@ export class RetailerDashboardComponent implements OnInit {
       this.retailerObj = datas;
     });
   }
+
 
 
   populateLineChartData(orderData) {

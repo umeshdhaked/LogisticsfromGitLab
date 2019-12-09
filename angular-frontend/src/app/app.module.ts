@@ -115,6 +115,13 @@ import { FaqComponent } from './components/faq/faq.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { DriverPasswordComponent } from './components/vehicle-management/driver-password/driver-password.component';
 
+import { PendingresponsesComponent } from './components/pendingresponses/pendingresponses.component';
+import { ContactusreplypopupComponent } from './components/contactusreplypopup/contactusreplypopup.component';
+
+import { DriverLoginComponent } from './components/driver-login/driver-login.component';
+import { TeamComponent } from './components/home/team/team.component';
+import { PartnersComponent } from './components/home/partners/partners.component';
+
 
 @NgModule({
   declarations: [
@@ -166,7 +173,15 @@ import { DriverPasswordComponent } from './components/vehicle-management/driver-
     PendingVehicleRequestComponent,
     FaqComponent,
     ContactUsComponent,
-    DriverPasswordComponent
+    DriverPasswordComponent,
+
+    PendingresponsesComponent,
+    ContactusreplypopupComponent
+
+    DriverLoginComponent,
+    TeamComponent,
+    PartnersComponent
+
   ],
 
   imports: [
@@ -254,7 +269,7 @@ import { DriverPasswordComponent } from './components/vehicle-management/driver-
 
 
   ],
-  entryComponents: [ViewVehicleComponent, BookedVehiclesComponent, CanceldialogueComponent],
+  entryComponents: [ViewVehicleComponent, BookedVehiclesComponent, CanceldialogueComponent,ContactusreplypopupComponent],
   providers: [GetlistService, LoginAuthService, AuthGaurdService, EditProfileService,
     {
       provide: HTTP_INTERCEPTORS,

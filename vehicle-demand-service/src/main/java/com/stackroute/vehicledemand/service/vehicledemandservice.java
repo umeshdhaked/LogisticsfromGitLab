@@ -15,7 +15,7 @@ public interface vehicledemandservice {
 
     public List<newRetailerDemand> getvehicledemand();
     public newRetailerDemand savenewvehicledemandbyretailer(newRetailerDemand newRetailerDemand);
-    public List<newRetailerDemand> getallvehicledemanded();
+    public List<newRetailerDemand> getallvehicledemanded(String companyName);
     public boolean deletebyId(BigInteger Id);
     public acceptedRetailerRequest savenewaccepetedVehicleDemand( acceptedRetailerRequest acceptedRetailerRequest);
     public rejectedRetailerRequest savenewrejectedVehicleDemand(rejectedRetailerRequest rejectedRetailerRequest);
