@@ -3,6 +3,7 @@ import {InteractionService} from '../../services/interaction.service';
 import {PendingResponse} from '../../interfaces/pendingreponse';
 import {BehaviorSubject, Subscription} from 'rxjs';
 import {Router} from "@angular/router";
+import {AdminService} from "../../services/admin.service";
 
 @Component({
   selector: 'app-contactusreplypopup',
@@ -13,7 +14,8 @@ export class ContactusreplypopupComponent implements OnInit {
   data: any;
   body1: string;
   constructor(private interaction: InteractionService,
-              private router: Router) {
+              private router: Router,
+              private sendemail: AdminService) {
   }
 
   ngOnInit() {
@@ -22,8 +24,9 @@ export class ContactusreplypopupComponent implements OnInit {
   sendreply() {
 
     this.data = this.interaction.messageSource1;
+    this.sendemail.sendemail(this.data.email, this.data.subject, this.body1);
 
-    const urlgmail = 'https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=' + this.data.email + '&su=' + this.data.subject + '&body=' + this.body1;
-    window.open(urlgmail);
+    // const urlgmail = 'https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=' + this.data.email + '&su=' + this.data.subject + '&body=' + this.body1;
+    // window.open(urlgmail);
   }
 }
