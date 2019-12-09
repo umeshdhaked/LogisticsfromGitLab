@@ -26,9 +26,13 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order deleteOrder(int orderId) throws Exception {
 
+        System.out.println("in order");
+
         Order order =orderRepository.findByOrderId(orderId);
-        if(order!=null)
+        if(order!=null) {
+            System.out.println("in order");
             orderRepository.delete(order);
+        }
         else
             throw new Exception("record not found to be deleted");
 

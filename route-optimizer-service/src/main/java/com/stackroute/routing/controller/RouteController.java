@@ -23,6 +23,7 @@ import java.net.URL;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping(value="api/v1")
 public class RouteController {
     OrderService orderService;
@@ -102,6 +103,7 @@ public class RouteController {
     @DeleteMapping("order/{id}")
     public ResponseEntity<?>deleteOrder(@PathVariable int id) throws Exception
     {
+        System.out.println("here");
         orderService.deleteOrder(id);
         return new ResponseEntity<String>("order deleted", HttpStatus.OK);
     }
@@ -127,9 +129,17 @@ public class RouteController {
         return routeService.getAllRoutes();
     }
     @GetMapping("routes/{vehicleNumber}/{slot}")
-    public String getRoutesByVehicleNoAndSlot(@PathVariable String vehicleNumber,String slot) throws  Exception
+    public String getRoutesByVehicleNoAndSlot(@PathVariable String vehicleNumber,@PathVariable String slot) throws  Exception
     {
         return routeService.getRoutesByVehicle(vehicleNumber,slot);
+
+    }
+
+    @GetMapping("routesBySaler/{wholsalerId}/{slot}")
+    public String getRoutesByWholesalerIdAndSlot(@PathVariable int wholsalerId,@PathVariable String slot) throws  Exception
+    {
+        return routeService.getRoutesByWholesaler(wholsalerId,slot);
+
     }
 
 

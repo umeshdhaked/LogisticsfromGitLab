@@ -90,7 +90,6 @@ public class RouteServiceImpl implements RouteService {
             num=itr.next().getId();
         }
         num++;
-        vehicleNums = route.keys();
         while (vehicleNums.hasNext())
         {
 
@@ -100,6 +99,10 @@ public class RouteServiceImpl implements RouteService {
             String vehicleNum = vehicleNums.next();
             newROute.setVehicleNumber(vehicleNum);
             JSONObject vehicleRoute =route.getJSONObject(vehicleNum);
+            newROute.setDepotAddress(vehicleRoute.getString("depotAddress"));
+            newROute.setDepotLatitude(vehicleRoute.getFloat("depotLatitude"));
+            newROute.setDepotLongitude(vehicleRoute.getFloat("depotLongitude"));
+
             newROute.setSlot(slot);
             newROute.setRoutes(vehicleRoute.getJSONArray("route").toString());
             routeRepository.save(newROute);
@@ -110,28 +113,53 @@ public class RouteServiceImpl implements RouteService {
 
     @Override
     public String getRoutesByVehicle(String vehicleNumber, String slot) {
-        List<Route> routes = routeRepository.findByVehicleNumber(vehicleNumber);
-        Iterator<Route> it = routes.iterator();
-        boolean routeAssigned=false;
-        Route route=null;
-        while (it.hasNext())
+
+        System.out.println("in routes:"+vehicleNumber+"  "+slot);
+        List<Route> routes = routeRepository.findByVehicleNumberAndSlot("22","1");
+//        Iterator<Route> it = routes.iterator();
+//        boolean routeAssigned=false;
+//        Route route=null;
+//        while (it.hasNext())
+//        {
+//            route =it.next();
+//            if(route.getSlot()==slot)
+//            {
+//                routeAssigned=true;
+//                break;
+//            }
+//        }
+//        if(routeAssigned)
+//        {
+//            return route.getRoutes();
+//        }
+        if(routes!=null)
         {
-            route =it.next();
-            if(route.getSlot()==slot)
-            {
-                routeAssigned=true;
-                break;
-            }
-        }
-        if(routeAssigned)
-        {
-            return route.getRoutes();
+            System.out.println(routes);
+            Gson gson = new Gson();
+            return gson.toJson(routes);
+
         }
         else
         {
             return  "nope! don't try it";
         }
 
+    }
+
+    @Override
+    public String getRoutesByWholesaler(int wholesalerId, String slot) {
+        List<Route> routes =routeRepository.findByWholesalerIdAndSlot(wholesalerId,slot);
+        if(routes!=null)
+        {
+            System.out.println(routes);
+            Gson gson = new Gson();
+            return gson.toJson(routes);
+
+        }
+        else
+        {
+            return  "nope! don't try it";
+        }
     }
 
     @Override
