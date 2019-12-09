@@ -7,11 +7,14 @@ h6 {
   visibility: hidden;
 }
 
-.navbar-fixed-top
+/* .navbar-fixed-top
 {
   height: 300px;
+} */
+.carousel-item{
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
 /* .navbar.nav-link.scrolled{
     border-color: white;
 } */
