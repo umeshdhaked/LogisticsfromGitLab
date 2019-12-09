@@ -28,10 +28,10 @@ export class DriverLoginComponent implements OnInit {
     //   alert('please enter correct username and password');
     // }
     this.serv.authenticateDriver(this.username, this.password).subscribe(data => {
-      if(data.password === this.password){
-        localStorage.setItem("vehicleNumber", data.vehicleNumber);
-        localStorage.setItem("retailerId", String(data.retailerId));
-        localStorage.setItem("driverName", data.driverName);
+      if(data[0].password == this.password){
+        localStorage.setItem("vehicleNumber", data[0].vehicleNumber);
+        localStorage.setItem("retailerId", String(data[0].retailerId));
+        localStorage.setItem("driverName", data[0].driverName);
         this.router.navigateByUrl('driverdashboard');
       }else {
         alert("Please enter correct credentials!");
