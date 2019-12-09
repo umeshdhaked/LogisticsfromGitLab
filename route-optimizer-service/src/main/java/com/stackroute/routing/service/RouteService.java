@@ -7,8 +7,9 @@ import org.json.JSONObject;
 import java.util.List;
 
 public interface RouteService {
-
-    public Route saveRoute(Route route);
+    public List<Route> getAllRoutes();
+    public  void delDuplicateRoutes(JSONObject route,int wholesalerId,String slot);
+    public void saveRoute(JSONObject route,int wholesalerId,String slot);
     public String getRoutesByVehicle(String vehicleNumber,String slot);
     public String getRoutes(JSONArray vehicleJson,String depotAddress,int wholersalerId) throws  Exception;
     public JSONObject coordinateFinder(String[] addresses) throws Exception;

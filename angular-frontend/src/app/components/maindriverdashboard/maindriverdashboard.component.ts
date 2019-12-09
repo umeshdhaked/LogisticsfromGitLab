@@ -12,6 +12,8 @@ import {CanceldialogueComponent} from '../canceldialogue/canceldialogue.componen
 })
 export class MaindriverdashboardComponent implements OnInit {
   temp = new Array<Orderdata>();
+  vehicleId: string;
+  retailerId: string;
   currentorder: any;
   orderData: Orderdata[];
   constructor(private router: Router,

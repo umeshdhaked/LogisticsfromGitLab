@@ -1,5 +1,6 @@
 package com.stackroute.BackEnd.service;
 
+import com.stackroute.BackEnd.domain.Driver;
 import com.stackroute.BackEnd.domain.Vehicle;
 import com.stackroute.BackEnd.exception.VehicleAlreadyExistsException;
 import com.stackroute.BackEnd.exception.VehicleNotFoundException;
@@ -16,6 +17,8 @@ public interface VehicleService {
 
     public List<Vehicle> getAllVehicles();
 
+    public List<Driver> getAcceptedVehicle(String companyName);
+
     public Vehicle updateComments(Vehicle vehicle);
 
     public Vehicle updateVehicle(Vehicle vehicle);
@@ -24,11 +27,14 @@ public interface VehicleService {
 
     public Optional<Vehicle> getVehicleById(BigInteger id) throws VehicleNotFoundException;
 
+
+
 //    public List<Vehicle> getVehicleByVehicleNumber(String vehicleNumber) throws VehicleNotFoundException;
     List<Vehicle> getlistbyslot1anddate(int capacity,String slot1);
     List<Vehicle> getlistbyslot2anddate(int  capacity,String slot2);
     List<Vehicle> getlistbyslot3anddate(int  capacity,String slot3);
     List<Vehicle> getVehicleForRetailerRequest(String slot, String date, String vehicleType);
 //     List<Vehicle> getvehiclebyDateSlotandStatus(String date,String slot,String status);
+    public Driver saveDriver(Driver driver);
 }
 

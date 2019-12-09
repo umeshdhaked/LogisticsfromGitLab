@@ -1,8 +1,10 @@
 package com.stackroute.BackEnd.service;
 
+import com.stackroute.BackEnd.domain.Driver;
 import com.stackroute.BackEnd.domain.Vehicle;
 import com.stackroute.BackEnd.exception.VehicleAlreadyExistsException;
 import com.stackroute.BackEnd.exception.VehicleNotFoundException;
+import com.stackroute.BackEnd.repository.DriverRepository;
 import com.stackroute.BackEnd.repository.VehicleRepository;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -22,10 +24,12 @@ public class VehicleServiceImpl implements VehicleService {
 
 
     private VehicleRepository vehicleRepository;
+    private DriverRepository driverRepository;
 
     @Autowired
-    public VehicleServiceImpl(VehicleRepository vehicleRepository) {
+    public VehicleServiceImpl(VehicleRepository vehicleRepository, DriverRepository driverRepository) {
         this.vehicleRepository = vehicleRepository;
+        this.driverRepository = driverRepository;
     }
 
     @Override
@@ -49,6 +53,12 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public List<Vehicle> getAllVehicles() {
         return vehicleRepository.findAll();
+    }
+
+
+    @Override
+    public List<Driver> getAcceptedVehicle(String companyName) {
+        return driverRepository.findByCompanyName(companyName);
     }
 
     @Override
@@ -132,5 +142,10 @@ public class VehicleServiceImpl implements VehicleService {
 //     List<Vehicle> getvehiclebyDateSlotandStatus(String date,String slot,String status){
 //     List<Vehicle> mylist= vehicleRepository.findBy
 //     }
+
+    public Driver saveDriver(Driver driver){
+        return this.driverRepository.save(driver);
+    }
+
 }
 

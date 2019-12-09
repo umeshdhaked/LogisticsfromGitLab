@@ -1,6 +1,6 @@
 package com.stackroute.BackEnd.repository;
 
-import com.stackroute.BackEnd.domain.Vehicle;
+import com.stackroute.BackEnd.domain.Driver;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.math.BigInteger;
 import java.util.List;
 @Repository
-public interface VehicleRepository extends MongoRepository<Vehicle, BigInteger> {
+public interface DriverRepository extends MongoRepository<Driver, BigInteger> {
 //    Query querrytest= new Query();
 //    querrytest.addCriteria();
 //
@@ -19,14 +19,12 @@ public interface VehicleRepository extends MongoRepository<Vehicle, BigInteger> 
 //    @Query("{'capacity': ?0,'slot2': ?1}")
 //    public List<Vehicle> findbydateandslot3(int capacity,String slot3);
 
-   public List<Vehicle> findByCapacityAndSlot1(int capacity, String slot1);
-   public List<Vehicle> findByCapacityAndSlot2(int capacity, String slot2);
-   public List<Vehicle> findByCapacityAndSlot3(int capacity, String slot3);
+
+    //
 //
 //
-//
-    List<Vehicle> findByVehicleNumber(String vehicleNumber);
-    List<Vehicle> findByCompanyName(String companyName);
+    List<Driver> findByVehicleNumber(String vehicleNumber);
+    List<Driver> findByCompanyName(String companyName);
 //
 //    List<Vehicle> findBySlot1StatusAndDateAndVehicleType(String slot1Status, String date,String vehicleType);
 //
