@@ -94,13 +94,26 @@ public class VehicleController<VehicleDao> {
 
         System.out.println("values");
 
-        System.out.println("id = "+vehicle.getId());
+        System.out.println("Accepted Vehicle id = "+vehicle.getId());
         System.out.println(vehicle.toString());
 
         ResponseEntity responseEntity;
 
         vehicleService.saveVehicle(vehicle);
         responseEntity = new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
+
+        return responseEntity;
+    }
+
+//....................get Accepted Vehicle By company name.......................,,,,,
+
+    @GetMapping("AcceptedVehicle/{companyName}")
+    @CrossOrigin
+    public ResponseEntity<?> getAcceptedVehicle(@PathVariable("companyName") String companyName) {
+        ResponseEntity responseEntity;
+        List<Vehicle> vehicles = vehicleService.getAcceptedVehicle(companyName);
+
+        responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
 
         return responseEntity;
     }
@@ -116,7 +129,7 @@ public class VehicleController<VehicleDao> {
 
         System.out.println("values");
 
-        System.out.println("id = "+vehicle.getId());
+        System.out.println("Rejected Vehicle id = "+vehicle.getId());
         System.out.println(vehicle.toString());
 
         ResponseEntity responseEntity;

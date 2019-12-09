@@ -51,6 +51,12 @@ public class VehicleServiceImpl implements VehicleService {
         return vehicleRepository.findAll();
     }
 
+
+    @Override
+    public List<Vehicle> getAcceptedVehicle(String companyName) {
+        return vehicleRepository.findByCompanyName(companyName);
+    }
+
     @Override
     public Vehicle updateComments(Vehicle vehicle) {
 
