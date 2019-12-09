@@ -26,6 +26,7 @@ public interface VehicleRepository extends MongoRepository<Vehicle, BigInteger> 
 //
 //
     List<Vehicle> findByVehicleNumber(String vehicleNumber);
+    List<Vehicle> findByCompanyName(String companyName);
 //
 //    List<Vehicle> findBySlot1StatusAndDateAndVehicleType(String slot1Status, String date,String vehicleType);
 //

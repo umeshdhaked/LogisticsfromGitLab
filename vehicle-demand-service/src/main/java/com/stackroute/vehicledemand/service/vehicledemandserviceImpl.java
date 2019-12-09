@@ -48,9 +48,12 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
     }
 
     @Override
-    public List<newRetailerDemand> getallvehicledemanded() {
-        return newRetailerDemandRepository.findAll();
-        
+    public List<newRetailerDemand> getallvehicledemanded(String companyName) {
+        // return newRetailerDemandRepository.findAll();
+        System.out.println(companyName);
+        List<newRetailerDemand> test= newRetailerDemandRepository.findByCompanyName(companyName);
+        System.out.println(test.toString());
+        return test;
     }
 
     @Override
