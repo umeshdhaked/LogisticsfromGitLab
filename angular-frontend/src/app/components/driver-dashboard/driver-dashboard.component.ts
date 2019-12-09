@@ -29,7 +29,7 @@ export class DriverDashboardComponent implements OnInit {
             this.newDelivery = true;
             console.log(JSON.stringify(this.deliveryRoute))
           }
-        )
+        );
       }
     );
   }

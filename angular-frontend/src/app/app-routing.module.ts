@@ -9,7 +9,7 @@ import {AuthGaurdService} from './services/auth-gaurd.service';
 import {VerifyComponent} from './components/verify/verify.component';
 import {HomeComponent} from './components/home/home.component';
 import {SignupComponent} from './components/signup/signup.component';
-import {NgModule} from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {VehicleHistoryComponent} from './components/vehicle-management/vehicle-history/vehicle-history.component';
 import {BookedVehiclesComponent} from './components/vehicledemandfrontend/booked-vehicles/booked-vehicles.component';
@@ -21,6 +21,7 @@ import {RetailerDashboardComponent} from './components/retailer-dashboard/retail
 import {VehicledemandfrontendComponent} from './components/vehicledemandfrontend/vehicledemandfrontend.component';
 import {VehicleManagementComponent} from './components/vehicle-management/vehicle-management.component';
 import {RequestsComponent} from './components/vehicle-management/requests/requests.component';
+import { DriverPasswordComponent } from './components/vehicle-management/driver-password/driver-password.component';
 
 
 import {ManageVehiclesComponent} from './components/vehicle-management/manage-vehicles/manage-vehicles.component';
@@ -50,6 +51,7 @@ import {PendingVehicleRequestComponent} from './components/pending-vehicle-reque
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
+  {path: 'home/:members', component: HomeComponent},
   {path: 'terms', component: TermsComponent},
   {path: 'faq', component: FaqComponent},
   {path: 'contact-us', component: ContactUsComponent},
@@ -80,12 +82,14 @@ const routes: Routes = [
   // },
   // {path: 'manage-vehicle', component: ManageVehiclesComponent, canActivate: [AuthGaurdService]},
   {path: 'manage-vehicle', component: ManageVehiclesComponent},
+  {path: 'driver-password', component:DriverPasswordComponent},
   {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent},
   // {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent, canActivate: [AuthGaurdService]},
   {path: 'viewProfile', component: ViewProfileComponent},
   // {path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGaurdService]},
 
   {path: 'manage-vehicle', component: ManageVehiclesComponent},
+  
   {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent, canActivate: [AuthGaurdService]},
   {path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGaurdService]},
 
@@ -122,5 +126,5 @@ const routes: Routes = [
 export class AppRoutingModule {
 }
 
-export const routingModule = [HomeComponent, SignupComponent, VerifyComponent, EditProfileComponent, PageNotFoundComponent, VehicleManagementComponent, RequestsComponent, ManageVehiclesComponent, ViewProfileComponent, VehicleHistoryComponent, BookedVehiclesComponent];
+export const routingModule = [HomeComponent, SignupComponent, VerifyComponent, EditProfileComponent, PageNotFoundComponent, VehicleManagementComponent, RequestsComponent, ManageVehiclesComponent, ViewProfileComponent, VehicleHistoryComponent, BookedVehiclesComponent,DriverPasswordComponent];
 

@@ -76,21 +76,54 @@ public class VehicleController<VehicleDao> {
         System.out.println("id = "+vehicle.getId());
         System.out.println(vehicle.toString());
 
-//        vehicle.setDate("today");
-
-//        vehicle.setSlot1Status("Available");
-//        vehicle.setSlot2Status("Available");
-//        vehicle.setSlot3Status("Available");
-
-
         ResponseEntity responseEntity;
-        //try {
+
         vehicleService.saveVehicle(vehicle);
         responseEntity = new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
-        //}
-        //catch (Exception ex){
-        //  responseEntity=new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
-        //}
+
+        return responseEntity;
+    }
+
+//...............Save Accepted Vehicle..............................................
+
+
+    @PostMapping("AcceptedVehicle")
+
+    @CrossOrigin
+    public ResponseEntity<?> saveAcceptedVehicle(@RequestBody Vehicle vehicle) throws VehicleAlreadyExistsException {
+
+        System.out.println("values");
+
+        System.out.println("id = "+vehicle.getId());
+        System.out.println(vehicle.toString());
+
+        ResponseEntity responseEntity;
+
+        vehicleService.saveVehicle(vehicle);
+        responseEntity = new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
+
+        return responseEntity;
+    }
+
+
+//.......................Save Rejected Vehicle.........................
+
+
+    @PostMapping("RejectedVehicle")
+
+    @CrossOrigin
+    public ResponseEntity<?> saveRejectedVehicle(@RequestBody Vehicle vehicle) throws VehicleAlreadyExistsException {
+
+        System.out.println("values");
+
+        System.out.println("id = "+vehicle.getId());
+        System.out.println(vehicle.toString());
+
+        ResponseEntity responseEntity;
+
+        vehicleService.saveVehicle(vehicle);
+        responseEntity = new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
+
         return responseEntity;
     }
 

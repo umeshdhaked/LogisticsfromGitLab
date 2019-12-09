@@ -5,7 +5,6 @@ import {InteractionService} from '../../services/interaction.service';
 import {DataorderService} from '../../services/dataorder.service';
 import {MatDialog} from '@angular/material/dialog';
 import {CanceldialogueComponent} from '../canceldialogue/canceldialogue.component';
-
 @Component({
   selector: 'app-maindriverdashboard',
   templateUrl: './maindriverdashboard.component.html',
@@ -19,7 +18,6 @@ export class MaindriverdashboardComponent implements OnInit {
               private interactionserv: InteractionService,
               private dataorder: DataorderService,
               public dialog: MatDialog) { }
-
   async ngOnInit() {
     this.temp[0] = new Orderdata();
     this.temp[1] = new Orderdata();
@@ -53,11 +51,8 @@ export class MaindriverdashboardComponent implements OnInit {
     this.interactionserv.sendMessage(this.temp[0].customerAddress + ' ' + this.temp[1].customerAddress);
     this.router.navigateByUrl('navigate');
   }
-
   signature() {
-
     // for(let vehicle of this.orderData){
-
     // }
     this.orderData[this.currentorder].orderStatus = 'delivered';
     this.dataorder.updateOrderStatus(this.orderData[this.currentorder].id, this.orderData[this.currentorder].orderStatus).toPromise().then(
@@ -68,14 +63,11 @@ export class MaindriverdashboardComponent implements OnInit {
         console.log(reason);
       });
     console.log(this.orderData);
-
     this.router.navigateByUrl('signature');
   }
-
   openDialogue() {
     this.dialog.open(CanceldialogueComponent);
   }
-
   delayDelivery() {
     this.orderData[this.currentorder].orderStatus = 'delayed';
     this.dataorder.updateOrderStatus(this.orderData[this.currentorder].id, this.orderData[this.currentorder].orderStatus).toPromise().then(

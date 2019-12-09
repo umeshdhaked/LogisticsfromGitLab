@@ -6,12 +6,24 @@ import { MatTableDataSource } from '@angular/material/table';
 import { BehaviorSubject } from 'rxjs';
 import { style } from '@angular/animations';
 
+import * as jwt_decode from 'jwt-decode';
+import { DecodedJwtData } from 'src/app/interfaces/decoded-jwt-data';
+import { VehicleCompanyProfile } from 'src/app/interfaces/vehicle-company-profile';
+import { VechicleCompanyServiceService } from 'src/app/services/vechicle-company-service.service';
+
 @Component({
   selector: 'app-manage-vehicles',
   templateUrl: './manage-vehicles.component.html',
   styleUrls: ['./manage-vehicles.component.css']
 })
 export class ManageVehiclesComponent implements OnInit {
+
+
+
+  dataFromToken: DecodedJwtData;
+  vehicleCompanyData: VehicleCompanyProfile;
+  cName='';
+
 
   vehicles: VehicleManagement[];
   vehicleForm: boolean = false;
@@ -21,7 +33,7 @@ export class ManageVehiclesComponent implements OnInit {
   editedVehicle: any = {};
   filteredData: VehicleManagement[];
 
-  constructor(private vehicleService: VehicleService, private router: Router) {
+  constructor(private vehicleService: VehicleService, private router: Router, private vehicleCompanyService: VechicleCompanyServiceService) {
   }
 
   vehicleBehavior: BehaviorSubject<any>;
@@ -55,9 +67,20 @@ export class ManageVehiclesComponent implements OnInit {
   slot3;
 
 
-
-
   ngOnInit() {
+
+    if(localStorage.getItem('token')!=null){
+      this.dataFromToken= jwt_decode(localStorage.getItem('token'));
+    }
+
+
+    this.vehicleCompanyService.getVehicleCompanyProfileFromEmail(this.dataFromToken.sub).subscribe((data: any) => {
+      this.vehicleCompanyData = data;
+      if (this.vehicleCompanyData != null) {
+        this.cName = ''+this.vehicleCompanyData.companyName;
+      }
+    })
+
     this.vehicleService.getAllVehicles().subscribe(data => {
       this.vehicles = data
       this.filteredData = data;
@@ -91,8 +114,6 @@ export class ManageVehiclesComponent implements OnInit {
 
   saveVehicle(vehicle: VehicleManagement) {
 
-
-
     if (this.time <= 7 || this.time > 15) {
       this.slot1 = "Available";
       this.slot2 = "Available";
@@ -113,9 +134,11 @@ vehicle.slot1 = this.slot1;
 vehicle.slot2 = this.slot2;
 vehicle.slot3 = this.slot3;
 
+vehicle.companyName = ''+this.vehicleCompanyData.companyName;
 
 
     if (this.isNewVehicle) {
+    
       //add a new vehicle
       this.vehicleService.addVehicle(vehicle);
     }
@@ -143,9 +166,6 @@ vehicle.slot3 = this.slot3;
     this.newVehicle = {};
     this.vehicleForm = false;
   }
-
-
-
 }
 
 

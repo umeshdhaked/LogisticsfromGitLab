@@ -13,7 +13,6 @@
       <div class="card-body text-center">
         <p class="card-text"  >Current Location:{{temp[0].customerAddress}}</p >
         <p class="card-text"  >Next Stop:{{temp[1].customerAddress}}</p >
-
       </div>
     </div>
     <br>
@@ -22,7 +21,6 @@
       <button type="button" class="btn btn-primary" (click)="signature()">Delivered</button>
       <button type="button" class="btn btn-primary" (click)="delayDelivery()" >Delay Delivery</button>
     </div>
-
   </div>
 </div>
 <br>
@@ -30,9 +28,7 @@
   Upcoming Stops
 </h3>
 <br>
-
 <div class="table-responsive text-nowrap">
-
   <table class="table" id="ordertable">
     <thead>
     <tr>
@@ -40,21 +36,15 @@
       <th scope="col">Customer Name</th>
       <th scope="col">Address</th>
       <th scope="col">Order Volume</th>
-
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let data of orderData ">
-
       <td *ngIf="data.orderStatus=='pending' && data.id !=temp[0].id">{{data.id}}</td>
       <td *ngIf="data.orderStatus=='pending'  && data.id !=temp[0].id">{{data.customerName}}</td>
       <td *ngIf="data.orderStatus=='pending'  && data.id !=temp[0].id">{{data.customerAddress}}</td>
       <td *ngIf="data.orderStatus=='pending' && data.id !=temp[0].id">{{data.orderVolume}}</td>
-
-
     </tr>
     </tbody>
   </table>
-
 </div>
-
