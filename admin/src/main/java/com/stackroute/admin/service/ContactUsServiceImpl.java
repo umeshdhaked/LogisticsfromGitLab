@@ -8,10 +8,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ContactUsServiceImpl implements ContactUsService {
+public class ContactUsServiceImpl implements ContactUsService{
     @Autowired
     ContactUsRepository contactUsRepository;
-
     @Override
     public ContactUs saveNewContactUSRequest(ContactUs contactUs) {
         contactUsRepository.save(contactUs);
