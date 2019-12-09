@@ -19,6 +19,10 @@ public interface VehicleService {
 
     public List<Driver> getAcceptedVehicle(String companyName);
 
+    public List<Driver>getfindByVehicleNumber(String vehicleNumber);
+
+    public List<Driver>getfindByCompanyName(String companyName);
+
     public Vehicle updateComments(Vehicle vehicle);
 
     public Vehicle updateVehicle(Vehicle vehicle);
