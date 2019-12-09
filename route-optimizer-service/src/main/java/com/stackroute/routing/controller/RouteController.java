@@ -60,16 +60,16 @@ public class RouteController {
         //run route optimizer service
         //use the vehicle demand service to get booked vehicles in current slot of retailer
         //retailer id and timeslot are in order
-//        String url = "http://localhost:9090/searchByRetailerIdAndSlot/"+wholesalerId+"/"+slot;
-//        RestTemplate restTemplate = new RestTemplate();
-//        String vehicleJsonString = restTemplate.getForObject(url,String.class);
-        String vehicleJsonString="[{\"_id\":0,\"vehicleNumber\":\"22\",\"capacity\":50},{\"_id\":45,\"vehicleNumber\":\"343\",\"capacity\":100}]";
+        String url = "http://localhost:9090/searchByRetailerIdAndSlot/"+wholesalerId+"/"+slot;
+        RestTemplate restTemplate = new RestTemplate();
+        String vehicleJsonString = restTemplate.getForObject(url,String.class);
+//        String vehicleJsonString="[{\"_id\":0,\"vehicleNumber\":\"22\",\"capacity\":50},{\"_id\":45,\"vehicleNumber\":\"343\",\"capacity\":100}]";
 
         JSONArray vehicleJson = new JSONArray(vehicleJsonString);
-//        url="http://localhost:8082/getRetailerById/?id="+wholesalerId;
-//        JSONObject depot = restTemplate.getForObject(url,JSONObject.class);
-//        String depotAddress =depot.getString("address");
-        String depotAddress="marathahalli";
+        url="http://localhost:8082/getRetailerById/?id="+wholesalerId;
+        JSONObject depot = restTemplate.getForObject(url,JSONObject.class);
+        String depotAddress =depot.getString("address");
+//        String depotAddress="marathahalli";
 
         JSONObject newRoutes=new JSONObject( routeService.getRoutes(vehicleJson,depotAddress,wholesalerId));
 
