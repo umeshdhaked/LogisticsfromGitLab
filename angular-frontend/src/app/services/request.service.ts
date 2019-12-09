@@ -24,6 +24,14 @@ export class RequestService {
    return this.http.post<Message>(uri, input);
   }
 
+
+// ...................save vehicle after accepted by vehicle company.................
+
+  saveAccept(input:any): Observable<Message>{
+    const uri = environment.apiUrl + ':8095/api/v1/AcceptedVehicle';
+    return this.http.post<Message>(uri,input);
+  }
+
   sendAccepttovehicledemand(input:any){
     const uri = environment.apiUrl + ':9090/saveacceptedstatusdemand';
    return this.http.post(uri, input);
@@ -39,6 +47,21 @@ export class RequestService {
     return this.http.post(uri, input);
 
   }
+
+//...................save vehicle after rejected vehicle by vehicle company............
+
+  saveReject(input:any): Observable<Message>{
+    const uri = environment.apiUrl + ':8095/api/v1/RejectedVehicle';
+    return this.http.post<Message>(uri,input);
+  }
+
+
+  // saveReject(input){
+
+  //   const uri = environment.apiUrl + ':8095/api/v1/RejectedVehicle';
+  //   return this.http.post(uri, input);
+
+  // }
 
   sendRejecttovehicledemand(input:any){
     const uri = environment.apiUrl + ':9090/saverejectedstatusdemand';
