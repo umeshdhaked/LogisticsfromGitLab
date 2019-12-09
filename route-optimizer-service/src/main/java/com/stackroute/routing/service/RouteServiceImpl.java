@@ -58,8 +58,54 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public Route saveRoute(Route route) {
-        return routeRepository.save(route);
+    public List<Route> getAllRoutes() {
+        Iterator<Route> it =routeRepository.findAll().iterator();
+        List<Route> routes = new  ArrayList<>();
+        while (it.hasNext())
+        {
+            routes.add(it.next());
+        }
+        return routes;
+    }
+
+    @Override
+    public void delDuplicateRoutes(JSONObject route, int wholesalerId,String slot) {
+        List<Route> routes=routeRepository.findByWholesalerIdAndSlot(wholesalerId,slot);
+        Iterator<Route> it =routes.iterator();
+        while (it.hasNext())
+        {
+            routeRepository.deleteById(it.next().getId());
+        }
+    }
+
+    @Override
+    public void saveRoute(JSONObject route,int wholesalerId,String slot) {
+        delDuplicateRoutes(route,wholesalerId,slot);
+        Iterator<String> vehicleNums = route.keys();
+
+        Iterator<Route> itr =routeRepository.findAll().iterator();
+        int num=0;
+        while (itr.hasNext())
+        {
+            num=itr.next().getId();
+        }
+        num++;
+        vehicleNums = route.keys();
+        while (vehicleNums.hasNext())
+        {
+
+            Route newROute =new Route();
+            newROute.setId(num);
+            newROute.setWholesalerId(wholesalerId);
+            String vehicleNum = vehicleNums.next();
+            newROute.setVehicleNumber(vehicleNum);
+            JSONObject vehicleRoute =route.getJSONObject(vehicleNum);
+            newROute.setSlot(slot);
+            newROute.setRoutes(vehicleRoute.getJSONArray("route").toString());
+            routeRepository.save(newROute);
+            System.out.println(newROute.getRoutes());
+            num++;
+        }
     }
 
     @Override
@@ -83,7 +129,7 @@ public class RouteServiceImpl implements RouteService {
         }
         else
         {
-            return  "nope";
+            return  "nope! don't try it";
         }
 
     }
@@ -270,6 +316,7 @@ public class RouteServiceImpl implements RouteService {
 //        List<Vehicle> vehicles=vehicleRepository.findAll();
         Iterator<Vehicle> It = vehicles.iterator();
         i=0;
+
         while (It.hasNext())
         {
             Vehicles[i]=It.next();
@@ -436,27 +483,8 @@ public class RouteServiceImpl implements RouteService {
         Routes=Routes.replaceAll("=",":");
         Routes=Routes.replaceAll(",\\s",",");
         JSONObject newRoutes =new JSONObject(Routes);
-        keys = newRoutes.keys();
-        while (keys.hasNext())
-        {
-            Iterator<Route> itr =routeRepository.findAll().iterator();
-            int num=0;
-            while (itr.hasNext())
-            {
-                itr.next();
-                num++;
-            }
 
-            Route newROute =new Route();
-            newROute.setId(num);
-            String key = keys.next();
-            newROute.setVehicleNumber(key);
-            JSONObject vehicleRoute =newRoutes.getJSONObject(key);
-            newROute.setRoutes(vehicleRoute.getJSONArray("route").toString());
-            routeRepository.save(newROute);
-            System.out.println(newROute.getRoutes());
-        }
-        System.out.println(Routes);
+        System.out.println("last print in route service :"+Routes);
         return Routes;
     }
 }

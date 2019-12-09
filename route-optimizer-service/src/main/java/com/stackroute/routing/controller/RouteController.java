@@ -3,6 +3,7 @@ package com.stackroute.routing.controller;
 
 import com.stackroute.routing.domain.Depot;
 import com.stackroute.routing.domain.Order;
+import com.stackroute.routing.domain.Route;
 import com.stackroute.routing.domain.Vehicle;
 //import com.stackroute.routing.service.DepotService;
 import com.stackroute.routing.service.OrderService;
@@ -61,14 +62,18 @@ public class RouteController {
 //        String url = "http://localhost:9090/searchByRetailerIdAndSlot/"+wholesalerId+"/"+slot;
 //        RestTemplate restTemplate = new RestTemplate();
 //        String vehicleJsonString = restTemplate.getForObject(url,String.class);
-        String vehicleJsonString="[{\"_id\":0,\"vehicleNumber\":\"22\",\"capacity\":100},{\"_id\":45,\"vehicleNumber\":\"343\",\"capacity\":100}]";
+        String vehicleJsonString="[{\"_id\":0,\"vehicleNumber\":\"22\",\"capacity\":50},{\"_id\":45,\"vehicleNumber\":\"343\",\"capacity\":100}]";
+
         JSONArray vehicleJson = new JSONArray(vehicleJsonString);
 //        url="http://localhost:8082/getRetailerById/?id="+wholesalerId;
 //        JSONObject depot = restTemplate.getForObject(url,JSONObject.class);
 //        String depotAddress =depot.getString("address");
         String depotAddress="marathahalli";
 
-        return routeService.getRoutes(vehicleJson,depotAddress,wholesalerId);
+        JSONObject newRoutes=new JSONObject( routeService.getRoutes(vehicleJson,depotAddress,wholesalerId));
+
+        routeService.saveRoute(newRoutes,wholesalerId,slot);
+        return  newRoutes.toString();
 
 
         //http://localhost:9090/searchByRetailerIdAndSlot/{retailerId}/{slot}
@@ -116,8 +121,13 @@ public class RouteController {
 //    }
 
 
+    @GetMapping("routes")
+    public List<Route> getAllRoutes()
+    {
+        return routeService.getAllRoutes();
+    }
     @GetMapping("routes/{vehicleNumber}/{slot}")
-    public String getAllRoutes(@PathVariable String vehicleNumber,String slot) throws  Exception
+    public String getRoutesByVehicleNoAndSlot(@PathVariable String vehicleNumber,String slot) throws  Exception
     {
         return routeService.getRoutesByVehicle(vehicleNumber,slot);
     }
