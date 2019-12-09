@@ -1,3 +1,4 @@
+import { DriverLoginComponent } from './components/driver-login/driver-login.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 import { TermsComponent } from './components/terms/terms.component';
@@ -65,7 +66,7 @@ const routes: Routes = [
   // {path: 'editProfile', component: EditProfileComponent, canActivate: [AuthGaurdService]},
   {path: 'addOrder', component: AddOrderComponent},
   // {path: 'addOrder', component: AddOrderComponent, canActivate: [AuthGaurdService]},
-  {path: 'driver', component: DriverDashboardComponent},
+  {path: 'driver', component: DriverLoginComponent},
   // {path: 'driver', component: DriverDashboardComponent, canActivate: [AuthGaurdService]},
   // {path: 'user', component: RetailerDashboardComponent, canActivate: [AuthGaurdService]},
   {path: 'user', component: RetailerDashboardComponent},
