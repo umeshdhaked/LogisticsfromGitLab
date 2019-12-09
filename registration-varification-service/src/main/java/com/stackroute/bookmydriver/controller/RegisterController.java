@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Map;
 import java.util.UUID;
@@ -262,4 +263,38 @@ public class RegisterController {
         }
         return responseEntity;
     }
+
+
+    @CrossOrigin
+    @PostMapping("/sendEmail")
+    public ResponseEntity<?> emailHandler(@RequestParam("email") String email, @RequestParam("subject") String subject, @RequestParam("body") String body, HttpServletRequest request, HttpServletResponse response){
+
+            try {
+
+                SimpleMailMessage registrationEmail = new SimpleMailMessage();
+
+                registrationEmail.setTo(email);
+
+                registrationEmail.setSubject(subject);
+                registrationEmail.setText(body);
+                registrationEmail.setFrom("wysserrouting@gmail.com");
+
+                emailService.sendEmail(registrationEmail);//sending mail to the user email
+                responseEntity = new ResponseEntity<String>("{\"message\":\"OK\"}", HttpStatus.OK);
+            } catch (Exception e) {
+                responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+            return responseEntity;
+        }
+
+
+
+//    }
+
+
+
+
+
+
 }

@@ -9,6 +9,7 @@ import java.util.List;
 public interface RouteService {
     public List<Route> getAllRoutes();
     public  void delDuplicateRoutes(JSONObject route,int wholesalerId,String slot);
+    public String getRoutesByWholesaler(int wholesalerId,String slot);
     public void saveRoute(JSONObject route,int wholesalerId,String slot);
     public String getRoutesByVehicle(String vehicleNumber,String slot);
     public String getRoutes(JSONArray vehicleJson,String depotAddress,int wholersalerId) throws  Exception;
