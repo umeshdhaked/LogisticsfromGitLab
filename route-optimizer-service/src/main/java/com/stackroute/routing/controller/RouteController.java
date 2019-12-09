@@ -66,7 +66,7 @@ public class RouteController {
 //        String vehicleJsonString="[{\"_id\":0,\"vehicleNumber\":\"22\",\"capacity\":50},{\"_id\":45,\"vehicleNumber\":\"343\",\"capacity\":100}]";
 
         JSONArray vehicleJson = new JSONArray(vehicleJsonString);
-        url="http://localhost:8082/getRetailerById/?id="+wholesalerId;
+        url="http://localhost:8082/getRetailerById?id="+wholesalerId;
         JSONObject depot = restTemplate.getForObject(url,JSONObject.class);
         String depotAddress =depot.getString("address");
 //        String depotAddress="marathahalli";
