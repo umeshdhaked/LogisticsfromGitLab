@@ -28,16 +28,23 @@ export class DriverPasswordComponent implements OnInit {
       this.vehicleCompanyData = data;
       if (this.vehicleCompanyData != null) {
         this.cName = ''+this.vehicleCompanyData.companyName;
+        this.requestService.getAcceptedVehicle(this.cName).subscribe( (data:any) => {
+          this.zone.run(()=>{
+            this.Vehicles = data
+    
+          })
+        
+      });
       }
     })
     
-    this.requestService.getAcceptedVehicle(this.cName).subscribe( (data:any) => {
-      this.zone.run(()=>{
-        this.Vehicles = data
+  //   this.requestService.getAcceptedVehicle(this.cName).subscribe( (data:any) => {
+  //     this.zone.run(()=>{
+  //       this.Vehicles = data
 
-      })
+  //     })
     
-  });
+  // });
 
 
   }
