@@ -25,8 +25,7 @@ export class ContactusreplypopupComponent implements OnInit {
 
     this.data = this.interaction.messageSource1;
     this.sendemail.sendemail(this.data.email, this.data.subject, this.body1);
-
-    // const urlgmail = 'https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=' + this.data.email + '&su=' + this.data.subject + '&body=' + this.body1;
-    // window.open(urlgmail);
+    this.data.replyStatus = true;
+    this.sendemail.postnewcontactus(this.data);
   }
 }
