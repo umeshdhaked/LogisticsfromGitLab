@@ -176,7 +176,7 @@ import { PartnersComponent } from './components/home/partners/partners.component
     DriverPasswordComponent,
 
     PendingresponsesComponent,
-    ContactusreplypopupComponent
+    ContactusreplypopupComponent,
 
     DriverLoginComponent,
     TeamComponent,
@@ -269,7 +269,7 @@ import { PartnersComponent } from './components/home/partners/partners.component
 
 
   ],
-  entryComponents: [ViewVehicleComponent, BookedVehiclesComponent, CanceldialogueComponent,ContactusreplypopupComponent],
+  entryComponents: [ViewVehicleComponent, BookedVehiclesComponent, CanceldialogueComponent, ContactusreplypopupComponent],
   providers: [GetlistService, LoginAuthService, AuthGaurdService, EditProfileService,
     {
       provide: HTTP_INTERCEPTORS,
