@@ -14,4 +14,11 @@ export class AdminService {
     const url = environment.apiUrl + ':8088/sendEmail?email=' + email + '&subject=' + sub + '&body=' + body;
     this.http.post(url, null).subscribe();
    }
+
+
+   postnewcontactus(data: any)  {
+    const url = environment.apiUrl + ':9086//savenewcontactusrequest';
+    this.http.post(url, data);
+
+   }
 }

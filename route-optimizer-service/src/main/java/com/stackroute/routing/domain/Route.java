@@ -12,6 +12,9 @@ public class Route {
     int id;
     String vehicleNumber;
     String slot;
+    String depotAddress;
+    Float depotLatitude;
+    Float depotLongitude;
     int wholesalerId;
 //    String date;
     String routes;

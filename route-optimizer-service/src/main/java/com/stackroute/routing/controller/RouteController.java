@@ -23,6 +23,7 @@ import java.net.URL;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping(value="api/v1")
 public class RouteController {
     OrderService orderService;
@@ -59,16 +60,16 @@ public class RouteController {
         //run route optimizer service
         //use the vehicle demand service to get booked vehicles in current slot of retailer
         //retailer id and timeslot are in order
-//        String url = "http://localhost:9090/searchByRetailerIdAndSlot/"+wholesalerId+"/"+slot;
-//        RestTemplate restTemplate = new RestTemplate();
-//        String vehicleJsonString = restTemplate.getForObject(url,String.class);
-        String vehicleJsonString="[{\"_id\":0,\"vehicleNumber\":\"22\",\"capacity\":50},{\"_id\":45,\"vehicleNumber\":\"343\",\"capacity\":100}]";
+        String url = "http://localhost:9090/searchByRetailerIdAndSlot/"+wholesalerId+"/"+slot;
+        RestTemplate restTemplate = new RestTemplate();
+        String vehicleJsonString = restTemplate.getForObject(url,String.class);
+//        String vehicleJsonString="[{\"_id\":0,\"vehicleNumber\":\"22\",\"capacity\":50},{\"_id\":45,\"vehicleNumber\":\"343\",\"capacity\":100}]";
 
         JSONArray vehicleJson = new JSONArray(vehicleJsonString);
-//        url="http://localhost:8082/getRetailerById/?id="+wholesalerId;
-//        JSONObject depot = restTemplate.getForObject(url,JSONObject.class);
-//        String depotAddress =depot.getString("address");
-        String depotAddress="marathahalli";
+        url="http://localhost:8082/retailerProfile/getRetailerById?id="+wholesalerId;
+        JSONObject depot = restTemplate.getForObject(url,JSONObject.class);
+        String depotAddress =depot.getString("address");
+//        String depotAddress="marathahalli";
 
         JSONObject newRoutes=new JSONObject( routeService.getRoutes(vehicleJson,depotAddress,wholesalerId));
 
@@ -102,6 +103,7 @@ public class RouteController {
     @DeleteMapping("order/{id}")
     public ResponseEntity<?>deleteOrder(@PathVariable int id) throws Exception
     {
+        System.out.println("here");
         orderService.deleteOrder(id);
         return new ResponseEntity<String>("order deleted", HttpStatus.OK);
     }
@@ -127,9 +129,17 @@ public class RouteController {
         return routeService.getAllRoutes();
     }
     @GetMapping("routes/{vehicleNumber}/{slot}")
-    public String getRoutesByVehicleNoAndSlot(@PathVariable String vehicleNumber,String slot) throws  Exception
+    public String getRoutesByVehicleNoAndSlot(@PathVariable String vehicleNumber,@PathVariable String slot) throws  Exception
     {
         return routeService.getRoutesByVehicle(vehicleNumber,slot);
+
+    }
+
+    @GetMapping("routesBySaler/{wholsalerId}/{slot}")
+    public String getRoutesByWholesalerIdAndSlot(@PathVariable int wholsalerId,@PathVariable String slot) throws  Exception
+    {
+        return routeService.getRoutesByWholesaler(wholsalerId,slot);
+
     }
 
 
