@@ -1,3 +1,4 @@
+import { DriverLoginComponent } from './components/driver-login/driver-login.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 import { TermsComponent } from './components/terms/terms.component';
@@ -45,6 +46,7 @@ import { PricingComponent } from './components/pricing/pricing.component';
 import { PaymeComponent } from './components/payme/payme.component';
 import { VehicleCompanyProfileComponent } from './components/vehicle-company-profile/vehicle-company-profile.component';
 import {PendingVehicleRequestComponent} from './components/pending-vehicle-request/pending-vehicle-request.component';
+import {PendingresponsesComponent} from "./components/pendingresponses/pendingresponses.component";
 
 
 
@@ -65,7 +67,7 @@ const routes: Routes = [
   // {path: 'editProfile', component: EditProfileComponent, canActivate: [AuthGaurdService]},
   {path: 'addOrder', component: AddOrderComponent},
   // {path: 'addOrder', component: AddOrderComponent, canActivate: [AuthGaurdService]},
-  {path: 'driver', component: DriverDashboardComponent},
+  {path: 'driver', component: DriverLoginComponent},
   // {path: 'driver', component: DriverDashboardComponent, canActivate: [AuthGaurdService]},
   // {path: 'user', component: RetailerDashboardComponent, canActivate: [AuthGaurdService]},
   {path: 'user', component: RetailerDashboardComponent},
@@ -89,7 +91,7 @@ const routes: Routes = [
   // {path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGaurdService]},
 
   {path: 'manage-vehicle', component: ManageVehiclesComponent},
-  
+
   {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent, canActivate: [AuthGaurdService]},
   {path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGaurdService]},
 
@@ -116,6 +118,7 @@ const routes: Routes = [
   { path : 'statistics', component: Statistic1Component},
   { path : 'editVehicleCompanyProfile', component: VehicleCompanyProfileComponent},
   {path: 'viewPendingVehicleRequest', component: PendingVehicleRequestComponent},
+  {path: 'pendingresponses', component: PendingresponsesComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

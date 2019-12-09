@@ -1,6 +1,7 @@
 package com.stackroute.BackEnd.controller;
 
 import com.google.gson.Gson;
+import com.stackroute.BackEnd.domain.Driver;
 import com.stackroute.BackEnd.domain.RetailerDemand;
 import com.stackroute.BackEnd.domain.Vehicle;
 import com.stackroute.BackEnd.exception.VehicleAlreadyExistsException;
@@ -90,17 +91,30 @@ public class VehicleController<VehicleDao> {
     @PostMapping("AcceptedVehicle")
 
     @CrossOrigin
-    public ResponseEntity<?> saveAcceptedVehicle(@RequestBody Vehicle vehicle) throws VehicleAlreadyExistsException {
+    public ResponseEntity<?> saveAcceptedVehicle(@RequestBody Driver driver) throws VehicleAlreadyExistsException {
 
         System.out.println("values");
 
-        System.out.println("id = "+vehicle.getId());
-        System.out.println(vehicle.toString());
+        System.out.println("Accepted Vehicle id = "+driver.getId());
+        System.out.println(driver.toString());
 
         ResponseEntity responseEntity;
 
-        vehicleService.saveVehicle(vehicle);
+        vehicleService.saveDriver(driver);
         responseEntity = new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
+
+        return responseEntity;
+    }
+
+//....................get Accepted Vehicle By company name.......................,,,,,
+
+    @GetMapping("AcceptedVehicle/{companyName}")
+    @CrossOrigin
+    public ResponseEntity<?> getAcceptedVehicle(@PathVariable("companyName") String companyName) {
+        ResponseEntity responseEntity;
+        List<Driver> vehicles = vehicleService.getAcceptedVehicle(companyName);
+
+        responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
 
         return responseEntity;
     }
@@ -116,7 +130,7 @@ public class VehicleController<VehicleDao> {
 
         System.out.println("values");
 
-        System.out.println("id = "+vehicle.getId());
+        System.out.println("Rejected Vehicle id = "+vehicle.getId());
         System.out.println(vehicle.toString());
 
         ResponseEntity responseEntity;

@@ -1,0 +1,18 @@
+.grid3img {
+
+    height: 150px;
+    width: 150px;
+    border-radius: 75px;
+  }
+  
+  #grid {
+    text-decoration: none;
+    display: flex;
+    /* box-shadow: 10px solid black; */
+  }
+  h6{
+    visibility: hidden;
+  }
+  h4 {
+    color: goldenrod;
+  }

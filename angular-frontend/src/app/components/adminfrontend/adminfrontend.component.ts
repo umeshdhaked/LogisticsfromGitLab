@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-adminfrontend',
@@ -11,7 +11,7 @@ export class AdminfrontendComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    //this.router.navigate(['statistics']);
+    // this.router.navigate(['statistics']);
   }
   goToStatistics() {
     this.router.navigate(['statistics']);
@@ -27,6 +27,11 @@ export class AdminfrontendComponent implements OnInit {
 
   goToVehicles() {
     this.router.navigate(['vehicleDetails']);
+
+  }
+
+  gotToContactUs() {
+    this.router.navigate(['pendingresponses']);
 
   }
 }
