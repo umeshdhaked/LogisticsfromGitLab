@@ -16,6 +16,8 @@ public interface VehicleService {
 
     public List<Vehicle> getAllVehicles();
 
+    public List<Vehicle> getAcceptedVehicle(String companyName);
+
     public Vehicle updateComments(Vehicle vehicle);
 
     public Vehicle updateVehicle(Vehicle vehicle);

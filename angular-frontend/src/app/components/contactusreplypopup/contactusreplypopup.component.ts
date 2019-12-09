@@ -22,7 +22,7 @@ export class ContactusreplypopupComponent implements OnInit {
   sendreply() {
 
     this.data = this.interaction.messageSource1;
-    
+
     const urlgmail = 'https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=' + this.data.email + '&su=' + this.data.subject + '&body=' + this.body1;
     window.open(urlgmail);
   }

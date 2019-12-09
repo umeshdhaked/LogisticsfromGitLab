@@ -108,11 +108,11 @@ public class retailervehicledemandcontroller {
         }
         return responseEntity;
     }
-    @GetMapping("/findAll")
-    public ResponseEntity<?> findallrequested() {
+    @GetMapping("/findAll/{companyName}")
+    public ResponseEntity<?> findallrequested(@PathVariable("companyName") String companyName) {
         ResponseEntity responseEntity;
         try {
-            responseEntity = new ResponseEntity(vehicledemandservice.getallvehicledemanded(), HttpStatus.OK);
+            responseEntity = new ResponseEntity(vehicledemandservice.getallvehicledemanded(companyName), HttpStatus.OK);
         } catch (Exception e) {
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
         }
