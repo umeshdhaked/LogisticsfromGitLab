@@ -70,11 +70,14 @@ export class VehicledemandfrontendComponent implements OnInit {
     console.log(retailerDetails.timeSlot);
     console.log(retailerDetails.date);
     this.vehicleService.sendRetailerRequest(retailerDetails).subscribe(
-      result => {
+      result => 
+      this.zone.run(()=>{
         console.log(result);
+        alert("Booking request sent!");
+        this.vehiclequery = null;
       }, error => {
         console.log(error);
-      }
+      })
     );
   }
 
