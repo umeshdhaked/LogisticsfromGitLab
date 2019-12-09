@@ -45,6 +45,7 @@ import { PricingComponent } from './components/pricing/pricing.component';
 import { PaymeComponent } from './components/payme/payme.component';
 import { VehicleCompanyProfileComponent } from './components/vehicle-company-profile/vehicle-company-profile.component';
 import {PendingVehicleRequestComponent} from './components/pending-vehicle-request/pending-vehicle-request.component';
+import {PendingresponsesComponent} from "./components/pendingresponses/pendingresponses.component";
 
 
 
@@ -89,7 +90,7 @@ const routes: Routes = [
   // {path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGaurdService]},
 
   {path: 'manage-vehicle', component: ManageVehiclesComponent},
-  
+
   {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent, canActivate: [AuthGaurdService]},
   {path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGaurdService]},
 
@@ -116,6 +117,7 @@ const routes: Routes = [
   { path : 'statistics', component: Statistic1Component},
   { path : 'editVehicleCompanyProfile', component: VehicleCompanyProfileComponent},
   {path: 'viewPendingVehicleRequest', component: PendingVehicleRequestComponent},
+  {path: 'pendingresponses', component: PendingresponsesComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

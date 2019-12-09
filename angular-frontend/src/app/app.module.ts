@@ -114,6 +114,8 @@ import { PendingVehicleRequestComponent } from './components/pending-vehicle-req
 import { FaqComponent } from './components/faq/faq.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { DriverPasswordComponent } from './components/vehicle-management/driver-password/driver-password.component';
+import { PendingresponsesComponent } from './components/pendingresponses/pendingresponses.component';
+import { ContactusreplypopupComponent } from './components/contactusreplypopup/contactusreplypopup.component';
 
 
 @NgModule({
@@ -166,7 +168,9 @@ import { DriverPasswordComponent } from './components/vehicle-management/driver-
     PendingVehicleRequestComponent,
     FaqComponent,
     ContactUsComponent,
-    DriverPasswordComponent
+    DriverPasswordComponent,
+    PendingresponsesComponent,
+    ContactusreplypopupComponent
   ],
 
   imports: [
@@ -254,7 +258,7 @@ import { DriverPasswordComponent } from './components/vehicle-management/driver-
 
 
   ],
-  entryComponents: [ViewVehicleComponent, BookedVehiclesComponent, CanceldialogueComponent],
+  entryComponents: [ViewVehicleComponent, BookedVehiclesComponent, CanceldialogueComponent,ContactusreplypopupComponent],
   providers: [GetlistService, LoginAuthService, AuthGaurdService, EditProfileService,
     {
       provide: HTTP_INTERCEPTORS,
