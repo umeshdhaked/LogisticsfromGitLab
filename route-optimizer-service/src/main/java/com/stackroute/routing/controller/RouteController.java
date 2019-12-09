@@ -115,7 +115,7 @@ public class RouteController {
 //        return new ResponseEntity<String>("depot deleted", HttpStatus.OK);
 //    }
 
-
+//    @CrossOrigin
     @GetMapping("routes/{vehicleNumber}/{slot}")
     public String getAllRoutes(@PathVariable String vehicleNumber,String slot) throws  Exception
     {
