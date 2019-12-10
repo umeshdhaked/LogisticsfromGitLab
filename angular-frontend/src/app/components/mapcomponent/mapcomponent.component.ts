@@ -40,9 +40,12 @@ export class MapComponent implements OnInit {
   makeArrayOfRoutes(data)
     {
       var addresses=[]
-      for(var i=0;i<data.length;i++)
+      var routes=JSON.parse(data[0].routes)
+      addresses[0]=data[0].depotAddress
+      for(var i=0;i<routes.length;i++)
         {
-          addresses[i]=data[i].customerAddress
+          addresses[i+1]=routes[i].customerAddress
+          console.log(addresses[i])
         }
         return addresses
     }

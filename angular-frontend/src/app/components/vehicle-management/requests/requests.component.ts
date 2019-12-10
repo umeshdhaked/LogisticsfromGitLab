@@ -104,7 +104,9 @@ this.vehicleCompanyService.getVehicleCompanyProfileFromEmail(this.dataFromToken.
     this.requestService.saveAcceptedVehicle(driver).subscribe();
 
     this.requestService.sendAccepttovehicledemand(this.vehicle).subscribe();
-    this.requestService.deleteinretailerdemand(this.vehicle.id).subscribe();
+    this.requestService.deleteinretailerdemand(this.vehicle.id).subscribe(()=>{
+      alert("Request Accepted!");
+    });
 
   }
 
