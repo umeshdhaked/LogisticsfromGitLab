@@ -43,6 +43,16 @@ private VehicleCompanyRepository vehicleCompanyRepository;
     }
 
 
+    public String getAddressById(int id) {
 
+        VehicleCompanyProfile vehicleCompanyProfile= vehicleCompanyRepository.findById(id).get();
 
+        if(vehicleCompanyProfile != null){
+            return vehicleCompanyProfile.getAddress();
+        }
+        else {
+            return "Address Not Exist";
+        }
+
+    }
 }

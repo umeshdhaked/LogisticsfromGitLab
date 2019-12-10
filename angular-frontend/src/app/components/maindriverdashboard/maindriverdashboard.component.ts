@@ -1,78 +1,161 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Orderdata} from '../../interfaces/orderdata';
 import {Router} from '@angular/router';
 import {InteractionService} from '../../services/interaction.service';
 import {DataorderService} from '../../services/dataorder.service';
 import {MatDialog} from '@angular/material/dialog';
 import {CanceldialogueComponent} from '../canceldialogue/canceldialogue.component';
+import {DatafromrouteoptimizerService} from '../../services/datafromrouteoptimizer.service';
+
 @Component({
   selector: 'app-maindriverdashboard',
   templateUrl: './maindriverdashboard.component.html',
   styleUrls: ['./maindriverdashboard.component.css']
 })
 export class MaindriverdashboardComponent implements OnInit {
-  temp = new Array<Orderdata>();
-  vehicleId: string;
+  temp = new Array<any>();
+  // vehicleId: string;
   retailerId: string;
-  currentorder: any;
-  orderData: Orderdata[];
+  slot = 'slot1';
+  currentorder = 0;
+  vehicleId = localStorage.getItem('vehicleNumber');
+  depotAddress = '';
+  orderData: any[];
+  orderRoutes = [];
+
+  route: any;
   constructor(private router: Router,
               private interactionserv: InteractionService,
               private dataorder: DataorderService,
-              public dialog: MatDialog) { }
-  async ngOnInit() {
-    this.temp[0] = new Orderdata();
-    this.temp[1] = new Orderdata();
-    // for (let i = 0 ; i < this.orderData.length ; i++) {
-    //   if (this.orderData[i].status === 'pending') {
-    //
-    //     this.temp[0]  = this.orderData[i + 1];
-    //     console.log(this.temp);
-    //     break;
-    //   }
-    // }
-    this.orderData = await this.dataorder.getdata().toPromise().then(
-      value => {
-        console.log(value);
-        return value as Orderdata[];
+              public dialog: MatDialog,
+              private datafromoptimizer: DatafromrouteoptimizerService) {
+  }
+
+  ngOnInit() {
+    this.route = JSON.parse(localStorage.getItem('route'));
+    console.log(this.route);
+    if (this.route == null) {
+      this.temp[0] = new Orderdata();
+      this.temp[1] = new Orderdata();
+      this.datafromoptimizer.getorderdatafromrouteoptimizer().then(
+        (result: any[]) => {
+          this.orderData = result;
+          this.processOrder();
+        }
+      );
+      } else {
+        this.updateView();
+      }
+  }
+
+
+
+  processOrder() {
+    console.log(this.orderData);
+    this.orderData.forEach(
+      (order: any) => {
+        this.temp[0].customerAddress = order.depotAddress;
+        localStorage.setItem('depotAddress', order.depotAddress);
+        console.log(this.temp[0].customerAddress);
+        const processedString = order.routes.toString().replace('[', '').replace(']', '');
+        processedString.split('{').forEach(
+          addr => {
+            if (addr.length !== 0) {
+              const routeX = {};
+              addr.replace('}', '').split(',').forEach(
+                propertyValue => {
+                  const property = propertyValue.split(':')[0]
+                    .replace('"', '')
+                    .replace('"', '');
+                  // noinspection UnnecessaryLocalVariableJS
+                  const value = propertyValue.split(':')[1];
+                  if (property.length !== 0) {
+                    routeX[property] = value;
+                  }
+                });
+              this.orderRoutes.push(routeX);
+            }
+          });
+        console.log(this.orderRoutes);
+        // modify routes
+        localStorage.setItem('route', JSON.stringify(this.orderRoutes));
+        this.route = JSON.parse(localStorage.getItem('route'));
+        console.log(this.orderRoutes[0].customerAddress);
+        this.temp[1].orderId = this.orderRoutes[0].orderId;
+        this.temp[1].customerAddress = this.orderRoutes[0].customerAddress;
+        console.log(this.temp[1].customerAddress);
+
+        for (let i = 0; i < this.orderRoutes.length; i++) {
+          if (this.orderRoutes[i].orderStatus === '"delivered"') {
+            this.currentorder = i;
+            this.temp[0] = this.orderData[i];
+            this.temp[1] = this.orderData[i + 1];
+            console.log(this.temp[0]);
+            console.log(this.temp[1]);
+            // break;
+          }
+        }
       }
     );
-    console.log(this.orderData);
-    for (let i = 0; i < this.orderData.length; i++) {
-      if (this.orderData[i].orderStatus === 'pending') {
-        this.currentorder = i;
-        this.temp[0] = this.orderData[i];
-        this.temp[1] = this.orderData[i + 1];
+  }
+
+  updateView() {
+    let flag = false;
+    console.log('test');
+    console.log(this.route[0].orderStatus);
+    this.temp[0] = new Orderdata();
+    this.temp[1] = new Orderdata();
+    for (let i = 0; i < this.route.length; i++) {
+      if (this.route[i].orderStatus === '"delivered"') {
+        this.currentorder = i + 1;
+        this.temp[0] = this.route[i];
+        this.temp[1] = this.route[i + 1];
         console.log(this.temp[0]);
         console.log(this.temp[1]);
-        break;
+        let flag = true;
       }
     }
+    if (flag == false) {
+      this.temp[0].customerAddress = localStorage.getItem('depotAddress');
+      this.temp[1] = this.route[0];
+    }
   }
+
   navigate() {
     this.interactionserv.sendMessage(this.temp[0].customerAddress + ' ' + this.temp[1].customerAddress);
     this.router.navigateByUrl('navigate');
   }
+
   signature() {
     // for(let vehicle of this.orderData){
     // }
-    this.orderData[this.currentorder].orderStatus = 'delivered';
-    this.dataorder.updateOrderStatus(this.orderData[this.currentorder].id, this.orderData[this.currentorder].orderStatus).toPromise().then(
+    // this.orderRoutes[this.currentorder].orderStatus = '"delivered"';
+    this.route[this.currentorder].orderStatus = '"delivered"';
+    localStorage.setItem('route', JSON.stringify(this.route));
+    // console.log(this.orderRoutes[this.currentorder]);
+    this.dataorder.updateOrderStatus(this.route[this.currentorder].orderId,
+      this.route[this.currentorder].orderStatus)
+      .toPromise().then(
       result => {
         console.log(result);
       },
       reason => {
         console.log(reason);
       });
-    console.log(this.orderData);
+    // console.log(this.orderData);
     this.router.navigateByUrl('signature');
   }
+
+  //
   openDialogue() {
     this.dialog.open(CanceldialogueComponent);
   }
+
+  //
   delayDelivery() {
-    this.orderData[this.currentorder].orderStatus = 'delayed';
-    this.dataorder.updateOrderStatus(this.orderData[this.currentorder].id, this.orderData[this.currentorder].orderStatus).toPromise().then(
+    this.orderRoutes[this.currentorder].orderStatus = 'delayed';
+    this.dataorder.updateOrderStatus(this.orderRoutes[this.currentorder].orderId,
+      this.orderRoutes[this.currentorder].orderStatus).toPromise().then(
       result => {
         console.log(result);
       },
@@ -81,5 +164,12 @@ export class MaindriverdashboardComponent implements OnInit {
       });
     console.log(this.orderData);
     this.router.navigateByUrl('driverdashboard');
+  }
+
+  isPending(data) {
+    if (data.orderStatus == '"pending"') {
+      return true;
+    }
+    return false;
   }
 }

@@ -122,6 +122,12 @@ import { DriverLoginComponent } from './components/driver-login/driver-login.com
 import { TeamComponent } from './components/home/team/team.component';
 import { PartnersComponent } from './components/home/partners/partners.component';
 
+import { MapComponent } from './components/mapcomponent/mapcomponent.component';
+
+import { CareersComponent } from './components/careers/careers.component';
+import { AddDeveloperComponent } from './components/careers/add-developer/add-developer.component';
+
+
 
 @NgModule({
   declarations: [
@@ -180,7 +186,12 @@ import { PartnersComponent } from './components/home/partners/partners.component
 
     DriverLoginComponent,
     TeamComponent,
-    PartnersComponent
+    PartnersComponent,
+
+    MapComponent,
+
+    CareersComponent,
+    AddDeveloperComponent
 
   ],
 

@@ -5,10 +5,10 @@
   <div class="card-body text-center">
     <button type="button" class="btn btn-outline-danger" id="cancelbutton" (click)="openDialogue()">Cancel Delivery</button>
     <br>
-    <p class="card-text"> Order Id:{{temp[0].id}}</p>
-    <p class="card-text"> Customer Name:{{temp[0].customerName}}</p>
-    <p class="card-text"> Customer Address:{{temp[0].customerAddress}}</p>
-    <p class="card-text"> Customer Phone No.:{{temp[0].customerPhoneNumber}}</p>
+    <p class="card-text"> Order Id:{{temp[1].orderId}}</p>
+<!--    <p class="card-text"> Customer Name:{{temp[1].customerName}}</p>-->
+    <p class="card-text"> Customer Address:{{temp[1].customerAddress}}</p>
+<!--    <p class="card-text"> Customer Phone No.:{{temp[1].customerPhoneNumber}}</p>-->
     <div class="card bg-light" id="detailscard">
       <div class="card-body text-center">
         <p class="card-text"  >Current Location:{{temp[0].customerAddress}}</p >
@@ -33,17 +33,19 @@
     <thead>
     <tr>
       <th scope="col">Order Id</th>
-      <th scope="col">Customer Name</th>
+<!--      <th scope="col">Customer Name</th>-->
       <th scope="col">Address</th>
       <th scope="col">Order Volume</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let data of orderData ">
-      <td *ngIf="data.orderStatus=='pending' && data.id !=temp[0].id">{{data.id}}</td>
-      <td *ngIf="data.orderStatus=='pending'  && data.id !=temp[0].id">{{data.customerName}}</td>
-      <td *ngIf="data.orderStatus=='pending'  && data.id !=temp[0].id">{{data.customerAddress}}</td>
-      <td *ngIf="data.orderStatus=='pending' && data.id !=temp[0].id">{{data.orderVolume}}</td>
+    <!-- <tr *ngFor="let data of orderRoutes "> -->
+        <tr *ngFor="let data of route ">
+      <td *ngIf="data.id !=temp[0].id && isPending(data)">{{data.orderId}}</td>
+<!--      <td *ngIf="data.id !=temp[0].id">{{data.customerName}}</td>-->
+      <td *ngIf="data.id !=temp[0].id && isPending(data)">{{data.customerAddress}}</td>
+<!--      <td *ngIf="data.orderStatus=='pending' && data.id !=temp[0].id">{{data.orderVolume}}</td>-->
+            <td *ngIf="data.id !=temp[0].id && isPending(data)">{{data.orderVolume}}</td>
     </tr>
     </tbody>
   </table>
