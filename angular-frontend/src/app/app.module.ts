@@ -121,6 +121,7 @@ import { ContactusreplypopupComponent } from './components/contactusreplypopup/c
 import { DriverLoginComponent } from './components/driver-login/driver-login.component';
 import { TeamComponent } from './components/home/team/team.component';
 import { PartnersComponent } from './components/home/partners/partners.component';
+import { MapComponent } from './components/mapcomponent/mapcomponent.component';
 
 
 @NgModule({
@@ -176,11 +177,12 @@ import { PartnersComponent } from './components/home/partners/partners.component
     DriverPasswordComponent,
 
     PendingresponsesComponent,
-    ContactusreplypopupComponent
+    ContactusreplypopupComponent,
 
     DriverLoginComponent,
     TeamComponent,
-    PartnersComponent
+    PartnersComponent,
+    MapComponent
 
   ],
 
