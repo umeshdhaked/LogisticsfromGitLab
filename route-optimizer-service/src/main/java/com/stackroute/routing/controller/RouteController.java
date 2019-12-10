@@ -33,7 +33,7 @@ public class RouteController {
     RouteService routeService;
 //    DepotService depotService;
     String vehicleJsonString = "";
-//listener
+//listeners
     @KafkaListener(topics = "vehicle_slots", groupId = "foo")
     public void listen(String message) {
         System.out.println("Received Message in group foo: " + message);
