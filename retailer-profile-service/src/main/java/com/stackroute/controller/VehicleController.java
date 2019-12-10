@@ -59,5 +59,12 @@ public class VehicleController {
         vehicleCompanyService.deleteAccount(id);
     }
 
+    @GetMapping("/getAddressbyId")
+    @CrossOrigin
+    public String getAddress(@RequestParam("id") int id){
+        System.out.println("vehicleC address of id = "+ id);
+        return vehicleCompanyService.getAddressById(id);
+    }
+
 
 }

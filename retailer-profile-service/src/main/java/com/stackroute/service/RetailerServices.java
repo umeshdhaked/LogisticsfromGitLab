@@ -20,4 +20,6 @@ public interface RetailerServices {
 
     public RetailerProfile getRetailerById(int id);
 
+    public String getAddressById(int id);
+
 }
