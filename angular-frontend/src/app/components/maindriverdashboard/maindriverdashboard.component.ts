@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import {Orderdata} from '../../interfaces/orderdata';
 import {Router} from '@angular/router';
 import {InteractionService} from '../../services/interaction.service';
@@ -29,7 +29,8 @@ export class MaindriverdashboardComponent implements OnInit {
               private interactionserv: InteractionService,
               private dataorder: DataorderService,
               public dialog: MatDialog,
-              private datafromoptimizer: DatafromrouteoptimizerService) {
+              private datafromoptimizer: DatafromrouteoptimizerService,
+              private zone: NgZone) {
   }
 
   ngOnInit() {
@@ -40,8 +41,12 @@ export class MaindriverdashboardComponent implements OnInit {
       this.temp[1] = new Orderdata();
       this.datafromoptimizer.getorderdatafromrouteoptimizer(this.vehicleId).then(
         (result: any[]) => {
-          this.orderData = result;
-          this.processOrder();
+          this.zone.run(()=>{
+            this.orderData = result;
+            console.log(this.orderData)
+            this.processOrder();
+          })
+          
         }
       );
       } else {
