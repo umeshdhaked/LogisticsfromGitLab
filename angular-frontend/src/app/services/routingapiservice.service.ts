@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { forkJoin } from 'rxjs';  // RxJS 6 syntax
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,7 @@ export class RoutingapiserviceService {
     }  
   public getRoutes(vehicleNumber)
     {
-      return this.httpclient.get('http://localhost:8091/api/v1/routes/'+vehicleNumber+'/1',);
+      var url = environment.apiUrl+':8091/api/v1/routes/'+vehicleNumber+'/1'
+      return this.httpclient.get(url);
     }  
 }
