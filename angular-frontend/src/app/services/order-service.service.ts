@@ -90,7 +90,7 @@ export class OrderServiceService {
       "customerPhoneNumber": routeData.customerNumber,
       "orderVolume": routeData.orderVolume,
       "deliveryDate": routeData.deliveryDate,
-      "slotNumber": routeData.slotNumber,
+      "slot": routeData.slotNumber,
       "orderStatus": routeData.orderStatus,
       "wholesalerId": routeData.retailerId,
       "id" : routeData.id,
