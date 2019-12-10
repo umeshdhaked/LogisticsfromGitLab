@@ -52,5 +52,18 @@ public class RetailerServiceImpl implements RetailerServices {
         return retailerProfileRepository.findById(id).get();
     }
 
+    @Override
+    public String getAddressById(int id) {
+        RetailerProfile retailerProfile = retailerProfileRepository.findById(id).get();
+
+        if(retailerProfile !=  null){
+            return retailerProfile.getAddress();
+        }
+        else {
+            return "Address Not Exist";
+        }
+
+    }
+
 
 }
