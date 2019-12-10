@@ -51,6 +51,7 @@ public class RouteController {
 //        this.depotService = depotService;
 //    }
 
+
     @PostMapping("order")
     public String saveOrder(@RequestBody Order order) throws Exception
     {
@@ -60,15 +61,18 @@ public class RouteController {
         //run route optimizer service
         //use the vehicle demand service to get booked vehicles in current slot of retailer
         //retailer id and timeslot are in order
-        String url = "http://localhost:9090/searchByRetailerIdAndSlot/"+wholesalerId+"/"+slot;
+        String url = "http://15.206.105.26:9090/searchByRetailerIdAndSlot/"+wholesalerId+"/"+slot;
         RestTemplate restTemplate = new RestTemplate();
         String vehicleJsonString = restTemplate.getForObject(url,String.class);
+        System.out.println(vehicleJsonString);
 //        String vehicleJsonString="[{\"_id\":0,\"vehicleNumber\":\"22\",\"capacity\":50},{\"_id\":45,\"vehicleNumber\":\"343\",\"capacity\":100}]";
 
         JSONArray vehicleJson = new JSONArray(vehicleJsonString);
-        url="http://localhost:8082/retailerProfile/getRetailerById?id="+wholesalerId;
+        url="http://15.206.105.26:8082/retailerProfile/getRetailerById?id="+wholesalerId;
         JSONObject depot = restTemplate.getForObject(url,JSONObject.class);
+        System.out.println(depot.toString());
         String depotAddress =depot.getString("address");
+        System.out.println(depotAddress);
 //        String depotAddress="marathahalli";
 
         JSONObject newRoutes=new JSONObject( routeService.getRoutes(vehicleJson,depotAddress,wholesalerId));
@@ -84,6 +88,13 @@ public class RouteController {
         //use to get address 8082/ getRetailerById
         //optimize and save to your database
         //endpoint to access saved routes, based on retailerId and slot
+    }
+
+    @GetMapping("order")
+    public ResponseEntity<?> getOrders() throws  Exception
+    {
+        return new ResponseEntity<List<Order>>(orderService.getAllOrders(),HttpStatus.FOUND);
+
     }
 
 //    @PostMapping("vehicle")
