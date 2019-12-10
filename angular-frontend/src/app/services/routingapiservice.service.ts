@@ -29,6 +29,6 @@ export class RoutingapiserviceService {
     }  
   public getRoutes(vehicleNumber)
     {
-      return this.httpclient.get('http://localhost:8091/api/v1/routes/'+vehicleNumber+'/1');
+      return this.httpclient.get('http://localhost:8091/api/v1/routes/'+vehicleNumber+'/1',);
     }  
 }

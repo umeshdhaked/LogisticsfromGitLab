@@ -121,12 +121,9 @@ import { ContactusreplypopupComponent } from './components/contactusreplypopup/c
 import { DriverLoginComponent } from './components/driver-login/driver-login.component';
 import { TeamComponent } from './components/home/team/team.component';
 import { PartnersComponent } from './components/home/partners/partners.component';
-
 import { MapComponent } from './components/mapcomponent/mapcomponent.component';
-
 import { CareersComponent } from './components/careers/careers.component';
 import { AddDeveloperComponent } from './components/careers/add-developer/add-developer.component';
-
 
 
 @NgModule({
@@ -188,7 +185,10 @@ import { AddDeveloperComponent } from './components/careers/add-developer/add-de
     TeamComponent,
     PartnersComponent,
 
+    
+
     MapComponent,
+
 
     CareersComponent,
     AddDeveloperComponent
