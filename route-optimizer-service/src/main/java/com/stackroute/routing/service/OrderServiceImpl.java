@@ -6,6 +6,8 @@ import com.stackroute.routing.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -23,7 +25,13 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> getAllOrders() throws Exception {
         if(orderRepository.findAll()==null)
             throw new Exception("No orders found");
-        return  orderRepository.findAll();
+        List<Order> orders=new ArrayList<>();
+        Iterator<Order> it = orderRepository.findAll().iterator();
+        while ((it.hasNext()))
+        {
+            orders.add(it.next());
+        }
+        return  orders;
     }
 
     @Override

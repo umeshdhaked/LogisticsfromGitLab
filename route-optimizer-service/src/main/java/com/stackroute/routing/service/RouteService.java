@@ -12,9 +12,9 @@ public interface RouteService {
     public String getRoutesByWholesaler(int wholesalerId,String slot);
     public void saveRoute(JSONObject route,int wholesalerId,String slot);
     public String getRoutesByVehicle(String vehicleNumber,String slot);
-    public String getRoutes(JSONArray vehicleJson,String depotAddress,int wholersalerId) throws  Exception;
+    public String getRoutes(String slot,JSONArray vehicleJson,String depotAddress,int wholersalerId) throws  Exception;
     public JSONObject coordinateFinder(String[] addresses) throws Exception;
     public double[][] jsonParser(JSONObject requestBody) throws Exception;
-    public  String routeOptimizer(double[][] distance, int wholesalerId, JSONArray coordinates,JSONArray vehicleJson,String[] addresses) throws Exception;
+    public  String routeOptimizer(String slot,double[][] distance, int wholesalerId, JSONArray coordinates,JSONArray vehicleJson,String[] addresses) throws Exception;
 
 }

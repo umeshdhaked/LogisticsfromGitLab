@@ -115,7 +115,7 @@ public class RouteServiceImpl implements RouteService {
     public String getRoutesByVehicle(String vehicleNumber, String slot) {
 
         System.out.println("in routes:"+vehicleNumber+"  "+slot);
-        List<Route> routes = routeRepository.findByVehicleNumberAndSlot("22","1");
+        List<Route> routes = routeRepository.findByVehicleNumberAndSlot(vehicleNumber,slot);
 //        Iterator<Route> it = routes.iterator();
 //        boolean routeAssigned=false;
 //        Route route=null;
@@ -163,9 +163,9 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public String getRoutes(JSONArray vehicleJson,String depotAddress,int wholesalerId) throws Exception {
+    public String getRoutes(String slot,JSONArray vehicleJson,String depotAddress,int wholesalerId) throws Exception {
 
-        List<Order> orders = orderRepository.findAll();
+        List<Order> orders = orderRepository.findByWholesalerIdAndSlot(wholesalerId,slot);
 
         String[] adressess = new String[orders.size()+1];
         adressess[0]=depotAddress;
@@ -183,7 +183,7 @@ public class RouteServiceImpl implements RouteService {
         JSONObject coordinates = coordinateFinder(adressess);
         JSONArray JS =coordinates.getJSONArray("origins");
         double distance[][] = jsonParser(coordinates);
-        return routeOptimizer(distance,wholesalerId,JS,vehicleJson,adressess);
+        return routeOptimizer(slot,distance,wholesalerId,JS,vehicleJson,adressess);
 
     }
 
@@ -308,13 +308,13 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public String routeOptimizer(double[][] distanceMatrix,int wholesalerId,JSONArray coordinates,JSONArray vehicleJson,String[] addresses) throws Exception {
+    public String routeOptimizer(String slot,double[][] distanceMatrix,int wholesalerId,JSONArray coordinates,JSONArray vehicleJson,String[] addresses) throws Exception {
 
 
         for (int i = 0; i < coordinates.length(); i++) {
             System.out.println(coordinates.getJSONObject(i));
         }
-        List<Order> orders = orderRepository.findAll();
+        List<Order> orders = orderRepository.findByWholesalerIdAndSlot(wholesalerId,slot);
         Long[] orderVolumes = new Long[orders.size()+1];
         Iterator<Order> it =orders.iterator();
         Order Orders[] =new Order[orders.size()];
@@ -479,7 +479,7 @@ public class RouteServiceImpl implements RouteService {
 //        routes.getJSONObject(minRoute).getJSONObject("routes").put("route",object);
 //        System.out.println("modified:"+routes.getJSONObject(minRoute).getJSONObject("routes"));
 //        Routes=Routes.replaceAll("\"Order\\(","{");
-        Routes=Routes.replaceAll("\\},\\{",",");
+        Routes=Routes.replaceAll("\\},\\{\"l",",\"l");
 //        Pattern pat=Pattern.compile("[a-zA-Z]+=[a-zA-Z0-9.%-]+[,]+");
 //        Matcher mat =pat.matcher(Routes);
 //        System.out.println(Routes);
