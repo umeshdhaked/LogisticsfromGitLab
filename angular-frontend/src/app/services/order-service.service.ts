@@ -6,6 +6,7 @@ import {Slots} from '../interfaces/slots';
 import {Order} from '../interfaces/order';
 import {environment} from '../../environments/environment';
 import {DateDemand} from '../interfaces/date-demand';
+import { Message } from '../interfaces/message';
 
 @Injectable({
   providedIn: 'root'
@@ -46,8 +47,8 @@ export class OrderServiceService {
       "orderStatus": orderStatus,
       "wholesalerId": retailerId
     };
-
-    this.http.post<RouteOrder[]>(url2, JSON.stringify(data), {
+    this.http.get<Message>(environment.apiUrl + ":9090/searchByRetailerIdAndSlot/" + retailerId + "/" + slotNumber);
+    this.http.post<RouteOrder[]>(url2, JSON.stringify(routeData), {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'

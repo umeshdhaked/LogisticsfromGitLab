@@ -61,11 +61,11 @@ public class RouteController {
         //run route optimizer service
         //use the vehicle demand service to get booked vehicles in current slot of retailer
         //retailer id and timeslot are in order
-//        String url = "http://15.206.105.26:9090/searchByRetailerIdAndSlot/"+wholesalerId+"/"+slot;
-//        RestTemplate restTemplate = new RestTemplate();
-//        String vehicleJsonString = restTemplate.getForObject(url,String.class);
-//        System.out.println(vehicleJsonString);
-        String vehicleJsonString="[{\"_id\":0,\"vehicleNumber\":\"22\",\"capacity\":50},{\"_id\":45,\"vehicleNumber\":\"343\",\"capacity\":100}]";
+        String url = "http://15.206.105.26:9090/searchByRetailerIdAndSlot/"+wholesalerId+"/"+slot;
+        RestTemplate restTemplate = new RestTemplate();
+        String vehicleJsonString = restTemplate.getForObject(url,String.class);
+        System.out.println(vehicleJsonString);
+//        String vehicleJsonString="[{\"_id\":0,\"vehicleNumber\":\"22\",\"capacity\":50},{\"_id\":45,\"vehicleNumber\":\"343\",\"capacity\":100}]";
 
 
         JSONArray vehicleJson = new JSONArray(vehicleJsonString);

@@ -81,13 +81,13 @@ export class MaindriverdashboardComponent implements OnInit {
         // modify routes
         localStorage.setItem('route', JSON.stringify(this.orderRoutes));
         this.route = JSON.parse(localStorage.getItem('route'));
-        console.log(this.orderRoutes[0].customerAddress);
-        this.temp[1].orderId = this.orderRoutes[0].orderId;
-        this.temp[1].customerAddress = this.orderRoutes[0].customerAddress;
+        console.log(this.route[0].customerAddress);
+        this.temp[1].orderId = this.route[0].orderId;
+        this.temp[1].customerAddress = this.route[0].customerAddress;
         console.log(this.temp[1].customerAddress);
 
-        for (let i = 0; i < this.orderRoutes.length; i++) {
-          if (this.orderRoutes[i].orderStatus === '"delivered"') {
+        for (let i = 0; i < this.route.length; i++) {
+          if (this.route[i].orderStatus === '"delivered"') {
             this.currentorder = i;
             this.temp[0] = this.orderData[i];
             this.temp[1] = this.orderData[i + 1];
