@@ -10,6 +10,7 @@ export class Driver {
   slot1: string;
   slot2: string;
   slot3: string;
+  bookingId:number;
   companyName: string;
   slot: string;
   retailerId: number;

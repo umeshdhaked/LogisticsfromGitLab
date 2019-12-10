@@ -98,6 +98,7 @@ this.vehicleCompanyService.getVehicleCompanyProfileFromEmail(this.dataFromToken.
   driver.slot = this.vehicle.slot ;
   driver.retailerId = this.vehicle.retailerId ;
   driver.requestStatus = this.vehicle.requestStatus ;
+  driver.bookingId = this.vehicle.bookingId;
   driver.remainingCapacity = this.vehicle.remainingCapacity;
   driver.password = Math.random().toString(36).slice(-8);
   console.log(driver);

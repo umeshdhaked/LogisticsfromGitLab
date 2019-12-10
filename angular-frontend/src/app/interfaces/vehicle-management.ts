@@ -11,6 +11,7 @@ export class VehicleManagement {
   slot2: string;
   slot3: string;
   companyName: string;
+  bookingId:number;
   slot: string;
   retailerId: number;
   requestStatus: string;

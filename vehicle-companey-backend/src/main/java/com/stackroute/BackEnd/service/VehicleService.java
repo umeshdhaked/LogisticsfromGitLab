@@ -23,6 +23,8 @@ public interface VehicleService {
 
     public List<Driver>getfindByCompanyName(String companyName);
 
+    public List<Driver>getByBookingId(Long bookingId);
+
     public Vehicle updateComments(Vehicle vehicle);
 
     public Vehicle updateVehicle(Vehicle vehicle);
@@ -33,12 +35,12 @@ public interface VehicleService {
 
 
 
-//    public List<Vehicle> getVehicleByVehicleNumber(String vehicleNumber) throws VehicleNotFoundException;
+    //    public List<Vehicle> getVehicleByVehicleNumber(String vehicleNumber) throws VehicleNotFoundException;
     List<Vehicle> getlistbyslot1anddate(int capacity,String slot1);
     List<Vehicle> getlistbyslot2anddate(int  capacity,String slot2);
     List<Vehicle> getlistbyslot3anddate(int  capacity,String slot3);
     List<Vehicle> getVehicleForRetailerRequest(String slot, String date, String vehicleType);
-//     List<Vehicle> getvehiclebyDateSlotandStatus(String date,String slot,String status);
+    //     List<Vehicle> getvehiclebyDateSlotandStatus(String date,String slot,String status);
     public Driver saveDriver(Driver driver);
 }
 
