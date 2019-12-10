@@ -1,3 +1,6 @@
+<div *ngIf="(flagforallcompleted==false); then thenBlock else elseBlock"></div>
+
+<ng-template #thenBlock>
 <br>
 <h2 id="mainhead">Delivery Dashboard</h2>
 <br>
@@ -50,3 +53,18 @@
     </tbody>
   </table>
 </div>
+</ng-template>
+<ng-template #elseBlock>
+  <div class="card">
+    <div class="card-header">
+      Featured
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Status</h5>
+      <p class="card-text">You have no deliveries!Enjoy your life.</p>
+
+
+      <!--      <a href="#" class="btn btn-primary">Go somewhere</a>-->
+    </div>
+  </div>
+  </ng-template>

@@ -14,6 +14,7 @@ import {DatafromrouteoptimizerService} from '../../services/datafromrouteoptimiz
 })
 export class MaindriverdashboardComponent implements OnInit {
   temp = new Array<any>();
+  flagforallcompleted = false;
   // vehicleId: string;
   retailerId: string;
   slot = 'slot1';
@@ -100,25 +101,33 @@ export class MaindriverdashboardComponent implements OnInit {
   }
 
   updateView() {
-    let flag = false;
+    var flag = false;
     console.log('test');
     console.log(this.route[0].orderStatus);
     this.temp[0] = new Orderdata();
     this.temp[1] = new Orderdata();
     for (let i = 0; i < this.route.length; i++) {
+      // if (i == (this.route.length - 1)) {
+      //   this.flagforallcompleted = true;
+      // }
       if (this.route[i].orderStatus === '"delivered"') {
         this.currentorder = i + 1;
         this.temp[0] = this.route[i];
         this.temp[1] = this.route[i + 1];
         console.log(this.temp[0]);
         console.log(this.temp[1]);
-        let flag = true;
+        flag = true;
+
       }
+    }
+    if(this.route[this.route.length - 1].orderStatus == '"delivered"'){
+      this.flagforallcompleted = true;
     }
     if (flag == false) {
       this.temp[0].customerAddress = localStorage.getItem('depotAddress');
       this.temp[1] = this.route[0];
     }
+
   }
 
   navigate() {
