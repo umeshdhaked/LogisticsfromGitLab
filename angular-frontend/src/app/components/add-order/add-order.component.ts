@@ -136,7 +136,8 @@ export class AddOrderComponent implements OnInit {
         this.slot1 = false;
         this.slot2 = false;
         this.slot3 = false;
-        this.slotJson = null;
+        // this.slotJson = null;
+        this.checkSlotsOnDate(this.retailerId);
         this.slotValid = {"slot1": true, "slot2": true, "slot3": true};
         this.orderService.saveInRoute(this.savedOrder).subscribe(route => {
           console.log(route);

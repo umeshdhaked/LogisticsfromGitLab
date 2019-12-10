@@ -130,6 +130,7 @@ services:
     container_name: route-cont
     depends_on:
       - mongodb
+      - kafka
     ports:
       - "8091:8091"
   retailer-profile-service:
@@ -160,6 +161,7 @@ services:
     container_name: vehicledemand
     depends_on:
       - mongodb
+      - kafka
     ports:
       - "9090:9090"
   zookeeper:

@@ -38,7 +38,7 @@ export class MaindriverdashboardComponent implements OnInit {
     if (this.route == null) {
       this.temp[0] = new Orderdata();
       this.temp[1] = new Orderdata();
-      this.datafromoptimizer.getorderdatafromrouteoptimizer().then(
+      this.datafromoptimizer.getorderdatafromrouteoptimizer(this.vehicleId).then(
         (result: any[]) => {
           this.orderData = result;
           this.processOrder();
