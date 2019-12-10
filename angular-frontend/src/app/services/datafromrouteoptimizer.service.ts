@@ -14,7 +14,7 @@ export class DatafromrouteoptimizerService {
   ) {
   }
 
-  async getorderdatafromrouteoptimizer() {
+  async getorderdatafromrouteoptimizer(vehicleNumber) {
     const url = '/assets/static/routeoptimizer.json';
     const resultFromRequest = await this.http.get(url).toPromise().then(
       result => {
