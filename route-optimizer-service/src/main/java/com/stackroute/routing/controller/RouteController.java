@@ -76,7 +76,7 @@ public class RouteController {
         RestTemplate restTemplate = new RestTemplate();
 //        String vehicleJsonString = restTemplate.getForObject(url,String.class);
 //        System.out.println(vehicleJsonString);
-//        String vehicleJsonString="[{\"_id\":0,\"vehicleNumber\":\"22\",\"capacity\":50},{\"_id\":45,\"vehicleNumber\":\"343\",\"capacity\":100}]";
+//        String vehicleJsonString1="[{\"_id\":0,\"vehicleNumber\":\"22\",\"capacity\":50},{\"_id\":45,\"vehicleNumber\":\"343\",\"capacity\":100}]";
 
 
         JSONArray vehicleJson = new JSONArray(vehicleJsonString);
@@ -87,7 +87,8 @@ public class RouteController {
 //        System.out.println(depotAddress);
         String depotAddress="koramangala";
 
-        JSONObject newRoutes=new JSONObject( routeService.getRoutes(vehicleJson,depotAddress,wholesalerId));
+
+        JSONObject newRoutes=new JSONObject( routeService.getRoutes(slot,vehicleJson,depotAddress,wholesalerId));
 
         routeService.saveRoute(newRoutes,wholesalerId,slot);
         return  newRoutes.toString();
