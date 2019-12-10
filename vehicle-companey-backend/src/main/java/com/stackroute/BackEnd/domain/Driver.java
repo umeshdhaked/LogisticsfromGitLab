@@ -1,12 +1,22 @@
 package com.stackroute.BackEnd.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.*;
 import java.math.BigInteger;
 
+@Document
 public class Driver {
     @Id
     BigInteger id;
+
+    Long bookingId;
+
+//    @Id
+//    @GeneratedValue
+//    int bookingId;
+
     String vehicleNumber;
     String driverName;
     String vehicleType;
@@ -26,7 +36,8 @@ public class Driver {
     @Override
     public String toString() {
         return "Driver{" +
-                "id=" + id +
+                "bookingId=" + bookingId +
+                ", id=" + id +
                 ", vehicleNumber='" + vehicleNumber + '\'' +
                 ", driverName='" + driverName + '\'' +
                 ", vehicleType='" + vehicleType + '\'' +
@@ -66,6 +77,14 @@ public class Driver {
 
     public void setId(BigInteger id) {
         this.id = id;
+    }
+
+    public long getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(Long bookingId) {
+        this.bookingId = bookingId;
     }
 
     public String getVehicleNumber() {

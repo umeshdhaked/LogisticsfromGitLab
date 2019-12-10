@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.math.BigInteger;
 import java.util.List;
 @Repository
-public interface DriverRepository extends MongoRepository<Driver, BigInteger> {
+public interface DriverRepository extends MongoRepository<Driver, Integer> {
 //    Query querrytest= new Query();
 //    querrytest.addCriteria();
 //
@@ -25,6 +25,7 @@ public interface DriverRepository extends MongoRepository<Driver, BigInteger> {
 //
     List<Driver> findByVehicleNumber(String vehicleNumber);
     List<Driver> findByCompanyName(String companyName);
+    List<Driver> findByBookingId(long bookingId);
 //
 //    List<Vehicle> findBySlot1StatusAndDateAndVehicleType(String slot1Status, String date,String vehicleType);
 //

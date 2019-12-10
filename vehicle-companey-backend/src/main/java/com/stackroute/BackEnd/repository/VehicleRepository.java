@@ -19,14 +19,15 @@ public interface VehicleRepository extends MongoRepository<Vehicle, BigInteger> 
 //    @Query("{'capacity': ?0,'slot2': ?1}")
 //    public List<Vehicle> findbydateandslot3(int capacity,String slot3);
 
-   public List<Vehicle> findByCapacityAndSlot1(int capacity, String slot1);
-   public List<Vehicle> findByCapacityAndSlot2(int capacity, String slot2);
-   public List<Vehicle> findByCapacityAndSlot3(int capacity, String slot3);
-//
+    public List<Vehicle> findByCapacityAndSlot1(int capacity, String slot1);
+    public List<Vehicle> findByCapacityAndSlot2(int capacity, String slot2);
+    public List<Vehicle> findByCapacityAndSlot3(int capacity, String slot3);
+    //
 //
 //
     List<Vehicle> findByVehicleNumber(String vehicleNumber);
     List<Vehicle> findByCompanyName(String companyName);
+//    List<Vehicle> findByBookingId(long bookingId);
 //
 //    List<Vehicle> findBySlot1StatusAndDateAndVehicleType(String slot1Status, String date,String vehicleType);
 //
