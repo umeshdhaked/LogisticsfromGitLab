@@ -474,42 +474,47 @@ public class RouteServiceImpl implements RouteService {
         System.out.println(routes.getJSONObject(minRoute).toString());
 
         String Routes =routes.getJSONObject(minRoute).getJSONObject("routes").toString();
-        Routes=Routes.replaceAll("\"Order\\(","{");
-        Routes=Routes.replaceAll("\\)\",\\{",",");
-        Pattern pat=Pattern.compile("[a-zA-Z]+=[a-zA-Z0-9.%-]+[,]+");
-        Matcher mat =pat.matcher(Routes);
-        System.out.println(Routes);
-        i=0;
-        while (mat.find())
-        {
-            System.out.println(mat);
-
-            String subStr = Routes.substring(mat.start()+i,mat.end()+i);
-            boolean isInteger =false;
-            if(subStr.matches(".*(id|Id).*"))
-                isInteger =true;
-            System.out.println(subStr);
-            Pattern Pat =Pattern.compile("([a-zA-Z]+)=([a-zA-Z0-9.%-]+),");
-            String temp=subStr;
-            Matcher Mat = Pat.matcher(subStr);
-            while (Mat.find()){
-                String right=Mat.group(2);
-                String left=Mat.group(1);
-                System.out.println(left+"  =     " +
-                        "" +right);
-                temp=temp.replace(left,"\""+left+"\"");
-                i+=2;
-                if(!isInteger)
-                {
-                    i+=2;
-                    temp=temp.replace(right,"\""+right+"\"");
-                }
-                System.out.println(temp);
-            }
-            Routes=Routes.replaceFirst(subStr,temp);
-        }
-        Routes=Routes.replaceAll("=",":");
-        Routes=Routes.replaceAll(",\\s",",");
+//        Gson gson =new Gson();
+//        String object=gson.toJson(routes.getJSONObject(minRoute).getJSONObject("routes").getJSONArray("route").getJSONObject(0));
+//        routes.getJSONObject(minRoute).getJSONObject("routes").put("route",object);
+//        System.out.println("modified:"+routes.getJSONObject(minRoute).getJSONObject("routes"));
+//        Routes=Routes.replaceAll("\"Order\\(","{");
+        Routes=Routes.replaceAll("\\},\\{",",");
+//        Pattern pat=Pattern.compile("[a-zA-Z]+=[a-zA-Z0-9.%-]+[,]+");
+//        Matcher mat =pat.matcher(Routes);
+//        System.out.println(Routes);
+//        i=0;
+//        while (mat.find())
+//        {
+//            System.out.println(mat);
+//
+//            String subStr = Routes.substring(mat.start()+i,mat.end()+i);
+//            boolean isInteger =false;
+//            if(subStr.matches(".*(id|Id).*"))
+//                isInteger =true;
+//            System.out.println(subStr);
+//            Pattern Pat =Pattern.compile("([a-zA-Z]+)=([a-zA-Z0-9.%-]+),");
+//            String temp=subStr;
+//            Matcher Mat = Pat.matcher(subStr);
+//            while (Mat.find()){
+//                String right=Mat.group(2);
+//                String left=Mat.group(1);
+//                System.out.println("left:"+left+"=" +"right: "+right);
+//                temp=temp.replace(left,"\""+left+"\"");
+//                i+=2;
+//                if(!isInteger)
+//                {
+//                    i+=2;
+//                    temp=temp.replace(right,"\""+right+"\"");
+//                }
+//                System.out.println(temp);
+//            }
+//            Routes=Routes.replaceFirst(subStr,temp);
+//        }
+//        Routes=Routes.replaceAll("=",":");
+//        Routes=Routes.replaceAll(",\\s",",");
+        System.out.println("in route sercie:"+
+                Routes);
         JSONObject newRoutes =new JSONObject(Routes);
 
         System.out.println("last print in route service :"+Routes);
