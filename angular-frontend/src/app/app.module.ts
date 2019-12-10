@@ -121,12 +121,9 @@ import { ContactusreplypopupComponent } from './components/contactusreplypopup/c
 import { DriverLoginComponent } from './components/driver-login/driver-login.component';
 import { TeamComponent } from './components/home/team/team.component';
 import { PartnersComponent } from './components/home/partners/partners.component';
-<<<<<<< HEAD
 import { MapComponent } from './components/mapcomponent/mapcomponent.component';
-=======
 import { CareersComponent } from './components/careers/careers.component';
 import { AddDeveloperComponent } from './components/careers/add-developer/add-developer.component';
->>>>>>> dea8fd80dc6268e58d53b604b1cdc864edcbd610
 
 
 @NgModule({
@@ -187,12 +184,9 @@ import { AddDeveloperComponent } from './components/careers/add-developer/add-de
     DriverLoginComponent,
     TeamComponent,
     PartnersComponent,
-<<<<<<< HEAD
-    MapComponent
-=======
+    MapComponent,
     CareersComponent,
     AddDeveloperComponent
->>>>>>> dea8fd80dc6268e58d53b604b1cdc864edcbd610
 
   ],
 
