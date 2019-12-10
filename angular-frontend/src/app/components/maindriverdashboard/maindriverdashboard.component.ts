@@ -19,10 +19,11 @@ export class MaindriverdashboardComponent implements OnInit {
   slot = 'slot1';
   currentorder = 0;
   vehicleId = localStorage.getItem('vehicleNumber');
-
+  depotAddress="";
   orderData: any[];
   orderRoutes = [];
 
+  route: any;
   constructor(private router: Router,
               private interactionserv: InteractionService,
               private dataorder: DataorderService,
@@ -31,15 +32,22 @@ export class MaindriverdashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.temp[0] = new Orderdata();
-    this.temp[1] = new Orderdata();
-    this.datafromoptimizer.getorderdatafromrouteoptimizer().then(
-      (result: any[]) => {
-        this.orderData = result;
-        this.processOrder();
+    this.route = JSON.parse(localStorage.getItem("route"));
+    console.log(this.route);
+    if(this.route == null){
+      this.temp[0] = new Orderdata();
+      this.temp[1] = new Orderdata();
+      this.datafromoptimizer.getorderdatafromrouteoptimizer().then(
+        (result: any[]) => {
+          this.orderData = result;
+          this.processOrder();
+        }
+      );
+      }else{
+        this.updateView();
       }
-    );
   }
+  
 
 
   processOrder() {
@@ -47,6 +55,7 @@ export class MaindriverdashboardComponent implements OnInit {
     this.orderData.forEach(
       (order: any) => {
         this.temp[0].customerAddress = order.depotAddress;
+        localStorage.setItem("depotAddress", order.depotAddress);
         console.log(this.temp[0].customerAddress);
         const processedString = order.routes.toString().replace('[', '').replace(']', '');
         processedString.split('{').forEach(
@@ -68,23 +77,48 @@ export class MaindriverdashboardComponent implements OnInit {
             }
           });
         console.log(this.orderRoutes);
+        //modify routes
+        localStorage.setItem("route", JSON.stringify(this.orderRoutes));
+        this.route = JSON.parse(localStorage.getItem("route"));
         console.log(this.orderRoutes[0].customerAddress);
         this.temp[1].orderId = this.orderRoutes[0].orderId;
         this.temp[1].customerAddress = this.orderRoutes[0].customerAddress;
         console.log(this.temp[1].customerAddress);
 
         for (let i = 0; i < this.orderRoutes.length; i++) {
-          if (this.orderRoutes[i].orderStatus === 'pending') {
+          if (this.orderRoutes[i].orderStatus === '"delivered"') {
             this.currentorder = i;
             this.temp[0] = this.orderData[i];
             this.temp[1] = this.orderData[i + 1];
             console.log(this.temp[0]);
             console.log(this.temp[1]);
-            break;
+            // break;
           }
         }
       }
     );
+  }
+
+  updateView(){
+    var flag = false;
+    console.log("test")
+    console.log(this.route[0].orderStatus);
+    this.temp[0] = new Orderdata();
+    this.temp[1] = new Orderdata();
+    for (let i = 0; i < this.route.length; i++) {
+      if (this.route[i].orderStatus === '"delivered"') {
+        this.currentorder = i+1;
+        this.temp[0] = this.route[i];
+        this.temp[1] = this.route[i + 1];
+        console.log(this.temp[0]);
+        console.log(this.temp[1]);
+        var flag = true;
+      }
+    }
+    if(flag == false){
+      this.temp[0].customerAddress = localStorage.getItem("depotAddress");
+      this.temp[1] = this.route[0];
+    }
   }
 
   navigate() {
@@ -95,9 +129,12 @@ export class MaindriverdashboardComponent implements OnInit {
   signature() {
     // for(let vehicle of this.orderData){
     // }
-    this.orderRoutes[this.currentorder].orderStatus = 'delivered';
-    this.dataorder.updateOrderStatus(this.orderRoutes[this.currentorder].orderId,
-      this.orderRoutes[this.currentorder].orderStatus)
+    // this.orderRoutes[this.currentorder].orderStatus = '"delivered"';
+    this.route[this.currentorder].orderStatus = '"delivered"';
+    localStorage.setItem("route", JSON.stringify(this.route));
+    // console.log(this.orderRoutes[this.currentorder]);
+    this.dataorder.updateOrderStatus(this.route[this.currentorder].orderId,
+      this.route[this.currentorder].orderStatus)
       .toPromise().then(
       result => {
         console.log(result);
@@ -105,7 +142,7 @@ export class MaindriverdashboardComponent implements OnInit {
       reason => {
         console.log(reason);
       });
-    console.log(this.orderData);
+    // console.log(this.orderData);
     this.router.navigateByUrl('signature');
   }
 
@@ -127,5 +164,12 @@ export class MaindriverdashboardComponent implements OnInit {
       });
     console.log(this.orderData);
     this.router.navigateByUrl('driverdashboard');
+  }
+
+  isPending(data){
+    if (data.orderStatus == '"pending"'){
+      return true;
+    }
+    return false;
   }
 }
