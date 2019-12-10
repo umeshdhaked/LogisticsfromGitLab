@@ -1,3 +1,4 @@
+import { Orderdata } from './../interfaces/orderdata';
 import { RouteOrder } from './../interfaces/route-order';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
@@ -21,9 +22,9 @@ export class OrderServiceService {
     return this.http.get<DateDemand>(url);
   }
 
-  saveOrder(customerName, customerNumber, customerAddress, orderVolume, deliveryDate, slotNumber, orderStatus, retailerId): Observable<Order[]> {
+  saveOrder(customerName, customerNumber, customerAddress, orderVolume, deliveryDate, slotNumber, orderStatus, retailerId): Observable<Orderdata[]> {
     let url = environment.apiUrl + ":8084/orders/save";
-    let url2 = environment.apiUrl + ":8091/api/v1/order";
+    
     console.log(orderStatus);
     console.log(customerNumber);
     let data = {
@@ -47,15 +48,12 @@ export class OrderServiceService {
       "orderStatus": orderStatus,
       "wholesalerId": retailerId
     };
-    this.http.get<Message>(environment.apiUrl + ":9090/searchByRetailerIdAndSlot/" + retailerId + "/" + slotNumber);
-    this.http.post<RouteOrder[]>(url2, JSON.stringify(routeData), {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
-    });
+    // this.http.get<Message>(environment.apiUrl + ":9090/searchByRetailerIdAndSlot/" + retailerId + "/" + slotNumber);
+    this.sendVehicleKafka(retailerId, slotNumber).subscribe(data=>{console.log(data)});
+    
+    this.saveInRoute(routeData).subscribe(data => {console.log(data)});
 
-    return this.http.post<Order[]>(url, JSON.stringify(data), {
+    return this.http.post<Orderdata[]>(url, JSON.stringify(data), {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
@@ -72,12 +70,38 @@ export class OrderServiceService {
   getCompletedOrders(retailerEmail) {
     // let url = 'assets/static/delivered.json';
     let url = environment.apiUrl + ":8084/orders/findOrdersByStatus?retailerId=" + retailerEmail + "&orderStatus=delivered"
-    return this.http.get<Order[]>(url);
+    return this.http.get<Orderdata[]>(url);
   }
 
   getPendingOrders(retailerEmail) {
     //let url = 'assets/static/pending.json';
     let url = environment.apiUrl + ":8084/orders/findOrdersByStatus?retailerId=" + retailerEmail + "&orderStatus=pending"
     return this.http.get<Order[]>(url);
+  }
+
+  sendVehicleKafka(retailerId, slotNumber){
+    return this.http.get<Message>(environment.apiUrl + ":9090/searchByRetailerIdAndSlot/" + retailerId + "/" + slotNumber);
+  }
+
+  saveInRoute(routeData){
+    let data = {
+      "customerName": routeData.customerName,
+      "customerAddress": routeData.customerAddress,
+      "customerPhoneNumber": routeData.customerNumber,
+      "orderVolume": routeData.orderVolume,
+      "deliveryDate": routeData.deliveryDate,
+      "slotNumber": routeData.slotNumber,
+      "orderStatus": routeData.orderStatus,
+      "wholesalerId": routeData.retailerId,
+      "id" : routeData.id,
+      "orderId": routeData.id
+    };
+    let url2 = environment.apiUrl + ":8091/api/v1/order";
+    return this.http.post<RouteOrder[]>(url2, JSON.stringify(data), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
+    });
   }
 }
