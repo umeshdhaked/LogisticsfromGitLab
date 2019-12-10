@@ -41,7 +41,7 @@ export class VehicledemandfrontendComponent implements OnInit {
   ) {
     // this.date = this.datePipe.transform(this.date, 'yyyy-MM-dd');
   }
-
+  success:boolean = false;
   ngOnInit() {
     // getting email from token
     var decoded = {
@@ -61,20 +61,20 @@ export class VehicledemandfrontendComponent implements OnInit {
   }
 
   sendRequest() {
-
+    alert("Booking request sent!")
     const retailerDetails = new RetailerDetails();
     // retailerDetails.date = this.date;
     retailerDetails.timeSlot = this.slot;
     retailerDetails.volume = this.capacity;
-    console.log(retailerDetails.volume);
-    console.log(retailerDetails.timeSlot);
-    console.log(retailerDetails.date);
+    // console.log(retailerDetails.volume);
+    // console.log(retailerDetails.timeSlot);
+    // console.log(retailerDetails.date);
     this.vehicleService.sendRetailerRequest(retailerDetails).subscribe(
-      result => {
+      result => 
+      this.zone.run(()=>{
         console.log(result);
-      }, error => {
-        console.log(error);
-      }
+        this.success = true;
+      })
     );
   }
 
@@ -130,6 +130,9 @@ export class VehicledemandfrontendComponent implements OnInit {
     this.vehicleDemanded.vehicleStatus = data.vehicleStatus;
     this.vehicleDemanded.vehicleType = data.vehicleType;
     console.log(this.vehicleDemanded);
-    this.vehicleService.sendnewRetailerRequest(this.vehicleDemanded).subscribe();
+    this.vehicleService.sendnewRetailerRequest(this.vehicleDemanded).subscribe(()=>{
+      alert("Booking request sent!");
+      this.vehiclequery = null;
+    });
   }
 }
