@@ -1,6 +1,7 @@
 package com.stackroute.routing.controller;
 
 
+import com.google.gson.Gson;
 import com.stackroute.routing.domain.Depot;
 import com.stackroute.routing.domain.Order;
 import com.stackroute.routing.domain.Route;
@@ -12,6 +13,7 @@ import com.stackroute.routing.service.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +32,16 @@ public class RouteController {
 //    VehicleService vehicleService;
     RouteService routeService;
 //    DepotService depotService;
-
+    String vehicleJsonString = "";
+//listener
+    @KafkaListener(topics = "vehicle_slots", groupId = "foo")
+    public void listen(String message) {
+        System.out.println("Received Message in group foo: " + message);
+        // Gson gson = new Gson();
+        // vehicleJsonString = gson.fromJson(message, String.class);
+        vehicleJsonString = message;
+        System.out.println(vehicleJsonString);
+}
     @Autowired
     public void setOrderService(OrderService orderService) {
         this.orderService = orderService;
@@ -63,8 +74,8 @@ public class RouteController {
         //retailer id and timeslot are in order
         String url = "http://15.206.105.26:9090/searchByRetailerIdAndSlot/"+wholesalerId+"/"+slot;
         RestTemplate restTemplate = new RestTemplate();
-        String vehicleJsonString = restTemplate.getForObject(url,String.class);
-        System.out.println(vehicleJsonString);
+//        String vehicleJsonString = restTemplate.getForObject(url,String.class);
+//        System.out.println(vehicleJsonString);
 //        String vehicleJsonString="[{\"_id\":0,\"vehicleNumber\":\"22\",\"capacity\":50},{\"_id\":45,\"vehicleNumber\":\"343\",\"capacity\":100}]";
 
 

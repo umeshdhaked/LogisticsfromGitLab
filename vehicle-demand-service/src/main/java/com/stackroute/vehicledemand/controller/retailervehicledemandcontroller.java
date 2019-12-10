@@ -221,6 +221,11 @@ public class retailervehicledemandcontroller {
         ResponseEntity responseEntity;
         try {
             responseEntity = new ResponseEntity(vehicledemandservice.findByRetailerIdAndSlot(retailerId, slot), HttpStatus.OK);
+            Gson gson = new Gson();
+            String json = gson.toJson(responseEntity.getBody());
+            assignProducerProperties();
+            sendKafkaMessage(json, producer, vehicleSlotsTopicName);
+
         } catch (Exception e) {
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
         }

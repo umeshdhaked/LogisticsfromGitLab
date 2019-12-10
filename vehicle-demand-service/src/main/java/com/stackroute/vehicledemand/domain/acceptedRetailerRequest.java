@@ -166,4 +166,5 @@ public class acceptedRetailerRequest {
         this.requestStatus = requestStatus;
         this.remainingCapacity=remainingCapacity;
     }
+    
 }

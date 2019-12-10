@@ -1,5 +1,6 @@
 package com.stackroute.vehicledemand.service;
 
+import com.google.gson.Gson;
 import com.stackroute.vehicledemand.domain.acceptedRetailerRequest;
 import com.stackroute.vehicledemand.domain.newRetailerDemand;
 import com.stackroute.vehicledemand.domain.rejectedRetailerRequest;
@@ -10,7 +11,10 @@ import com.stackroute.vehicledemand.repository.AcceptedRetailerDemandRepository;
 import com.stackroute.vehicledemand.repository.newRetailerDemandRepository;
 import com.stackroute.vehicledemand.repository.rejectedRetailerDemand;
 import com.stackroute.vehicledemand.repository.vehicledemandrepository;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
@@ -128,7 +132,8 @@ public class vehicledemandserviceImpl implements vehicledemandservice {
     }
 
     public List<acceptedRetailerRequest> findByRetailerIdAndSlot(int retailerId, String slot) {
-        return this.acceptedRetailerDemandRepository.findByRetailerIdAndSlot(retailerId, slot);
+        List<acceptedRetailerRequest> list= this.acceptedRetailerDemandRepository.findByRetailerIdAndSlot(retailerId, slot);
+        return list;
     }
 //    @Override
 //    public List<acceptedRetailerRequest> addordertoSlotvehicle(int retailerId, String slot,int volumebooked) {
