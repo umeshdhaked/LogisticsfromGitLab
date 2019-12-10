@@ -67,13 +67,14 @@ public class RouteController {
         System.out.println(vehicleJsonString);
 //        String vehicleJsonString="[{\"_id\":0,\"vehicleNumber\":\"22\",\"capacity\":50},{\"_id\":45,\"vehicleNumber\":\"343\",\"capacity\":100}]";
 
+
         JSONArray vehicleJson = new JSONArray(vehicleJsonString);
-        url="http://15.206.105.26:8082/retailerProfile/getAddressbyId?id="+wholesalerId;
-        JSONObject depot = restTemplate.getForObject(url,JSONObject.class);
-        System.out.println(depot.toString());
-        String depotAddress =depot.getString("address");
-        System.out.println(depotAddress);
-//        String depotAddress="marathahalli";
+//        url="http://15.206.105.26:8082/retailerProfile/getAddressbyId?id="+wholesalerId;
+//        JSONObject depot = restTemplate.getForObject(url,JSONObject.class);
+//        System.out.println(depot.toString());
+//        String depotAddress =depot.getString("address");
+//        System.out.println(depotAddress);
+        String depotAddress="koramangala";
 
         JSONObject newRoutes=new JSONObject( routeService.getRoutes(vehicleJson,depotAddress,wholesalerId));
 

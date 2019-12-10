@@ -17,5 +17,6 @@ public class Route {
     Float depotLongitude;
     int wholesalerId;
 //    String date;
+
     String routes;
 }

@@ -47,12 +47,12 @@ export class OrderServiceService {
       "wholesalerId": retailerId
     };
 
-    this.http.post<RouteOrder[]>(url2, JSON.stringify(data), {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
-    });
+    // this.http.post<RouteOrder[]>(url2, JSON.stringify(data), {
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Access-Control-Allow-Origin': '*'
+    //   }
+    // });
 
     return this.http.post<Order[]>(url, JSON.stringify(data), {
       headers: {

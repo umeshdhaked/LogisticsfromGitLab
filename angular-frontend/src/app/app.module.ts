@@ -184,12 +184,7 @@ import { AddDeveloperComponent } from './components/careers/add-developer/add-de
     DriverLoginComponent,
     TeamComponent,
     PartnersComponent,
-
-    
-
     MapComponent,
-
-
     CareersComponent,
     AddDeveloperComponent
 

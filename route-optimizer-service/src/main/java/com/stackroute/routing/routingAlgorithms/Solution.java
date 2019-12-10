@@ -1,5 +1,6 @@
 package com.stackroute.routing.routingAlgorithms;
 
+import com.google.gson.Gson;
 import com.stackroute.routing.domain.Order;
 import com.stackroute.routing.domain.Vehicle;
 //import com.stackroute.routing.repository.DepotRepository;
@@ -539,7 +540,10 @@ public class Solution
                     else
                     { System.out.print(node.address+ "->"); }
 
-                    sortedOrders.put(Orders[(node.NodeId)-1]);
+                    Gson gson =new Gson();
+                    String order = gson.toJson(Orders[(node.NodeId)-1]);
+                    JSONObject js =new JSONObject(order);
+                    sortedOrders.put(js);
                     JSONObject location = new JSONObject();
                     location.put("latitude",coordinates.getJSONObject(node.NodeId).getFloat("latitude"));
                     location.put("longitude",coordinates.getJSONObject(node.NodeId).getFloat("longitude"));
