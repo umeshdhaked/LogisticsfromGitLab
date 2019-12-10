@@ -128,6 +128,13 @@ public class RetailerController {
     }
 
 
+    @GetMapping("/getAddressbyId")
+    @CrossOrigin
+    public String getAddress(@RequestParam("id") int id){
+        System.out.println("address of id = "+ id);
+       return retailerService.getAddressById(id);
+    }
+
 
 
 

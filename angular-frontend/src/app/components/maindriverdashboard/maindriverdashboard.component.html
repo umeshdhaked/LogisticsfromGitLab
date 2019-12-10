@@ -1,3 +1,6 @@
+<div *ngIf="(flagforallcompleted==false); then thenBlock else elseBlock"></div>
+
+<ng-template #thenBlock>
 <br>
 <h2 id="mainhead">Delivery Dashboard</h2>
 <br>
@@ -39,14 +42,32 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let data of orderRoutes ">
-      <td *ngIf="data.id !=temp[0].id">{{data.orderId}}</td>
+    <!-- <tr *ngFor="let data of orderRoutes "> -->
+        <tr *ngFor="let data of route ">
+      <td *ngIf="data.id !=temp[0].id && isPending(data)">{{data.orderId}}</td>
 <!--      <td *ngIf="data.id !=temp[0].id">{{data.customerName}}</td>-->
-      <td *ngIf="data.id !=temp[0].id">{{data.customerAddress}}</td>
+      <td *ngIf="data.id !=temp[0].id && isPending(data)">{{data.customerAddress}}</td>
 <!--      <td *ngIf="data.orderStatus=='pending' && data.id !=temp[0].id">{{data.orderVolume}}</td>-->
-            <td *ngIf="data.id !=temp[0].id">{{data.orderVolume}}</td>
-
+            <td *ngIf="data.id !=temp[0].id && isPending(data)">{{data.orderVolume}}</td>
     </tr>
     </tbody>
   </table>
 </div>
+</ng-template>
+<ng-template #elseBlock>
+  <br>
+  <br>
+
+  <div class="card" id="myclass" >
+    <div class="card-header">
+      <h4>Current Status</h4>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">You have no new deliveries!</h5>
+      <p class="card-text">Enjoy your life!</p>
+
+
+      <!--      <a href="#" class="btn btn-primary">Go somewhere</a>-->
+    </div>
+  </div>
+  </ng-template>

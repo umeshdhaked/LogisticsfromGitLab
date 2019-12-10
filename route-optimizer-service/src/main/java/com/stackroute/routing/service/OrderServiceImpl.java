@@ -1,9 +1,12 @@
 package com.stackroute.routing.service;
 
+import com.google.gson.Gson;
 import com.stackroute.routing.domain.Order;
 import com.stackroute.routing.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -17,10 +20,28 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<Order> getAllOrders() throws Exception {
+        if(orderRepository.findAll()==null)
+            throw new Exception("No orders found");
+        return  orderRepository.findAll();
+    }
+
+    @Override
     public Order addOrder(Order order) throws Exception {
         if(orderRepository.findByOrderId(order.getOrderId())!=null)
             throw  new Exception("order already exists");
-        return orderRepository.save(order);
+        Order order1=orderRepository.save(order);
+        if(order1==null)
+        {
+            System.out.println("order not saved");
+        }
+        else {
+            Gson gson = new Gson();
+
+            System.out.println("saved order:" + (gson.toJson(order1)).toString());
+        }
+        return  order1;
+
     }
 
     @Override
