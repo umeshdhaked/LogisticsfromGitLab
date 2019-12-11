@@ -132,8 +132,10 @@
 
 <body>
 
-    <div class="loader"></div>
-    
+    <div id="loader" class="center">
+            <img class="wysser" src="../../assets/logo1.png"/>
+            <img class="zio" src="../../assets/images/gps.png"/>
+    </div>
     <!-- navigation bar -->
     <!-- -------------------------------------------------------------------------- -->
     <app-root></app-root>
@@ -145,20 +147,21 @@
         AOS.init();
     </script>
     <script> 
-            document.onreadystatechange = function() { 
-                if (document.readyState !== "complete") { 
-                    document.querySelector( 
-                      "body").style.visibility = "hidden"; 
-                    document.querySelector( 
-                      "#loader").style.visibility = "visible"; 
-                } else { 
-                    document.querySelector( 
-                      "#loader").style.display = "none"; 
-                    document.querySelector( 
-                      "body").style.visibility = "visible"; 
-                } 
-            }; 
-        </script> 
+    //loader
+        document.onreadystatechange = function() { 
+            if (document.readyState !== "complete") { 
+                document.querySelector( 
+                  "body").style.visibility = "hidden"; 
+                document.querySelector( 
+                  "#loader").style.visibility = "visible"; 
+            } else { 
+                document.querySelector( 
+                  "#loader").style.display = "none"; 
+                document.querySelector( 
+                  "body").style.visibility = "visible"; 
+            } 
+        }; 
+    </script> 
 </body>
 
 </html>
