@@ -73,6 +73,9 @@ export class AddOrderComponent implements OnInit {
         console.log(this.slotJson);
       }));
     this.checkSlotsOnDate(this.retailerId);
+    this.orderService.sendVehicleKafka(this.retailerId, this.selectedSlot).subscribe(data => {
+      console.log(data);
+    });
   }
 
   checkSlotsOnDate(retailerId) {
