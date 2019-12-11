@@ -10,7 +10,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 export class DataorderService {
   url = environment.apiUrl  + ':8084/orders/findAll';
   url2 = environment.apiUrl + ':8084/orders/updateOrder';
-  url3 = environment.apiUrl + ':8091/api/v1/order/';
+  
   constructor(private http: HttpClient) { }
   getdata() {
     return this.http.get(this.url);
@@ -23,6 +23,7 @@ export class DataorderService {
   }
 
   deleteOrder(orderId){
-    return this.http.delete<Message>(this.url3);
+    var url3 = environment.apiUrl + ':8091/api/v1/order/' + orderId;
+    return this.http.delete<Message>(url3);
   }
 }
