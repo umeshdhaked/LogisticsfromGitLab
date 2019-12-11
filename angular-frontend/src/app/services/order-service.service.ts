@@ -51,7 +51,7 @@ export class OrderServiceService {
     // this.http.get<Message>(environment.apiUrl + ":9090/searchByRetailerIdAndSlot/" + retailerId + "/" + slotNumber);
     this.sendVehicleKafka(retailerId, slotNumber).subscribe(data=>{console.log(data)});
     
-    this.saveInRoute(routeData).subscribe(data => {console.log(data)});
+    // this.saveInRoute(routeData).subscribe(data => {console.log(data)});
 
     return this.http.post<Orderdata[]>(url, JSON.stringify(data), {
       headers: {
