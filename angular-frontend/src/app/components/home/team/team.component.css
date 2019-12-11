@@ -3,7 +3,9 @@
     height: 200px;
     width: 200px;
     border-radius: 100px;
+
   }
+  
   
   #grid {
     text-decoration: none;
@@ -41,3 +43,4 @@
  .carousel-indicators {
   bottom: -50px;
 }
+
