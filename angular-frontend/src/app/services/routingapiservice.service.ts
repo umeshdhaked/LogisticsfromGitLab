@@ -11,6 +11,7 @@ export class RoutingapiserviceService {
   API_KEY='Am645nTS2rVqgDNr8UDKqZPdOL-X2_Z94sS5-GqjNBcoMfSOi_dVC6KTDGxL_jDb'
   responses=[];
   waypoints=[]
+  httpOptionsNoAuth: any;
   constructor(private httpclient:HttpClient) {
       this.httpOptionsNoAuth = {
       headers: new HttpHeaders(),
