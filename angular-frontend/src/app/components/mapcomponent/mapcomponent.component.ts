@@ -17,7 +17,7 @@ export class MapComponent implements OnInit {
   // addresses = ["stackroute koramangala", "marathahalli", "forum mall", "indiranagar banglore", "mahadevapura banglore","whitefield banglore","jayantinagara banglore","koramangala"]
   addresses=[]
   jsonresponse;
-  vehicleNumbers=["22","343"]
+  vehicleNumbers=["KA123","A303","A302"]
   vehiclenumber=this.vehicleNumbers[0];
   allcoordinates;
   points = []
@@ -66,8 +66,8 @@ export class MapComponent implements OnInit {
           this.zone.run(() => {
             this.allcoordinates = data
             this.coordinates = this.updatevalue(data)
-            updatepointsonmap(this.coordinates.slice(1), this.addresses.slice(1),"http://localhost:4202/assets/images/box.png","box")
-            updatepointsonmap([this.coordinates[0]], [this.addresses[0]],"http://localhost:4202/assets/images/warehouse.png","warehouse")
+            updatepointsonmap(this.coordinates.slice(1), this.addresses.slice(1),"http://localhost:4200/assets/images/box.png","box")
+            updatepointsonmap([this.coordinates[0]], [this.addresses[0]],"http://localhost:4200/assets/images/warehouse.png","warehouse")
             updatecenter(this.coordinates)
             this.routeapiservice.getGeoJsonLatLOng(this.coordinates, this.addresses).subscribe((data2) => {
               this.zone.run(() => {
