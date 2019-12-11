@@ -55,6 +55,14 @@ h6 {
   }
 }
 
+@media(min-width: 1024px)
+{
+  .nav-items.scrolled
+  {
+color: aliceblue;
+  }
+}
+
 @media (max-width: 1023px) {
   .navbar {
     background: rgb(54, 59, 68);
