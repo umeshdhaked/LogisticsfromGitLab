@@ -102,6 +102,7 @@ public class RouteServiceImpl implements RouteService {
             newROute.setDepotAddress(vehicleRoute.getString("depotAddress"));
             newROute.setDepotLatitude(vehicleRoute.getFloat("depotLatitude"));
             newROute.setDepotLongitude(vehicleRoute.getFloat("depotLongitude"));
+            newROute.setDistance(vehicleRoute.getDouble("distance"));
 
             newROute.setSlot(slot);
             newROute.setRoutes(vehicleRoute.getJSONArray("route").toString());
@@ -387,17 +388,17 @@ public class RouteServiceImpl implements RouteService {
         Double minDistance=Double.MAX_VALUE;
         String minRoute="";
 
-        routes.put("greedy",s.SolutionPrint("Greedy Solution",Vehicles,coordinates,wholesalerId,Orders,addresses[0]));
+        routes.put("greedy",s.SolutionPrint("Greedy Solution",distanceMatrix,Vehicles,coordinates,wholesalerId,Orders,addresses[0]));
 
         s.IntraRouteLocalSearch(Nodes, distanceMatrix);
 
-        routes.put("intra",s.SolutionPrint("Solution after Intra-Route Heuristic Neighborhood Search",Vehicles,coordinates,wholesalerId,Orders,addresses[0]));
+        routes.put("intra",s.SolutionPrint("Solution after Intra-Route Heuristic Neighborhood Search",distanceMatrix,Vehicles,coordinates,wholesalerId,Orders,addresses[0]));
 
         s.GreedySolution(Nodes, distanceMatrix);
 
         s.InterRouteLocalSearch(Nodes, distanceMatrix);
 
-        routes.put("inter",s.SolutionPrint("Solution after Inter-Route Heuristic Neighborhood Search",Vehicles,coordinates,wholesalerId,Orders,addresses[0]));
+        routes.put("inter",s.SolutionPrint("Solution after Inter-Route Heuristic Neighborhood Search",distanceMatrix,Vehicles,coordinates,wholesalerId,Orders,addresses[0]));
 
         s.GreedySolution(Nodes, distanceMatrix);
 
@@ -480,6 +481,7 @@ public class RouteServiceImpl implements RouteService {
 //        System.out.println("modified:"+routes.getJSONObject(minRoute).getJSONObject("routes"));
 //        Routes=Routes.replaceAll("\"Order\\(","{");
         Routes=Routes.replaceAll("\\},\\{\"l",",\"l");
+        Routes=Routes.replaceAll("\\},\\{\"d",",\"d");
 //        Pattern pat=Pattern.compile("[a-zA-Z]+=[a-zA-Z0-9.%-]+[,]+");
 //        Matcher mat =pat.matcher(Routes);
 //        System.out.println(Routes);

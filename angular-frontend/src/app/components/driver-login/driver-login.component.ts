@@ -29,6 +29,8 @@ export class DriverLoginComponent implements OnInit {
     // }
     this.serv.authenticateDriver(this.username, this.password).subscribe(data => {
       if(data[0].password == this.password){
+        localStorage.removeItem("route");
+        localStorage.removeItem("depotAddress");
         localStorage.setItem("vehicleNumber", data[0].vehicleNumber);
         localStorage.setItem("retailerId", String(data[0].retailerId));
         localStorage.setItem("driverName", data[0].driverName);

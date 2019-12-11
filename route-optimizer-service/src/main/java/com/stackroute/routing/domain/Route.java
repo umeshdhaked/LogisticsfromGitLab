@@ -18,5 +18,8 @@ public class Route {
     int wholesalerId;
 //    String date;
 
+    //distance from last node to depot
+    double distance;
+
     String routes;
 }

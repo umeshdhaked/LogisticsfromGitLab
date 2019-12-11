@@ -78,13 +78,17 @@ export class ManageVehiclesComponent implements OnInit {
       this.vehicleCompanyData = data;
       if (this.vehicleCompanyData != null) {
         this.cName = ''+this.vehicleCompanyData.companyName;
+        this.vehicleService.getAllVehicles(this.cName).subscribe(data => {
+          this.vehicles = data
+          this.filteredData = data;
+        });
       }
     })
 
-    this.vehicleService.getAllVehicles().subscribe(data => {
-      this.vehicles = data
-      this.filteredData = data;
-    });
+    // this.vehicleService.getAllVehicles(this.cName).subscribe(data => {
+    //   this.vehicles = data
+    //   this.filteredData = data;
+    // });
 
   }
 
