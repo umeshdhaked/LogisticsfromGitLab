@@ -55,6 +55,8 @@ h6 {
   }
 }
 
+
+
 @media (max-width: 1023px) {
   .navbar {
     background: rgb(54, 59, 68);
@@ -88,4 +90,8 @@ h6 {
   width: 100%; 
   left: 0; 
 }
- 
+
+.scroll-up a {
+  background: black;
+  color: white;
+  }

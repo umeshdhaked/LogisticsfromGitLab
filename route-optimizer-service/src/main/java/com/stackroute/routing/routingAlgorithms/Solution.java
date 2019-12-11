@@ -506,7 +506,7 @@ public class Solution
         } catch (Exception e) {}
     }
 
-    public JSONObject SolutionPrint(String Solution_Label, Vehicle[] Vehicles, JSONArray coordinates, int wholesalerId, Order[] Orders,String depotAddress)//Print Solution In console
+    public JSONObject SolutionPrint(String Solution_Label,double[][] distanceMatrix, Vehicle[] Vehicles, JSONArray coordinates, int wholesalerId, Order[] Orders,String depotAddress)//Print Solution In console
     {
         System.out.println("=========================================================");
         System.out.println(Solution_Label+"\n");
@@ -530,7 +530,11 @@ public class Solution
                 RoutSize = vehicleNodes[j].Route.size()-1;
             else
                 RoutSize=vehicleNodes[j].Route.size();
-                for (int k = 1; k < RoutSize-1 ; k++) {
+                int k;
+                for ( k = 1; k < RoutSize-1 ; k++) {
+                    JSONObject distance =new JSONObject();
+
+                    distance.put("distance",distanceMatrix[vehicleNodes[j].Route.get(k-1).NodeId][vehicleNodes[j].Route.get(k).NodeId]);
 
                     Node node =vehicleNodes[j].Route.get(k);
                     if (k == RoutSize-2)
@@ -548,10 +552,11 @@ public class Solution
                     location.put("latitude",coordinates.getJSONObject(node.NodeId).getFloat("latitude"));
                     location.put("longitude",coordinates.getJSONObject(node.NodeId).getFloat("longitude"));
                     sortedOrders.put(location);
-
+                    sortedOrders.put(distance);
                 }
-                System.out.println();
 
+                System.out.println();
+                values.put("distance",distanceMatrix[vehicleNodes[j].Route.get(k-1).NodeId][vehicleNodes[j].Route.get(0).NodeId]);
                 values.put("route",sortedOrders);
 
                 routes.put(Vehicles[j].getVehicleNumber(),values);

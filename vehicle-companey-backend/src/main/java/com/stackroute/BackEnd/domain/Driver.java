@@ -8,9 +8,9 @@ import java.math.BigInteger;
 
 @Document
 public class Driver {
-    @Id
+    
     BigInteger id;
-
+    @Id
     Long bookingId;
 
 //    @Id

@@ -30,7 +30,7 @@ export class RoutingapiserviceService {
     }  
   public getRoutes(vehicleNumber)
     {
-      var url = environment.apiUrl+':8091/api/v1/routes/'+vehicleNumber+'/1'
+      var url = environment.apiUrl+':8091/api/v1/routes/'+vehicleNumber+'/slot1'
       return this.httpclient.get(url);
     }  
 }

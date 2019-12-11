@@ -47,13 +47,13 @@ public class OrderServiceImpl implements OrderService {
     private VehicleDemanded[] vehicles;
 
     //listener
-    @KafkaListener(topics = "vehicle_slots", groupId = "foo")
-    public void listen(String message) {
-        System.out.println("Received Message in group foo: " + message);
-        Gson gson = new Gson();
-        dateDemands = gson.fromJson(message, DateDemand[].class);
-        System.out.println(dateDemands[0].toString());
-    }
+    // @KafkaListener(topics = "vehicle_slots", groupId = "foo")
+    // public void listen(String message) {
+    //     System.out.println("Received Message in group foo: " + message);
+    //     Gson gson = new Gson();
+    //     dateDemands = gson.fromJson(message, DateDemand[].class);
+    //     System.out.println(dateDemands[0].toString());
+    // }
 
     //method to send messages
     private static void sendKafkaMessage(String payload,
