@@ -74,6 +74,11 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
+    public List<Vehicle> findByCompanyName(String companyName) {
+        return vehicleRepository.findByCompanyName(companyName);
+    }
+
+    @Override
     public List<Driver> getByBookingId(Long bookingId) {
         return driverRepository.findByBookingId(bookingId);
     }

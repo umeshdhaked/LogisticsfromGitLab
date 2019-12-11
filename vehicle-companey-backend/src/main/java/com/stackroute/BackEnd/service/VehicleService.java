@@ -23,6 +23,8 @@ public interface VehicleService {
 
     public List<Driver>getfindByCompanyName(String companyName);
 
+    public List<Vehicle>findByCompanyName(String companyName);
+
     public List<Driver>getByBookingId(Long bookingId);
 
     public Vehicle updateComments(Vehicle vehicle);
