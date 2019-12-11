@@ -129,7 +129,7 @@ public class RouteController {
     {
         System.out.println("here");
         orderService.deleteOrder(id);
-        return new ResponseEntity<String>("order deleted", HttpStatus.OK);
+        return new ResponseEntity<String>("{\"message\": \"order deleted\"}", HttpStatus.OK);
     }
 
 
