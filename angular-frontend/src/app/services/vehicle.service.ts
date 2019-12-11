@@ -72,6 +72,12 @@ export class VehicleService {
 
     return this.http.get(url);
   }
+
+  getAll(){
+    const url = environment.apiUrl + ':8095/api/v1/vehicles';
+
+    return this.http.get(url);
+  }
   getvolumeandslot1(capacity: number, slot1: string): Observable<any> {
     this.myUrl = environment.apiUrl + ':8095/api/v1/queryslot1/'  + capacity + '/' + 'available';
     return this.http.get(this.myUrl);
