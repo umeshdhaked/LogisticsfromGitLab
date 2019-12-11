@@ -67,8 +67,8 @@ export class VehicleService {
     this.http.delete(url).subscribe();
   }
 
-  getAllVehicles(): Observable<any> {
-    const url = environment.apiUrl + ':8095/api/v1/vehicles';
+  getAllVehicles(companyName): Observable<any> {
+    const url = environment.apiUrl + ':8095/api/v1/findVehicles/' + companyName;
 
     return this.http.get(url);
   }
