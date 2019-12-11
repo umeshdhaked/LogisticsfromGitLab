@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { forkJoin } from 'rxjs';  // RxJS 6 syntax
 import { environment } from 'src/environments/environment';
@@ -11,12 +11,21 @@ export class RoutingapiserviceService {
   API_KEY='Am645nTS2rVqgDNr8UDKqZPdOL-X2_Z94sS5-GqjNBcoMfSOi_dVC6KTDGxL_jDb'
   responses=[];
   waypoints=[]
-  constructor(private httpclient:HttpClient) { }
+  httpOptionsNoAuth: any;
+  constructor(private httpclient:HttpClient) {
+      this.httpOptionsNoAuth = {
+      headers: new HttpHeaders(),
+      // headers1: new HttpHeaders().append('Access-Control-Allow-Origin', '*')
+    };
+       this.httpOptionsNoAuth.headers = this.httpOptionsNoAuth.headers.append('Content-Type', 'application/json');
+    this.httpOptionsNoAuth.headers = this.httpOptionsNoAuth.headers.append('X-FD-Features', 'allow');
+    this.httpOptionsNoAuth.headers = this.httpOptionsNoAuth.headers.append('X-FD-FLIGHT', 'null');
+  }
   public getLatandLong(addresses):Observable<any>
     {
       for(var i=0;i<addresses.length;i++)
         {
-          this.responses[i]=this.httpclient.get('http://dev.virtualearth.net/REST/v1/Locations?query='+addresses[i]+'&includeNeighborhood=1&include=1&maxResults=5&key='+this.API_KEY);
+          this.responses[i]=this.httpclient.get('http://dev.virtualearth.net/REST/v1/Locations?query='+addresses[i]+'&includeNeighborhood=1&include=1&maxResults=5&key='+this.API_KEY,{headers:this.httpOptionsNoAuth.header});
         }
         return forkJoin(this.responses)
     }
