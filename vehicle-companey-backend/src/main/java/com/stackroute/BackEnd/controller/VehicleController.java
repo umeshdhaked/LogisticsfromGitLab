@@ -6,6 +6,8 @@ import com.stackroute.BackEnd.domain.RetailerDemand;
 import com.stackroute.BackEnd.domain.Vehicle;
 import com.stackroute.BackEnd.exception.VehicleAlreadyExistsException;
 import com.stackroute.BackEnd.exception.VehicleNotFoundException;
+import com.stackroute.BackEnd.repository.DriverRepository;
+import com.stackroute.BackEnd.repository.VehicleRepository;
 import com.stackroute.BackEnd.service.VehicleService;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.math.BigInteger;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Properties;
@@ -28,6 +31,8 @@ import java.util.Properties;
 @RequestMapping(value = "/api/v1")
 public class VehicleController<VehicleDao> {
     //Actual Kafka
+
+
     @Value("${kafka.bootstrap.servers}")
     private String kafkaBootstrapServers;
     private Properties producerProperties;
@@ -35,6 +40,7 @@ public class VehicleController<VehicleDao> {
     @Value("${kafka.topic.book_driver}")
     private String bookDriverTopic;
 
+    public DriverRepository driverRepository;
     //method to send messages
     private static void sendKafkaMessage(String payload,
                                          KafkaProducer<String, String> producer,
@@ -62,8 +68,8 @@ public class VehicleController<VehicleDao> {
     VehicleService vehicleService;
 
     @Autowired
-    public VehicleController(VehicleService vehicleService) {
-
+    public VehicleController(DriverRepository driverRepository, VehicleService vehicleService) {
+        this.driverRepository=driverRepository;
         this.vehicleService = vehicleService;
     }
 
@@ -97,10 +103,21 @@ public class VehicleController<VehicleDao> {
 
         System.out.println("Accepted Vehicle id = "+driver.getId());
         System.out.println(driver.toString());
+        Driver driver1=driver;
+
+        List<Driver> drivers=driverRepository.findAll();
+        Iterator<Driver> it =drivers.iterator();
+        Long id=0L;
+        while (it.hasNext())
+        {
+            id=it.next().getBookingId();
+        }
+        id++;
+        driver1.setBookingId(id);
 
         ResponseEntity responseEntity;
 
-        vehicleService.saveDriver(driver);
+        vehicleService.saveDriver(driver1);
         responseEntity = new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
 
         return responseEntity;
@@ -141,6 +158,18 @@ public class VehicleController<VehicleDao> {
     public ResponseEntity<?> getfindByCompanyName(@PathVariable("companyName") String companyName) {
         ResponseEntity responseEntity;
         List<Driver> vehicles = vehicleService.getfindByCompanyName(companyName);
+
+        responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
+
+        return responseEntity;
+    }
+
+
+    @GetMapping("BookingId/{bookingId}")
+    @CrossOrigin
+    public ResponseEntity<?> getByBookingId(@PathVariable("bookingId") long bookingId) {
+        ResponseEntity responseEntity;
+        List<Driver> vehicles = vehicleService.getByBookingId(bookingId);
 
         responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
 
@@ -314,22 +343,22 @@ public class VehicleController<VehicleDao> {
 //    }
 
 
-     @PutMapping("vehicle/{id}")
-     public  ResponseEntity<?> updateVehicles(@PathVariable(value = "id") BigInteger id,@Valid @RequestBody Vehicle vehicle) throws VehicleNotFoundException, VehicleAlreadyExistsException {
-       ResponseEntity responseEntity;
-     Optional<Vehicle> vehicle1 = vehicleService.getVehicleById(id);
-     try{
-    if(!vehicle1.isPresent()){
-      throw new Exception("id-"+id);
-     }
-       vehicle.setId(id);
-     vehicleService.saveVehicle(vehicle);
-     responseEntity = new ResponseEntity(vehicleService.getVehicles(), HttpStatus.CREATED);
-    }catch (Exception ex) {
-     responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
-      }
-      return responseEntity;
-     }
+    @PutMapping("vehicle/{id}")
+    public  ResponseEntity<?> updateVehicles(@PathVariable(value = "id") BigInteger id,@Valid @RequestBody Vehicle vehicle) throws VehicleNotFoundException, VehicleAlreadyExistsException {
+        ResponseEntity responseEntity;
+        Optional<Vehicle> vehicle1 = vehicleService.getVehicleById(id);
+        try{
+            if(!vehicle1.isPresent()){
+                throw new Exception("id-"+id);
+            }
+            vehicle.setId(id);
+            vehicleService.saveVehicle(vehicle);
+            responseEntity = new ResponseEntity(vehicleService.getVehicles(), HttpStatus.CREATED);
+        }catch (Exception ex) {
+            responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
 
     @DeleteMapping("vehicle/{id}")
     @CrossOrigin
@@ -370,7 +399,7 @@ public class VehicleController<VehicleDao> {
 
         return responseEntity;
     }
-//
+    //
 //
     @GetMapping(value="queryslot1/{capacity}/{slot1}")
     @CrossOrigin

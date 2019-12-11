@@ -28,7 +28,7 @@ public class Vehicle {
     String slot1;
     String slot2;
     String slot3;
-//    String slot;
+    //    String slot;
 //    String date;
     String companyName;
     int retailerId;

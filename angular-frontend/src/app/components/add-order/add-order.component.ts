@@ -1,3 +1,4 @@
+import { Orderdata } from './../../interfaces/orderdata';
 import {DateDemand} from '../../interfaces/date-demand';
 import {Component, OnInit, NgZone} from '@angular/core';
 import {OrderServiceService} from '../../services/order-service.service';
@@ -45,7 +46,7 @@ export class AddOrderComponent implements OnInit {
   date = new Date(Date.now());
   today = new Date(this.date.getTime() - (this.date.getTimezoneOffset() * 60000)).toISOString().split("T")[0];
 
-  savedOrder: Order[];
+  savedOrder: Orderdata[];
 
   constructor(private orderService: OrderServiceService, private zone: NgZone) {
   }
@@ -72,6 +73,9 @@ export class AddOrderComponent implements OnInit {
         console.log(this.slotJson);
       }));
     this.checkSlotsOnDate(this.retailerId);
+    this.orderService.sendVehicleKafka(this.retailerId, this.selectedSlot).subscribe(data => {
+      console.log(data);
+    });
   }
 
   checkSlotsOnDate(retailerId) {
@@ -135,8 +139,12 @@ export class AddOrderComponent implements OnInit {
         this.slot1 = false;
         this.slot2 = false;
         this.slot3 = false;
-        this.slotJson = null;
+        // this.slotJson = null;
+        this.checkSlotsOnDate(this.retailerId);
         this.slotValid = {"slot1": true, "slot2": true, "slot3": true};
+        this.orderService.saveInRoute(this.savedOrder).subscribe(route => {
+          console.log(route);
+        });
       });
     }
   }

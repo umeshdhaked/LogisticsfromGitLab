@@ -72,7 +72,12 @@ public class VehicleServiceImpl implements VehicleService {
     public List<Driver> getfindByCompanyName(String companyName) {
         return driverRepository.findByCompanyName(companyName);
     }
-    
+
+    @Override
+    public List<Driver> getByBookingId(Long bookingId) {
+        return driverRepository.findByBookingId(bookingId);
+    }
+
 
     @Override
     public Vehicle updateComments(Vehicle vehicle) {
@@ -124,7 +129,7 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public List<Vehicle> getlistbyslot2anddate(int capacity, String slot2) {
         System.out.println("in service");
-        
+
         // List<Vehicle> myVehicle =this.vehicleRepository.findbydateandslot2(capacity,"Available");
         List<Vehicle> myVehicle =this.vehicleRepository.findByCapacityAndSlot2(capacity,"Available");
         return myVehicle;
