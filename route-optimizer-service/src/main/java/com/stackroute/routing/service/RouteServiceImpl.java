@@ -174,7 +174,10 @@ public class RouteServiceImpl implements RouteService {
         int i=1;
         while (it.hasNext())
         {
-            adressess[i]=it.next().getCustomerAddress();
+            String address=it.next().getCustomerAddress();
+            address=address.replaceAll("\\s","%20");
+            address=address+"%20bangalore";
+            adressess[i]=address;
             i++;
         }
         for(int j=0;j<adressess.length;j++)
@@ -369,7 +372,7 @@ public class RouteServiceImpl implements RouteService {
         Nodes[0] = depot;
         for (i = 1; i <demands.length; i++) {
             Nodes[i] = new Node(i, //Id ) is reserved for depot
-                    coordinates.getJSONObject(i).getFloat("latitude"), //Random Cordinates
+                    coordinates.getJSONObject(i).getFloat("latitude"),
                     coordinates.getJSONObject(i).getFloat("longitude"),
                     demands[i] ,//Random Demand
                     addresses[i]
