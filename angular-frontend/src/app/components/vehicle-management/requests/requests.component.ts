@@ -106,8 +106,18 @@ this.vehicleCompanyService.getVehicleCompanyProfileFromEmail(this.dataFromToken.
 
     this.requestService.sendAccepttovehicledemand(this.vehicle).subscribe();
     this.requestService.deleteinretailerdemand(this.vehicle.id).subscribe(()=>{
-      alert("Request Accepted!");
-      this.vehicle = null;
+      this.zone.run(()=>{
+        alert("Request Accepted!");
+        this.requestService.findallrequested(this.cName).subscribe(data => {
+          this.zone.run(()=>{
+            console.log(this.cName);
+            this.Vehicles = data
+          console.log(this.Vehicles)
+          console.log('xyz')
+          })
+      });
+      })
+      
     });
 
   }
@@ -123,7 +133,21 @@ this.vehicleCompanyService.getVehicleCompanyProfileFromEmail(this.dataFromToken.
     this.requestService.saveRejectVehicle(this.vehicle).subscribe();
     
     this.requestService. sendRejecttovehicledemand(this.vehicle).subscribe();
-    this.requestService.deleteinretailerdemand(this.vehicle.id).subscribe();
+    // this.requestService.deleteinretailerdemand(this.vehicle.id).subscribe();
+    this.requestService.deleteinretailerdemand(this.vehicle.id).subscribe(()=>{
+      this.zone.run(()=>{
+        alert("Request Rejected!");
+        this.requestService.findallrequested(this.cName).subscribe(data => {
+          this.zone.run(()=>{
+            console.log(this.cName);
+            this.Vehicles = data
+          console.log(this.Vehicles)
+          console.log('xyz')
+          })
+      });
+      })
+      
+    });
   }
 
 
