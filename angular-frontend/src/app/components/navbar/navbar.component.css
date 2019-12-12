@@ -26,7 +26,7 @@ h6 {
 }
 
 .nav-link:hover {
-  color: whitesmoke;
+  color: white;
 }
 
 .nav-link:hover {
@@ -55,13 +55,7 @@ h6 {
   }
 }
 
-@media(min-width: 1024px)
-{
-  .nav-items.scrolled
-  {
-color: aliceblue;
-  }
-}
+
 
 @media (max-width: 1023px) {
   .navbar {
@@ -96,4 +90,8 @@ color: aliceblue;
   width: 100%; 
   left: 0; 
 }
- 
+
+.scroll-up a {
+  background: black;
+  color: white;
+  }

@@ -156,6 +156,10 @@ export class MaindriverdashboardComponent implements OnInit {
       reason => {
         console.log(reason);
       });
+
+    this.dataorder.deleteOrder(this.route[this.currentorder].orderId).subscribe(data=>{
+      console.log(data);
+    })
     // console.log(this.orderData);
     this.router.navigateByUrl('signature');
   }

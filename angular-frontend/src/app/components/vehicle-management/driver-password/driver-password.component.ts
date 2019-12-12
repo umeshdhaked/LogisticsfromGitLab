@@ -31,8 +31,8 @@ export class DriverPasswordComponent implements OnInit {
         this.requestService.getAcceptedVehicle(this.cName).subscribe( (data:any) => {
           this.zone.run(()=>{
             this.Vehicles = data
-            console.log('yyyyyyy');
-            console.log(data);
+            // console.log('yyyyyyy');
+            // console.log(data);
     
           })
         

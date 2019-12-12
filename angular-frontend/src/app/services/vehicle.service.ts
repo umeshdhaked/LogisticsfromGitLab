@@ -67,7 +67,13 @@ export class VehicleService {
     this.http.delete(url).subscribe();
   }
 
-  getAllVehicles(): Observable<any> {
+  getAllVehicles(companyName): Observable<any> {
+    const url = environment.apiUrl + ':8095/api/v1/findVehicles/' + companyName;
+    console.log(url);
+    return this.http.get(url);
+  }
+
+  getAll(){
     const url = environment.apiUrl + ':8095/api/v1/vehicles';
 
     return this.http.get(url);

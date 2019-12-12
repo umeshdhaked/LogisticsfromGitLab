@@ -1,3 +1,29 @@
+
+<div class="container containerTop">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link" id="home-tab" routerLink="../user" role="tab" aria-controls="dashboard" aria-selected="true">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="vehicle-tab" routerLink="../retailerVehicleDemand" role="tab" aria-controls="vehicles"
+             aria-selected="false">Rent Vehicles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="order-tab" routerLink="../addOrder" role="tab" aria-controls="orders"
+             aria-selected="false">Add Order</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="viewProfile-tab" routerLink="../viewProfile" role="tab" aria-controls="details"
+             aria-selected="false">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" id="viewPendingVehicleRequest" routerLink="../viewPendingVehicleRequest" role="tab" aria-controls="details"
+               aria-selected="false">Pending Request</a>
+        </li>
+      
+  </ul>
+</div>
+<br/>
 <br/>
 <div  class="container">
     <h2>Pending Requests</h2>
@@ -19,7 +45,8 @@
 
     <td >{{data.vehicleNumber}}</td>
     <td >{{data.driverName}}</td>
-    <td >{{data.vehicleType}}</td>
+    <td >{{data.capacity}}</td>
+    <td >{{data.vehicleStatus}}</td>
     <td >{{data.slot}}</td>
 
 
@@ -46,10 +73,11 @@
   <tbody>
   <tr *ngFor="let data of vehicledemanded1 ">
 
-    <td >{{data.vehicleNumber}}</td>
-    <td >{{data.driverName}}</td>
-    <td >{{data.vehicleType}}</td>
-    <td >{{data.slot}}</td>
+      <td >{{data.vehicleNumber}}</td>
+      <td >{{data.driverName}}</td>
+      <td >{{data.capacity}}</td>
+      <td >{{data.vehicleStatus}}</td>
+      <td >{{data.slot}}</td>
 
 
   </tr>
