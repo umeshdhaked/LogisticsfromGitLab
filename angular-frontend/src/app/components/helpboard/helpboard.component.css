@@ -1,14 +1,60 @@
-.thats-all{
-    font-family: 'Grand Hotel', 'cursive';
-   
-    color: #FCFCFC;
-    font-size: 60px;
-    text-shadow: 0 10px 20px rgba(0,0,0,0.7), 0 5px 20px rgba(0,0,0,0.2);
-    position:absolute;
-    top: 140px;
-    left:36px;
-     -webkit-transform: rotate(-7deg);
-    -moz-transform: rotate(-7deg);
-    -ms-transform: rotate(-7deg);
-    transform: rotate(-7deg);
+* {
+    box-sizing: border-box;
   }
+  
+  /* Create three columns of equal width */
+  .columns {
+ 
+
+    float: left;
+    width: 50%;
+    padding: 8px;
+  }
+
+ 
+
+
+  
+  .nav-tabs
+  {
+    background-color: grey;
+    height: fit-content;
+  }
+  /* Grey list item */
+  .price .grey {
+    background-color: #eee;
+    font-size: 20px;
+  }
+  .nav-tabs > li> a {
+   
+    color: #ffffff;
+    
+  }
+  .nav-tabs > li > a:hover,
+  .nav-tabs > li > a:focus,
+  .nav-tabs > li.active > a:hover,
+  .nav-tabs > li.active > a:focus {
+    background-color:bl;
+    color: #fff;
+   
+  }
+
+  
+
+ 
+  
+  
+  /* Change the width of the three columns to 100%
+  (to stack horizontally on small screens) */
+  @media only screen and (max-width: 600px) {
+    .columns {
+      width: 100%;
+    }
+  }
+
+  .container {
+   height: auto;
+  }
+
+
+
