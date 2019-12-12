@@ -125,6 +125,7 @@ import { MapComponent } from './components/mapcomponent/mapcomponent.component';
 import { CareersComponent } from './components/careers/careers.component';
 import { AddDeveloperComponent } from './components/careers/add-developer/add-developer.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { HelpboardComponent } from './components/helpboard/helpboard.component';
 
 
 @NgModule({
@@ -188,7 +189,8 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     MapComponent,
     CareersComponent,
     AddDeveloperComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    HelpboardComponent
 
   ],
 

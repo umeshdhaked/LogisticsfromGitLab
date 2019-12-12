@@ -65,7 +65,7 @@
         <div class="alert alert-success" role="alert">
           <h4 class="alert-heading">Order was successfully added!</h4>
           <p>
-            Your order with OrderId: {{ savedOrder.id }} has been registered and
+            Your consignment with OrderId: {{ savedOrder.id }} has been registered and
             will be picked up for delivery on {{ savedOrder.deliveryDate }}
           </p>
           <hr />
@@ -83,7 +83,7 @@
     onsubmit="return false"
     method="POST"
   >
-    <h2 id="sign">Add Order</h2>
+    <h2 id="sign">Enter your consignment details</h2>
     <br />
     <div class="row">
       <div class="col-md-3 offset-md-3 col-12">
@@ -109,13 +109,30 @@
       </div>
       <div class="col-md-3 offset-md-3 col-12">
         <!-- <label for="customerAddress"><b>Delivery Address</b></label> -->
-        <input
+        <!-- <input
           #customerAddress
           type="text"
           placeholder="Delivery Address"
           name="customerAddress"
           required
-        />
+        /> -->
+        <select
+          class="form-control"
+          #customerAddress
+        >
+          <option value="Adugodi">Adugodi</option>
+          <option value="Marathahalli">Marathahalli</option>
+          <option value="Mahadevapura">Mahadevapura</option>
+          <option value="Whitefield">Whitefield</option>
+          <option value="Indiranagar">Indiranagar</option>
+          <option value="Marathahalli">Marathahalli</option>
+          <option value="Koramangala">Koramangala</option>
+          <option value="Forum Mall">Forum Mall</option>
+          <option value="VV Puram" >VV Puram</option>
+          <option value="BTM Layout">BTM Layout</option>
+          <option value="Kadubeeshanahalli">Kadubeeshanahalli</option>
+          <option value="Bellandur">Bellandur</option>
+          <option value="Ejipura">Ejipura</option>Ejipura</select>
       </div>
       <div class="col-md-3 col-12">
         <!-- <div class="row justify-content-center" id="volume">
@@ -142,6 +159,7 @@
                name="deliveryDate" required>
       </div> -->
       <div class="col-10 offset-1">
+        <br/>
         <!-- <label for="slotNumber"><b>Delivery Slot</b></label><br/> -->
         <div class="row">
           <div class="col"></div>

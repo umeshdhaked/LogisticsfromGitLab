@@ -11,6 +11,8 @@ import {VehicleRentService} from '../../services/vehicle-rent.service';
 import * as jwt_decode from 'jwt-decode';
 import {VehicleDemanded} from '../../interfaces/vehicledemanded';
 import {VehicleManagement} from "../../interfaces/vehicle-management";
+import { AdminService } from 'src/app/services/admin.service';
+import { DecodedJwtData } from 'src/app/interfaces/decoded-jwt-data';
 
 @Component({
   selector: 'app-vehicledemandfrontend',
@@ -19,7 +21,7 @@ import {VehicleManagement} from "../../interfaces/vehicle-management";
 })
 export class VehicledemandfrontendComponent implements OnInit {
   capacity: number;
-  retailerId: string;
+  retailerId: number;
   slot: any;
   // date : string;
   vehicleStatus: string;
@@ -29,6 +31,8 @@ export class VehicledemandfrontendComponent implements OnInit {
   vehicleDemanded: VehicleDemanded;
   flag = false;
 
+  decoded:DecodedJwtData;
+
   constructor(
     private dialog: MatDialog,
     private queryvehicleservice: VehicleService,
@@ -37,20 +41,19 @@ export class VehicledemandfrontendComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private testservice: VehicleRentService,
-    private zone: NgZone
+    private zone: NgZone,
+    private adminService:AdminService,
   ) {
     // this.date = this.datePipe.transform(this.date, 'yyyy-MM-dd');
   }
   success:boolean = false;
   ngOnInit() {
     // getting email from token
-    var decoded = {
-      userId: ''
-    }
+
     let token = localStorage.getItem('token');
     if (token != null) {
-      decoded = jwt_decode(token);
-      this.retailerId = decoded.userId;
+      this.decoded = jwt_decode(token);
+      this.retailerId = this.decoded.userId;
       console.log(this.retailerId);
     }
 
@@ -113,6 +116,10 @@ export class VehicledemandfrontendComponent implements OnInit {
 
   }
 
+  isRequestSent:boolean = false;
+  mailBody:string;
+  mailTitle:string;  
+
   demandrow(data: VehicleManagement) {
     console.log(data.capacity);
     this.vehicleDemanded = new VehicleDemanded();
@@ -131,7 +138,15 @@ export class VehicledemandfrontendComponent implements OnInit {
     this.vehicleDemanded.vehicleType = data.vehicleType;
     console.log(this.vehicleDemanded);
     this.vehicleService.sendnewRetailerRequest(this.vehicleDemanded).subscribe(()=>{
-      alert("Booking request sent!");
+      // alert("Booking request sent!");
+
+      this.mailTitle="Vehicle Booking Request";
+      this.mailBody="Your Request For Booking a Vehicle has been sent to Vehicle Company, Please wait while we get update from vehicle company";
+
+      this.adminService.sendemail(this.decoded.sub,this.mailTitle,this.mailBody);
+
+      this.isRequestSent=true;
+    
       this.vehiclequery = null;
     });
   }

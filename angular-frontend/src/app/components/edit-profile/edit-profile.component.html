@@ -41,6 +41,13 @@
 
   <div class="Text-container">
 
+    <div *ngIf="isAlert" class="alert alert-danger" role="alert">
+      {{alertMessage}}
+    </div>
+
+    <div *ngIf="isSaved" class="alert alert-success" role="alert">
+       Your profile has been saved
+      </div>
 
     <!-- <button class="deleteButton" *ngIf="picUrl" (click)="delete()">Change</button> -->
 
@@ -57,7 +64,7 @@
 </mat-form-field> -->
 
     <mat-form-field>
-      <input #phone matInput placeholder="Phone" value="{{phones}}" required>
+      <input #phone matInput pattern="^[0-9]{10}$" placeholder="Phone" value="{{phones}}" required>
     </mat-form-field>
 
     <mat-form-field>
@@ -118,8 +125,13 @@
 
     <!-- Save Button-->
 
+    <!-- <div id="terms text-center">
+      <mat-checkbox #c>I Agree with <a routerLink="/terms">terms and conditions</a></mat-checkbox>
+    </div> -->
+
+
     
-        <p> By clicking “Create Account”, you agree to our <a routerLink="/terms" target="_blank">Terms and Conditions</a> and  <a routerLink="/terms" target="_blank">Privacy Policy </a>and agree to abide by them</p>
+        <p #c> By clicking “Create Account”, you agree to our <a routerLink="/terms" target="_blank">Terms and Conditions</a> and  <a routerLink="/terms" target="_blank">Privacy Policy </a>and agree to abide by them</p>
    
 <div class="row ">
     <button class="col-sm-6 btn btn-outline-danger "
