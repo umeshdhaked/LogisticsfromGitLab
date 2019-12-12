@@ -38,7 +38,7 @@ public class RouteController {
     public void listen(String message) {
         System.out.println("Received Message in group foo: " + message);
         // Gson gson = new Gson();
-        // vehicleJsonString = gson.fromJson(message, String.class);
+        // vehicleJsonString = gso  `n.fromJson(message, String.class);
         vehicleJsonString = message;
         System.out.println(vehicleJsonString);
 }
