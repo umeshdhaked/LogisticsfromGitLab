@@ -124,6 +124,7 @@ import { PartnersComponent } from './components/home/partners/partners.component
 import { MapComponent } from './components/mapcomponent/mapcomponent.component';
 import { CareersComponent } from './components/careers/careers.component';
 import { AddDeveloperComponent } from './components/careers/add-developer/add-developer.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 
 @NgModule({
@@ -186,7 +187,8 @@ import { AddDeveloperComponent } from './components/careers/add-developer/add-de
     PartnersComponent,
     MapComponent,
     CareersComponent,
-    AddDeveloperComponent
+    AddDeveloperComponent,
+    AboutUsComponent
 
   ],
 

@@ -6,6 +6,7 @@ import { PaymemonthlyComponent } from './components/paymemonthly/paymemonthly.co
 import { FaqComponent } from './components/faq/faq.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { CareersComponent } from './components/careers/careers.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 import {AuthGaurdService} from './services/auth-gaurd.service';
 import {VerifyComponent} from './components/verify/verify.component';
@@ -59,6 +60,7 @@ const routes: Routes = [
   {path: 'faq', component: FaqComponent},
   {path: 'contact-us', component: ContactUsComponent},
   {path: 'careers', component: CareersComponent},
+  {path: 'about-us', component: AboutUsComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'verify', component: VerifyComponent},
   { path : 'navigate', component: NavigatelocationComponent},
