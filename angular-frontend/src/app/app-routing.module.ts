@@ -48,6 +48,7 @@ import { PaymeComponent } from './components/payme/payme.component';
 import { VehicleCompanyProfileComponent } from './components/vehicle-company-profile/vehicle-company-profile.component';
 import {PendingVehicleRequestComponent} from './components/pending-vehicle-request/pending-vehicle-request.component';
 import {PendingresponsesComponent} from "./components/pendingresponses/pendingresponses.component";
+import { HelpboardComponent } from './components/helpboard/helpboard.component';
 
 
 
@@ -88,6 +89,7 @@ const routes: Routes = [
   {path: 'manage-vehicle', component: ManageVehiclesComponent},
   {path: 'driver-password', component:DriverPasswordComponent},
   {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent},
+  {path: 'help', component : HelpboardComponent},
   // {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent, canActivate: [AuthGaurdService]},
   {path: 'viewProfile', component: ViewProfileComponent},
   // {path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGaurdService]},
