@@ -22,8 +22,8 @@ export class EditProfileService {
 
     setTimeout(() => {
       this.http.post(url, data).subscribe();
-      alert('Profile Saved');
-    }, 350);
+      // alert('Profile Saved');
+    }, 60);
 
 
   }
