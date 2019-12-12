@@ -34,7 +34,5 @@
 # CMD ng serve --host 0.0.0.0 --publicHost wysser.stackroute.io\
 
 FROM nginx:alpine
-RUN npm install
-RUN npm install -g @angular/cli@latest
-RUN ng build
+
 COPY dist/Wysser/ /usr/share/nginx/html
