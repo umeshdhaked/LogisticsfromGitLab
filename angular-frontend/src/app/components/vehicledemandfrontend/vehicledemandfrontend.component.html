@@ -77,92 +77,55 @@
         </mat-select>
     </mat-form-field> -->
 
-      <!--  <div class="twoelements">-->
-      <!--    <p style="color: #336B6B">Don't Know the rates?</p>-->
-      <!--    <button  id="ratebutton" mat-stroked-button (click)="openDialog()">Rate Cart</button>-->
-      <!--  </div>-->
-      <!-- <p>You selected: {{volume}}</p> -->
+    <!--  <div class="twoelements">-->
+    <!--    <p style="color: #336B6B">Don't Know the rates?</p>-->
+    <!--    <button  id="ratebutton" mat-stroked-button (click)="openDialog()">Rate Cart</button>-->
+    <!--  </div>-->
+    <!-- <p>You selected: {{volume}}</p> -->
 
 
-      <!--      <span date="MM/dd/yyyy"></span>-->
-      <!--    <div class="currentdate col-sm-4">-->
-      <!--     <p> Date: {{date | date:'yyyy-MM-dd'}}</p>-->
-      <!--    </div>-->
-      <!--        <p>You selected {{date}}</p>-->
-      <!--    <div class="col-sm-4">-->
-      <!--      <form class="example-form">-->
-      <!--        <mat-form-field class="example-full-width">-->
-      <!--          <input [(ngModel)]="capacity" matInput placeholder="Enter Volume" [ngModelOptions]="{standalone: true}">-->
-      <!--        </mat-form-field>-->
-      <!--      </form>-->
-      <!--    </div>-->
-      <div class="slot col-sm-4 col-12">
-        <mat-form-field>
-          <mat-label>Volume</mat-label>
-          <mat-select [(ngModel)]="capacity">
-            <mat-option value="50">50L</mat-option>
-            <mat-option value="100">100L</mat-option>
-            <mat-option value="200">200L</mat-option>
-            <mat-option value="500">>500L</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <!-- <p>You selected: {{slot}}</p> -->
-      </div>
-      <div class="slot col-sm-4 col-12">
-        <mat-form-field>
-          <mat-label>Time Slot</mat-label>
-          <mat-select [(ngModel)]="slot">
-            <mat-option value="slot1">11:00-14:00</mat-option>
-            <mat-option value="slot2">15:00-18:00</mat-option>
-            <mat-option value="slot3">19:00-22:00</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <!-- <p>You selected: {{slot}}</p> -->
+    <!--      <span date="MM/dd/yyyy"></span>-->
+    <!--    <div class="currentdate col-sm-4">-->
+    <!--     <p> Date: {{date | date:'yyyy-MM-dd'}}</p>-->
+    <!--    </div>-->
+    <!--        <p>You selected {{date}}</p>-->
+<!--    <div class="col-sm-4">-->
+<!--      <form class="example-form">-->
+<!--        <mat-form-field class="example-full-width">-->
+<!--          <input [(ngModel)]="capacity" matInput placeholder="Enter Volume" [ngModelOptions]="{standalone: true}">-->
+<!--        </mat-form-field>-->
+<!--      </form>-->
+<!--    </div>-->
+    <div class="slot col-sm-4 col-12">
+      <mat-form-field>
+        <mat-label>Select Vehicle Type</mat-label>
+        <mat-select [(ngModel)]="capacity">
+          <mat-option value="50">Bike (max capacity 50L)</mat-option>
+          <mat-option value="100">Mini Van (max capacity 100L)</mat-option>
+          <mat-option value="200">Mini Truck (max capacity 200L)</mat-option>
+          <mat-option value="500">Truck (max capacity 500L)</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- <p>You selected: {{slot}}</p> -->
+    </div>
+    <div class="slot col-sm-4 col-12">
+      <mat-form-field>
+        <mat-label>Time Slot</mat-label>
+        <mat-select [(ngModel)]="slot">
+          <mat-option value="slot1">11:00-14:00</mat-option>
+          <mat-option value="slot2">15:00-18:00</mat-option>
+          <mat-option value="slot3">19:00-22:00</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- <p>You selected: {{slot}}</p> -->
 
 
-        <!-- <bu)tton mat-stroked-button (click)="sendRequest()" class="requestbutton">Request Vehicle</button> -->
-      </div>
+      <!-- <bu)tton mat-stroked-button (click)="sendRequest()" class="requestbutton">Request Vehicle</button> -->
+    </div>
 
 
-      <div class="col-sm-4 col-12">
-        <button mat-stroked-button (click)="sendrequest()">Search</button>
-      </div>
-
-
-      <!--      <table>-->
-      <!--          <tr>-->
-      <!--              <th>Volume(in L)</th>-->
-      <!--              <th>Rate(per slot)</th>-->
-      <!--          </tr>-->
-      <!--          <tr>-->
-      <!--              <td>500</td>-->
-      <!--              <td>700</td>-->
-
-      <!--          </tr>-->
-      <!--          <tr>-->
-      <!--              <td>400</td>-->
-      <!--              <td>500</td>-->
-
-      <!--          </tr>-->
-      <!--          <tr>-->
-      <!--              <td>300</td>-->
-      <!--              <td>400</td>-->
-
-      <!--          </tr>-->
-      <!--          <tr>-->
-      <!--              <td>100</td>-->
-      <!--              <td>200</td>-->
-
-      <!--          </tr>-->
-      <!--          <tr>-->
-      <!--              <td>50</td>-->
-      <!--              <td>100</td>-->
-
-      <!--          </tr>-->
-
-      <!--      </table>-->
-
-
+    <div>
+      <button mat-stroked-button (click)="sendrequest()">Search</button>
     </div>
   </div>
 </div>

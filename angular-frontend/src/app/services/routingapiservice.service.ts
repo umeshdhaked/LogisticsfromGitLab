@@ -42,4 +42,17 @@ export class RoutingapiserviceService {
       var url = environment.apiUrl+':8091/api/v1/routes/'+vehicleNumber+'/slot1'
       return this.httpclient.get(url);
     }  
+  public getVehicleNumbers(wholeSalerId,slot)
+    {
+      // console.log(wholeSalerId)
+      var url=environment.apiUrl+':9090/searchByRetailerIdAndSlot/'+wholeSalerId+'/'+slot
+      console.log(url)
+      return this.httpclient.get(url);
+    }  
+
+    public getRoutesBySlot(vehicleNumber, slot)
+    {
+      var url = environment.apiUrl+':8091/api/v1/routes/'+vehicleNumber+'/' + slot;
+      return this.httpclient.get(url);
+    }   
 }

@@ -1,0 +1,14 @@
+.thats-all{
+    font-family: 'Grand Hotel', 'cursive';
+   
+    color: #FCFCFC;
+    font-size: 60px;
+    text-shadow: 0 10px 20px rgba(0,0,0,0.7), 0 5px 20px rgba(0,0,0,0.2);
+    position:absolute;
+    top: 140px;
+    left:36px;
+     -webkit-transform: rotate(-7deg);
+    -moz-transform: rotate(-7deg);
+    -ms-transform: rotate(-7deg);
+    transform: rotate(-7deg);
+  }
