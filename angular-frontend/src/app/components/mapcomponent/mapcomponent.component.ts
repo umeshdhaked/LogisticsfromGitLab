@@ -5,6 +5,8 @@ import * as forwardGeocoder from '@mapbox/mapbox-gl-geocoder';
 import * as mapboxgl from 'mapbox-gl';
 import {RoutingapiserviceService} from '../../services/routingapiservice.service';
 import { GeoJSONSource } from 'mapbox-gl';
+import * as jwt_decode from 'jwt-decode';
+import {DecodedJwtData} from "../../interfaces/decoded-jwt-data";
 
 @Component({
   selector: 'app-mapcomponent',
@@ -17,16 +19,33 @@ export class MapComponent implements OnInit {
   // addresses = ["stackroute koramangala", "marathahalli", "forum mall", "indiranagar banglore", "mahadevapura banglore","whitefield banglore","jayantinagara banglore","koramangala"]
   addresses=[]
   jsonresponse;
+  slots=["slot1","slot2","slot3"]
+  slot=this.slots[0]
   vehicleNumbers=["KA123","A303","A302"]
   vehiclenumber=this.vehicleNumbers[0];
   allcoordinates;
-  points = []
+  points = [];
+  retailerId;
+  decodedData: DecodedJwtData;
   coordinates = [];
   waypoints: any;
   checkforbranching = "this is to see if branching and updation have happened or not"
   constructor(private routeapiservice: RoutingapiserviceService, private zone: NgZone) { }
   ngOnInit() {
-    this.resetMap()
+    
+    let token = localStorage.getItem('token');
+
+
+    var decoded = {
+      "userId": "",
+      "sub": ""
+    }
+    if (token != null) {
+      decoded = jwt_decode(token);
+      this.retailerId = decoded.userId;
+      // console.log(this.retailerId);
+    }
+    this.resetMap(this.retailerId,this.slot)
   }
 
   updatevalue(data) {
@@ -49,37 +68,58 @@ export class MapComponent implements OnInit {
         }
         return addresses
     }
+  makeVehicleNumbersArray(vehicles)
+    {
+      var allVehicles=[];
+      for(var i=0;i<vehicles.length;i++)
+        {
+          allVehicles[i]=vehicles[i].vehicleNumber
+        }
+      return allVehicles  
+    }
   dropDownChangeEvent(number)
     {
       console.log(number+" was selected ")
       this.vehiclenumber=number
-      this.resetMap();
+      this.resetMap(this.retailerId,this.slot);
     }  
-
-  resetMap(){
-    this.routeapiservice.getRoutes(this.vehiclenumber).subscribe((routes)=>{
+  dropDownChangeEvent1(slot)
+    {
+      console.log(slot+" was selected")
+      this.slot=slot
+      this.resetMap(this.retailerId,this.slot)
+    }  
+  resetMap(retailerId,slot){
+    this.routeapiservice.getVehicleNumbers(retailerId,slot).subscribe((vehicles)=>{
       this.zone.run(()=>{
-        console.log(routes)
-        this.addresses=this.makeArrayOfRoutes(routes)
-        console.log(this.addresses)
-        this.routeapiservice.getLatandLong(this.addresses).subscribe((data) => {
-          this.zone.run(() => {
-            this.allcoordinates = data
-            this.coordinates = this.updatevalue(data)
-            updatepointsonmap(this.coordinates.slice(1), this.addresses.slice(1),"http://localhost:4200/assets/images/box.png","box")
-            updatepointsonmap([this.coordinates[0]], [this.addresses[0]],"http://localhost:4200/assets/images/warehouse.png","warehouse")
-            updatecenter(this.coordinates)
-            this.routeapiservice.getGeoJsonLatLOng(this.coordinates, this.addresses).subscribe((data2) => {
+        this.vehicleNumbers=this.makeVehicleNumbersArray(vehicles)
+        console.log(this.vehicleNumbers)
+        this.routeapiservice.getRoutesBySlot(this.vehiclenumber,slot).subscribe((routes)=>{
+          this.zone.run(()=>{
+            console.log(routes)
+            this.addresses=this.makeArrayOfRoutes(routes)
+            console.log(this.addresses)
+            this.routeapiservice.getLatandLong(this.addresses).subscribe((data) => {
               this.zone.run(() => {
-                this.waypoints = data2
-                makegeojsonline(data2, this.addresses.length - 1)
-                // realtimedata(data2,this.addresses.length-1)
+                this.allcoordinates = data
+                this.coordinates = this.updatevalue(data)
+                updatepointsonmap(this.coordinates.slice(1), this.addresses.slice(1),"http://localhost:4200/assets/images/box.png","box")
+                updatepointsonmap([this.coordinates[0]], [this.addresses[0]],"http://localhost:4200/assets/images/warehouse.png","warehouse")
+                updatecenter(this.coordinates)
+                this.routeapiservice.getGeoJsonLatLOng(this.coordinates, this.addresses).subscribe((data2) => {
+                  this.zone.run(() => {
+                    this.waypoints = data2
+                    makegeojsonline(data2, this.addresses.length - 1)
+                    // realtimedata(data2,this.addresses.length-1)
+                  })
+                })
               })
             })
           })
         })
       })
     })
+   
 
     var coordinates = document.getElementById('coordinates');
     Object.getOwnPropertyDescriptor(map, "accessToken").set('pk.eyJ1IjoiZ2F1dGhhbTk5IiwiYSI6ImNrMzRlMmxrNjE0ZTMzbXBhOWRwdDk1eTcifQ.-ZceQ8jARpf90y0tJnQhoQ');
