@@ -6,12 +6,12 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class TimeSlotPipe implements PipeTransform {
 
   transform(value: string): string {
-    if (value == "Slot1") {
-      return "11:00-13:00";
-    } else if (value == "Slot2") {
-      return "14:00-16:00";
+    if (value == "slot1") {
+      return "11:00-14:00";
+    } else if (value == "slot2") {
+      return "15:00-18:00";
     } else {
-      return "17:00-19:00";
+      return "19:00-22:00";
     }
   }
 

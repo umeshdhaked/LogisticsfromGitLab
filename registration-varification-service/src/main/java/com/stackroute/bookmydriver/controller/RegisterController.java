@@ -121,7 +121,7 @@ public class RegisterController {
 
                 userService.saveUser(user);
 
-                String appUrl = request.getScheme() + "://" + request.getServerName() + ":80";
+                String appUrl = request.getScheme() + "://wysser.stackroute.io" + /*request.getServerName() + ":80"*/;
 
 
                 SimpleMailMessage registrationEmail = new SimpleMailMessage();
@@ -129,7 +129,7 @@ public class RegisterController {
                 registrationEmail.setTo(user.getEmail());//to which email we want to send the appUrl ::which is the mail of the user
                 //Email subject , body
                 registrationEmail.setSubject("Confirmation Email from Wysser");
-                registrationEmail.setText("To create password and confirm your e-mail address, please click the link below:\n\n" +
+                registrationEmail.setText("Welcome to Wysser!\nThank you for signing up with us. Please click the link below to create your password and confirm your e-mail address\n\n" +
                         appUrl + "/#/confirm/" + user.getConfirmationToken());
                 registrationEmail.setFrom("umdk456@gmail.com");
 
@@ -163,7 +163,7 @@ public class RegisterController {
 
                 userService.saveUser(userExists);
 
-                String appUrl = request.getScheme() + "://" + request.getServerName() + ":80";
+                String appUrl = request.getScheme() + "://wysser.stackroute.io" + /*request.getServerName() + ":80"*/;
 
 
                 SimpleMailMessage registrationEmail = new SimpleMailMessage();
