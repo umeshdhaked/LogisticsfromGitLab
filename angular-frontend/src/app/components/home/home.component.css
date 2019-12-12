@@ -40,7 +40,7 @@ h4 {
 @media (min-width: 1024px) and (max-height:768px) {
   .bg-img {
     /* The image used */
-    background-image: url("../../../assets/images/main.png");
+    background-image: url("../../../assets/images/main_xmas.png");
     filter: contrast(90%);
     height: auto;
     width: 100%;
@@ -90,7 +90,7 @@ h4 {
 @media (min-width: 1024px) and (min-height:768px) {
   .bg-img {
     /* The image used */
-    background-image: url("../../../assets/images/main.png");
+    background-image: url("../../../assets/images/main_xmas.png");
     filter: contrast(90%);
     height: auto;
     width: 100%;

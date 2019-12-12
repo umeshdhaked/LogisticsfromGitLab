@@ -1,6 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, NgZone} from '@angular/core';
 import * as CanvasJS from '../../../../assets/js/canvasjs.min';
 import { style } from '@angular/animations';
+import { RequestService } from 'src/app/services/request.service';
+import { DecodedJwtData } from 'src/app/interfaces/decoded-jwt-data';
+import * as jwt_decode from 'jwt-decode';
+import { VechicleCompanyServiceService } from 'src/app/services/vechicle-company-service.service';
 
 @Component({
   selector: 'app-vehicle-history',
@@ -8,6 +12,16 @@ import { style } from '@angular/animations';
   styleUrls: ['./vehicle-history.component.css']
 })
 export class VehicleHistoryComponent implements OnInit {
+
+	Vehicles: Array<any>;
+  
+	dataFromToken:DecodedJwtData;
+	cName;
+	vehicleCompanyData;
+
+
+	  constructor(private requestService: RequestService, private zone:NgZone, private vehicleCompanyService: VechicleCompanyServiceService) {
+  }
 
 
   ngOnInit() {
@@ -62,15 +76,50 @@ export class VehicleHistoryComponent implements OnInit {
 	});
 		
 	chart1.render();
-    }
+
+
+	if(localStorage.getItem('token')!=null){
+		this.dataFromToken= jwt_decode(localStorage.getItem('token'));
+	  }
+	  
+	  this.vehicleCompanyService.getVehicleCompanyProfileFromEmail(this.dataFromToken.sub).subscribe((data: any) => {
+		this.vehicleCompanyData = data;
+		if (this.vehicleCompanyData != null) {
+		  this.cName = ''+this.vehicleCompanyData.companyName;
+		  this.requestService.getAcceptedVehicle(this.cName).subscribe( (data:any) => {
+			this.zone.run(()=>{
+			  this.Vehicles = data
+			  // console.log('yyyyyyy');
+			  // console.log(data);
+	  
+			})
+		  
+		});
+		}
+	  })
+	  
+	//   this.requestService.getAcceptedVehicle(this.cName).subscribe( (data:any) => {
+	//     this.zone.run(()=>{
+	//       this.Vehicles = data
+  
+	//     })
+	  
+	// });
+  
+  
+	}
+  
 
 
 
     }
 
 
-//   constructor() {
-//   }
+
+    
+
+
+
 
 //   ngOnInit() {
 //   }
