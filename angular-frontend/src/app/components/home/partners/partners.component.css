@@ -24,7 +24,7 @@ body {
 }
 .slider::before, .slider::after {
   background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
-  /* content: ""; */
+  content: "";
   height: 200px;
   position: absolute;
   width: 150px;

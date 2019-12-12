@@ -69,7 +69,7 @@ export class VehicleService {
 
   getAllVehicles(companyName): Observable<any> {
     const url = environment.apiUrl + ':8095/api/v1/findVehicles/' + companyName;
-
+    console.log(url);
     return this.http.get(url);
   }
 
