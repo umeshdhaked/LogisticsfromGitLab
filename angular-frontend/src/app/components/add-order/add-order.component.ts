@@ -41,7 +41,7 @@ export class AddOrderComponent implements OnInit {
   slot3: boolean = false;
 
   orderVolume: number = 5;
-
+  address: string = "Adugodi";
   selectedSlot: string;
   date = new Date(Date.now());
   today = new Date(this.date.getTime() - (this.date.getTimezoneOffset() * 60000)).toISOString().split("T")[0];
