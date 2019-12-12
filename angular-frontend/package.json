@@ -37,6 +37,7 @@
     "mapbox": "^1.0.0-beta10",
     "mapbox-gl": "^1.5.1",
     "ng2-charts": "^2.3.0",
+    "ngx-toastr": "^11.2.1",
     "open-iconic": "^1.1.1",
     "pusher-js": "^5.0.3",
     "rxjs": "~6.4.0",
