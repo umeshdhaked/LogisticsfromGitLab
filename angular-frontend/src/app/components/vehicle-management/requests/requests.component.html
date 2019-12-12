@@ -1,4 +1,6 @@
 <h2> Request Notifications... </h2>
+
+
 <div class="request">
     <table class="table table-bordered table-striped table-hover">
         <thead>
@@ -22,7 +24,7 @@
             <tr *ngFor="let vehicle of Vehicles">
                 <td>{{ vehicle.id }}</td>
 
-                <td>{{vehicle.slot}}</td>
+                <td>{{vehicle.slot | timeSlot}}</td>
                 <td>{{vehicle.companyName}}</td>
 
                 <td>{{ vehicle.vehicleNumber }}</td>
@@ -47,5 +49,10 @@
             </tr>
         </tbody>
     </table>
+
+
+    <div *ngIf="isUpdateSent" class="alert alert-success" role="alert">
+            Your profile has been saved
+           </div>
 
 </div>
