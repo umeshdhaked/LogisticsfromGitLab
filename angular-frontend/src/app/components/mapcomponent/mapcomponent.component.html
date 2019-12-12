@@ -9,6 +9,13 @@
       </option>
   </select>
 </div>
+<div class="dropdown">
+  <select name="slot-drop-down" id="slot-drop-down"[(ngModel)]="slot" (ngModelChange)='dropDownChangeEvent1($event)'>
+      <option *ngFor="let slot of slots" [ngValue]="slot" >
+        {{slot}}
+      </option>
+  </select>
+</div>
 
 
 <style>
