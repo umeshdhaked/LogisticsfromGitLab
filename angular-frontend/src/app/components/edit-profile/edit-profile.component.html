@@ -64,7 +64,7 @@
 </mat-form-field> -->
 
     <mat-form-field>
-      <input #phone matInput placeholder="Phone" value="{{phones}}" required>
+      <input #phone matInput pattern="^[0-9]{10}$" placeholder="Phone" value="{{phones}}" required>
     </mat-form-field>
 
     <mat-form-field>

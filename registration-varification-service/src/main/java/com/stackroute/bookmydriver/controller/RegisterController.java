@@ -121,7 +121,7 @@ public class RegisterController {
 
                 userService.saveUser(user);
 
-                String appUrl = request.getScheme() + "://wysser.stackroute.io" + /*request.getServerName() + ":80"*/;
+                String appUrl = request.getScheme() + "://wysser.stackroute.io"  /*request.getServerName() + ":80"*/;
 
 
                 SimpleMailMessage registrationEmail = new SimpleMailMessage();
@@ -163,7 +163,7 @@ public class RegisterController {
 
                 userService.saveUser(userExists);
 
-                String appUrl = request.getScheme() + "://wysser.stackroute.io" + /*request.getServerName() + ":80"*/;
+                String appUrl = request.getScheme() + "://wysser.stackroute.io" /*request.getServerName() + ":80"*/;
 
 
                 SimpleMailMessage registrationEmail = new SimpleMailMessage();
