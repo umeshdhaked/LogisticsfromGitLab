@@ -85,7 +85,8 @@ export class RequestsComponent implements OnInit {
   retailerProfile: Retailerdetails;
   mailTitle:string;
   mailBody:string;
-  isUpdateSent:boolean;
+  isAccepted:boolean;
+  isRejected:boolean;
   updateMessage = "";
 
 
@@ -153,7 +154,7 @@ export class RequestsComponent implements OnInit {
 
  this.adminService.sendemail(this.retailerProfile.email, this.mailTitle, this.mailBody);
 
- this.isUpdateSent = true;
+ this.isAccepted = true;
 
 
      });
@@ -194,7 +195,7 @@ export class RequestsComponent implements OnInit {
 
 
 
-    // to send vehicle  booking Confirmation mail to retailer(fetchinig his mailId from Id)
+    // to send vehicle  booking Rejaection mail to retailer(fetchinig his mailId from Id)
     this.profileService.getRetailerProfilebyId(this.vehicle.retailerId).subscribe((data: any) => {
       this.retailerProfile = data;
 
@@ -208,7 +209,7 @@ export class RequestsComponent implements OnInit {
 
       this.adminService.sendemail(this.retailerProfile.email, this.mailTitle, this.mailBody);
 
-      this.isUpdateSent = true;
+      this.isRejected = true;
 
 
     });
@@ -220,9 +221,9 @@ export class RequestsComponent implements OnInit {
 
 
 
-
-
   }
+
+
 
 
 

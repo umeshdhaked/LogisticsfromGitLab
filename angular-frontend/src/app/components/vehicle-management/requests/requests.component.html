@@ -51,8 +51,11 @@
     </table>
 
 
-    <div *ngIf="isUpdateSent" class="alert alert-success" role="alert">
-            {{updateMessage}}
-           </div>
+    <div *ngIf="isAccepted" class="alert alert-success" role="alert">
+        {{updateMessage}}
+    </div>
+    <div *ngIf="isRejected" class="alert alert-danger" role="alert">
+        {{updateMessage}}
+    </div>
 
 </div>
