@@ -34,4 +34,8 @@ export class AdminfrontendComponent implements OnInit {
     this.router.navigate(['pendingresponses']);
 
   }
+
+  gotToCareer() {
+    this.router.navigate(['careerRequest']);
+  }
 }
