@@ -195,7 +195,7 @@ export class EditProfileComponent implements OnInit {
      this.isAlert=true;
      this.alertMessage='Please check terms and condition';
       this.router.navigate(['/editProfile']);
-    } else if (fullName === "" || phone === "" || address === "" || gstIn === "") {
+    } else if (fullName === "" || phone === "" || address === "" || gstIn === "" || companyName === "") {
      // alert('fill all the fields');
      this.alertMessage='Please fill all the details';
      this.isAlert=true;
