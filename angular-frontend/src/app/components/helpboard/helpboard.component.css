@@ -22,7 +22,7 @@
   .nav-tabs
   {
     background-color: grey;
-    height: fit-content;
+   
   }
   /* Grey list item */
   .price .grey {
@@ -45,7 +45,9 @@
 
   
 
- 
+ li.ul {
+    list-style-type: none;
+  }
   
   
   /* Change the width of the three columns to 100%
@@ -59,6 +61,8 @@
   .container {
    height: auto;
   }
+
+  
 
 
 
