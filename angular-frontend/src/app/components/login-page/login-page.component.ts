@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {LoginAuthService} from 'src/app/services/login-auth.service';
+import { Component, OnInit } from '@angular/core';
+import { LoginAuthService } from 'src/app/services/login-auth.service';
 import * as jwt_decode from 'jwt-decode';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { DecodedJwtData } from 'src/app/interfaces/decoded-jwt-data';
+import { EditProfileService } from 'src/app/services/edit-profile.service';
 
 @Component({
   selector: 'app-login-page',
@@ -18,7 +19,7 @@ export class LoginPageComponent implements OnInit {
   token;
 
 
-  constructor(private loginAuthService: LoginAuthService, private router: Router) {
+  constructor(private loginAuthService: LoginAuthService, private router: Router, private editProfileService: EditProfileService) {
   }
 
   ngOnInit() {
@@ -26,6 +27,7 @@ export class LoginPageComponent implements OnInit {
 
 
   loginMessage = '';
+  decodedDetail: DecodedJwtData;
 
   validateLogin(email, password) {
 
@@ -33,8 +35,6 @@ export class LoginPageComponent implements OnInit {
       "email": email,
       "password": password
     }
-
-    var decodedDetail:DecodedJwtData;
 
     // getting jwtToken from backend and storing it in localstorage
 
@@ -49,18 +49,44 @@ export class LoginPageComponent implements OnInit {
         console.log(this.token);
 
 
-        decodedDetail = jwt_decode(this.token);   // decoding token into json objects
-        console.log(decodedDetail);
-        console.log(decodedDetail.sub);
+        this.decodedDetail = jwt_decode(this.token);   // decoding token into json objects
+        console.log(this.decodedDetail);
+        console.log(this.decodedDetail.sub);
 
-        if(decodedDetail.role === "Retailer")
-        this.router.navigate(['/user']);
-        if(decodedDetail.role === "VehicleCompany")
-        this.router.navigate(['/vehicle-management']);
 
-      } else {
-        this.loginMessage= 'UserName or Password is incorrect';
+
+        // checking for user profile who is trying to login
+        this.editProfileService.getProfileFromEmail(this.decodedDetail.sub).subscribe((datas: any) => {
+          console.log('checking profile');
+          console.log(datas != null)
+
+          // For user who has not updated his proile
+          if ((datas != null)) {
+
+            if (this.decodedDetail.role === "Retailer")
+              this.router.navigate(['/user']);
+            if (this.decodedDetail.role === "VehicleCompany")
+              this.router.navigate(['/vehicle-management']);
+          }
+          else {
+
+            if (this.decodedDetail.role === "Retailer") {
+              this.router.navigate(['/editProfile']);
+            }
+          
+            if (this.decodedDetail.role === "VehicleCompany") {
+              this.router.navigate(['/editVehicleCompanyProfile']);
+            }
+            
+
+          }
+
+        });
       }
+      else {
+        this.loginMessage = 'UserName or Password is incorrect';
+      }
+
 
     });
 
