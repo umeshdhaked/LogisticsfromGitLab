@@ -10,15 +10,19 @@
     width: 50%;
     padding: 8px;
   }
-
+  /* li {
+    list-style-type: none;
+  } */
  
-
+  hr{
+    border-top: 1px solid red;
+  }
 
   
   .nav-tabs
   {
     background-color: grey;
-    height: fit-content;
+   
   }
   /* Grey list item */
   .price .grey {
@@ -41,7 +45,9 @@
 
   
 
- 
+ li.ul {
+    list-style-type: none;
+  }
   
   
   /* Change the width of the three columns to 100%
@@ -55,6 +61,8 @@
   .container {
    height: auto;
   }
+
+  
 
 
 
