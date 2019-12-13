@@ -29,9 +29,11 @@ export class MapComponent implements OnInit {
   decodedData: DecodedJwtData;
   coordinates = [];
   waypoints: any;
+  
   checkforbranching = "this is to see if branching and updation have happened or not"
   constructor(private routeapiservice: RoutingapiserviceService, private zone: NgZone) { }
   ngOnInit() {
+  
     
     let token = localStorage.getItem('token');
 

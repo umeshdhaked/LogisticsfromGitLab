@@ -21,6 +21,7 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
@@ -165,9 +166,21 @@ public class RouteController {
         return routeService.getRoutesByWholesaler(wholsalerId,slot);
 
     }
-
-
-
-
-
+    @GetMapping("getcoordinateresponse/{address}")
+    public String getCooordinateResponse(@PathVariable String address) throws IOException {
+        return routeService.getCoordinateResponse(address).toString();
+        // ResponseEntity<JSONObject> responseEntity = new ResponseEntity<JSONObject>(routeService.getCoordinateResponse(address),HttpStatus.OK);
+        // System.out.println("\n");
+        // System.out.println(responseEntity.getBody());
+        // return responseEntity.getBody().toString();
+    }
+    
+    
+    // @GetMapping("getgeojsonlatlongresponse/{sourceCoordinates}/{destinationCoordinates}")
+    @RequestMapping(value="getgeojsonlatlongresponse/{sourceCoordinates}/{destinationCoordinates}/", method=RequestMethod.GET)
+    @ResponseBody
+    public String getGeoJsonLatLongResponse(@PathVariable("sourceCoordinates") List<Double> sourceCooridinates,@PathVariable("destinationCoordinates") List<Double> destinationCoordinates) throws IOException {
+        System.out.println(destinationCoordinates.get(1));
+        return routeService.getGeoJsonLatLongResponse(sourceCooridinates,destinationCoordinates).toString();
+    }
 }

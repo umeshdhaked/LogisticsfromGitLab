@@ -18,9 +18,12 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -34,17 +37,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RouteServiceImpl implements RouteService {
-
     // static {
     //     System.loadLibrary("jniortools");
     // }
-
-
     @Autowired
     Solution s;
-
-
-
     //    private DepotRepository depotRepository;
     private OrderRepository orderRepository;
     private RouteRepository routeRepository;
@@ -524,6 +521,60 @@ public class RouteServiceImpl implements RouteService {
 
         System.out.println("last print in route service :"+Routes);
         return Routes;
+    }
+
+    @Override
+    public JSONObject getCoordinateResponse(String address) throws IOException {
+        address=address.replaceAll("\\s", "%20");
+        address=address+"%20bangalore";
+        System.out.println("insdie the coordinateFinder ");
+        String key = "Am645nTS2rVqgDNr8UDKqZPdOL-X2_Z94sS5-GqjNBcoMfSOi_dVC6KTDGxL_jDb";
+        JSONObject obj_JSONObject;
+            String url = "http://dev.virtualearth.net/REST/v1/Locations?query="+address+"&includeNeighborhood=1&include=1&maxResults=5&key="+key;
+            URL obj = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("User-Agent", "Mozilla/5.0");
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in .readLine()) != null) {
+                response.append(inputLine);
+            } in .close();
+
+
+            // System.out.println(response.toString());
+            obj_JSONObject = new JSONObject(response.toString());
+            System.out.println(obj_JSONObject);
+        return obj_JSONObject;
+        }
+
+    @Override
+    public JSONObject getGeoJsonLatLongResponse(List<Double> sourceCoordinates, List<Double> destinationCoordinates) throws IOException {
+        System.out.println("\n inside the geoJsonFinder \n");
+        JSONObject obj_JSONObject;
+        System.out.println("\n"+sourceCoordinates.get(0)+" "+sourceCoordinates.get(1)+" "+destinationCoordinates.get(0)+" "+destinationCoordinates.get(1)+"\n");
+        String url = "http://dev.virtualearth.net/REST/V1/Routes?wp.0="+sourceCoordinates.get(0)+","+sourceCoordinates.get(1)+"&wp.1="+destinationCoordinates.get(0)+","+ destinationCoordinates.get(1)+"&optmz=distance&routeAttributes=routePath&key=Am645nTS2rVqgDNr8UDKqZPdOL-X2_Z94sS5-GqjNBcoMfSOi_dVC6KTDGxL_jDb";
+        System.out.println(url);
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        con.setRequestMethod("GET");
+        con.setRequestProperty("User-Agent", "Mozilla/5.0");
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String inputLine;
+
+        StringBuffer response = new StringBuffer();
+        while ((inputLine = in .readLine()) != null) {
+            response.append(inputLine);
+        } in .close();
+
+
+        System.out.println(response.toString());
+        obj_JSONObject = new JSONObject(response.toString());
+        return obj_JSONObject;
     }
 }
 
