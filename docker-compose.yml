@@ -112,7 +112,7 @@ services:
     network_mode: 'host'
     #     build: .
     ports:
-      - 4200:4200
+      - 80:80
     restart: always  
   driver-dashboard-service:
     image: driver-dashboard-service
