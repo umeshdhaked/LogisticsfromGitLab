@@ -140,8 +140,8 @@ export class VehicledemandfrontendComponent implements OnInit {
     this.vehicleService.sendnewRetailerRequest(this.vehicleDemanded).subscribe(()=>{
       // alert("Booking request sent!");
 
-      this.mailTitle="Vehicle Booking Request";
-      this.mailBody="Your Request For Booking a Vehicle has been sent to Vehicle Company, Please wait while we get update from vehicle company";
+      this.mailTitle="Wysser Vehicle Booking Request Processed";
+      this.mailBody="Your booking request has been processed. We'll send you another email as soon as it has been accepted!";
 
       this.adminService.sendemail(this.decoded.sub,this.mailTitle,this.mailBody);
 
