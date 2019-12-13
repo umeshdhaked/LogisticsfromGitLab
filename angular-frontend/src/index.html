@@ -122,6 +122,9 @@
 
 
         })();
+
+
+    
     </script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
@@ -129,7 +132,10 @@
 
 <body>
 
-    
+    <div id="loader" class="center">
+            <img class="wysser" src="../../assets/logo1.png"/>
+            <img class="zio" src="../../assets/images/gps.png"/>
+    </div>
     <!-- navigation bar -->
     <!-- -------------------------------------------------------------------------- -->
     <app-root></app-root>
@@ -140,7 +146,22 @@
     <script>
         AOS.init();
     </script>
-
+    <script> 
+    //loader
+        document.onreadystatechange = function() { 
+            if (document.readyState !== "complete") { 
+                document.querySelector( 
+                  "body").style.visibility = "hidden"; 
+                document.querySelector( 
+                  "#loader").style.visibility = "visible"; 
+            } else { 
+                document.querySelector( 
+                  "#loader").style.display = "none"; 
+                document.querySelector( 
+                  "body").style.visibility = "visible"; 
+            } 
+        }; 
+    </script> 
 </body>
 
 </html>

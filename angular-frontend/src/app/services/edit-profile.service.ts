@@ -22,8 +22,8 @@ export class EditProfileService {
 
     setTimeout(() => {
       this.http.post(url, data).subscribe();
-      alert('Profile Saved');
-    }, 350);
+      // alert('Profile Saved');
+    }, 60);
 
 
   }
@@ -53,6 +53,17 @@ export class EditProfileService {
 
 
  }
+
+
+
+ public getRetailerProfilebyId(Retailerid){
+    let uri =  environment.apiUrl+':8082/retailerProfile/getRetailerById?id='+Retailerid;
+    return this.http.get(uri);
+ }
+
+
+
+
 
 
 }

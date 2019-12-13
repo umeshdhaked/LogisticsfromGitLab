@@ -28,6 +28,90 @@ body {
 
 
 
+#loader { 
+  background: whitesmoke;
+  /* border: 12px solid red;  */
+  /* border-radius: 50%;  */
+  /* border-top: 12px solid #444444;  */
+  min-height: 100vh;
+  
+  /* animation: spin 1s linear infinite;  */
+} 
+
+@keyframes spin { 
+  100% { 
+      transform: rotate(360deg); 
+  } 
+} 
+/*           
+.center { 
+  position: absolute; 
+  top: 0; 
+  bottom: 0; 
+  left: 0; 
+  right: 0; 
+  margin: auto; 
+}  */
+
+
+/* gps icon */
+.wysser {
+  width: 200px;
+  height: 100px;
+  /* background-color: #35D857; */
+  /* border-radius: 100%; */
+  margin: auto;
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  /* left: 500px;
+  top: 5px; */
+  
+  -webkit-animation: bounce 3s infinite ease-in-out;
+  -o-animation: bounce 3s infinite ease-in-out;
+  -ms-animation: bounce 3s infinite ease-in-out; 
+  -moz-animation: bounce 3s infinite ease-in-out; 
+  animation: bounce 3s infinite ease-in-out;
+}
+.zio {
+  width: 200px;
+  height: 200px;
+  /* background-color: #35D857; */
+  border-radius: 100%;
+  margin: auto;
+  position: absolute;
+  top: 30%;
+  left: 45%;
+  /* left: 500px;
+  top: 5px; */
+  
+  -webkit-animation: bounce 3s infinite ease-in-out;
+  -o-animation: bounce 3s infinite ease-in-out;
+  -ms-animation: bounce 3s infinite ease-in-out; 
+  -moz-animation: bounce 3s infinite ease-in-out; 
+  animation: bounce 3s infinite ease-in-out;
+}
+/* gps animation */
+@-webkit-keyframes bounce {
+  0% { transform: translateY(-25px)  }
+  50% { transform: translateY(50px) }
+  100% { transform: translateY(-25px) }
+}
+
+@keyframes bounce {
+  0% { transform: translateY(-25px)  }
+  50% { transform: translateY(50px) }
+  100% { transform: translateY(-25px) }
+}
+
+
+
+
+
+
+
+
+
 
 html, body {
   max-width: 100%;

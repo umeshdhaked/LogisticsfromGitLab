@@ -6,6 +6,7 @@ import { PaymemonthlyComponent } from './components/paymemonthly/paymemonthly.co
 import { FaqComponent } from './components/faq/faq.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { CareersComponent } from './components/careers/careers.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 import {AuthGaurdService} from './services/auth-gaurd.service';
 import {VerifyComponent} from './components/verify/verify.component';
@@ -48,7 +49,11 @@ import { PaymeComponent } from './components/payme/payme.component';
 import { VehicleCompanyProfileComponent } from './components/vehicle-company-profile/vehicle-company-profile.component';
 import {PendingVehicleRequestComponent} from './components/pending-vehicle-request/pending-vehicle-request.component';
 import {PendingresponsesComponent} from "./components/pendingresponses/pendingresponses.component";
+<<<<<<< HEAD
 import {CareerComponent} from "./components/career/career.component";
+=======
+import { HelpboardComponent } from './components/helpboard/helpboard.component';
+>>>>>>> 1a6f0563ac8f8a645d94a50fe3a5b3e851ff54c4
 
 
 
@@ -60,6 +65,7 @@ const routes: Routes = [
   {path: 'faq', component: FaqComponent},
   {path: 'contact-us', component: ContactUsComponent},
   {path: 'careers', component: CareersComponent},
+  {path: 'about-us', component: AboutUsComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'verify', component: VerifyComponent},
   { path : 'navigate', component: NavigatelocationComponent},
@@ -89,6 +95,7 @@ const routes: Routes = [
   {path: 'manage-vehicle', component: ManageVehiclesComponent},
   {path: 'driver-password', component:DriverPasswordComponent},
   {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent},
+  {path: 'help', component : HelpboardComponent},
   // {path: 'retailerVehicleDemand', component: VehicledemandfrontendComponent, canActivate: [AuthGaurdService]},
   {path: 'viewProfile', component: ViewProfileComponent},
   // {path: 'viewProfile', component: ViewProfileComponent, canActivate: [AuthGaurdService]},

@@ -31,9 +31,9 @@
   <thead>
   <tr>
     <th scope="col">Vehicle Number</th>
-    <th scope="col">Driver Name</th>
+    <th scope="col">Leasing Company</th>
     <th scope="col">Capacity</th>
-    <th scope="col">Vehicle Status</th>
+    <th scope="col">Vehicle Type</th>
     <th scope="col">Slot</th>
 
 
@@ -44,9 +44,10 @@
   <tr *ngFor="let data of vehicledemanded ">
 
     <td >{{data.vehicleNumber}}</td>
-    <td >{{data.driverName}}</td>
+    <td >{{data.companyName}}</td>
+    <td >{{data.capacity}}</td>
     <td >{{data.vehicleType}}</td>
-    <td >{{data.slot}}</td>
+    <td >{{data.slot | timeSlot}}</td>
 
 
   </tr>
@@ -60,9 +61,9 @@
   <thead>
   <tr>
     <th scope="col">Vehicle Number</th>
-    <th scope="col">Driver Name</th>
+    <th scope="col">Leasing Company</th>
     <th scope="col">Capacity</th>
-    <th scope="col">Vehicle Status</th>
+    <th scope="col">Vehicle Type</th>
     <th scope="col">Slot</th>
 
 
@@ -73,9 +74,10 @@
   <tr *ngFor="let data of vehicledemanded1 ">
 
     <td >{{data.vehicleNumber}}</td>
-    <td >{{data.driverName}}</td>
+    <td >{{data.companyName}}</td>
+    <td >{{data.capacity}}</td>
     <td >{{data.vehicleType}}</td>
-    <td >{{data.slot}}</td>
+    <td >{{data.slot | timeSlot}}</td>
 
 
   </tr>

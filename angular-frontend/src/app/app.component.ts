@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +8,17 @@ import {Component} from '@angular/core';
 
 export class AppComponent {
   title = 'Wysser';
+  isNotDriver: boolean = true;
+  constructor(private zone: NgZone) {
 
-  constructor() {
   }
 
   ngOnInit() {
+    if(localStorage.getItem("driver")){
+      this.zone.run(()=>{
+        this.isNotDriver = false;
+      })
+    }
   }
 
 

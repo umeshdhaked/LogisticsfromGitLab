@@ -292,16 +292,14 @@ public class VehicleController<VehicleDao> {
 
 
 
-    @GetMapping("vehicle")
+    @GetMapping("findVehicles/{companyName}")
     @CrossOrigin
-    public ResponseEntity<?> getVehicles() {
+    public ResponseEntity<?> getVehicles(@PathVariable("companyName") String companyName) {
         ResponseEntity responseEntity;
-        List<Vehicle> vehicles = vehicleService.getVehicles();
-        //try{
+
+        List<Vehicle> vehicles = vehicleService.findByCompanyName(companyName);
         responseEntity = new ResponseEntity<>(vehicles, HttpStatus.OK);
-        //}catch (Exception ex) {
-        //  responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
-        //}
+
         return responseEntity;
     }
 

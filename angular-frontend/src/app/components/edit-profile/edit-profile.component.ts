@@ -181,19 +181,29 @@ export class EditProfileComponent implements OnInit {
 
 
 
+ isSaved: boolean = false;
+ isAlert: boolean = false;
+ alertMessage = "";
+
 
 
     // retailerData:Retailerdetails;
   public save(fullName, phone, address, companyName, gstIn, docName, check) {
 
-    if (!check) {
-      alert('Please check terms and condition');
+    if (!true) {
+     // alert('Please check terms and condition');
+     this.isAlert=true;
+     this.alertMessage='Please check terms and condition';
       this.router.navigate(['/editProfile']);
-    } else if (fullName === "" || phone === "" || address === "" || gstIn === "") {
-      alert('fill all the fields');
+    } else if (fullName === "" || phone === "" || address === "" || gstIn === "" || companyName === "") {
+     // alert('fill all the fields');
+     this.alertMessage='Please fill all the details';
+     this.isAlert=true;
       this.router.navigate(['/editProfile']);
     } else if (docName === "none") {
-      alert('Select a document');
+      //alert('Select a document');
+      this.isAlert=true;
+      this.alertMessage='Select a document type and upload';
       this.router.navigate(['/editProfile']);
     } else {
       
@@ -245,8 +255,11 @@ export class EditProfileComponent implements OnInit {
       formData.append('docPic', this.docFile, this.docFile.name);
       formData.append('retailer', retailerDataString);
 
-
+      this.isSaved = true;
+      
       this.editProfileService.saveRetailerData(formData);
+
+      
 
       this.router.navigate(['/user']);
 
