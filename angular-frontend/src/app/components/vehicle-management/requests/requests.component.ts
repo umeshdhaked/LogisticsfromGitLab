@@ -86,6 +86,7 @@ export class RequestsComponent implements OnInit {
   mailTitle:string;
   mailBody:string;
   isUpdateSent:boolean;
+  updateMessage = "";
 
 
   AcceptRequest(data) {
@@ -145,20 +146,20 @@ export class RequestsComponent implements OnInit {
       console.log(data);
       console.log('abcd');
       console.log(this.retailerProfile.email);
-      
+
  // Now Sending mail
- this.mailTitle = "Vehicle Booking Request";
- this.mailBody = "Your Request For Booking a Vehicle has been sent to Vehicle Company, Please wait while we get update from vehicle company";
+ this.mailTitle = "Booking of Vehicle Confirmed";
+ this.mailBody = "Congratulations! Your vehicle request has been accepted, here are the booking details \n"+"Booking Id = "+driver.bookingId;
 
  this.adminService.sendemail(this.retailerProfile.email, this.mailTitle, this.mailBody);
 
  this.isUpdateSent = true;
-     
+
 
      });
 
 
-
+    this.updateMessage="Request Accepted";
 
 
   }
@@ -177,7 +178,7 @@ export class RequestsComponent implements OnInit {
     // this.requestService.deleteinretailerdemand(this.vehicle.id).subscribe();
     this.requestService.deleteinretailerdemand(this.vehicle.id).subscribe(() => {
       this.zone.run(() => {
-        alert("Request Rejected!");
+        // alert("Request Rejected!");
         this.requestService.findallrequested(this.cName).subscribe(data => {
           this.zone.run(() => {
             console.log(this.cName);
@@ -189,6 +190,38 @@ export class RequestsComponent implements OnInit {
       })
 
     });
+
+
+
+
+    // to send vehicle  booking Confirmation mail to retailer(fetchinig his mailId from Id)
+    this.profileService.getRetailerProfilebyId(this.vehicle.retailerId).subscribe((data: any) => {
+      this.retailerProfile = data;
+
+      console.log(data);
+      console.log('abcd');
+      console.log(this.retailerProfile.email);
+
+      // Now Sending mail
+      this.mailTitle = "Booking of Vehicle has been rejected";
+      this.mailBody = "We are sorry to say that your request for vehicle rent has been rejected by delivery company"+this.vehicleCompanyData.companyName;
+
+      this.adminService.sendemail(this.retailerProfile.email, this.mailTitle, this.mailBody);
+
+      this.isUpdateSent = true;
+
+
+    });
+
+
+
+
+    this.updateMessage="Request Rejected";
+
+
+
+
+
   }
 
 

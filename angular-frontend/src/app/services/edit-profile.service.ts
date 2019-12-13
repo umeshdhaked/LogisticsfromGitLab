@@ -58,7 +58,7 @@ export class EditProfileService {
 
  public getRetailerProfilebyId(Retailerid){
     let uri =  environment.apiUrl+':8082/retailerProfile/getRetailerById?id='+Retailerid;
-    return this.http.delete(uri);
+    return this.http.get(uri);
  }
 
 
