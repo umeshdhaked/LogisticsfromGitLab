@@ -11,6 +11,21 @@ background: linear-gradient(0deg, rgba(36,8,0,1) 0%, rgba(121,9,9,0.865983893557
 /* .row{
     background:#1D1F1F;
 } */
+p{
+    color: white;
+}
+.fa{
+font-size: 40px;
+}
+a{
+
+    color:white;
+    text-decoration: none;
+}
+a:hover{
+    color:orangered;
+
+}
 .img-right{
     height:230px;
     width:230px;
