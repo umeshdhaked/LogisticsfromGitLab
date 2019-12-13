@@ -149,7 +149,7 @@ export class RequestsComponent implements OnInit {
 
  // Now Sending mail
  this.mailTitle = "Booking of Vehicle Confirmed";
- this.mailBody = "Voila, your request has been accepted, here are booking details"+"id = "+driver.bookingId;
+ this.mailBody = "Congratulations! Your vehicle request has been accepted, here are the booking details \n"+"Booking Id = "+driver.bookingId;
 
  this.adminService.sendemail(this.retailerProfile.email, this.mailTitle, this.mailBody);
 
