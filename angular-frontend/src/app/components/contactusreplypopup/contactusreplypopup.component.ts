@@ -26,6 +26,6 @@ export class ContactusreplypopupComponent implements OnInit {
     this.data = this.interaction.messageSource1;
     this.sendemail.sendemail(this.data.email, this.data.subject, this.body1);
     this.data.replyStatus = true;
-    this.sendemail.postnewcontactus(this.data);
+    this.sendemail.postnewcontactus(this.data).subscribe();
   }
 }
