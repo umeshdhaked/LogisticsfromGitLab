@@ -106,8 +106,8 @@ export class MapComponent implements OnInit {
               this.zone.run(() => {
                 this.allcoordinates = data
                 this.coordinates = this.updatevalue(data)
-                updatepointsonmap(this.coordinates.slice(1), this.addresses.slice(1),environment.apiUrl+":4200/assets/images/box.png","box")
-                updatepointsonmap([this.coordinates[0]], [this.addresses[0]],environment.apiUrl+":4200/assets/images/warehouse.png","warehouse")
+                updatepointsonmap(this.coordinates.slice(1), this.addresses.slice(1),"../assets/images/box.png","box")
+                updatepointsonmap([this.coordinates[0]], [this.addresses[0]],"../assets/images/warehouse.png","warehouse")
                 updatecenter(this.coordinates)
                 this.routeapiservice.getGeoJsonLatLOng(this.coordinates, this.addresses).subscribe((data2) => {
                   this.zone.run(() => {
