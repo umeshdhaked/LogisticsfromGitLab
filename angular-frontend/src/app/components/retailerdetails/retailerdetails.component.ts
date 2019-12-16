@@ -15,6 +15,7 @@ export class RetailerdetailsComponent implements OnInit {
   ngOnInit() {
    this.retailerDetails.getAllRetailer().subscribe(
      retailers => {
+       console.log(retailers)
        this.allRetailers = retailers;
      }
 

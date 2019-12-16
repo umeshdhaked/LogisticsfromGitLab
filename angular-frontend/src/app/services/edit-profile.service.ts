@@ -38,7 +38,7 @@ export class EditProfileService {
 
   }
  public getAllRetailer(): Observable<any> {
-    const url = environment.apiUrl + '8082/retailerProfile/getAllRetailersProfileList';
+    const url = environment.apiUrl + ':8082/retailerProfile/getAllRetailersProfileList';
     return this.http.get(url);
  }
 
