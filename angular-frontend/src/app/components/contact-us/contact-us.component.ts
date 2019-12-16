@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PendingResponse} from '../../interfaces/pendingreponse';
 import {AdminService} from '../../services/admin.service';
-
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
@@ -13,10 +12,11 @@ export class ContactUsComponent implements OnInit {
   email: any;
   subject: any;
   message: any;
-  constructor(private adminservice: AdminService) { }
 
+  constructor(private adminservice: AdminService) { }
   ngOnInit() {
     this.pendingrequest.replyStatus = false;
+
     this.pendingrequest.name = this.name;
     this.pendingrequest.email = this.email;
     this.pendingrequest.message = this.message;
@@ -24,6 +24,7 @@ export class ContactUsComponent implements OnInit {
 
   }
 // this.pendingrequest.replystatus = false;
+
 
 
 
