@@ -21,6 +21,8 @@ export class PendingresponsesComponent implements OnInit {
     this.contactusService.getpendingresponses().subscribe(pending => {
       this.pendingtemp = pending;
 
+      console.log(this.pendingtemp);
+
     });
   }
 

@@ -50,6 +50,7 @@ import { VehicleCompanyProfileComponent } from './components/vehicle-company-pro
 import {PendingVehicleRequestComponent} from './components/pending-vehicle-request/pending-vehicle-request.component';
 import {PendingresponsesComponent} from "./components/pendingresponses/pendingresponses.component";
 import { HelpboardComponent } from './components/helpboard/helpboard.component';
+import { CareerComponent } from './components/career/career.component';
 
 
 
@@ -125,6 +126,9 @@ const routes: Routes = [
   { path : 'editVehicleCompanyProfile', component: VehicleCompanyProfileComponent},
   {path: 'viewPendingVehicleRequest', component: PendingVehicleRequestComponent},
   {path: 'pendingresponses', component: PendingresponsesComponent},
+  {path: 'pendingresponses', component: PendingresponsesComponent},
+  {path: 'careerRequest', component: CareerComponent},
+
   {path: '**', component: PageNotFoundComponent}
 ];
 
