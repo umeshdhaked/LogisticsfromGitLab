@@ -49,11 +49,8 @@ import { PaymeComponent } from './components/payme/payme.component';
 import { VehicleCompanyProfileComponent } from './components/vehicle-company-profile/vehicle-company-profile.component';
 import {PendingVehicleRequestComponent} from './components/pending-vehicle-request/pending-vehicle-request.component';
 import {PendingresponsesComponent} from "./components/pendingresponses/pendingresponses.component";
-<<<<<<< HEAD
-import {CareerComponent} from "./components/career/career.component";
-=======
 import { HelpboardComponent } from './components/helpboard/helpboard.component';
->>>>>>> 1a6f0563ac8f8a645d94a50fe3a5b3e851ff54c4
+import { CareerComponent } from './components/career/career.component';
 
 
 

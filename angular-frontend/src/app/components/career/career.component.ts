@@ -18,9 +18,9 @@ export class CareerComponent implements OnInit {
      this.career = res;
    });
 
-   for (const entry of this.career) {
-      console.log(entry); // 1, "string", false
-    }
-  }
+  //  for (const entry of this.career) {
+  //     console.log(entry); // 1, "string", false
+  //   }
+  // }
 
-}
+}}

@@ -103,7 +103,7 @@ import { AdminfrontendComponent } from './components/adminfrontend/adminfrontend
 import { RetailerdetailsComponent } from './components/retailerdetails/retailerdetails.component';
 import { Statistic1Component } from './components/statistic1/statistic1.component';
 import { VehicledetailsComponent } from './components/vehicledetails/vehicledetails.component';
-import {DatePipe} from "@angular/common";
+import {DatePipe} from '@angular/common';
 // import { PaymentComponent } from './components/payment/payment.component';
 import { PaymeComponent } from './components/payme/payme.component';
 import { PaymemonthlyComponent } from './components/paymemonthly/paymemonthly.component';
@@ -124,12 +124,12 @@ import { PartnersComponent } from './components/home/partners/partners.component
 import { MapComponent } from './components/mapcomponent/mapcomponent.component';
 import { CareersComponent } from './components/careers/careers.component';
 import { AddDeveloperComponent } from './components/careers/add-developer/add-developer.component';
-<<<<<<< HEAD
+
 import { CareerComponent } from './components/career/career.component';
-=======
+
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { HelpboardComponent } from './components/helpboard/helpboard.component';
->>>>>>> 1a6f0563ac8f8a645d94a50fe3a5b3e851ff54c4
+
 
 
 @NgModule({
@@ -193,12 +193,9 @@ import { HelpboardComponent } from './components/helpboard/helpboard.component';
     MapComponent,
     CareersComponent,
     AddDeveloperComponent,
-<<<<<<< HEAD
-    CareerComponent
-=======
+    CareerComponent,
     AboutUsComponent,
     HelpboardComponent
->>>>>>> 1a6f0563ac8f8a645d94a50fe3a5b3e851ff54c4
 
   ],
 

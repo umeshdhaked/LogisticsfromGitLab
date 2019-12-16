@@ -46,25 +46,25 @@
                       <!-- Name -->
                       <div class="form-group label-floating">
                         <label class="control-label" for="name">Name</label>
-                        <input class="form-control" id="name" type="text" name="name" required data-error="Please enter your name" [(ngModel)]="pendingrequest.name">
+                        <input class="form-control" id="name" type="text" name="name" required data-error="Please enter your name" [(ngModel)]="name">
                         <div class="help-block with-errors"></div>
                       </div>
                       <!-- email -->
                       <div class="form-group label-floating">
                         <label class="control-label" for="email">Email</label>
-                        <input class="form-control" id="email" type="email" name="email" required data-error="Please enter your Email" [(ngModel)]="pendingrequest.email">
+                        <input class="form-control" id="email" type="email" name="email" required data-error="Please enter your Email" [(ngModel)]="email">
                         <div class="help-block with-errors"></div>
                       </div>
                       <!-- Subject -->
                       <div class="form-group label-floating">
                         <label class="control-label">Subject</label>
-                        <input class="form-control" id="msg_subject" type="text" name="subject" required data-error="Please enter your message subject" [(ngModel)]="pendingrequest.subject">
+                        <input class="form-control" id="msg_subject" type="text" name="subject" required data-error="Please enter your message subject" [(ngModel)]="subject">
                         <div class="help-block with-errors"></div>
                       </div>
                       <!-- Message -->
                       <div class="form-group label-floating">
                           <label for="message" class="control-label">Message</label>
-                          <textarea class="form-control" rows="3" id="message" name="message" required data-error="Write your message" [(ngModel)]="pendingrequest.message"></textarea>
+                          <textarea class="form-control" rows="3" id="message" name="message" required data-error="Write your message" [(ngModel)]="message"></textarea>
                           <div class="help-block with-errors"></div>
                       </div>
                       <!-- Form Submit -->
