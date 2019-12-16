@@ -29,6 +29,7 @@ export class ContactUsComponent implements OnInit {
 
 
   sendandsave() {
+    console.log(this.pendingrequest);
     this.adminservice.postnewcontactus(this.pendingrequest);
   }
 }
