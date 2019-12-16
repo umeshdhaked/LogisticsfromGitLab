@@ -1,0 +1,7 @@
+{
+  "name": "WysserDriver",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
