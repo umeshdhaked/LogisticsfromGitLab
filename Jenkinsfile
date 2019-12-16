@@ -27,15 +27,13 @@ pipeline {
     stages {
      stage('Get Into AWS and build') {
             steps {
-               sh 'cd;pwd;ls -la .ssh/; less .ssh/id_rsa.pub'
-               sh 'whoami'
-               sh 'ssh ubuntu@15.206.105.26 "cd stackroute-product/logistics-routing;  git checkout v1.0.2“'
-               sh 'ssh ubuntu@15.206.105.26 "cd stackroute-product/logistics-routing;  git pull origin v1.0.2 “'
-               sh 'ssh ubuntu@15.206.105.26 "cd stackroute-product/logistics-routing;  cd angular-frontend;  ng build “'
-
-               sh 'ssh ubuntu@15.206.105.26 "cd stackroute-product/logistics-routing; mvn -DskipTests clean compile package "'
-               sh 'ssh ubuntu@15.206.105.26 "cd stackroute-product/logistics-routing; sudo docker-compose up --build"'
-
+                sh 'cd;pwd;ls -la .ssh/; less .ssh/id_ed25519.pub'
+                sh 'whoami'
+                sh 'ssh ubuntu@15.206.105.26 "cd stackroute-product/logistics-routing;sudo docker-compose down --remove-orphans"'
+                sh 'ssh ubuntu@15.206.105.26 "cd stackroute-product/logistics-routing;  git checkout v1.0.2"'
+                sh 'ssh ubuntu@15.206.105.26 "cd stackroute-product/logistics-routing;  git pull origin v1.0.2 "'
+                sh 'ssh ubuntu@15.206.105.26 "cd stackroute-product/logistics-routing; mvn -DskipTests clean compile package "'
+                sh 'ssh ubuntu@15.206.105.26 "cd stackroute-product/logistics-routing; sudo docker-compose up -d --build"'
             }
         }
     }
