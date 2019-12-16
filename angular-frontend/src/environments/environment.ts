@@ -8,7 +8,7 @@ export const environment = {
    apiUrl: 'http://15.206.105.26',
 
  //apiUrl: 'http://172.23.239.61',
- 
+
  // apiUrl: 'http://localhost'
 
 //  apiUrl: 'http://localhost'
