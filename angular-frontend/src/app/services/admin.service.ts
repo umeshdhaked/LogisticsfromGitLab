@@ -18,7 +18,7 @@ export class AdminService {
 
    postnewcontactus(data: any)  {
     const url = environment.apiUrl + ':9086/savenewcontactusrequest';
-    this.http.post(url, data);
+    return this.http.post(url, data);
 
    }
 }

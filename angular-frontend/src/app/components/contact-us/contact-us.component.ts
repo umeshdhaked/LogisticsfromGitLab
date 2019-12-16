@@ -31,6 +31,6 @@ export class ContactUsComponent implements OnInit {
     this.pendingrequest.message = this.message;
     this.pendingrequest.subject = this.subject;
     console.log(this.pendingrequest);
-    this.adminservice.postnewcontactus(this.pendingrequest);
+    this.adminservice.postnewcontactus(this.pendingrequest).subscribe();
   }
 }
