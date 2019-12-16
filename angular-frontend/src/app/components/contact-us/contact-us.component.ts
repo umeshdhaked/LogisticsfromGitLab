@@ -15,12 +15,7 @@ export class ContactUsComponent implements OnInit {
 
   constructor(private adminservice: AdminService) { }
   ngOnInit() {
-    this.pendingrequest.replyStatus = false;
 
-    this.pendingrequest.name = this.name;
-    this.pendingrequest.email = this.email;
-    this.pendingrequest.message = this.message;
-    this.pendingrequest.subject = this.subject;
 
   }
 // this.pendingrequest.replystatus = false;
@@ -29,6 +24,12 @@ export class ContactUsComponent implements OnInit {
 
 
   sendandsave() {
+    this.pendingrequest.replyStatus = false;
+
+    this.pendingrequest.name = this.name;
+    this.pendingrequest.email = this.email;
+    this.pendingrequest.message = this.message;
+    this.pendingrequest.subject = this.subject;
     console.log(this.pendingrequest);
     this.adminservice.postnewcontactus(this.pendingrequest);
   }
