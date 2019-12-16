@@ -7,7 +7,11 @@ export const environment = {
 
    apiUrl: 'http://15.206.105.26',
 
+<<<<<<< HEAD
+ //apiUrl: 'http://172.23.239.61',
+=======
  // apiUrl: 'http://172.23.239.61',
+>>>>>>> f440bfbc481fb5a7d05484135a1b4b1450279d1a
 
  // apiUrl: 'http://localhost'
 
