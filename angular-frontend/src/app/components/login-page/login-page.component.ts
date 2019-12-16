@@ -4,6 +4,7 @@ import * as jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 import { DecodedJwtData } from 'src/app/interfaces/decoded-jwt-data';
 import { EditProfileService } from 'src/app/services/edit-profile.service';
+import { VechicleCompanyServiceService } from 'src/app/services/vechicle-company-service.service';
 
 @Component({
   selector: 'app-login-page',
@@ -19,7 +20,12 @@ export class LoginPageComponent implements OnInit {
   token;
 
 
-  constructor(private loginAuthService: LoginAuthService, private router: Router, private editProfileService: EditProfileService) {
+  constructor(private loginAuthService: LoginAuthService, 
+    private router: Router, 
+    private editProfileService: EditProfileService, 
+    private vehicleCompanyProfile: VechicleCompanyServiceService,
+
+    ) {
   }
 
   ngOnInit() {
@@ -53,35 +59,30 @@ export class LoginPageComponent implements OnInit {
         console.log(this.decodedDetail);
         console.log(this.decodedDetail.sub);
 
+        //////////////////////////////////////////////////////////////////////////////////////////////
 
-
-        // checking for user profile who is trying to login
-        this.editProfileService.getProfileFromEmail(this.decodedDetail.sub).subscribe((datas: any) => {
-          console.log('checking profile');
-          console.log(datas != null)
-
+        if (this.decodedDetail.role === "Retailer") {
           // For user who has not updated his proile
-          if ((datas != null)) {
-
-            if (this.decodedDetail.role === "Retailer")
+          this.editProfileService.getProfileFromEmail(this.decodedDetail.sub).subscribe((datas: any) => {
+            if ((datas != null))
               this.router.navigate(['/user']);
-            if (this.decodedDetail.role === "VehicleCompany")
-              this.router.navigate(['/vehicle-management']);
-          }
-          else {
-
-            if (this.decodedDetail.role === "Retailer") {
+            else
               this.router.navigate(['/editProfile']);
-            }
-          
-            if (this.decodedDetail.role === "VehicleCompany") {
+
+          });
+        }
+
+        if (this.decodedDetail.role === "VehicleCompany") {
+
+          this.vehicleCompanyProfile.getVehicleCompanyProfileFromEmail(this.decodedDetail.sub).subscribe((datas: any) => {
+
+            if ((datas != null))
+              this.router.navigate(['/vehicle-management']);
+            else
               this.router.navigate(['/editVehicleCompanyProfile']);
-            }
-            
+          });
+        }
 
-          }
-
-        });
       }
       else {
         this.loginMessage = 'UserName or Password is incorrect';
@@ -89,7 +90,6 @@ export class LoginPageComponent implements OnInit {
 
 
     });
-
 
   }
 
