@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
 
-   apiUrl: 'https://wysser.stackroute.io:8080',
+   apiUrl: 'http://wysser.stackroute.io:8080',
 
 
  // apiUrl: 'http://172.23.239.61',
