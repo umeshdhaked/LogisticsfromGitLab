@@ -45,16 +45,7 @@ services:
       - /db-data:/var/lib/mysql
 
   #  services.....
-  #  zuul:
-  #    image: zuul
-  #    restart: always
-  #    build: zuul-service/
-  #    container_name: zuul-container
-  #    network_mode: host
-  #    ports:
-  #      - 8089:8089
-  #    expose:
-  #      - 8089
+  
   #  eureka:
   #      image: eureka
   #      restart: always
@@ -75,7 +66,16 @@ services:
   #        - "8889:8889"
   #      expose:
   #        - 8889
-
+  zuul:
+    image: zuul
+    restart: always
+    build: zuul-service/
+    container_name: zuul-container
+    network_mode: host
+    ports:
+      - 8080:8080
+    expose:
+      - 8080
   authentication-service:
     image: authentication
     build: login-authentication-service/
