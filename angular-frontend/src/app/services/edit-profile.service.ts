@@ -15,7 +15,7 @@ export class EditProfileService {
 
   public saveRetailerData(data) {
 
-    const url = environment.apiUrl + ':8082/retailerProfile/saveDetailOfRetailer';
+    const url = environment.apiUrl + '/profile/retailerProfile/saveDetailOfRetailer';
     // console.log(url);
     console.log('profile data = ');
     console.log(data);
@@ -32,13 +32,13 @@ export class EditProfileService {
 
   public getProfileFromEmail(data) {
 
-    const url = environment.apiUrl + ':8082/retailerProfile/getRetailerFromEmail?email=' + data;
+    const url = environment.apiUrl + '/profile/retailerProfile/getRetailerFromEmail?email=' + data;
 
     return this.http.get(url);
 
   }
  public getAllRetailer(): Observable<any> {
-    const url = environment.apiUrl + ':8082/retailerProfile/getAllRetailersProfileList';
+    const url = environment.apiUrl + '/profile/retailerProfile/getAllRetailersProfileList';
     return this.http.get(url);
  }
 
@@ -46,7 +46,7 @@ export class EditProfileService {
    var decodedData:DecodedJwtData;
    decodedData = jwt_decode(localStorage.getItem('token'));
 
-   let url = environment.apiUrl+':8082/retailerProfile/deleteAccount?id='+decodedData.userId;
+   let url = environment.apiUrl+'/profile/retailerProfile/deleteAccount?id='+decodedData.userId;
 
    return this.http.delete(url).subscribe();
 
@@ -57,7 +57,7 @@ export class EditProfileService {
 
 
  public getRetailerProfilebyId(Retailerid){
-    let uri =  environment.apiUrl+':8082/retailerProfile/getRetailerById?id='+Retailerid;
+    let uri =  environment.apiUrl+'/profile/retailerProfile/getRetailerById?id='+Retailerid;
     return this.http.get(uri);
  }
 

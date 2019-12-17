@@ -11,7 +11,7 @@ export class ContactusService {
 
   constructor(private http: HttpClient) { }
    getpendingresponses() {
-    const url = environment.apiUrl + ':9086/getNotreplied';
+    const url = environment.apiUrl + '/admin/getNotreplied';
     return this.http.get(url);
 }
   // getpendingreponses{
