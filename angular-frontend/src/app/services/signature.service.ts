@@ -7,7 +7,7 @@ import {SignatureDetails} from "../interfaces/signature";
   providedIn: 'root'
 })
 export class SignatureService {
-  private url = environment.apiUrl + ':9095/save';
+  private url = environment.apiUrl + '/signature/save';
   constructor(private http: HttpClient) { }
   sendSignatureRequest(details: SignatureDetails) {
     return this.http.post(this.url, details, {

@@ -15,14 +15,14 @@ export class RequestService {
   findallrequested(companyName): Observable<any> {
     // const url =  'http://172.23.239.62:9090/findAll';
 
-    const url = environment.apiUrl + ':9090/findAll/' + companyName;
+    const url = environment.apiUrl + '/vehicledemand/findAll/' + companyName;
     console.log(url); 
     console.log(companyName);
     return this.http.get(url);
   }
 
   sendAccept(input:any): Observable<Message>{
-    const uri = environment.apiUrl + ':8095/api/v1/Accept';
+    const uri = environment.apiUrl + '/vehicle/api/v1/Accept';
    return this.http.post<Message>(uri, input);
   }
 
@@ -30,13 +30,13 @@ export class RequestService {
 // ...................save vehicle after accepted by vehicle company.................
 
   saveAcceptedVehicle(input:any): Observable<Message>{
-    const uri = environment.apiUrl + ':8095/api/v1/AcceptedVehicle';
+    const uri = environment.apiUrl + '/vehicle/api/v1/AcceptedVehicle';
     return this.http.post<Message>(uri,input);
   }
 
 
   getAcceptedVehicle(companyName):Observable<Message>{
-    const uri = environment.apiUrl + ':8095/api/v1/AcceptedVehicle/' + companyName;
+    const uri = environment.apiUrl + '/vehicle/api/v1/AcceptedVehicle/' + companyName;
     return this.http.get<Message>(uri);
   }
 
@@ -50,19 +50,19 @@ export class RequestService {
 
 
   sendAccepttovehicledemand(input:any){
-    const uri = environment.apiUrl + ':9090/saveacceptedstatusdemand';
+    const uri = environment.apiUrl + '/vehicledemand/saveacceptedstatusdemand';
    return this.http.post(uri, input);
   }
 
 
   deleteinretailerdemand(id:number){
-    const uri= environment.apiUrl + ':9090/deletedemand/'+ id;
+    const uri= environment.apiUrl + '/vehicledemand/deletedemand/'+ id;
     return this.http.delete(uri);
   }
 
   sendReject(input){
 
-    const uri = environment.apiUrl + ':8095/api/v1/Reject';
+    const uri = environment.apiUrl + '/vehicle/api/v1/Reject';
     return this.http.post(uri, input);
 
   }
@@ -70,7 +70,7 @@ export class RequestService {
 //...................save vehicle after rejected vehicle by vehicle company............
 
   saveRejectVehicle(input:any): Observable<Message>{
-    const uri = environment.apiUrl + ':8095/api/v1/RejectedVehicle';
+    const uri = environment.apiUrl + '/vehicle/api/v1/RejectedVehicle';
     return this.http.post<Message>(uri,input);
   }
 
@@ -83,7 +83,7 @@ export class RequestService {
   // }
 
   sendRejecttovehicledemand(input:any){
-    const uri = environment.apiUrl + ':9090/saverejectedstatusdemand';
+    const uri = environment.apiUrl + '/vehicledemand/saverejectedstatusdemand';
    return this.http.post(uri, input);
   }
 

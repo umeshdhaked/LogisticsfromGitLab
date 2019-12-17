@@ -25,7 +25,7 @@ export class RoutingapiserviceService {
     {
       for(var i=0;i<addresses.length;i++)
         {
-          this.responses[i]=this.httpclient.get(environment.apiUrl+':8091/api/v1/getcoordinateresponse/'+addresses[i])
+          this.responses[i]=this.httpclient.get(environment.apiUrl+'/route/api/v1/getcoordinateresponse/'+addresses[i])
 
           // this.responses[i]=this.httpclient.get('http://localhost:8091/api/v1/getcoordinateresponse/'+addresses[i])
 
@@ -38,7 +38,7 @@ export class RoutingapiserviceService {
       for(var i=0;i<addresses.length-1;i++)
       {
         // var url='http://localhost:8091/api/v1/getgeojsonlatlongresponse/'+coordinates[i][0]+','+coordinates[i][1]+'/'+coordinates[i+1][0]+','+coordinates[i+1][1]+'/';
-        var url=environment.apiUrl+':8091/api/v1/getgeojsonlatlongresponse/'+coordinates[i][0]+','+coordinates[i][1]+'/'+coordinates[i+1][0]+','+coordinates[i+1][1]+'/';
+        var url=environment.apiUrl+'/route/api/v1/getgeojsonlatlongresponse/'+coordinates[i][0]+','+coordinates[i][1]+'/'+coordinates[i+1][0]+','+coordinates[i+1][1]+'/';
          console.log(url)
         this.waypoints[i]=this.httpclient.get(url)
         // this.waypoints[i]=this.httpclient.get('http://dev.virtualearth.net/REST/V1/Routes?wp.0='+coordinates[i][0]+', '+coordinates[i][1]+'&wp.1='+coordinates[i+1][0]+','+ coordinates[i+1][1]+'&optmz=distance&routeAttributes=routePath&key=Am645nTS2rVqgDNr8UDKqZPdOL-X2_Z94sS5-GqjNBcoMfSOi_dVC6KTDGxL_jDb') 
@@ -47,20 +47,20 @@ export class RoutingapiserviceService {
     }  
   public getRoutes(vehicleNumber)
     {
-      var url = environment.apiUrl+':8091/api/v1/routes/'+vehicleNumber+'/slot1'
+      var url = environment.apiUrl+'/route/api/v1/routes/'+vehicleNumber+'/slot1'
       return this.httpclient.get(url);
     }  
   public getVehicleNumbers(wholeSalerId,slot)
     {
       // console.log(wholeSalerId)
-      var url=environment.apiUrl+':9090/searchByRetailerIdAndSlot/'+wholeSalerId+'/'+slot
+      var url=environment.apiUrl+'/vehicledemand/searchByRetailerIdAndSlot/'+wholeSalerId+'/'+slot
       console.log(url)
       return this.httpclient.get(url);
     }  
 
     public getRoutesBySlot(vehicleNumber, slot)
     {
-      var url = environment.apiUrl+':8091/api/v1/routes/'+vehicleNumber+'/' + slot;
+      var url = environment.apiUrl+'/route/api/v1/routes/'+vehicleNumber+'/' + slot;
       return this.httpclient.get(url);
     }   
 }

@@ -22,7 +22,7 @@ export class LoginAuthService {
 
   getToken(data) {
 
-    let url = environment.apiUrl + ':9091/token/generate';
+    let url = environment.apiUrl + '/auth/token/generate';
 
     return this.httpclient.post(url, data)
 
@@ -69,7 +69,7 @@ export class LoginAuthService {
     var decodedData:DecodedJwtData;
     decodedData = jwt_decode(localStorage.getItem('token'))
 
-    let url = environment.apiUrl+":9091/token/deleteCredentials?id="+decodedData.userId;
+    let url = environment.apiUrl+"/auth/token/deleteCredentials?id="+decodedData.userId;
 
     this.httpclient.delete(url).subscribe();
 

@@ -63,24 +63,24 @@ export class OrderServiceService {
 
   getAllOrderData(retailerEmail) {
     // let url = 'assets/static/orders.json';
-    let url = environment.apiUrl + ":8084/orders/findAllOrdersOfRetailer?retailerId=" + retailerEmail
+    let url = environment.apiUrl + "/order/orders/findAllOrdersOfRetailer?retailerId=" + retailerEmail
     return this.http.get<Order[]>(url);
   }
 
   getCompletedOrders(retailerEmail) {
     // let url = 'assets/static/delivered.json';
-    let url = environment.apiUrl + ":8084/orders/findOrdersByStatus?retailerId=" + retailerEmail + "&orderStatus=delivered"
+    let url = environment.apiUrl + "/order/orders/findOrdersByStatus?retailerId=" + retailerEmail + "&orderStatus=delivered"
     return this.http.get<Orderdata[]>(url);
   }
 
   getPendingOrders(retailerEmail) {
     //let url = 'assets/static/pending.json';
-    let url = environment.apiUrl + ":8084/orders/findOrdersByStatus?retailerId=" + retailerEmail + "&orderStatus=pending"
+    let url = environment.apiUrl + "/order/orders/findOrdersByStatus?retailerId=" + retailerEmail + "&orderStatus=pending"
     return this.http.get<Order[]>(url);
   }
 
   sendVehicleKafka(retailerId, slotNumber){
-    return this.http.get<Message>(environment.apiUrl + ":9090/searchByRetailerIdAndSlot/" + retailerId + "/" + slotNumber);
+    return this.http.get<Message>(environment.apiUrl + "/vehicledemand/searchByRetailerIdAndSlot/" + retailerId + "/" + slotNumber);
   }
 
   saveInRoute(routeData){
@@ -96,7 +96,7 @@ export class OrderServiceService {
       "id" : routeData.id,
       "orderId": routeData.id
     };
-    let url2 = environment.apiUrl + ":8091/api/v1/order";
+    let url2 = environment.apiUrl + "/route/api/v1/order";
     return this.http.post<RouteOrder[]>(url2, JSON.stringify(data), {
       headers: {
         'Content-Type': 'application/json',
