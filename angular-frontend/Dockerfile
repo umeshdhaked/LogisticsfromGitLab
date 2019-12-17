@@ -33,6 +33,10 @@
 # # start app
 # CMD ng serve --host 0.0.0.0 --publicHost wysser.stackroute.io\
 
-FROM nginx:alpine
+# FROM nginx:alpine
 
-COPY dist/Wysser/ /usr/share/nginx/html
+# COPY dist/Wysser/ /usr/share/nginx/html
+
+FROM nginx:alpine
+COPY default.conf /etc/nginx/conf.d/default.conf
+COPY /dist/Wysser/ /usr/share/nginx/html
