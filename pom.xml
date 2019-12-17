@@ -63,7 +63,7 @@
         </plugins>
     </build>
     <modules>
-        <module>eureka-service</module>
+
         <module>config-service</module>
         <module>zuul-service</module>
         <module>order-service</module>
