@@ -57,11 +57,15 @@
             <td *ngIf="data.id !=temp[0].id && isPending(data)">{{data.orderVolume}}</td>
           </tr>
         </tbody>
+
       </table>
     </div>
 
-    <ion-button (click)="refresh()" routerLink="/driver">Logout</ion-button>
+    <div class="card-body text-center">
 
+      <ion-button (click)="clearData()" routerLink="/driver">Logout</ion-button>
+
+    </div>
   </ng-template>
 
   <ng-template #elseBlock>

@@ -211,5 +211,9 @@ export class MaindriverdashboardComponent implements OnInit {
     window.location.reload();
   }
 
+  clearData(){
+    localStorage.clear();
+  }
+
 
 }
