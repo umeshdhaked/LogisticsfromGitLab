@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {Career} from '../../interfaces/Career';
-import {CareerService} from '../../services/career.service';
+// import {CareerService} from '../../services/career.service';
 import {callbackify} from 'util';
 
 
@@ -19,7 +19,7 @@ export class CareersComponent implements OnInit {
   selectedfile = null;
   careertemp: Career = new Career();
 
-  constructor(private careerService: CareerService,
+  constructor(
               private elem: ElementRef) {
   }
 
@@ -70,9 +70,9 @@ export class CareersComponent implements OnInit {
       // this.temp = reader.result as string;
       // this.careertemp.file = s;
     };
-    this.careerService.sendDataOfCareer(this.careertemp).subscribe(res => {
-      console.log(res);
-    });
+    // this.careerService.sendDataOfCareer(this.careertemp).subscribe(res => {
+    //   console.log(res);
+    // });
 
   }
 
