@@ -9,7 +9,7 @@ import {VehicleDemanded} from "./interfaces/vehicledemanded";
   providedIn: 'root'
 })
 export class VehicledemandfrontendService {
-  private url = environment.apiUrl + ':9090/save';
+  private url = environment.apiUrl + '/vehicledemand/save';
 
   constructor(private http: HttpClient) {
   }
@@ -20,15 +20,15 @@ export class VehicledemandfrontendService {
     });
   }
   sendnewRetailerRequest(retailerdemand: VehicleDemanded) {
-    const myurl = environment.apiUrl + ':9090/savenewdemand';
+    const myurl = environment.apiUrl + '/vehicledemand/savenewdemand';
     return this.http.post(myurl, retailerdemand);
   }
   searchByRetailerId(retailerId: number) {
-    const myurl = environment.apiUrl + ':9090/searchbyretailerid/' + retailerId;
+    const myurl = environment.apiUrl + '/vehicledemand/searchbyretailerid/' + retailerId;
     return this.http.get(myurl);
   }
   searchByRetailerIdinrejected(retailerId: number) {
-    const myurl = environment.apiUrl + ':9090/searchbyretaileridinrejected/' + retailerId;
+    const myurl = environment.apiUrl + '/vehicledemand/searchbyretaileridinrejected/' + retailerId;
     return this.http.get(myurl);
   }
 

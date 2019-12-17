@@ -13,14 +13,14 @@ export class VechicleCompanyServiceService {
 
   getVehicleCompanyProfileFromEmail(email){
     console.log("vehicle profille get");
-    let url = environment.apiUrl+":8082/vehicleCompanyProfile/getProfile?email="+email;
+    let url = environment.apiUrl+"/profile/vehicleCompanyProfile/getProfile?email="+email;
     console.log(url)
     return this.http.get(url);
   }
 
   saveVehicleCompanyProfile(dataObj){
     console.log("vehicle profile save");
-    let url = environment.apiUrl + ":8082/vehicleCompanyProfile/saveVehicleCompanyDetail";
+    let url = environment.apiUrl + "/profile/vehicleCompanyProfile/saveVehicleCompanyDetail";
     console.log(url)
     this.http.post(url,dataObj).subscribe();
   }
@@ -30,7 +30,7 @@ export class VechicleCompanyServiceService {
     var decodedData:DecodedJwtData;
     decodedData = jwt_decode(localStorage.getItem('token'));
 
-    let url = environment.apiUrl + ":8082/vehicleCompanyProfile/deleteAccount?id="+decodedData.userId;
+    let url = environment.apiUrl + "/profile/vehicleCompanyProfile/deleteAccount?id="+decodedData.userId;
 
     this.http.delete(url).subscribe();
     

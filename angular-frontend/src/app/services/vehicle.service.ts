@@ -46,7 +46,7 @@ export class VehicleService {
 
    
 
-    const uri = environment.apiUrl + ':8095/api/v1/vehicle';
+    const uri = environment.apiUrl + '/vehicle/api/v1/vehicle';
 
     this.http.post(uri, vehicle).subscribe();
 
@@ -62,32 +62,32 @@ export class VehicleService {
 
     console.log(vehicle.id);
 
-    const url = environment.apiUrl + ':8095/api/v1/vehicle/' + vehicle.id;
+    const url = environment.apiUrl + '/vehicle/api/v1/vehicle/' + vehicle.id;
 
     this.http.delete(url).subscribe();
   }
 
   getAllVehicles(companyName): Observable<any> {
-    const url = environment.apiUrl + ':8095/api/v1/findVehicles/' + companyName;
+    const url = environment.apiUrl + '/vehicle/api/v1/findVehicles/' + companyName;
     console.log(url);
     return this.http.get(url);
   }
 
   getAll(){
-    const url = environment.apiUrl + ':8095/api/v1/vehicles';
+    const url = environment.apiUrl + '/vehicle/api/v1/vehicles';
 
     return this.http.get(url);
   }
   getvolumeandslot1(capacity: number, slot1: string): Observable<any> {
-    this.myUrl = environment.apiUrl + ':8095/api/v1/queryslot1/'  + capacity + '/' + 'available';
+    this.myUrl = environment.apiUrl + '/vehicle/api/v1/queryslot1/'  + capacity + '/' + 'available';
     return this.http.get(this.myUrl);
   }
   getvolumeandslot2(capacity: number, slot2: string): Observable<any> {
-    this.myUrl = environment.apiUrl + ':8095/api/v1/queryslot2/'  + capacity + '/' + 'available';
+    this.myUrl = environment.apiUrl + '/vehicle/api/v1/queryslot2/'  + capacity + '/' + 'available';
     return this.http.get(this.myUrl);
   }
   getvolumeandslot3(capacity: number, slot3: string): Observable<any> {
-    this.myUrl = environment.apiUrl + ':8095/api/v1/queryslot3/'  + capacity + '/' + 'available';
+    this.myUrl = environment.apiUrl + '/vehicle/api/v1/queryslot3/'  + capacity + '/' + 'available';
     return this.http.get(this.myUrl);
   }
 }

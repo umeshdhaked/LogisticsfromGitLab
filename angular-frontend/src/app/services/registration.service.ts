@@ -15,7 +15,7 @@ export class RegistrationService {
   }
 
   registerNewUser(firstName, lastName, email, role, mobile): Observable<Message> {
-    let uri = environment.apiUrl + ":8088/register";
+    let uri = environment.apiUrl + "/registration/register";
     let data = {"firstName": firstName, "lastName": lastName, "email": email, "role": role};
     return this.http.post<Message>(uri, JSON.stringify(data), {
       headers: {
@@ -26,12 +26,12 @@ export class RegistrationService {
   }
 
   confirmToken(token): Observable<Message> {
-    let uri = environment.apiUrl + ":8088/confirm?token=" + token;
+    let uri = environment.apiUrl + "/registration/confirm?token=" + token;
     return this.http.get<Message>(uri);
   }
 
   updatePassword(password, token) {
-    let uri = environment.apiUrl + ":8088/confirm?token=" + token + "&password=" + password;
+    let uri = environment.apiUrl + "/registration/confirm?token=" + token + "&password=" + password;
     // let data = {"password": password, "token": token};
     return this.http.post<Message>(uri, {
       headers: {
@@ -42,7 +42,7 @@ export class RegistrationService {
   }
 
   resetPassword(email): Observable<Message>{
-    let uri = environment.apiUrl + ":8088/forgot?email=" + email;
+    let uri = environment.apiUrl + "/registration/forgot?email=" + email;
     return this.http.post<Message>(uri, {
       headers: {
         'Content-Type': 'application/json',

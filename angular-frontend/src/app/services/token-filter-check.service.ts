@@ -24,7 +24,7 @@ export class TokenFilterCheckService {
 
       // return this.http.get('http://localhost:9091/rest/hello',httpOptions);
 
-      return this.http.get(environment.apiUrl+':9091/rest/hello');
+      return this.http.get(environment.apiUrl+'/auth/rest/hello');
 
   }
 }

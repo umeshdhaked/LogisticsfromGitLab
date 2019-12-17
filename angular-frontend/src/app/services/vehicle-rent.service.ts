@@ -15,7 +15,7 @@ export class VehicleRentService {
 
   getBookedVehicles(retailerId) {
     // let url = 'assets/static/vehicles.json';
-    let url = environment.apiUrl + ':9090/searchbyretaileridinaccepted/' + retailerId;
+    let url = environment.apiUrl + '/vehicledemand/searchbyretaileridinaccepted/' + retailerId;
     return this.http.get<VehicleManagement[]>(url);
   }
 
