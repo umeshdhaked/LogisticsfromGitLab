@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
 @EnableZuulProxy
-@CrossOrigin("*")
+// @CrossOrigin("*")
 public class ZuulApplication {
 
     public static void main(String[] args) {
