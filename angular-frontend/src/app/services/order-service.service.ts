@@ -18,12 +18,12 @@ export class OrderServiceService {
   }
 
   checkSlots(retailerId): Observable<DateDemand> {
-    let url = environment.apiUrl + ':8084/orders/slots?retailerId=' + retailerId;
+    let url = environment.apiUrl + '/order/orders/slots?retailerId=' + retailerId;
     return this.http.get<DateDemand>(url);
   }
 
   saveOrder(customerName, customerNumber, customerAddress, orderVolume, deliveryDate, slotNumber, orderStatus, retailerId): Observable<Orderdata[]> {
-    let url = environment.apiUrl + ":8084/orders/save";
+    let url = environment.apiUrl + "/order/orders/save";
     
     console.log(orderStatus);
     console.log(customerNumber);
