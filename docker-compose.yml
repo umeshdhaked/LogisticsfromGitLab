@@ -227,3 +227,12 @@ services:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--web.enable-admin-api'
       - '--web.listen-address=:9094'
+  graphana:
+    image: grafana/grafana
+    # ports:
+    #   - "3000:3000"
+    network_mode: host
+    restart: always
+    volumes:
+    - /grafana/provisioning/:/etc/grafana/provisioning/
+    container_name: graph-cont
