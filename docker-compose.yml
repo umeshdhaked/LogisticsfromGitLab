@@ -216,3 +216,14 @@ services:
       - mongodb
     ports:
       - "9086:9086"
+  prometheus:
+    image: prom/prometheus
+    network_mode: host
+    restart: always
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    container_name: prom-cont
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--web.enable-admin-api'
+      - '--web.listen-address=:9094'
