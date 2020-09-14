@@ -11,7 +11,7 @@ export class AdminService {
   constructor(private router: Router,
               private http: HttpClient ) { }
    sendemail(email: any, sub: any, body: any) {
-    const url = environment.apiUrl + '/admin/sendEmail?email=' + email + '&subject=' + sub + '&body=' + body;
+    const url = environment.apiUrl + '/registration/sendEmail?email=' + email + '&subject=' + sub + '&body=' + body;
     this.http.post(url, null).subscribe();
    }
 
